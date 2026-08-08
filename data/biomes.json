@@ -1,0 +1,11 @@
+[
+  { "id": "meadows", "name": { "es": "Praderas", "en": "Meadows" }, "theme": { "accent": "#E6AF64", "surface": "#7A5148", "symbol": "ᛃ" } },
+  { "id": "black_forest", "name": { "es": "Bosque Negro", "en": "Black Forest" }, "theme": { "accent": "#044561", "surface": "#021A32", "symbol": "ᛉ" } },
+  { "id": "swamp", "name": { "es": "Pantanos", "en": "Swamp" }, "theme": { "accent": "#3B4A57", "surface": "#042E47", "symbol": "ᛜ" } },
+  { "id": "mountains", "name": { "es": "Montañas", "en": "Mountains" }, "theme": { "accent": "#E6AF64", "surface": "#021A32", "symbol": "ᛁ" } },
+  { "id": "plains", "name": { "es": "Llanuras", "en": "Plains" }, "theme": { "accent": "#C03D19", "surface": "#7A5148", "symbol": "ᛋ" } },
+  { "id": "mistlands", "name": { "es": "Tierras de Niebla", "en": "Mistlands" }, "theme": { "accent": "#7A5148", "surface": "#31110F", "symbol": "ᛗ" } },
+  { "id": "ashlands", "name": { "es": "Tierras Cenicientas", "en": "Ashlands" }, "theme": { "accent": "#C03D19", "surface": "#71160A", "symbol": "ᛏ" } },
+  { "id": "ocean", "name": { "es": "Océano", "en": "Ocean" }, "theme": { "accent": "#044561", "surface": "#042E47", "symbol": "ᛚ" } },
+  { "id": "deep_north", "name": { "es": "Extremo Norte", "en": "Deep North" }, "theme": { "accent": "#E6AF64", "surface": "#021A32", "symbol": "ᛇ" } }
+]

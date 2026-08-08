@@ -1,0 +1,175 @@
+[
+  {
+    "materialId": "bronze",
+    "stationId": "forge",
+    "outputAmount": 1,
+    "materials": [
+      { "materialId": "copper", "amount": 2 },
+      { "materialId": "tin", "amount": 1 }
+    ]
+  },
+  {
+    "materialId": "bronze_nails",
+    "stationId": "forge",
+    "outputAmount": 20,
+    "materials": [
+      { "materialId": "bronze", "amount": 1 }
+    ]
+  },
+  {
+    "materialId": "cooked_deer_meat",
+    "stationId": "cooking_station",
+    "outputAmount": 1,
+    "materials": [
+      { "materialId": "raw_deer_meat", "amount": 1 }
+    ]
+  },
+  {
+    "materialId": "iron_nails",
+    "stationId": "forge",
+    "outputAmount": 20,
+    "materials": [
+      { "materialId": "iron", "amount": 1 }
+    ]
+  },
+  {
+    "materialId": "mead_base_poison_resist",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "thistle", "amount": 5 }, { "materialId": "neck_tail", "amount": 1 }, { "materialId": "coal", "amount": 10 }]
+  },
+  {
+    "materialId": "poison_resistance_mead",
+    "stationId": "fermenter",
+    "outputAmount": 6,
+    "materials": [{ "materialId": "mead_base_poison_resist", "amount": 1 }]
+  },
+  {
+    "materialId": "mead_base_health_medium",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "bloodbag", "amount": 4 }, { "materialId": "raspberries", "amount": 10 }, { "materialId": "dandelion", "amount": 1 }]
+  },
+  {
+    "materialId": "medium_health_mead",
+    "stationId": "fermenter",
+    "outputAmount": 6,
+    "materials": [{ "materialId": "mead_base_health_medium", "amount": 1 }]
+  },
+  {
+    "materialId": "mead_base_stamina_medium",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "cloudberries", "amount": 10 }, { "materialId": "yellow_mushroom", "amount": 10 }]
+  },
+  {
+    "materialId": "medium_stamina_mead",
+    "stationId": "fermenter",
+    "outputAmount": 6,
+    "materials": [{ "materialId": "mead_base_stamina_medium", "amount": 1 }]
+  },
+  {
+    "materialId": "black_metal",
+    "stationId": "blast_furnace",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "black_metal_scrap", "amount": 1 }, { "materialId": "coal", "amount": 2 }]
+  },
+  {
+    "materialId": "linen_thread",
+    "stationId": "spinning_wheel",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "flax", "amount": 1 }]
+  },
+  {
+    "materialId": "barley_flour",
+    "stationId": "windmill",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "barley", "amount": 1 }]
+  },
+  {
+    "materialId": "bread_dough",
+    "stationId": "cauldron",
+    "outputAmount": 2,
+    "materials": [{ "materialId": "barley_flour", "amount": 10 }]
+  },
+  {
+    "materialId": "unbaked_lox_pie",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "cloudberries", "amount": 2 }, { "materialId": "lox_meat", "amount": 2 }, { "materialId": "barley_flour", "amount": 4 }]
+  },
+  {
+    "materialId": "barley_wine_base",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "barley", "amount": 10 }, { "materialId": "cloudberries", "amount": 10 }]
+  },
+  {
+    "materialId": "barley_wine",
+    "stationId": "fermenter",
+    "outputAmount": 6,
+    "materials": [{ "materialId": "barley_wine_base", "amount": 1 }]
+  },
+  {
+    "materialId": "refined_eitr",
+    "stationId": "eitr_refinery",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "sap", "amount": 1 }, { "materialId": "soft_tissue", "amount": 1 }]
+  },
+  {
+    "materialId": "mechanical_spring",
+    "stationId": "black_forge",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "refined_eitr", "amount": 1 }, { "materialId": "iron", "amount": 3 }]
+  },
+  {
+    "materialId": "uncooked_misthare_supreme",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "hare_meat", "amount": 1 }, { "materialId": "jotun_puffs", "amount": 3 }, { "materialId": "carrot", "amount": 2 }]
+  },
+  {
+    "materialId": "uncooked_stuffed_mushroom",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "magecap", "amount": 3 }, { "materialId": "blood_clot", "amount": 1 }, { "materialId": "turnip", "amount": 2 }]
+  },
+  {
+    "materialId": "uncooked_meat_platter",
+    "stationId": "cauldron",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "seeker_meat", "amount": 1 }, { "materialId": "lox_meat", "amount": 1 }, { "materialId": "hare_meat", "amount": 1 }]
+  },
+  {
+    "materialId": "cooked_fish",
+    "stationId": "cooking_station",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "fish", "amount": 1 }]
+  },
+  { "materialId": "mead_base_health_minor", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "blueberries", "amount": 5 }, { "materialId": "raspberries", "amount": 10 }, { "materialId": "dandelion", "amount": 1 }] },
+  { "materialId": "mead_base_stamina_minor", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "raspberries", "amount": 10 }, { "materialId": "yellow_mushroom", "amount": 10 }] },
+  { "materialId": "mead_base_frost_resist", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "thistle", "amount": 5 }, { "materialId": "bloodbag", "amount": 2 }, { "materialId": "greydwarf_eye", "amount": 1 }] },
+  { "materialId": "mead_base_tasty", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "raspberries", "amount": 10 }, { "materialId": "blueberries", "amount": 5 }] },
+  { "materialId": "minor_health_mead", "stationId": "fermenter", "outputAmount": 6, "materials": [{ "materialId": "mead_base_health_minor", "amount": 1 }] },
+  { "materialId": "minor_stamina_mead", "stationId": "fermenter", "outputAmount": 6, "materials": [{ "materialId": "mead_base_stamina_minor", "amount": 1 }] },
+  { "materialId": "frost_resistance_mead", "stationId": "fermenter", "outputAmount": 6, "materials": [{ "materialId": "mead_base_frost_resist", "amount": 1 }] },
+  { "materialId": "tasty_mead", "stationId": "fermenter", "outputAmount": 6, "materials": [{ "materialId": "mead_base_tasty", "amount": 1 }] },
+  { "materialId": "mead_base_anti_sting", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "cloudberries", "amount": 10 }, { "materialId": "grouper", "amount": 3 }, { "materialId": "fragrant_bundle", "amount": 1 }] },
+  { "materialId": "mead_base_berserkir", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "mushroom", "amount": 10 }, { "materialId": "yellow_mushroom", "amount": 10 }, { "materialId": "toadstool", "amount": 1 }] },
+  { "materialId": "mead_base_ratatosk", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "blueberries", "amount": 10 }, { "materialId": "cured_squirrel_hamstring", "amount": 1 }] },
+  { "materialId": "mead_base_lightfoot", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "scale_hide", "amount": 2 }, { "materialId": "feathers", "amount": 5 }, { "materialId": "magecap", "amount": 5 }] },
+  { "materialId": "mead_base_troll_endurance", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "trollfish", "amount": 2 }, { "materialId": "honey", "amount": 10 }, { "materialId": "powdered_dragon_eggshells", "amount": 1 }] },
+  { "materialId": "mead_base_vananidir", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "dandelion", "amount": 10 }, { "materialId": "perch", "amount": 2 }, { "materialId": "fresh_seaweed", "amount": 1 }] },
+  { "materialId": "mead_base_animal_whispers", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "onion", "amount": 5 }, { "materialId": "carrot", "amount": 10 }, { "materialId": "pungent_pebbles", "amount": 1 }] },
+  { "materialId": "mead_base_health_major", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "blood_clot", "amount": 4 }, { "materialId": "royal_jelly", "amount": 5 }] },
+  { "materialId": "mead_base_eitr_minor", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "honey", "amount": 10 }, { "materialId": "sap", "amount": 5 }, { "materialId": "jotun_puffs", "amount": 2 }, { "materialId": "magecap", "amount": 5 }] },
+  { "materialId": "mead_base_health_lingering", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "sap", "amount": 10 }, { "materialId": "vineberry_cluster", "amount": 10 }, { "materialId": "smoke_puff", "amount": 10 }] },
+  { "materialId": "mead_base_stamina_lingering", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "sap", "amount": 10 }, { "materialId": "cloudberries", "amount": 10 }, { "materialId": "jotun_puffs", "amount": 10 }] },
+  { "materialId": "mead_base_eitr_lingering", "stationId": "cauldron", "outputAmount": 1, "materials": [{ "materialId": "sap", "amount": 10 }, { "materialId": "vineberry_cluster", "amount": 10 }, { "materialId": "magecap", "amount": 10 }] },
+  {
+    "materialId": "cooked_serpent_meat",
+    "stationId": "cooking_station",
+    "outputAmount": 1,
+    "materials": [{ "materialId": "serpent_meat", "amount": 1 }]
+  }
+]

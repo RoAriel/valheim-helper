@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+:root {
+  --void: #070407;
+  --night: #021a32;
+  --wine: #31110f;
+  --deep: #042e47;
+  --ember: #71160a;
+  --sea: #044561;
+  --slate: #3b4a57;
+  --clay: #7a5148;
+  --fire: #c03d19;
+  --gold: #e6af64;
+  --text: #f7e7cd;
+  --muted: #b7b1ae;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--void); color: var(--text); font-family: Arial, sans-serif; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.eyebrow { margin: 0 0 9px; color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 1.8px; }
+.field-sample { min-height: 100dvh; background: var(--void); }
+
+.field-topbar {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 10px clamp(18px, 3vw, 48px);
+  border-bottom: 1px solid var(--slate);
+  background: var(--night);
+}
+.field-brand { color: var(--text); font-size: 12px; font-weight: 800; letter-spacing: 1.6px; }
+.field-brand b { color: var(--gold); }
+.field-topbar > div { display: grid; justify-items: center; gap: 2px; }
+.field-topbar > div span { color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: 1.3px; }
+.field-topbar > div strong { font: 600 14px Georgia, serif; }
+.field-topbar > small { justify-self: end; color: var(--muted); font-size: 10px; }
+
+.field-layout {
+  min-height: calc(100dvh - 58px);
+  display: grid;
+  grid-template-columns: 245px minmax(380px, 1fr) minmax(340px, .75fr);
+}
+
+.field-progression {
+  padding: 30px 18px;
+  border-right: 1px solid var(--slate);
+  background: linear-gradient(180deg, var(--night), var(--void));
+}
+.field-progression h1 { margin: 0; font: 500 27px/1 Georgia, serif; letter-spacing: -1px; }
+.field-progression-intro > p:last-child { margin: 12px 0 22px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.field-progression > button, .field-biome-list button {
+  width: 100%; display: flex; align-items: center; gap: 9px;
+  border: 1px solid transparent; background: transparent; color: var(--muted); text-align: left; padding: 10px;
+}
+.field-progression > button { margin-bottom: 9px; border-color: var(--slate); color: var(--text); }
+.field-progression button b { margin-left: auto; color: var(--gold); font-size: 11px; }
+.field-progression button.active { border-color: var(--biome-accent, var(--gold)); background: color-mix(in srgb, var(--biome-surface, var(--deep)) 54%, var(--void)); color: var(--text); }
+.field-biome-list { display: grid; gap: 3px; }
+.field-biome-list button { border-left: 3px solid var(--biome-accent, var(--slate)); }
+.field-biome-list i { display: grid; place-items: center; flex: 0 0 20px; width: 20px; height: 20px; border-radius: 50%; background: var(--biome-surface, var(--deep)); color: var(--gold); font: 14px Georgia, serif; font-style: normal; }
+.field-biome-list button span { font-size: 11px; font-weight: 700; }
+.field-biome-list button small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; font-weight: 400; }
+
+.field-catalog { min-width: 0; container-type: inline-size; padding: 34px clamp(20px, 3vw, 48px); background: var(--void); }
+.field-catalog h2, .field-detail h2 { margin: 0; font: 500 29px Georgia, serif; }
+.field-search { display: flex; align-items: center; gap: 10px; height: 48px; margin: 22px 0 11px; padding: 0 14px; border: 1px solid var(--slate); background: var(--deep); }
+.field-search span { color: var(--gold); font-size: 22px; }
+.field-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 12px; }
+.field-search input::placeholder { color: var(--muted); }
+.field-filter-row, .field-subfilter-row { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0; }
+.field-filter-row button, .field-subfilter-row button {
+  border: 1px solid var(--slate); background: var(--night); color: var(--muted); padding: 6px 8px; font-size: 9px; font-weight: 700;
+}
+.field-filter-row button.active, .field-subfilter-row button.active { border-color: var(--gold); background: var(--wine); color: var(--text); }
+.field-subfilter-row { align-items: center; padding: 8px; border-left: 2px solid var(--gold); background: #021a3255; }
+.field-subfilter-row > span, .field-food-filter > span { color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: .7px; }
+.field-food-filter { display: flex; align-items: center; gap: 8px; width: max-content; margin: 8px 0 12px; }
+.field-food-filter select { border: 1px solid var(--slate); background: var(--deep); color: var(--text); padding: 6px 24px 6px 8px; font-size: 10px; }
+.field-summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 10px; }
+.field-clear { margin-left: auto; border: 0; background: transparent; color: var(--gold); padding: 3px 0; font-size: 10px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+.field-item-list { display: grid; gap: 5px; margin-top: 18px; }
+.field-item-list > button {
+  display: grid; grid-template-columns: 42px minmax(110px, 1fr) minmax(90px, .65fr) 92px 15px; align-items: center; gap: 10px;
+  min-height: 64px; padding: 8px 10px; border: 1px solid var(--slate); border-left: 3px solid var(--biome-accent, var(--slate));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--biome-surface, var(--night)) 40%, var(--night)), var(--night) 55%); color: var(--text); text-align: left;
+}
+.field-item-list > button:hover { border-color: var(--biome-accent, var(--clay)); }
+.field-item-list > button.selected { border-color: var(--gold); border-left-color: var(--gold); box-shadow: inset 2px 0 var(--gold); }
+.field-item-icon, .field-detail-icon { display: grid; place-items: center; background: var(--deep); border: 1px solid var(--sea); }
+.field-item-icon { width: 40px; height: 40px; font-size: 22px; }
+.field-item-name strong, .field-item-name small { display: block; }
+.field-item-name strong { font: 600 13px Georgia, serif; }
+.field-item-name small, .field-row-meta small { color: var(--muted); font-size: 9px; }
+.field-row-meta { color: #d9d3cf; font-size: 10px; }
+.field-row-meta small { display: block; margin-bottom: 3px; color: var(--gold); letter-spacing: .5px; }
+.field-row-biome { color: var(--text); font-size: 10px; }
+.field-item-list > button > b { color: var(--gold); font-size: 20px; }
+.field-empty { margin: 0; padding: 30px 10px; border: 1px dashed var(--slate); color: var(--muted); text-align: center; font-size: 12px; }
+
+.field-detail {
+  position: sticky; top: 0; align-self: start; height: 100dvh; overflow-y: auto; overscroll-behavior: contain;
+  padding: 30px 22px; border-left: 1px solid var(--biome-accent, var(--slate));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--biome-surface, var(--night)) 44%, var(--night)), var(--night) 38%);
+  scrollbar-color: var(--biome-accent, var(--slate)) var(--deep); scrollbar-width: thin;
+}
+.field-detail > header { display: grid; grid-template-columns: 62px 1fr; gap: 13px; padding-bottom: 22px; border-bottom: 1px solid var(--slate); }
+.field-detail-icon { width: 62px; height: 62px; border-color: var(--biome-accent, var(--gold)); font-size: 34px; }
+.field-detail header .eyebrow { margin-bottom: 5px; }
+.field-detail h2 { font-size: 25px; }
+.field-detail header small { color: var(--muted); font: italic 11px Georgia, serif; }
+.field-detail header p:last-child, .field-detail-empty p:last-of-type { margin: 8px 0 0; color: #d9d3cf; font-size: 12px; line-height: 1.4; }
+.field-detail-empty { display: grid; align-content: center; height: 100dvh; }
+.field-detail-empty button { width: max-content; margin-top: 18px; border: 1px solid var(--gold); background: var(--wine); color: var(--text); padding: 9px 12px; font-size: 11px; font-weight: 700; }
+.field-block { margin-top: 20px; }
+.field-block-title { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 9px; }
+.field-block-title h3 { margin: 0; font: 600 16px Georgia, serif; }
+.field-block-title span { color: var(--gold); font-size: 9px; text-align: right; }
+.field-cost { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #3b4a5777; }
+.field-cost span { font-size: 18px; }.field-cost strong { font-size: 11px; }.field-cost b { color: var(--gold); font-size: 13px; }
+.field-disclosure { padding: 13px 0 0; border-top: 1px solid var(--slate); }
+.field-disclosure summary { display: flex; justify-content: space-between; cursor: pointer; color: var(--text); font: 600 15px Georgia, serif; list-style: none; }
+.field-disclosure summary::-webkit-details-marker { display: none; }
+.field-disclosure summary::before { content: "+"; margin-right: 7px; color: var(--gold); font-family: Arial, sans-serif; }
+.field-disclosure[open] summary::before { content: "−"; }
+.field-disclosure summary span { color: var(--gold); font: 9px Arial, sans-serif; }
+.field-upgrade { display: grid; gap: 3px; margin-top: 11px; padding: 9px; background: #021a3266; border-left: 2px solid var(--biome-accent, var(--gold)); font-size: 10px; }
+.field-upgrade b { color: var(--gold); }.field-upgrade span { color: var(--muted); }
+.field-plan { padding-top: 17px; border-top: 2px solid var(--biome-accent, var(--gold)); }
+.field-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0 8px; }
+.field-tags span { padding: 5px 6px; border: 1px solid var(--biome-accent, var(--slate)); background: #07040766; color: var(--text); font-size: 9px; }
+
+@container (min-width: 900px) {
+  .field-item-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .field-item-list > button, .field-item-list > button.selected { grid-template-columns: 48px minmax(0, 1fr) 18px; grid-template-rows: auto auto auto; min-height: 104px; border-left-width: 4px; }
+  .field-item-icon { grid-row: 1 / 4; }.field-item-name { grid-column: 2; grid-row: 1; }.field-row-meta { grid-column: 2; grid-row: 2; }.field-row-biome { grid-column: 2; grid-row: 3; color: var(--biome-accent, var(--text)); font-weight: 700; }.field-item-list > button > b { grid-column: 3; grid-row: 1 / 4; }.field-row-meta small { display: inline; margin: 0 5px 0 0; }
+}
+
+@media (max-width: 1050px) {
+  .field-layout { grid-template-columns: 205px minmax(330px, 1fr) minmax(300px, .8fr); }
+  .field-progression { padding-inline: 12px; }.field-catalog { padding-inline: 20px; }.field-detail { padding-inline: 18px; }
+  .field-item-list > button { grid-template-columns: 40px minmax(100px, 1fr) 15px; grid-template-rows: auto auto auto; }.field-item-icon { grid-row: 1 / 4; }.field-item-name { grid-column: 2; grid-row: 1; }.field-row-meta { grid-column: 2; grid-row: 2; }.field-row-biome { grid-column: 2; grid-row: 3; }.field-item-list > button > b { grid-column: 3; grid-row: 1 / 4; }.field-row-meta small { display: inline; margin: 0 4px 0 0; }
+}
+@media (max-width: 780px) {
+  .field-topbar { grid-template-columns: 1fr auto; }.field-topbar > div { display: none; }
+  .field-layout { display: flex; flex-direction: column; }.field-progression { padding: 16px; border-right: 0; border-bottom: 1px solid var(--slate); }.field-progression-intro { display: none; }.field-progression > button { display: none; }.field-biome-list { display: flex; overflow-x: auto; gap: 7px; padding-bottom: 2px; }.field-biome-list button { width: auto; min-width: max-content; border: 1px solid var(--biome-accent, var(--slate)); }.field-biome-list button small, .field-biome-list button b { display: none; }
+  .field-catalog { padding: 24px 16px; }.field-detail { position: static; height: auto; min-height: 0; overflow: visible; border-left: 0; border-top: 2px solid var(--biome-accent, var(--slate)); padding: 24px 16px; }.field-detail-empty { min-height: 250px; }.field-item-list > button { grid-template-columns: 40px minmax(0, 1fr) 15px; }.field-row-meta, .field-row-biome { display: none; }
+}
+@media (max-width: 480px) {
+  .field-topbar { padding-inline: 14px; }.field-topbar > small { font-size: 9px; }.field-catalog h2 { font-size: 26px; }.field-summary > span:last-of-type { display: none; }.field-food-filter { width: 100%; justify-content: space-between; }.field-food-filter select { max-width: 75%; }.field-detail > header { grid-template-columns: 52px 1fr; }.field-detail-icon { width: 52px; height: 52px; font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

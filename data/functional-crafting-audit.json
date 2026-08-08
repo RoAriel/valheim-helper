@@ -1,0 +1,15 @@
+{
+  "gameVersion": "0.221.12",
+  "source": "Jotunn recipe and piece dumps for Valheim 0.221.12",
+  "scope": "Objetos fabricables de progresión, estaciones, transporte, defensa, equipo y comida. Se excluyen variantes puramente decorativas.",
+  "biomes": [
+    { "biomeId": "meadows", "expectedRecipeCount": 66, "requiredItemIds": ["antler_pickaxe", "raft", "beehive", "stakewall"] },
+    { "biomeId": "black_forest", "expectedRecipeCount": 39, "requiredItemIds": ["portal", "karve", "smelter", "fermenter", "minor_health_mead", "tasty_mead", "ratatosk_tonic"] },
+    { "biomeId": "swamp", "expectedRecipeCount": 34, "requiredItemIds": ["stonecutter", "longship", "iron_pickaxe", "poison_resistance_mead", "berserkir_mead", "troll_endurance_mead"] },
+    { "biomeId": "mountains", "expectedRecipeCount": 20, "requiredItemIds": ["artisan_table_piece", "draugr_fang", "frostner", "stone_oven", "frost_resistance_mead", "animal_whispers_brew"] },
+    { "biomeId": "plains", "expectedRecipeCount": 23, "requiredItemIds": ["blast_furnace", "windmill", "padded_cuirass", "lox_saddle", "anti_sting_concoction"] },
+    { "biomeId": "mistlands", "expectedRecipeCount": 36, "requiredItemIds": ["eitr_refinery", "galdr_table", "mistwalker", "ballista", "major_health_mead", "minor_eitr_mead", "lightfoot_mead"] },
+    { "biomeId": "ashlands", "expectedRecipeCount": 25, "requiredItemIds": ["drakkar", "catapult", "slayer", "asksvin_saddle", "lingering_health_mead", "lingering_stamina_mead", "lingering_eitr_mead"] },
+    { "biomeId": "ocean", "expectedRecipeCount": 7, "requiredItemIds": ["abyssal_harpoon", "serpent_scale_shield", "serpent_stew", "heavy_fishing_bait", "vananidir_draught"] }
+  ]
+}

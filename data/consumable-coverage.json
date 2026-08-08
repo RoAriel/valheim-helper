@@ -1,0 +1,11 @@
+{
+  "gameVersion": "0.221.12",
+  "families": [
+    "minor_healing", "medium_healing", "major_healing", "lingering_healing",
+    "minor_stamina", "medium_stamina", "lingering_stamina",
+    "minor_eitr", "lingering_eitr", "poison_resistance", "frost_resistance",
+    "fire_resistance", "tasty", "anti_sting", "berserkir", "ratatosk",
+    "lightfoot", "troll_endurance", "vananidir", "animal_whispers"
+  ],
+  "sourceRecipePrefixes": ["Recipe_MeadBase", "Recipe_Potion"]
+}
