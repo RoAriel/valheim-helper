@@ -1,0 +1,127 @@
+# Valheim Helper
+
+Aplicación local para consultar qué se necesita para fabricar y mejorar objetos de Valheim, cuánto hace falta y dónde conseguir cada material.
+
+## Estado del proyecto
+
+- Versión de la aplicación: `1.0.0`.
+- Versión del catálogo de datos: `0.1.20`.
+- Versión de referencia de Valheim: `0.221.12`.
+- Interfaz en español.
+- Nombres de entidades en español e inglés.
+- Catálogo funcional de los biomas jugables actuales, con equipo, estaciones, comida, transporte y construcciones no decorativas.
+- Ejecución local dentro de WSL.
+- pnpm como único gestor de paquetes.
+
+## Funcionalidades actuales
+
+- Búsqueda de objetos por nombre en español o inglés y por categoría.
+- Filtros por categoría.
+- Identidad visual por bioma en tarjetas y panel de detalle.
+- Planificador de objetivo con materias primas, estaciones y biomas de recolección.
+- Mesa de trabajo con progresión por bioma, catálogo compacto y subfiltros contextuales de armas y comida.
+- Receta de fabricación inicial.
+- Mejoras de armas y herramientas por nivel.
+- Costo individual de cada mejora y costo total acumulado.
+- Estación y nivel requeridos.
+- Origen, bioma y requisito de obtención de los materiales.
+- Diseño adaptable a computadora y teléfono.
+
+## Recursos visuales
+
+- Los iconos individuales de los objetos usan el sistema visual propio de la aplicación. No se incorporan imágenes de wikis u otras fuentes sin una licencia explícita para su reutilización.
+
+## Entorno local
+
+El proyecto se encuentra en:
+
+```text
+~/dev/valheim-helper
+```
+
+Requiere Node.js `22.13` o posterior y pnpm `11.16.0`.
+
+```bash
+cd ~/dev/valheim-helper
+pnpm install
+pnpm dev
+```
+
+La aplicación queda disponible normalmente en:
+
+```text
+http://localhost:3000/
+```
+
+Para ejecutar la validación automatizada del catálogo y la compilación:
+
+```bash
+pnpm test
+pnpm lint
+```
+
+Para probar la interfaz en Chromium con los tamaños móvil, escritorio y 2K:
+
+```bash
+pnpm test:e2e
+```
+
+Las capturas de cada ejecución quedan en `test-results/` y no se versionan. La primera vez también se debe instalar el navegador administrado por Playwright con `pnpm exec playwright install chromium`.
+
+La matriz completa de controles y el alcance congelado de la versión se encuentran en [`docs/release-v1.md`](docs/release-v1.md).
+
+## Trabajar con VS Code
+
+Abrir el proyecto directamente desde WSL:
+
+```bash
+cd ~/dev/valheim-helper
+code .
+```
+
+VS Code debe mostrar un entorno similar a `WSL: Ubuntu`. La extensión de Codex también debe estar instalada o habilitada dentro de WSL para trabajar directamente sobre estos archivos.
+
+## Estructura principal
+
+- `app/workbench.tsx`: interfaz principal, filtros y detalle de planificación.
+- `data/catalog-filters.ts`: lógica pura de filtrado y resolución de selección.
+- `app/globals.css`: diseño visual y adaptación para móvil.
+- `app/layout.tsx`: metadatos e idioma de la aplicación.
+- `data/manifest.json`: versión de la aplicación, del juego y del conjunto de datos.
+- `CHANGELOG.md`: historial de cambios publicados del catálogo y la aplicación.
+- `data/items.json`: objetos del catálogo.
+- `data/materials.json`: materiales y relación con sus fuentes.
+- `data/recipes.json`: fabricación y mejoras por nivel.
+- `data/sources.json`: procedencia, biomas y requisitos.
+- `data/biomes.json`: biomas en español e inglés.
+- `data/subcategories.json`: taxonomía de subcategorías y pertenencia de objetos.
+- `data/stations.json`: estaciones en español e inglés.
+- `data/catalog.ts`: tipos, relaciones y validación de referencias.
+- `data/README.md`: contrato del catálogo y proceso para incorporar datos.
+- `docs/actualizacion-de-datos.md`: procedimiento de actualización por versión de Valheim.
+- `docs/release-v1.md`: alcance, validación y decisiones de mantenimiento de la V1.
+- `docs/stack-tecnologico.md`: definición, justificación y límites del stack tecnológico.
+
+## Criterios del modelo
+
+- Cada entidad tiene un identificador estable.
+- Los nombres de entidades se guardan como `es` y `en`.
+- Los textos de la interfaz y las explicaciones se escriben en español.
+- Los materiales se definen una sola vez y las recetas los referencian mediante `materialId`.
+- La fabricación inicial y cada mejora se almacenan como pasos separados.
+- Los datos representan el estado actual del juego; no se mantiene historial de versiones por ahora.
+- Un dato dudoso debe quedar pendiente de verificación y nunca completarse por intuición.
+
+## Añadir contenido
+
+1. Añadir el objeto a `data/items.json` con nombres `es` y `en`.
+2. Registrar materiales nuevos en `data/materials.json` sin duplicar los existentes.
+3. Registrar fuentes nuevas en `data/sources.json` cuando corresponda.
+4. Crear la entrada de fabricación en `data/recipes.json`.
+5. Añadir los pasos de mejora si el objeto puede mejorarse.
+6. Actualizar las auditorías de cobertura y las versiones cuando corresponda.
+7. Ejecutar `pnpm test`, `pnpm lint` y `pnpm test:e2e` antes de considerar terminado el cambio.
+
+## Próximo objetivo
+
+El catálogo cubre los biomas jugables actuales dentro del alcance funcional: Praderas, Bosque Negro, Pantanos, Montañas, Llanuras, Tierras de Niebla, Tierras Cenicientas y Océano.
