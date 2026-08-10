@@ -1,5 +1,14 @@
 # Cambios
 
+## Aplicación 1.0.1 — 2026-08-10
+
+- La ficha muestra la cantidad producida por lote para flechas, hidromieles y demás recetas múltiples.
+- Las comidas y consumibles exponen salud, aguante, eitr, curación, duración y efectos especiales.
+- El bloque de mejoras separa los costos individuales por nivel de un resumen destacado con el total acumulado desde nivel 1 hasta el nivel máximo.
+- Los materiales permiten consultar nombre inglés, fuentes, biomas, requisitos y alternativas de obtención.
+- Se retiraron los ejemplos y dependencias sin uso de ChatGPT Auth, D1 y Drizzle; el paquete se renombró a `valheim-helper`.
+- Se ampliaron las pruebas de datos e interfaz para cubrir la información incorporada.
+
 ## Aplicación 1.0.0 — 2026-08-08
 
 - Se corrigió el estado sin resultados para evitar que el detalle muestre un objeto fuera de los filtros activos.

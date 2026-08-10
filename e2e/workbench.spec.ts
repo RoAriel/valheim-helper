@@ -45,3 +45,35 @@ test("la búsqueda, filtros y estado vacío mantienen un detalle coherente", asy
   await expect(page.getByRole("group", { name: "Filtrar Comida" })).toBeVisible();
   await expect(page.getByRole("combobox")).toBeVisible();
 });
+
+test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ page }, testInfo) => {
+  await page.goto("/");
+  const search = page.getByRole("textbox", { name: "Buscar por objeto o nombre en inglés" });
+
+  await search.fill("Flecha de fuego");
+  await page.locator(".field-item-list > button").first().click();
+  await expect(page.getByText("Produce").locator("..")).toContainText("×20");
+
+  await search.fill("Áspic de seeker");
+  await page.locator(".field-item-list > button").first().click();
+  const properties = page.getByRole("region", { name: "Propiedades del consumible" });
+  await expect(properties).toContainText("Salud");
+  await expect(properties).toContainText("85");
+  await expect(properties).toContainText("25 min");
+  await page.screenshot({ path: testInfo.outputPath(`${testInfo.project.name}-propiedades.png`) });
+
+  await search.fill("Hacha de sílex");
+  await page.locator(".field-item-list > button").first().click();
+  await page.getByText("Mejoras disponibles").click();
+  const maximumCost = page.getByRole("region", { name: "Costo total desde nivel 1 hasta nivel 4" });
+  await expect(maximumCost).toContainText("Costo total acumulado");
+  await expect(maximumCost).toContainText("Nivel 1 → Nivel 4");
+  await expect(maximumCost).toContainText("×24");
+
+  const wood = page.locator(".field-cost-detail").filter({ hasText: "Madera" }).first();
+  await wood.locator("summary").click();
+  await expect(wood).toContainText("Wood");
+  await expect(wood).toContainText("Ramas y árboles");
+  await expect(wood).toContainText("Praderas");
+  await page.screenshot({ path: testInfo.outputPath(`${testInfo.project.name}-mejoras-procedencia.png`) });
+});

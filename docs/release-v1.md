@@ -4,7 +4,7 @@
 
 | Componente | Versión |
 | --- | --- |
-| Aplicación | `1.0.0` |
+| Aplicación | `1.0.1` |
 | Catálogo | `0.1.20` |
 | Valheim de referencia | `0.221.12` |
 | Fecha de cierre | `2026-08-08` |
@@ -15,8 +15,10 @@ La V1 es una aplicación de uso interno y ejecución local. No requiere cuenta, 
 
 - Catálogo de 250 objetos funcionales fabricables de los ocho biomas jugables cubiertos.
 - Recetas iniciales, mejoras por nivel, cantidades producidas por lote y descomposición de materiales procesados.
+- Costos individuales y acumulados para llevar un objeto hasta cada nivel de mejora.
 - Estaciones, fuentes y biomas de obtención.
-- Propiedades de alimentos y cobertura de 20 familias de hidromieles, tónicos y pociones.
+- Procedencia desplegable con nombres bilingües, requisitos y fuentes alternativas.
+- Propiedades visibles de alimentos y cobertura de 20 familias de hidromieles, tónicos y pociones.
 - Búsqueda bilingüe de objetos, filtros por bioma y categoría, y subfiltros de armas y comida.
 - Plan de objetivo con materias primas, estaciones necesarias y biomas de recolección.
 - Interfaz adaptable con detalle desplazable en escritorio y navegación horizontal por biomas en móvil.
@@ -32,7 +34,7 @@ Quedan fuera de alcance la decoración sin función de juego, el checklist persi
 | Interfaz | `pnpm test:e2e` | Búsqueda, filtros, estado vacío, selección, navegación móvil y ausencia de desborde. |
 | Revisión visual | Capturas de Playwright | Viewports de 390×844, 1440×900 y 2560×1440. |
 
-La V1 se cerró con 15 pruebas de catálogo/renderizado y 6 escenarios E2E aprobados.
+La revisión `1.0.1` se cerró con 16 pruebas de catálogo/renderizado y 9 escenarios E2E aprobados.
 
 ## Política de mantenimiento
 

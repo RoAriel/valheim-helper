@@ -1,6 +1,6 @@
 import { defineConfig } from "@playwright/test";
 
-const baseURL = "http://127.0.0.1:3000";
+const baseURL = "http://127.0.0.1:3100";
 
 export default defineConfig({
   testDir: "./e2e",
@@ -14,9 +14,9 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   webServer: {
-    command: "pnpm start",
+    command: "PORT=3100 pnpm start",
     url: baseURL,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 30_000,
   },
   projects: [

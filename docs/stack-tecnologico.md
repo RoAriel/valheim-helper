@@ -44,7 +44,7 @@ La interfaz usa una identidad visual específica —paleta, temas por bioma, scr
 ## Límites actuales deliberados
 
 - No hay persistencia de usuario, autenticación ni backend de aplicación.
-- Drizzle y la configuración D1 están disponibles por la plantilla, pero el catálogo actual no usa una base de datos.
+- No se incluyen ORM, esquema D1 ni ejemplos de base de datos mientras el producto no requiera persistencia.
 - No se usan APIs externas en ejecución: las fuentes se usan durante la curación de datos, no desde la interfaz.
 - La aplicación no depende de imágenes remotas para funcionar.
 
@@ -64,5 +64,5 @@ Sería más simple para una herramienta exclusivamente local. Vinext se mantiene
 
 - Añadir persistencia local: `localStorage` primero; base de datos sólo si hay datos compartidos o sincronización.
 - Añadir rutas de contenido extensas: evaluar Astro.
-- Publicar con funciones de usuario o datos editables: evaluar una API y D1/Drizzle de forma explícita.
+- Publicar con funciones de usuario o datos editables: evaluar una API y una capa de persistencia de forma explícita.
 - Sustituir Vinext: hacerlo en un bloque propio, conservando las pruebas de catálogo y renderizado como criterio de aceptación.
