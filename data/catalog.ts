@@ -24,6 +24,7 @@ export type Subcategory = { id: string; category: Category; name: BilingualName;
 export type Station = { id: string; name: BilingualName };
 export type FoodEffect = { itemId: string; health?: number; stamina?: number; eitr?: number; healing?: number; durationSeconds?: number; effects?: string[] };
 export type GoalPlan = { itemId: string; materials: MaterialCost[]; stationIds: string[]; biomeIds: string[] };
+export type UpgradeCostSummary = { targetLevel: number; step: MaterialCost[]; cumulative: MaterialCost[] };
 
 export const manifest = manifestData;
 export const biomes = biomesData as Biome[];
@@ -229,6 +230,20 @@ export function expandMaterialCosts(costs: MaterialCost[], materialRecipesToUse:
 
   costs.forEach(addCost);
   return Array.from(totals, ([materialId, amount]) => ({ materialId, amount }));
+}
+
+function mergeMaterialCosts(costs: MaterialCost[]) {
+  const totals = new Map<string, number>();
+  costs.forEach(({ materialId, amount }) => totals.set(materialId, (totals.get(materialId) ?? 0) + amount));
+  return Array.from(totals, ([materialId, amount]) => ({ materialId, amount }));
+}
+
+export function buildUpgradeCostSummaries(recipe: Recipe): UpgradeCostSummary[] {
+  let cumulative = [...recipe.craft.materials];
+  return recipe.upgrades.map((upgrade) => {
+    cumulative = mergeMaterialCosts([...cumulative, ...upgrade.materials]);
+    return { targetLevel: upgrade.targetLevel, step: upgrade.materials, cumulative: [...cumulative] };
+  });
 }
 
 export function buildGoalPlan(itemId: string): GoalPlan {

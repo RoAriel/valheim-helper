@@ -4,7 +4,9 @@ import { useMemo, useRef, useState, type CSSProperties, type Ref } from "react";
 import {
   biomes,
   buildGoalPlan,
+  buildUpgradeCostSummaries,
   byId,
+  foodEffects,
   items,
   manifest,
   materials,
@@ -180,6 +182,8 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
   const recipe = recipes.find((entry) => entry.itemId === selected.id)!;
   const goalPlan = buildGoalPlan(selected.id);
   const collectionBiomes = namesForMaterials(goalPlan.materials.map((cost) => cost.materialId));
+  const foodEffect = foodEffects.find((effect) => effect.itemId === selected.id);
+  const upgradeCosts = buildUpgradeCostSummaries(recipe);
 
   return (
     <aside ref={detailRef} className="field-detail" style={theme} aria-label={`Detalle de ${selected.name.es}`}>
@@ -187,11 +191,30 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
         <span className="field-detail-icon">{selected.icon}</span>
         <div><p className="eyebrow">{selected.category} · {selectedBiome.theme.symbol} {selectedBiome.name.es}</p><h2>{selected.name.es}</h2><small>{selected.name.en}</small><p>{selected.description}</p></div>
       </header>
+      {foodEffect && <section className="field-block field-properties" aria-label="Propiedades del consumible">
+        <div className="field-block-title"><h3>Propiedades</h3><span>{formatDuration(foodEffect.durationSeconds)}</span></div>
+        <div className="field-stat-grid">
+          {foodEffect.health && <Stat label="Salud" value={foodEffect.health} />}
+          {foodEffect.stamina && <Stat label="Aguante" value={foodEffect.stamina} />}
+          {foodEffect.eitr && <Stat label="Eitr" value={foodEffect.eitr} />}
+          {foodEffect.healing && <Stat label="Curación" value={`${foodEffect.healing}/tick`} />}
+        </div>
+        {foodEffect.effects?.length && <ul className="field-effects">{foodEffect.effects.map((effect) => <li key={effect}>{effect}</li>)}</ul>}
+      </section>}
       <section className="field-block"><div className="field-block-title"><h3>Fabricación</h3><span>{byId(stations, recipe.stationId)?.name.es}</span></div>
+        {(recipe.outputAmount ?? 1) > 1 && <p className="field-output">Produce <strong>×{recipe.outputAmount}</strong></p>}
         {recipe.craft.materials.map((cost) => <Cost key={cost.materialId} materialId={cost.materialId} amount={cost.amount} />)}
       </section>
       {recipe.upgrades.length > 0 && <details className="field-block field-disclosure"><summary>Mejoras disponibles <span>{recipe.upgrades.length} niveles</span></summary>
-        {recipe.upgrades.map((upgrade) => <div className="field-upgrade" key={upgrade.targetLevel}><b>Nivel {upgrade.targetLevel}</b><span>{upgrade.materials.map((cost) => `${cost.amount} ${byId(materials, cost.materialId)?.name.es}`).join(" · ")}</span></div>)}
+        <section className="field-upgrade-total" aria-label={`Costo total desde nivel 1 hasta nivel ${upgradeCosts.at(-1)?.targetLevel}`}>
+          <div><p>Costo total acumulado</p><strong>Nivel 1 → Nivel {upgradeCosts.at(-1)?.targetLevel}</strong></div>
+          {upgradeCosts.at(-1)?.cumulative.map((cost) => <Cost key={`maximum-${cost.materialId}`} materialId={cost.materialId} amount={cost.amount} />)}
+        </section>
+        {upgradeCosts.map((upgrade) => <section className="field-upgrade" key={upgrade.targetLevel}>
+          <h4>Mejora a nivel {upgrade.targetLevel}</h4>
+          <p>Costo de este nivel</p>
+          {upgrade.step.map((cost) => <Cost key={`step-${cost.materialId}`} materialId={cost.materialId} amount={cost.amount} />)}
+        </section>)}
       </details>}
       <details className="field-block field-plan field-disclosure"><summary>Plan de objetivo <span>Materias primas</span></summary>
         <div className="field-tags">{goalPlan.stationIds.map((stationId) => <span key={stationId}>⚒ {byId(stations, stationId)?.name.es}</span>)}</div>
@@ -204,5 +227,27 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
 
 function Cost({ materialId, amount }: { materialId: string; amount: number }) {
   const material = byId(materials, materialId)!;
-  return <div className="field-cost"><span>{material.icon}</span><strong>{material.name.es}</strong><b>×{amount}</b></div>;
+  const materialSources = material.sourceIds.map((sourceId) => byId(sources, sourceId)).filter((source) => source !== undefined);
+  return <details className="field-cost-detail">
+    <summary className="field-cost"><span>{material.icon}</span><span><strong>{material.name.es}</strong><small>{material.name.en}</small></span><b>×{amount}</b></summary>
+    <div className="field-source-list">
+      {materialSources.map((source) => <div key={source.id}>
+        <strong>{source.name.es}</strong><small>{source.name.en}</small>
+        <span>{source.biomeIds.map((biomeId) => byId(biomes, biomeId)?.name.es).filter(Boolean).join(" · ")}</span>
+        {source.requirement && <em>Requisito: {source.requirement}</em>}
+      </div>)}
+    </div>
+  </details>;
+}
+
+function Stat({ label, value }: { label: string; value: string | number }) {
+  return <div><small>{label}</small><strong>{value}</strong></div>;
+}
+
+function formatDuration(seconds?: number) {
+  if (!seconds) return "Duración no especificada";
+  if (seconds < 60) return `${seconds} s`;
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return remainder ? `${minutes} min ${remainder} s` : `${minutes} min`;
 }

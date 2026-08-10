@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-const { buildGoalPlan, catalog, foodEffects, manifest, expandMaterialCosts, subcategories, validateCatalog } = await import("../data/catalog.ts");
+const { buildGoalPlan, buildUpgradeCostSummaries, catalog, foodEffects, manifest, expandMaterialCosts, subcategories, validateCatalog } = await import("../data/catalog.ts");
 const { filterCatalogItems, resolveSelectedItem } = await import("../data/catalog-filters.ts");
 const audit = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/functional-crafting-audit.json", import.meta.url), "utf8"));
 const consumableCoverage = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/consumable-coverage.json", import.meta.url), "utf8"));
@@ -59,6 +59,24 @@ test("registra la producción por lote y rechaza cantidades de salida inválidas
   assert.ok(invalidRecipe);
   invalidRecipe.outputAmount = 0;
   assert.ok(validateCatalog(invalidCatalog).includes("Cantidad de salida inválida para fire_arrow"));
+});
+
+test("calcula el costo acumulado desde la fabricación hasta cada mejora", () => {
+  const recipe = catalog.recipes.find((entry) => entry.itemId === "flint_axe");
+  assert.ok(recipe);
+  const summaries = buildUpgradeCostSummaries(recipe);
+  assert.deepEqual(summaries.at(-1), {
+    targetLevel: 4,
+    step: [
+      { materialId: "flint", amount: 9 },
+      { materialId: "leather_scraps", amount: 6 },
+    ],
+    cumulative: [
+      { materialId: "wood", amount: 4 },
+      { materialId: "flint", amount: 24 },
+      { materialId: "leather_scraps", amount: 12 },
+    ],
+  });
 });
 
 test("detecta relaciones y pasos de receta inválidos", () => {

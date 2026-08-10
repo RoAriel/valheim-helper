@@ -4,7 +4,7 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 
 ## Estado del proyecto
 
-- Versión de la aplicación: `1.0.0`.
+- Versión de la aplicación: `1.0.1`.
 - Versión del catálogo de datos: `0.1.20`.
 - Versión de referencia de Valheim: `0.221.12`.
 - Interfaz en español.
@@ -21,10 +21,12 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 - Planificador de objetivo con materias primas, estaciones y biomas de recolección.
 - Mesa de trabajo con progresión por bioma, catálogo compacto y subfiltros contextuales de armas y comida.
 - Receta de fabricación inicial.
+- Cantidad producida por lote para flechas, consumibles y demás recetas múltiples.
+- Propiedades completas de comida: salud, aguante, eitr, curación, duración y efectos.
 - Mejoras de armas y herramientas por nivel.
-- Costo individual de cada mejora y costo total acumulado.
+- Costo individual de cada mejora y resumen total desde nivel 1 hasta el nivel máximo.
 - Estación y nivel requeridos.
-- Origen, bioma y requisito de obtención de los materiales.
+- Origen, nombre bilingüe, bioma, requisito y fuentes alternativas de los materiales.
 - Diseño adaptable a computadora y teléfono.
 
 ## Recursos visuales
