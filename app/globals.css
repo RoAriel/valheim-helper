@@ -2,11 +2,11 @@
 
 :root {
   --void: #070407;
-  --night: #021a32;
+  --night: #070407;
   --wine: #31110f;
-  --deep: #042e47;
-  --ember: #71160a;
-  --sea: #044561;
+  --deep: #070407;
+  --ember: #070407;
+  --sea: #070407;
   --slate: #3b4a57;
   --clay: #7a5148;
   --fire: #c03d19;
@@ -56,7 +56,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-progression {
   padding: 30px 18px;
   border-right: 1px solid var(--slate);
-  background: linear-gradient(180deg, var(--night), var(--void));
+  background: linear-gradient(160deg, color-mix(in srgb, var(--wine) 34%, var(--void)), var(--void) 52%, color-mix(in srgb, var(--slate) 14%, var(--void)));
 }
 .field-progression h1 { margin: 0; font: 500 29px/1 Georgia, serif; letter-spacing: -1px; }
 .field-progression-intro > p:last-child { margin: 12px 0 22px; color: var(--muted); font-size: 14px; line-height: 1.5; }
@@ -87,7 +87,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 }
 .field-filter-row button:hover, .field-subfilter-row button:hover { border-color: var(--clay); background: var(--deep); }
 .field-filter-row button.active, .field-subfilter-row button.active { border-color: var(--gold); background: var(--wine); color: var(--text); box-shadow: inset 0 0 0 1px #ffffff0b; }
-.field-subfilter-row { align-items: center; padding: 8px; border: 1px solid #3b4a574c; border-radius: var(--radius-md); background: #021a3255; }
+.field-subfilter-row { align-items: center; padding: 8px; border: 1px solid #3b4a574c; border-radius: var(--radius-md); background: color-mix(in srgb, var(--slate) 12%, var(--void)); }
 .field-subfilter-row > span, .field-food-filter > span { color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .7px; }
 .field-food-filter { display: flex; align-items: center; gap: 8px; width: max-content; margin: 8px 0 12px; }
 .field-food-filter select { border: 1px solid var(--soft-border); border-radius: 999px; background: var(--deep); color: var(--text); padding: 7px 28px 7px 11px; font-size: 12px; }
@@ -98,7 +98,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-item-list > button {
   display: grid; grid-template-columns: 42px minmax(110px, 1fr) minmax(90px, .65fr) 92px 15px; align-items: center; gap: 10px;
   min-height: 64px; padding: 8px 10px; border: 1px solid var(--soft-border); border-left: 3px solid var(--biome-accent, var(--slate)); border-radius: var(--radius-md);
-  background: linear-gradient(90deg, color-mix(in srgb, var(--biome-surface, var(--night)) 40%, var(--night)), var(--night) 55%); color: var(--text); text-align: left;
+  background: linear-gradient(105deg, color-mix(in srgb, var(--biome-surface, var(--night)) 58%, var(--void)), color-mix(in srgb, var(--slate) 12%, var(--void)) 68%, var(--void)); color: var(--text); text-align: left;
   box-shadow: 0 4px 14px #0000001c;
 }
 .field-item-list > button:hover { border-color: var(--biome-accent, var(--clay)); transform: translateY(-1px); box-shadow: 0 7px 18px #00000032; }
@@ -117,7 +117,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-detail {
   position: sticky; top: 0; align-self: start; height: 100dvh; overflow-y: auto; overscroll-behavior: contain;
   padding: 30px 22px; border-left: 1px solid var(--biome-accent, var(--slate));
-  background: linear-gradient(180deg, color-mix(in srgb, var(--biome-surface, var(--night)) 44%, var(--night)), var(--night) 38%);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--biome-surface, var(--night)) 60%, var(--void)), color-mix(in srgb, var(--slate) 14%, var(--void)) 42%, var(--void) 78%);
   box-shadow: -14px 0 34px #00000020; scrollbar-color: var(--biome-accent, var(--slate)) var(--deep); scrollbar-width: thin;
 }
 .field-detail > header { display: grid; grid-template-columns: 62px 1fr; gap: 13px; padding-bottom: 22px; border-bottom: 1px solid var(--slate); }
@@ -132,9 +132,9 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-block-title { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 9px; }
 .field-block-title h3 { margin: 0; font: 600 18px Georgia, serif; }
 .field-block-title span { color: var(--gold); font-size: 11px; text-align: right; }
-.field-output { display: flex; justify-content: space-between; margin: 0 0 5px; padding: 8px 10px; border: 1px solid #3b4a5755; border-radius: var(--radius-sm); background: #071d31; color: var(--muted); font-size: 12px; }
+.field-output { display: flex; justify-content: space-between; margin: 0 0 5px; padding: 8px 10px; border: 1px solid #3b4a5755; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--slate) 14%, var(--void)); color: var(--muted); font-size: 12px; }
 .field-output strong { color: var(--gold); font-size: 14px; }
-.field-properties { padding: 14px; border: 1px solid var(--biome-accent, var(--slate)); border-radius: var(--radius-md); background: #071d31aa; box-shadow: var(--panel-shadow); }
+.field-properties { padding: 14px; border: 1px solid var(--biome-accent, var(--slate)); border-radius: var(--radius-md); background: color-mix(in srgb, var(--slate) 14%, var(--void)); box-shadow: var(--panel-shadow); }
 .field-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
 .field-stat-grid > div { display: grid; gap: 3px; padding: 8px; border: 1px solid #3b4a5777; border-radius: var(--radius-sm); background: var(--night); }
 .field-stat-grid small { color: var(--muted); font-size: 10px; text-transform: uppercase; }.field-stat-grid strong { color: var(--gold); font-size: 16px; }
@@ -157,7 +157,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-upgrade-total { display: grid; gap: 3px; margin-top: 12px; padding: 12px; border: 1px solid var(--gold); border-radius: var(--radius-md); background: color-mix(in srgb, var(--wine) 46%, var(--night)); box-shadow: var(--panel-shadow); }
 .field-upgrade-total > div { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 4px; }
 .field-upgrade-total p { margin: 0; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; }.field-upgrade-total > div strong { color: var(--text); font: 600 15px Georgia, serif; }
-.field-upgrade { display: grid; gap: 3px; margin-top: 11px; padding: 11px; border: 1px solid #3b4a5744; border-left: 2px solid var(--biome-accent, var(--gold)); border-radius: var(--radius-md); background: #021a3266; }
+.field-upgrade { display: grid; gap: 3px; margin-top: 11px; padding: 11px; border: 1px solid #3b4a5744; border-left: 2px solid var(--biome-accent, var(--gold)); border-radius: var(--radius-md); background: color-mix(in srgb, var(--slate) 11%, var(--void)); }
 .field-upgrade h4 { margin: 0 0 4px; color: var(--gold); font: 600 15px Georgia, serif; }.field-upgrade > p { margin: 8px 0 0; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; }
 .field-plan { padding-top: 17px; border-top: 2px solid var(--biome-accent, var(--gold)); }
 .field-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0 8px; }
