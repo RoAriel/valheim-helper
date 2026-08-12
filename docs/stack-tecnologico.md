@@ -18,6 +18,7 @@ Valheim Helper es una aplicación local, de consulta rápida y en español. El c
 | Pruebas de datos | `node:test` | Validación de referencias, auditorías funcionales, filtros puros y HTML renderizado. |
 | Pruebas de interfaz | Playwright + Chromium | Interacciones y revisión visual en móvil, escritorio y 2K. |
 | Gestor de paquetes | pnpm | Instalación y scripts reproducibles. |
+| Despliegue doméstico | Docker Compose | Imagen Linux portable para AMD64, ARM64 y Windows mediante WSL 2 o Docker Desktop. |
 
 ## Justificación
 
@@ -40,6 +41,10 @@ La interfaz usa una identidad visual específica —paleta, temas por bioma, scr
 ### Pruebas por capas
 
 `node:test` cubre los contratos de datos, filtros puros y el HTML renderizado con herramientas nativas de Node. Playwright comprueba las interacciones y el layout en los tres tamaños definidos en `docs/actualizacion-de-datos.md`; sus capturas complementan las aserciones automáticas con una revisión visual.
+
+### Docker
+
+El build de Vinext genera una salida `standalone` que se copia a una imagen final basada en Node.js 22 sobre Debian slim. La etapa final no incluye pnpm, Wrangler, el código fuente ni la instalación completa usada para desarrollar y compilar. La misma definición funciona en Linux AMD64, Linux ARM64 y Windows mediante WSL 2 o Docker Desktop.
 
 ## Límites actuales deliberados
 

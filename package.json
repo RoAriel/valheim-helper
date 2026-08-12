@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "react-server-dom-webpack": "19.2.6"
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",
@@ -35,7 +36,6 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "16.4.0",
-    "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "typescript-eslint": "8.59.3",

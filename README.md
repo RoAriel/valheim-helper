@@ -72,6 +72,16 @@ Las capturas de cada ejecución quedan en `test-results/` y no se versionan. La 
 
 La matriz completa de controles y el alcance congelado de la versión se encuentran en [`docs/release-v1.md`](docs/release-v1.md).
 
+## Ejecutar con Docker
+
+La aplicación incluye una imagen portable para Linux AMD64, Linux ARM64 y Windows mediante WSL 2 o Docker Desktop:
+
+```bash
+docker compose up -d --build
+```
+
+Queda disponible en `http://localhost:3000`. La instalación, configuración de puerto, actualización, rollback y publicación multiplataforma se documentan en [`docs/despliegue-docker.md`](docs/despliegue-docker.md).
+
 ## Trabajar con VS Code
 
 Abrir el proyecto directamente desde WSL:
@@ -103,6 +113,7 @@ VS Code debe mostrar un entorno similar a `WSL: Ubuntu`. La extensión de Codex 
 - `docs/actualizacion-de-datos.md`: procedimiento de actualización por versión de Valheim.
 - `docs/release-v1.md`: alcance, validación y decisiones de mantenimiento de la V1.
 - `docs/stack-tecnologico.md`: definición, justificación y límites del stack tecnológico.
+- `docs/despliegue-docker.md`: instalación y operación en Linux, Windows y ARM64.
 
 ## Criterios del modelo
 
