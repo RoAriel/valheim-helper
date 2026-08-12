@@ -28,6 +28,7 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 - Estación y nivel requeridos.
 - Origen, nombre bilingüe, bioma, requisito y fuentes alternativas de los materiales.
 - Diseño adaptable a computadora y teléfono.
+- Diagnóstico de actualizaciones bajo demanda, con comparación de la app, el catálogo y la versión estable de Valheim sin modificar los datos instalados.
 
 ## Recursos visuales
 

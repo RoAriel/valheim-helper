@@ -77,3 +77,31 @@ test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ pa
   await expect(wood).toContainText("Praderas");
   await page.screenshot({ path: testInfo.outputPath(`${testInfo.project.name}-mejoras-procedencia.png`) });
 });
+
+test("el chequeo informa novedades sin modificar el catálogo", async ({ page }) => {
+  await page.route("**/api/update-status", async (route) => route.fulfill({
+    contentType: "application/json",
+    body: JSON.stringify({
+      checkedAt: "2026-08-12T17:00:00.000Z",
+      current: { appVersion: "1.0.1", catalogVersion: "0.1.20", gameVersion: "0.221.12", dataUpdatedAt: "2026-08-07" },
+      latest: { appVersion: "1.0.2", catalogVersion: "0.1.21", stableGameVersion: "0.222.1", jotunnGameVersion: "0.222.1" },
+      updates: { app: true, catalog: true, gameData: true },
+      status: "review-recommended",
+      recommendation: "Hay novedades respecto de esta instalación. Actualizá el repositorio o revisá las fuentes antes de regenerar la información base.",
+      sources: [
+        { id: "valheim_official", label: "Noticias oficiales de Valheim en Steam", url: "https://store.steampowered.com/news/app/892970", status: "available", version: "0.222.1", detail: "Última versión estable anunciada: 0.222.1" },
+        { id: "jotunn_recipes", label: "Inventario de recetas de Jötunn", url: "https://valheim-modding.github.io/Jotunn/data/objects/recipe-list.html", status: "available", version: "0.222.1", detail: "Volcado generado para Valheim 0.222.1" },
+        { id: "github_catalog", label: "Catálogo publicado en GitHub", url: "https://github.com/RoAriel/valheim-helper", status: "available", version: "0.1.21", detail: "App 1.0.2 · catálogo 0.1.21 · Valheim 0.222.1" },
+      ],
+    }),
+  }));
+  await page.goto("/");
+  await page.getByRole("button", { name: "Buscar actualizaciones" }).click();
+  const panel = page.getByRole("dialog", { name: "Actualizaciones" });
+  await expect(panel).toBeVisible();
+  await expect(panel).toContainText("Revisión recomendada");
+  await expect(panel).toContainText("Estable detectada: 0.222.1");
+  await expect(panel).toContainText("no modifica los JSON ni el contenedor");
+  await page.getByRole("button", { name: "Cerrar estado de actualizaciones" }).click();
+  await expect(panel).toBeHidden();
+});

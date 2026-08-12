@@ -16,6 +16,7 @@ import {
   subcategories,
 } from "@/data/catalog";
 import { filterCatalogItems, resolveSelectedItem, type CatalogCategory, type FoodFocus } from "@/data/catalog-filters";
+import type { UpdateDiagnosis } from "@/data/update-check";
 
 const categories: CatalogCategory[] = ["Todos", "Armas", "Herramientas", "Construcción", "Comida", "Defensa"];
 
@@ -44,6 +45,10 @@ export default function Workbench() {
   const [subcategoryId, setSubcategoryId] = useState("all");
   const [foodFocus, setFoodFocus] = useState<FoodFocus>("all");
   const [selectedId, setSelectedId] = useState(items[0].id);
+  const [updateDiagnosis, setUpdateDiagnosis] = useState<UpdateDiagnosis | null>(null);
+  const [updateOpen, setUpdateOpen] = useState(false);
+  const [updateLoading, setUpdateLoading] = useState(false);
+  const [updateError, setUpdateError] = useState("");
   const detailRef = useRef<HTMLElement>(null);
 
   const filteredItems = useMemo(
@@ -74,16 +79,36 @@ export default function Workbench() {
     }
   }
 
+  async function checkUpdates() {
+    setUpdateOpen(true);
+    setUpdateLoading(true);
+    setUpdateError("");
+    try {
+      const response = await fetch("/api/update-status", { cache: "no-store" });
+      if (!response.ok) throw new Error(`El servidor respondió HTTP ${response.status}`);
+      setUpdateDiagnosis(await response.json() as UpdateDiagnosis);
+    } catch (error) {
+      setUpdateError(error instanceof Error ? error.message : "No se pudo completar el diagnóstico");
+    } finally {
+      setUpdateLoading(false);
+    }
+  }
+
   return (
     <main className="field-sample">
       <header className="field-topbar">
         <span className="field-brand">VALHEIM <b>HELPER</b></span>
-        <div>
+        <div className="field-topbar-title">
           <span>MESA DE TRABAJO</span>
           <strong>Recetas, progreso y planificación</strong>
         </div>
-        <small>Valheim {manifest.gameVersion}</small>
+        <div className="field-update-control">
+          <small>Valheim {manifest.gameVersion}</small>
+          <button onClick={checkUpdates} disabled={updateLoading}>{updateLoading ? "Comprobando…" : "Buscar actualizaciones"}</button>
+        </div>
       </header>
+
+      {updateOpen && <UpdatePanel diagnosis={updateDiagnosis} loading={updateLoading} error={updateError} onRetry={checkUpdates} onClose={() => setUpdateOpen(false)} />}
 
       <section className="field-layout">
         <nav className="field-progression" aria-label="Progresión por bioma">
@@ -174,6 +199,33 @@ export default function Workbench() {
       </section>
     </main>
   );
+}
+
+function UpdatePanel({ diagnosis, loading, error, onRetry, onClose }: { diagnosis: UpdateDiagnosis | null; loading: boolean; error: string; onRetry: () => void; onClose: () => void }) {
+  const statusLabel = diagnosis?.status === "current" ? "Información al día" : diagnosis?.status === "review-recommended" ? "Revisión recomendada" : "Diagnóstico incompleto";
+  return <section className="field-update-panel" role="dialog" aria-modal="true" aria-labelledby="update-title">
+    <header>
+      <div><p className="eyebrow">ESTADO DE DATOS</p><h2 id="update-title">Actualizaciones</h2></div>
+      <button className="field-update-close" onClick={onClose} aria-label="Cerrar estado de actualizaciones">×</button>
+    </header>
+    {loading && <p className="field-update-loading">Consultando fuentes oficiales y técnicas…</p>}
+    {!loading && error && <div className="field-update-message error"><strong>No se pudo consultar</strong><p>{error}</p><button onClick={onRetry}>Reintentar</button></div>}
+    {!loading && diagnosis && <>
+      <div className={`field-update-verdict ${diagnosis.status}`}><strong>{statusLabel}</strong><p>{diagnosis.recommendation}</p></div>
+      <div className="field-update-versions">
+        <div><small>Aplicación instalada</small><strong>{diagnosis.current.appVersion}</strong>{diagnosis.latest.appVersion && <span>Publicada: {diagnosis.latest.appVersion}</span>}</div>
+        <div><small>Catálogo instalado</small><strong>{diagnosis.current.catalogVersion}</strong>{diagnosis.latest.catalogVersion && <span>Publicado: {diagnosis.latest.catalogVersion}</span>}</div>
+        <div><small>Valheim cubierto</small><strong>{diagnosis.current.gameVersion}</strong>{diagnosis.latest.stableGameVersion && <span>Estable detectada: {diagnosis.latest.stableGameVersion}</span>}</div>
+      </div>
+      <div className="field-update-sources">
+        {diagnosis.sources.map((source) => <a key={source.id} href={source.url} target="_blank" rel="noreferrer">
+          <span className={source.status}>{source.status === "available" ? "✓" : "!"}</span>
+          <span><strong>{source.label}</strong><small>{source.detail}</small></span>
+        </a>)}
+      </div>
+      <footer>Comprobado: {new Date(diagnosis.checkedAt).toLocaleString("es")}. Este diagnóstico no modifica los JSON ni el contenedor.</footer>
+    </>}
+  </section>;
 }
 
 function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTMLElement> }) {

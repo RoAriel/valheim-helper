@@ -2,6 +2,18 @@
 
 Este procedimiento permite actualizar Valheim Helper sin mezclar datos de versiones distintas del juego. El catálogo se publica sólo cuando las verificaciones de esta guía están completas.
 
+## Diagnóstico desde la aplicación
+
+El botón **Buscar actualizaciones** consulta bajo demanda y en modo de solo lectura:
+
+- las noticias oficiales de Valheim publicadas en Steam, para detectar la última versión estable anunciada;
+- el inventario automatizado de recetas de Jötunn, para conocer la versión de juego cubierta por su volcado;
+- `data/manifest.json` de la rama `main` en GitHub, para comparar las versiones publicadas de la aplicación y el catálogo.
+
+El diagnóstico se ejecuta en el servidor mediante `GET /api/update-status`. Cada fuente tiene un timeout independiente y puede fallar sin impedir que las restantes informen su estado. La interfaz no escribe JSON, no modifica el contenedor y no incorpora automáticamente datos externos.
+
+Un resultado **Revisión recomendada** significa que al menos una versión detectada es posterior a la instalada. No confirma por sí mismo que haya recetas funcionales nuevas: el mantenedor debe continuar con el procedimiento editorial de esta guía y contrastar cada diferencia antes de cambiar `data/`.
+
 ## 1. Abrir un bloque de actualización
 
 1. Identificar la versión objetivo en las notas oficiales de Valheim y anotarla junto con la fecha de revisión.
