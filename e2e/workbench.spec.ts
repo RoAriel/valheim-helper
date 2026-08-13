@@ -105,3 +105,23 @@ test("el chequeo informa novedades sin modificar el catálogo", async ({ page })
   await page.getByRole("button", { name: "Cerrar estado de actualizaciones" }).click();
   await expect(panel).toBeHidden();
 });
+
+test("la revisión de datos separa candidatos pendientes del catálogo", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("tab", { name: /Revisión de datos/ }).click();
+  await expect(page.getByRole("heading", { name: "Objetos pendientes" })).toBeVisible();
+  await expect(page.getByText("Vista de solo lectura")).toBeVisible();
+  await expect(page.getByText("355", { exact: true }).first()).toBeVisible();
+
+  await page.getByRole("button", { name: "Funcionales", exact: true }).click();
+  await page.getByLabel("Familia").selectOption("ammunition");
+  await expect(page.locator(".field-candidate").first()).toBeVisible();
+  await expect(page.locator(".field-candidate-grid")).toContainText("Munición");
+
+  const search = page.getByRole("textbox", { name: "Buscar candidatos" });
+  await search.fill("Recipe_BoltBlackmetal");
+  await expect(page.getByRole("heading", { name: "Black Metal Bolt" })).toBeVisible();
+
+  await page.getByRole("tab", { name: "Catálogo" }).click();
+  await expect(page.getByRole("heading", { name: "¿Qué querés preparar?" })).toBeVisible();
+});

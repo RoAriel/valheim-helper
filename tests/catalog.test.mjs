@@ -5,9 +5,53 @@ const { buildGoalPlan, buildUpgradeCostSummaries, catalog, foodEffects, manifest
 const { filterCatalogItems, resolveSelectedItem } = await import("../data/catalog-filters.ts");
 const audit = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/functional-crafting-audit.json", import.meta.url), "utf8"));
 const consumableCoverage = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/consumable-coverage.json", import.meta.url), "utf8"));
+const { provenance, provenanceSummary, validateProvenance } = await import("../data/provenance.ts");
+const { candidatesFromClassification, reviewCandidate, updateCandidates, validateUpdateCandidates } = await import("../data/update-candidates.ts");
 
 test("acepta el catálogo piloto válido", () => {
   assert.deepEqual(validateCatalog(), []);
+});
+
+test("registra procedencia sin presentar la cobertura heredada como verificada", () => {
+  assert.deepEqual(validateProvenance(), []);
+  assert.equal(provenance.catalogVersion, manifest.catalogVersion);
+  assert.equal(provenance.gameVersion, manifest.gameVersion);
+  assert.deepEqual(provenanceSummary(), { verified: 1, partially_verified: 1, legacy_unattributed: 1 });
+
+  const invalid = structuredClone(provenance);
+  invalid.records.find((record) => record.status === "verified").sourceIds = ["missing_source"];
+  assert.ok(validateProvenance(invalid).includes("Fuente de procedencia inexistente: missing_source"));
+});
+
+test("mantiene los candidatos editoriales separados y coherentes con el catálogo", () => {
+  assert.deepEqual(validateUpdateCandidates(), []);
+  assert.equal(updateCandidates.candidates.length, 505);
+  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 355);
+  assert.ok(updateCandidates.candidates.every((entry) => entry.externalIds.length > 0));
+});
+
+test("registra decisiones editoriales y las conserva al regenerar candidatos", async () => {
+  const copy = structuredClone(updateCandidates);
+  const pending = copy.candidates.find((entry) => entry.reviewStatus === "pending");
+  assert.ok(pending);
+  reviewCandidate(copy, pending.id, "approved", "2026-08-12T12:00:00.000Z");
+  assert.equal(pending.reviewStatus, "approved");
+  assert.deepEqual(validateUpdateCandidates(copy), []);
+
+  const report = {
+    schemaVersion: 1,
+    generatedAt: "2026-08-12T13:00:00.000Z",
+    source: copy.source,
+    local: { catalogVersion: copy.catalogVersion, gameVersion: copy.gameVersion, items: catalog.items.length, materials: catalog.materials.length },
+    totals: { externalRowsWithoutExactItem: 1, uniqueExternalNames: 1, existing_material: 0, probable_alias: 0, functional_candidate: 1, decorative_or_cosmetic: 0, technical_or_non_catalog: 0, manual_review: 0 },
+    classifications: [{
+      normalizedName: pending.id.split(":").slice(1).join(":"), nameEn: pending.nameEn, classification: pending.classification,
+      confidence: pending.confidence, reason: pending.reason, externalIds: pending.externalIds, sourceKinds: pending.sourceKinds,
+      ...(pending.functionalFamily ? { functionalFamily: pending.functionalFamily } : {}),
+    }],
+  };
+  const regenerated = candidatesFromClassification(report, copy);
+  assert.equal(regenerated.candidates.find((entry) => entry.id === pending.id)?.reviewStatus, "approved");
 });
 
 test("exige un tema visual válido para cada bioma", () => {
