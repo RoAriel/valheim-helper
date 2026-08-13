@@ -1,5 +1,13 @@
 # Cambios
 
+## Datos 0.1.25 — 2026-08-13
+
+- Se reconciliaron las 34 diferencias informadas por el comparador: 32 equipos recibieron sus mejoras faltantes y las dos hidromieles menores conservaron el circuito jugable verificado de hervidor, fermentador y lote de seis.
+- Colmillo sangrante, tormentoso y de raíces consumen ahora `ash_fang` como objeto base; el planificador expande objetos intermedios hasta sus materias primas y estaciones.
+- El diagnóstico alcanza 328 coincidencias sin diferencias y cero ingredientes sin mapear.
+- La clasificación externa eliminó los 225 casos manuales genéricos: quedan 180 candidatos concretos por revisar, agrupados por infraestructura, equipo, munición y alias.
+- Se documentó la validación del actualizador dentro del contenedor doméstico.
+
 ## Datos 0.1.24 — 2026-08-13
 
 - Se incorporaron los 60 candidatos funcionales aprobados: ocho banquetes, el huevo cocinado y 51 armas o piezas de defensa.

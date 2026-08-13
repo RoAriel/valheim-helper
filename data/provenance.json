@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "0.1.24",
+  "catalogVersion": "0.1.25",
   "gameVersion": "0.221.12",
   "policy": "La procedencia se incorpora gradualmente. Un registro legacy_unattributed reconoce una deuda documental y no equivale a una verificación por entidad.",
   "sources": [
@@ -39,6 +39,30 @@
       "type": "community",
       "name": "Valheim Wiki: feasts, weapons and armor",
       "url": "https://valheim.fandom.com/wiki/Feast"
+    },
+    {
+      "id": "valheim_wiki_minor_healing_mead",
+      "type": "community",
+      "name": "Valheim Wiki: Minor healing mead",
+      "url": "https://valheim.fandom.com/wiki/Minor_healing_mead"
+    },
+    {
+      "id": "valheim_wiki_minor_stamina_mead",
+      "type": "community",
+      "name": "Valheim Wiki: Minor stamina mead",
+      "url": "https://valheim.fandom.com/wiki/Minor_stamina_mead"
+    },
+    {
+      "id": "valheim_wiki_ash_fang",
+      "type": "community",
+      "name": "Valheim Wiki: Ash Fang",
+      "url": "https://valheim.fandom.com/wiki/Ash_Fang"
+    },
+    {
+      "id": "valheim_wiki_flametal_armor",
+      "type": "community",
+      "name": "Valheim Wiki: Flametal Armor",
+      "url": "https://valheim.fandom.com/wiki/Flametal_Armor"
     }
   ],
   "records": [
@@ -97,6 +121,20 @@
       "verifiedAt": "2026-08-13",
       "sourceIds": ["jotunn_recipe_list_0_221_12", "valheim_wiki_feasts_equipment"],
       "evidence": "Se incorporaron nueve consumibles y 51 piezas de equipo aprobados. Recetas y mejoras proceden del snapshot de Jötunn; identidad, efectos y estaciones se contrastaron con la wiki."
+    },
+    {
+      "id": "recipe_reconciliation_0_1_25",
+      "scope": "recipe-reconciliation-and-object-dependencies",
+      "status": "verified",
+      "verifiedAt": "2026-08-13",
+      "sourceIds": [
+        "jotunn_recipe_list_0_221_12",
+        "valheim_wiki_minor_healing_mead",
+        "valheim_wiki_minor_stamina_mead",
+        "valheim_wiki_ash_fang",
+        "valheim_wiki_flametal_armor"
+      ],
+      "evidence": "Se reconciliaron todas las recetas comparables: 328 de 328 sin diferencias. Las variantes elementales consumen su arma base y el planificador expande esa dependencia. Las hidromieles menores conservan el circuito jugable documentado por la wiki."
     }
   ]
 }

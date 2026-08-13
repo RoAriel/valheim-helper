@@ -13,8 +13,10 @@ import subcategoriesData from "./subcategories.json" with { type: "json" };
 export type BilingualName = { es: string; en: string };
 export type Category = "Armas" | "Herramientas" | "Construcción" | "Comida" | "Defensa";
 export type MaterialCost = { materialId: string; amount: number };
+export type ItemCost = { itemId: string; amount: number };
+export type IngredientCost = MaterialCost | ItemCost;
 export type MaterialRecipe = { materialId: string; stationId: string; outputAmount: number; materials: MaterialCost[] };
-export type RecipeStep = { targetLevel: number; stationLevel: number; materials: MaterialCost[] };
+export type RecipeStep = { targetLevel: number; stationLevel: number; materials: IngredientCost[] };
 export type Recipe = { itemId: string; stationId: string; outputAmount?: number; craft: RecipeStep; upgrades: RecipeStep[] };
 export type Item = { id: string; name: BilingualName; icon: string; category: Category; description: string; stageBiomeId: string };
 export type Material = { id: string; name: BilingualName; icon: string; sourceIds: string[] };
@@ -27,7 +29,7 @@ export type StationExtension = { itemId: string; progressionOrder: number };
 export type StationExtensionGroup = { stationId: string; stationItemId: string; maxLevel: number; extensions: StationExtension[] };
 export type FoodEffect = { itemId: string; health?: number; stamina?: number; eitr?: number; healing?: number; durationSeconds?: number; effects?: string[] };
 export type GoalPlan = { itemId: string; materials: MaterialCost[]; stationIds: string[]; biomeIds: string[] };
-export type UpgradeCostSummary = { targetLevel: number; step: MaterialCost[]; cumulative: MaterialCost[] };
+export type UpgradeCostSummary = { targetLevel: number; step: IngredientCost[]; cumulative: IngredientCost[] };
 
 export const manifest = manifestData;
 export const biomes = biomesData as Biome[];
@@ -64,7 +66,7 @@ function validateUniqueIds(entries: { id: string }[], entity: string, errors: st
   }
 }
 
-function validateRecipeStep(step: RecipeStep, itemId: string, expectedLevel: number, stepName: string, materials: Material[], errors: string[]) {
+function validateRecipeStep(step: RecipeStep, itemId: string, expectedLevel: number, stepName: string, materials: Material[], errors: string[], items: Item[] = []) {
   if (step.targetLevel !== expectedLevel) {
     errors.push(`${stepName} de ${itemId} debe llegar a nivel ${expectedLevel}`);
   }
@@ -72,17 +74,16 @@ function validateRecipeStep(step: RecipeStep, itemId: string, expectedLevel: num
     errors.push(`${stepName} de ${itemId} tiene un nivel de estación inválido`);
   }
 
-  const materialIds = new Set<string>();
+  const ingredientIds = new Set<string>();
   for (const cost of step.materials) {
-    if (!materials.some((material) => material.id === cost.materialId)) {
-      errors.push(`Material inexistente: ${cost.materialId}`);
-    }
-    if (materialIds.has(cost.materialId)) {
-      errors.push(`${stepName} de ${itemId} repite el material ${cost.materialId}`);
-    }
-    materialIds.add(cost.materialId);
+    const ingredientId = "materialId" in cost ? `material:${cost.materialId}` : `item:${cost.itemId}`;
+    if ("materialId" in cost && !materials.some((material) => material.id === cost.materialId)) errors.push(`Material inexistente: ${cost.materialId}`);
+    if ("itemId" in cost && !items.some((item) => item.id === cost.itemId)) errors.push(`Objeto ingrediente inexistente: ${cost.itemId}`);
+    if ("itemId" in cost && cost.itemId === itemId) errors.push(`${stepName} de ${itemId} se referencia a sí mismo`);
+    if (ingredientIds.has(ingredientId)) errors.push(`${stepName} de ${itemId} repite el ingrediente ${ingredientId}`);
+    ingredientIds.add(ingredientId);
     if (!Number.isInteger(cost.amount) || cost.amount < 1) {
-      errors.push(`${stepName} de ${itemId} tiene una cantidad inválida para ${cost.materialId}`);
+      errors.push(`${stepName} de ${itemId} tiene una cantidad inválida para ${"materialId" in cost ? cost.materialId : cost.itemId}`);
     }
   }
 }
@@ -107,6 +108,21 @@ function validateMaterialRecipeCycles(materialRecipes: MaterialRecipe[], errors:
   }
 
   materialRecipes.forEach((recipe) => visit(recipe.materialId));
+}
+
+function validateItemRecipeCycles(recipes: Recipe[], errors: string[]) {
+  const recipesByItem = new Map(recipes.map((recipe) => [recipe.itemId, recipe]));
+  const visited = new Set<string>();
+  const visiting = new Set<string>();
+  function visit(itemId: string) {
+    if (visiting.has(itemId)) { errors.push(`Dependencia circular de objetos: ${itemId}`); return; }
+    if (visited.has(itemId)) return;
+    visited.add(itemId);
+    visiting.add(itemId);
+    recipesByItem.get(itemId)?.craft.materials.filter((cost): cost is ItemCost => "itemId" in cost).forEach((cost) => visit(cost.itemId));
+    visiting.delete(itemId);
+  }
+  recipes.forEach((recipe) => visit(recipe.itemId));
 }
 
 export function validateCatalog(catalogToValidate: Catalog = catalog) {
@@ -222,11 +238,12 @@ export function validateCatalog(catalogToValidate: Catalog = catalog) {
     if (recipe.outputAmount !== undefined && (!Number.isInteger(recipe.outputAmount) || recipe.outputAmount < 1)) {
       errors.push(`Cantidad de salida inválida para ${recipe.itemId}`);
     }
-    validateRecipeStep(recipe.craft, recipe.itemId, 1, "Fabricación", materials, errors);
+    validateRecipeStep(recipe.craft, recipe.itemId, 1, "Fabricación", materials, errors, items);
     recipe.upgrades.forEach((upgrade, index) => {
-      validateRecipeStep(upgrade, recipe.itemId, index + 2, `Mejora ${index + 1}`, materials, errors);
+      validateRecipeStep(upgrade, recipe.itemId, index + 2, `Mejora ${index + 1}`, materials, errors, items);
     });
   }
+  validateItemRecipeCycles(recipes, errors);
   return errors;
 }
 
@@ -252,16 +269,19 @@ export function expandMaterialCosts(costs: MaterialCost[], materialRecipesToUse:
   return Array.from(totals, ([materialId, amount]) => ({ materialId, amount }));
 }
 
-function mergeMaterialCosts(costs: MaterialCost[]) {
+function mergeIngredientCosts(costs: IngredientCost[]) {
   const totals = new Map<string, number>();
-  costs.forEach(({ materialId, amount }) => totals.set(materialId, (totals.get(materialId) ?? 0) + amount));
-  return Array.from(totals, ([materialId, amount]) => ({ materialId, amount }));
+  costs.forEach((cost) => {
+    const key = "materialId" in cost ? `material:${cost.materialId}` : `item:${cost.itemId}`;
+    totals.set(key, (totals.get(key) ?? 0) + cost.amount);
+  });
+  return Array.from(totals, ([key, amount]) => key.startsWith("material:") ? { materialId: key.slice(9), amount } : { itemId: key.slice(5), amount });
 }
 
 export function buildUpgradeCostSummaries(recipe: Recipe): UpgradeCostSummary[] {
   let cumulative = [...recipe.craft.materials];
   return recipe.upgrades.map((upgrade) => {
-    cumulative = mergeMaterialCosts([...cumulative, ...upgrade.materials]);
+    cumulative = mergeIngredientCosts([...cumulative, ...upgrade.materials]);
     return { targetLevel: upgrade.targetLevel, step: upgrade.materials, cumulative: [...cumulative] };
   });
 }
@@ -276,21 +296,39 @@ export function buildGoalPlan(itemId: string): GoalPlan {
   const recipe = recipes.find((entry) => entry.itemId === itemId);
   if (!recipe) throw new Error(`No existe receta para el objetivo: ${itemId}`);
 
-  const stationIds = new Set<string>([recipe.stationId]);
+  const stationIds = new Set<string>();
   const processedMaterialIds = new Set<string>();
-  function collectStations(costs: MaterialCost[]) {
+  const resolvingItems = new Set<string>();
+  const rawCosts: MaterialCost[] = [];
+  function collectMaterialStations(materialId: string) {
+    if (processedMaterialIds.has(materialId)) return;
+    const materialRecipe = materialRecipes.find((entry) => entry.materialId === materialId);
+    if (!materialRecipe) return;
+    processedMaterialIds.add(materialId);
+    stationIds.add(materialRecipe.stationId);
+    materialRecipe.materials.forEach((cost) => collectMaterialStations(cost.materialId));
+  }
+  function expandIngredients(costs: IngredientCost[], multiplier = 1) {
     costs.forEach((cost) => {
-      if (processedMaterialIds.has(cost.materialId)) return;
-      const materialRecipe = materialRecipes.find((entry) => entry.materialId === cost.materialId);
-      if (!materialRecipe) return;
-      processedMaterialIds.add(cost.materialId);
-      stationIds.add(materialRecipe.stationId);
-      collectStations(materialRecipe.materials);
+      if ("itemId" in cost) {
+        if (resolvingItems.has(cost.itemId)) throw new Error(`Dependencia circular de objetos: ${cost.itemId}`);
+        const itemRecipe = recipes.find((entry) => entry.itemId === cost.itemId);
+        if (!itemRecipe) throw new Error(`Objeto ingrediente sin receta: ${cost.itemId}`);
+        resolvingItems.add(cost.itemId);
+        stationIds.add(itemRecipe.stationId);
+        expandIngredients(itemRecipe.craft.materials, multiplier * cost.amount);
+        resolvingItems.delete(cost.itemId);
+        return;
+      }
+      rawCosts.push({ materialId: cost.materialId, amount: cost.amount * multiplier });
+      collectMaterialStations(cost.materialId);
     });
   }
-  collectStations(recipe.craft.materials);
+  stationIds.add(recipe.stationId);
+  resolvingItems.add(itemId);
+  expandIngredients(recipe.craft.materials);
 
-  const goalMaterials = expandMaterialCosts(recipe.craft.materials);
+  const goalMaterials = expandMaterialCosts(mergeIngredientCosts(rawCosts) as MaterialCost[]);
   const biomeIds = biomes
     .filter((biome) => goalMaterials.some((cost) => byId(materials, cost.materialId)?.sourceIds.some((sourceId) => byId(sources, sourceId)?.biomeIds.includes(biome.id))))
     .map((biome) => biome.id);

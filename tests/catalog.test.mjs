@@ -6,6 +6,7 @@ const { filterCatalogItems, resolveSelectedItem } = await import("../data/catalo
 const audit = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/functional-crafting-audit.json", import.meta.url), "utf8"));
 const consumableCoverage = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/consumable-coverage.json", import.meta.url), "utf8"));
 const approvedIncorporations = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/approved-incorporations.json", import.meta.url), "utf8"));
+const recipeReconciliation = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/recipe-reconciliation.json", import.meta.url), "utf8"));
 const { provenance, provenanceSummary, validateProvenance } = await import("../data/provenance.ts");
 const { candidatesFromClassification, reviewCandidate, updateCandidates, validateUpdateCandidates } = await import("../data/update-candidates.ts");
 
@@ -17,7 +18,7 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
   assert.deepEqual(validateProvenance(), []);
   assert.equal(provenance.catalogVersion, manifest.catalogVersion);
   assert.equal(provenance.gameVersion, manifest.gameVersion);
-  assert.deepEqual(provenanceSummary(), { verified: 5, partially_verified: 1, legacy_unattributed: 1 });
+  assert.deepEqual(provenanceSummary(), { verified: 6, partially_verified: 1, legacy_unattributed: 1 });
 
   const invalid = structuredClone(provenance);
   invalid.records.find((record) => record.status === "verified").sourceIds = ["missing_source"];
@@ -27,7 +28,7 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
 test("mantiene los candidatos editoriales separados y coherentes con el catálogo", () => {
   assert.deepEqual(validateUpdateCandidates(), []);
   assert.equal(updateCandidates.candidates.length, 399);
-  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 227);
+  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 180);
   assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "approved").length, 0);
   assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "rejected").length, 19);
   assert.ok(updateCandidates.candidates.every((entry) => entry.externalIds.length > 0));
@@ -44,6 +45,23 @@ test("mantiene incorporados los 9 consumibles y 51 equipos aprobados", () => {
   }
   for (const itemId of approvedIncorporations.consumables) {
     assert.ok(foodEffects.some((effect) => effect.itemId === itemId), `faltan efectos aprobados: ${itemId}`);
+  }
+});
+
+test("exige las recetas reconciliadas y documenta las excepciones de fuente", () => {
+  assert.equal(recipeReconciliation.gameVersion, manifest.gameVersion);
+  assert.equal(recipeReconciliation.catalogVersion, manifest.catalogVersion);
+  assert.equal(recipeReconciliation.requiredCompleteItemIds.length, 35);
+  for (const itemId of recipeReconciliation.requiredCompleteItemIds) {
+    const recipe = catalog.recipes.find((entry) => entry.itemId === itemId);
+    assert.ok(recipe, `falta receta reconciliada: ${itemId}`);
+    assert.ok(recipe.upgrades.length >= 2, `faltan mejoras reconciliadas: ${itemId}`);
+  }
+  assert.deepEqual(recipeReconciliation.wikiPreferredRecipeIds, ["minor_health_mead", "minor_stamina_mead"]);
+  for (const itemId of recipeReconciliation.wikiPreferredRecipeIds) {
+    const recipe = catalog.recipes.find((entry) => entry.itemId === itemId);
+    assert.equal(recipe?.stationId, "fermenter");
+    assert.equal(recipe?.outputAmount, 6);
   }
 });
 
@@ -206,6 +224,24 @@ test("planifica materias primas, estaciones y biomas para un objetivo", () => {
   assert.ok(plan.stationIds.includes("workbench_nearby"));
   assert.ok(plan.stationIds.includes("forge"));
   assert.ok(plan.biomeIds.includes("black_forest"));
+});
+
+test("expande objetos base en variantes sin tratarlos como materiales", () => {
+  const bloodFangRecipe = catalog.recipes.find((recipe) => recipe.itemId === "blood_fang");
+  assert.deepEqual(bloodFangRecipe?.craft.materials[0], { itemId: "ash_fang", amount: 1 });
+  assert.ok(!catalog.materials.some((material) => material.id === "ash_fang"));
+  const plan = buildGoalPlan("blood_fang");
+  assert.ok(plan.materials.some((cost) => cost.materialId === "ashwood" && cost.amount === 10));
+  assert.ok(plan.materials.some((cost) => cost.materialId === "bloodstone" && cost.amount === 1));
+  assert.ok(plan.stationIds.includes("black_forge"));
+});
+
+test("rechaza dependencias circulares entre objetos fabricables", () => {
+  const invalidCatalog = structuredClone(catalog);
+  const ashFang = invalidCatalog.recipes.find((recipe) => recipe.itemId === "ash_fang");
+  assert.ok(ashFang);
+  ashFang.craft.materials = [{ itemId: "blood_fang", amount: 1 }];
+  assert.ok(validateCatalog(invalidCatalog).some((error) => error.startsWith("Dependencia circular de objetos:")));
 });
 
 test("rechaza dependencias circulares entre materiales", () => {

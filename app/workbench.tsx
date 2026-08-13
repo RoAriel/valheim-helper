@@ -347,7 +347,7 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
       <section className="field-block"><div className="field-block-title"><h3>Fabricación</h3><span>{byId(stations, recipe.stationId)?.name.es}</span></div>
         <StationLevelRequirement stationId={recipe.stationId} stationLevel={recipe.craft.stationLevel} />
         {(recipe.outputAmount ?? 1) > 1 && <p className="field-output">Produce <strong>×{recipe.outputAmount}</strong></p>}
-        {recipe.craft.materials.map((cost) => <Cost key={cost.materialId} materialId={cost.materialId} amount={cost.amount} />)}
+        {recipe.craft.materials.map((cost) => <Ingredient key={ingredientKey(cost)} cost={cost} />)}
       </section>
       {extensionGroup && <section className="field-block field-station-extensions" aria-label={`Extensiones de ${selected.name.es}`}>
         <div className="field-block-title"><h3>Mejoras de estación</h3><span>Nivel máximo {extensionGroup.maxLevel}</span></div>
@@ -359,7 +359,7 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
             <summary><b>Nivel {index + 2}</b><span>{extensionItem.icon}</span><span><strong>{extensionItem.name.es}</strong><small>{extensionItem.name.en}</small></span></summary>
             <div className="field-extension-materials">
               <p>Construcción · {byId(stations, extensionRecipe.stationId)?.name.es}</p>
-              {extensionRecipe.craft.materials.map((cost) => <Cost key={cost.materialId} materialId={cost.materialId} amount={cost.amount} />)}
+              {extensionRecipe.craft.materials.map((cost) => <Ingredient key={ingredientKey(cost)} cost={cost} />)}
             </div>
           </details>;
         })}
@@ -367,13 +367,13 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
       {recipe.upgrades.length > 0 && <details className="field-block field-disclosure"><summary>Mejoras disponibles <span>{recipe.upgrades.length} niveles</span></summary>
         <section className="field-upgrade-total" aria-label={`Costo total desde nivel 1 hasta nivel ${upgradeCosts.at(-1)?.targetLevel}`}>
           <div><p>Costo total acumulado</p><strong>Nivel 1 → Nivel {upgradeCosts.at(-1)?.targetLevel}</strong></div>
-          {upgradeCosts.at(-1)?.cumulative.map((cost) => <Cost key={`maximum-${cost.materialId}`} materialId={cost.materialId} amount={cost.amount} />)}
+          {upgradeCosts.at(-1)?.cumulative.map((cost) => <Ingredient key={`maximum-${ingredientKey(cost)}`} cost={cost} />)}
         </section>
         {upgradeCosts.map((upgrade) => <section className="field-upgrade" key={upgrade.targetLevel}>
           <h4>Mejora a nivel {upgrade.targetLevel}</h4>
           <StationLevelRequirement stationId={recipe.stationId} stationLevel={recipe.upgrades.find((entry) => entry.targetLevel === upgrade.targetLevel)?.stationLevel ?? 1} />
           <p>Costo de este nivel</p>
-          {upgrade.step.map((cost) => <Cost key={`step-${cost.materialId}`} materialId={cost.materialId} amount={cost.amount} />)}
+          {upgrade.step.map((cost) => <Ingredient key={`step-${ingredientKey(cost)}`} cost={cost} />)}
         </section>)}
       </details>}
       <details className="field-block field-plan field-disclosure"><summary>Plan de objetivo <span>Materias primas</span></summary>
@@ -407,6 +407,22 @@ function Cost({ materialId, amount }: { materialId: string; amount: number }) {
         {source.requirement && <em>Requisito: {source.requirement}</em>}
       </div>)}
     </div>
+  </details>;
+}
+
+type IngredientCost = { materialId: string; amount: number } | { itemId: string; amount: number };
+
+function ingredientKey(cost: IngredientCost) {
+  return "materialId" in cost ? `material-${cost.materialId}` : `item-${cost.itemId}`;
+}
+
+function Ingredient({ cost }: { cost: IngredientCost }) {
+  if ("materialId" in cost) return <Cost materialId={cost.materialId} amount={cost.amount} />;
+  const item = byId(items, cost.itemId)!;
+  const recipe = recipes.find((entry) => entry.itemId === cost.itemId)!;
+  return <details className="field-cost-detail">
+    <summary className="field-cost"><span>{item.icon}</span><span><strong>{item.name.es}</strong><small>{item.name.en} · objeto base</small></span><b>×{cost.amount}</b></summary>
+    <div className="field-source-list"><div><strong>Fabricación previa</strong><small>{byId(stations, recipe.stationId)?.name.es}</small><span>Se expande automáticamente en el Plan de objetivo.</span></div></div>
   </details>;
 }
 

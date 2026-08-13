@@ -1,0 +1,13 @@
+{
+  "gameVersion": "0.221.12",
+  "catalogVersion": "0.1.25",
+  "snapshotMatched": 328,
+  "requiredCompleteItemIds": [
+    "arbalest", "krom", "mistwalker", "jotun_bane", "carapace_breastplate", "carapace_greaves", "carapace_helmet", "feather_cape",
+    "eitr_weave_robe", "eitr_weave_trousers", "eitr_weave_hood", "staff_of_embers", "staff_of_frost", "staff_of_protection", "dead_raiser",
+    "himminafl", "demolisher", "carapace_spear", "carapace_shield", "carapace_buckler", "flametal_breastplate", "flametal_greaves",
+    "flametal_helmet", "ashen_cape", "ash_fang", "flametal_shield", "flametal_tower_shield", "berserkir_axes", "flametal_mace", "slayer",
+    "splitnir", "abyssal_razor", "blood_fang", "storm_fang", "root_fang"
+  ],
+  "wikiPreferredRecipeIds": ["minor_health_mead", "minor_stamina_mead"]
+}

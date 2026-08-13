@@ -41,6 +41,18 @@ pnpm data:diff --json
 
 La comparación vincula objetos por nombre inglés normalizado y revisa únicamente los campos disponibles en ambas fuentes: cantidad producida, niveles y materiales. Informa por separado coincidencias sin cambios, modificaciones, entradas sólo externas, objetos sólo locales, nombres ambiguos y materiales externos sin mapear. Una entrada sólo externa es una candidata a clasificación manual, no una novedad funcional confirmada: los volcados incluyen decoración y contenido deliberadamente fuera de alcance.
 
+Cuando las fuentes describen circuitos distintos, se conserva la representación más próxima al uso real del juego y la excepción debe quedar explícita en código, pruebas y procedencia. En Datos `0.1.25`, Jötunn expone recetas internas directas para las hidromieles menores, mientras la wiki documenta el flujo jugable de base, fermentador y seis unidades; por eso el comparador acepta deliberadamente el modelo de fermentación.
+
+El script de reconciliación de este bloque se conserva como herramienta reproducible y no como actualización automática. Requiere haber generado primero el snapshot exacto de Jötunn para Valheim `0.221.12`:
+
+```bash
+pnpm data:snapshot
+node scripts/complete-recipe-differences-0.221.12.mjs
+pnpm data:diff
+```
+
+El script sólo admite la lista cerrada de recetas de Datos `0.1.25`, transforma objetos fabricables usados como ingredientes a `itemId` y retira sus duplicados artificiales de materiales. No debe reutilizarse para otra versión del juego sin revisar primero sus objetivos, alias y fuentes; `pnpm data:diff` y las pruebas siguen siendo obligatorios después de ejecutarlo.
+
 Para reducir esa lista sin confundirla con altas confirmadas:
 
 ```bash
@@ -48,6 +60,8 @@ pnpm data:classify
 ```
 
 El informe `.cache/valheim-helper/classification-report.json` agrupa filas repetidas por nombre y separa materiales existentes, alias probables, candidatos funcionales, decoración explícita, entradas técnicas y casos manuales. Cada decisión incluye motivo, confianza e identificadores externos. La categoría `functional_candidate` significa “merece contrastarse”, no “debe incorporarse”; la clasificación no modifica el catálogo.
+
+Las reglas se basan en familias de identificadores externos y patrones conservadores. Un resultado sin casos manuales no implica catálogo completo: significa que cada entrada pudo dirigirse a una cola concreta —funcional, alias, conocida, decorativa o técnica— para que la revisión humana tenga menos ruido.
 
 Para publicar únicamente ese inventario editorial en la pestaña de revisión:
 
@@ -104,6 +118,7 @@ Si una receta o efecto no puede contrastarse para la versión objetivo, se manti
 
 1. Registrar primero biomas, estaciones, fuentes y materiales nuevos.
 2. Incorporar los objetos y sus recetas; incluir mejoras y cantidades de lote cuando correspondan.
+   Un ingrediente que sea otro objeto fabricable se registra con `itemId`, no como material duplicado. El planificador expandirá su receta de fabricación y rechazará ciclos entre objetos.
 3. Para consumibles, actualizar la base, salida del fermentador y `food-effects.json` en el mismo bloque.
 4. Si cambia una estación, actualizar `station-extensions.json` junto con las piezas que aumentan su nivel; no inferir una extensión a partir de `stationLevel`.
 5. Actualizar `subcategories.json` si cambia un objeto de Armas o Comida; cada objeto de una categoría con subfiltros debe pertenecer a una sola subcategoría.

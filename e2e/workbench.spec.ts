@@ -106,6 +106,23 @@ test("muestra extensiones y requisitos de nivel de las estaciones", async ({ pag
   await expect(page.getByText("Requiere Banco de trabajo nivel 4")).toBeVisible();
 });
 
+test("muestra y expande los objetos base de una variante", async ({ page }) => {
+  await page.goto("/");
+  const search = page.getByRole("textbox", { name: "Buscar por objeto o nombre en inglés" });
+  await search.fill("Colmillo de sangre");
+  await page.locator(".field-item-list > button").first().click();
+
+  const baseItem = page.locator(".field-cost").filter({ hasText: "Colmillo de ceniza" }).first();
+  await expect(baseItem).toContainText("objeto base");
+  await expect(baseItem).toContainText("×1");
+
+  const plan = page.locator("details.field-plan");
+  await plan.locator(":scope > summary").click();
+  await expect(plan).toContainText("Madera de ceniza");
+  await expect(plan).toContainText("Piedra de sangre");
+  await expect(plan).not.toContainText("Colmillo de ceniza");
+});
+
 test("el chequeo informa novedades sin modificar el catálogo", async ({ page }) => {
   await page.route("**/api/update-status", async (route) => route.fulfill({
     contentType: "application/json",
@@ -139,7 +156,7 @@ test("la revisión de datos separa candidatos pendientes del catálogo", async (
   await page.getByRole("tab", { name: /Revisión de datos/ }).click();
   await expect(page.getByRole("heading", { name: "Objetos pendientes" })).toBeVisible();
   await expect(page.getByText("Vista de solo lectura")).toBeVisible();
-  await expect(page.getByText("227", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("180", { exact: true }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "Funcionales", exact: true }).click();
   await page.getByLabel("Mostrar aprobados, rechazados, conocidos y excluidos").check();

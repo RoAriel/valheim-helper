@@ -14,7 +14,7 @@ Esta lista conserva el orden acordado para convertir el diagnóstico de versione
 
 ## Estado
 
-- Bloques 1 a 4: implementados y validados en la rama del PR del diagnóstico de actualizaciones.
-- Bloques 5 y 6: inventario editorial y revisión interactiva S/N implementados; las decisiones permanecen separadas del catálogo productivo.
-- Bloque 8: panel de solo lectura implementado de forma anticipada para visualizar y filtrar candidatos.
-- Bloques 7 y 9: pendientes; requieren cerrar y validar el contrato del bloque anterior antes de comenzar.
+- Bloques 1 a 6: implementados y validados.
+- Bloque 7: primera aplicación controlada completada en Datos `0.1.24`; Datos `0.1.25` añade dependencias entre objetos y deja 328/328 coincidencias comparables sin diferencias. La escritura atómica genérica continúa pendiente antes de automatizar nuevas altas.
+- Bloque 8: panel de solo lectura implementado; la clasificación determinista reduce los casos manuales de 225 a cero y deja únicamente candidatos con familia o alias concreto.
+- Bloque 9: pendiente. No se programarán commits ni cambios automáticos; la futura tarea sólo diagnosticará y notificará.

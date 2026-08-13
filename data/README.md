@@ -16,6 +16,7 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 - `functional-crafting-audit.json`: contrato de cobertura funcional por bioma para la versión de juego indicada.
 - `consumable-coverage.json`: inventario de familias de hidromieles y pociones que debe cubrir la auditoría de consumibles.
 - `approved-incorporations.json`: contrato de las altas aprobadas e incorporadas en el bloque 0.1.24.
+- `recipe-reconciliation.json`: contrato de recetas reconciliadas y excepciones donde prevalece el circuito jugable documentado.
 - `provenance.json`: fuentes, evidencia y deuda de trazabilidad del catálogo por bloques verificables.
 - `update-candidates.json`: inventario editorial de entradas externas clasificadas; no forma parte del catálogo publicado ni se usa para fabricar objetos.
 - `station-extensions.json`: relación entre estaciones, objetos físicos de estación, nivel máximo y extensiones funcionales.
@@ -33,7 +34,8 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 - Un material puede referenciar una o más fuentes mediante `sourceIds`.
 - Una fuente puede pertenecer a uno o más biomas mediante `biomeIds`.
 - Cada objeto tiene exactamente una receta y cada receta apunta a una estación existente.
-- Cada coste de receta referencia un material existente; las cantidades son enteros positivos.
+- Cada coste de receta referencia exactamente un material existente mediante `materialId` o un objeto fabricable existente mediante `itemId`; las cantidades son enteros positivos.
+- Los ingredientes `itemId` se expanden recursivamente en el planificador y no pueden apuntar al propio objeto ni formar ciclos entre recetas.
 - Una receta de material tiene una salida positiva, referencia una estación existente y no puede formar ciclos con otras recetas de material.
 - Cada extensión de estación es un objeto fabricable único. Una extensión distinta aumenta un nivel; `progressionOrder` documenta la progresión habitual, no una obligación de colocación.
 
@@ -42,7 +44,7 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 - `craft` siempre representa la fabricación inicial y llega a `targetLevel: 1`. `outputAmount` es opcional y solo se registra cuando una receta produce más de una unidad; si falta, el resultado es una unidad.
 - Las mejoras se guardan en orden y sus niveles son consecutivos: 2, 3, 4, etc.
 - `stationLevel` es el nivel mínimo de la estación para ese paso y es un entero positivo.
-- No se repite un material dentro del mismo paso: se suma su cantidad antes de guardarlo.
+- No se repite un ingrediente dentro del mismo paso: se suma su cantidad antes de guardarlo.
 - Los materiales intermedios (por ejemplo, bronce o clavos) se mantienen como materiales propios. Cuando exista una entrada en `material-recipes.json`, la interfaz puede desglosarlos hasta el siguiente material sin receta registrada.
 
 ## Incorporar o corregir datos

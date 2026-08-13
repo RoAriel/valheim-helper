@@ -1925,39 +1925,6 @@
     ]
   },
   {
-    "id": "berserkir_axes",
-    "name": {
-      "es": "Berserkir Axes",
-      "en": "Berserkir Axes"
-    },
-    "icon": "◈",
-    "sourceIds": [
-      "food_preparation"
-    ]
-  },
-  {
-    "id": "flametal_mace",
-    "name": {
-      "es": "Flametal Mace",
-      "en": "Flametal Mace"
-    },
-    "icon": "◈",
-    "sourceIds": [
-      "food_preparation"
-    ]
-  },
-  {
-    "id": "slayer",
-    "name": {
-      "es": "Slayer",
-      "en": "Slayer"
-    },
-    "icon": "◈",
-    "sourceIds": [
-      "food_preparation"
-    ]
-  },
-  {
     "id": "egg",
     "name": {
       "es": "Huevo",
@@ -2244,17 +2211,6 @@
     ]
   },
   {
-    "id": "nidhgg",
-    "name": {
-      "es": "Nidhgg",
-      "en": "Nidhgg"
-    },
-    "icon": "◈",
-    "sourceIds": [
-      "crafted_equipment"
-    ]
-  },
-  {
     "id": "bear_paw",
     "name": {
       "es": "Pata de oso",
@@ -2299,17 +2255,6 @@
     ]
   },
   {
-    "id": "ripper",
-    "name": {
-      "es": "Ripper",
-      "en": "Ripper"
-    },
-    "icon": "◈",
-    "sourceIds": [
-      "crafted_equipment"
-    ]
-  },
-  {
     "id": "seafarer_s_herbs",
     "name": {
       "es": "Hierbas del navegante",
@@ -2318,17 +2263,6 @@
     "icon": "◈",
     "sourceIds": [
       "bog_witch"
-    ]
-  },
-  {
-    "id": "splitnir",
-    "name": {
-      "es": "Splitnir",
-      "en": "Splitnir"
-    },
-    "icon": "◈",
-    "sourceIds": [
-      "food_preparation"
     ]
   },
   {
