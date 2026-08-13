@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "0.1.23",
+  "catalogVersion": "0.1.24",
   "gameVersion": "0.221.12",
   "policy": "La procedencia se incorpora gradualmente. Un registro legacy_unattributed reconoce una deuda documental y no equivale a una verificación por entidad.",
   "sources": [
@@ -33,6 +33,12 @@
       "type": "community",
       "name": "Valheim Wiki: ammunition, bombs and Black Metal Pickaxe",
       "url": "https://valheim.fandom.com/wiki/Category:Ammunition"
+    },
+    {
+      "id": "valheim_wiki_feasts_equipment",
+      "type": "community",
+      "name": "Valheim Wiki: feasts, weapons and armor",
+      "url": "https://valheim.fandom.com/wiki/Feast"
     }
   ],
   "records": [
@@ -83,6 +89,14 @@
       "verifiedAt": "2026-08-13",
       "sourceIds": ["jotunn_piece_list_0_221_12", "valheim_wiki_station_upgrades"],
       "evidence": "Doce construcciones funcionales fueron verificadas contra el volcado técnico y páginas específicas de la wiki; Treasure Chest se excluyó por ser exclusivamente decorativo."
+    },
+    {
+      "id": "consumables_equipment_0_1_24",
+      "scope": "consumables-and-equipment",
+      "status": "verified",
+      "verifiedAt": "2026-08-13",
+      "sourceIds": ["jotunn_recipe_list_0_221_12", "valheim_wiki_feasts_equipment"],
+      "evidence": "Se incorporaron nueve consumibles y 51 piezas de equipo aprobados. Recetas y mejoras proceden del snapshot de Jötunn; identidad, efectos y estaciones se contrastaron con la wiki."
     }
   ]
 }

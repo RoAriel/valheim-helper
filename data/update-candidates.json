@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-13T20:00:13.419Z",
+  "generatedAt": "2026-08-13T21:00:29.752Z",
   "source": {
     "id": "jotunn_docs",
     "gameVersion": "0.221.12",
@@ -9,7 +9,7 @@
       "https://valheim-modding.github.io/Jotunn/data/pieces/piece-list.html"
     ]
   },
-  "catalogVersion": "0.1.23",
+  "catalogVersion": "0.1.24",
   "gameVersion": "0.221.12",
   "candidates": [
     {
@@ -1269,6 +1269,46 @@
       }
     },
     {
+      "id": "piece:cooked asksvin tail",
+      "nameEn": "Cooked Asksvin Tail",
+      "classification": "existing_material",
+      "confidence": "high",
+      "reviewStatus": "known",
+      "reason": "El nombre inglés coincide con un material local.",
+      "externalIds": [
+        "CookedAsksvinMeat"
+      ],
+      "sourceKinds": [
+        "piece"
+      ],
+      "suggestedLocal": {
+        "entity": "material",
+        "id": "cooked_asksvin_tail",
+        "nameEn": "Cooked Asksvin Tail",
+        "similarity": 1
+      }
+    },
+    {
+      "id": "piece:cooked boar meat",
+      "nameEn": "Cooked Boar Meat",
+      "classification": "existing_material",
+      "confidence": "high",
+      "reviewStatus": "known",
+      "reason": "El nombre inglés coincide con un material local.",
+      "externalIds": [
+        "CookedMeat"
+      ],
+      "sourceKinds": [
+        "piece"
+      ],
+      "suggestedLocal": {
+        "entity": "material",
+        "id": "cooked_boar_meat",
+        "nameEn": "Cooked Boar Meat",
+        "similarity": 1
+      }
+    },
+    {
       "id": "piece:cooked deer meat",
       "nameEn": "Cooked Deer Meat",
       "classification": "existing_material",
@@ -1305,6 +1345,26 @@
         "entity": "material",
         "id": "cooked_fish",
         "nameEn": "Cooked fish",
+        "similarity": 1
+      }
+    },
+    {
+      "id": "piece:cooked seeker meat",
+      "nameEn": "Cooked Seeker Meat",
+      "classification": "existing_material",
+      "confidence": "high",
+      "reviewStatus": "known",
+      "reason": "El nombre inglés coincide con un material local.",
+      "externalIds": [
+        "CookedBugMeat"
+      ],
+      "sourceKinds": [
+        "piece"
+      ],
+      "suggestedLocal": {
+        "entity": "material",
+        "id": "cooked_seeker_meat",
+        "nameEn": "Cooked Seeker Meat",
         "similarity": 1
       }
     },
@@ -1871,6 +1931,27 @@
       }
     },
     {
+      "id": "recipe:nidhgg",
+      "nameEn": "Nidhgg",
+      "classification": "existing_material",
+      "confidence": "high",
+      "reviewStatus": "known",
+      "reason": "El nombre inglés coincide con un material local.",
+      "externalIds": [
+        "Recipe_SwordNiedhogg"
+      ],
+      "sourceKinds": [
+        "recipe"
+      ],
+      "suggestedLocal": {
+        "entity": "material",
+        "id": "nidhgg",
+        "nameEn": "Nidhgg",
+        "similarity": 1
+      },
+      "reviewedAt": "2026-08-13T20:41:54.823Z"
+    },
+    {
       "id": "piece:onion",
       "nameEn": "Onion",
       "classification": "existing_material",
@@ -2172,120 +2253,11 @@
       }
     },
     {
-      "id": "recipe-piece:ashlands gourmet bowl",
-      "nameEn": "Ashlands Gourmet Bowl",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastAshlands",
-        "FeastAshlands"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
-    },
-    {
-      "id": "recipe:asksvin cloak",
-      "nameEn": "Asksvin Cloak",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_CapeAsksvin"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:black forest buffet platter",
-      "nameEn": "Black Forest Buffet Platter",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastBlackforest",
-        "FeastBlackforest"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
-    },
-    {
-      "id": "recipe:bleeding berserkir axes",
-      "nameEn": "Bleeding Berserkir Axes",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_AxeBerzerkr_Blood"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:bloodgeon",
-      "nameEn": "Bloodgeon",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_MaceEldner_Blood"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:bone tower shield",
-      "nameEn": "Bone Tower Shield",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ShieldBoneTower"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:breastplate of ask",
-      "nameEn": "Breastplate of Ask",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorMediumChest_Ashlands"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
       "id": "recipe:bronze plate leggings",
       "nameEn": "Bronze Plate Leggings",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_ArmorBronzeLegs"
@@ -2293,14 +2265,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:47.038Z"
     },
     {
       "id": "recipe:bronze plate tunic",
       "nameEn": "Bronze Plate Tunic",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_ArmorBronzeChest"
@@ -2308,121 +2281,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:brutal slayer",
-      "nameEn": "Brutal Slayer",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordSlayer_Blood"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:butcher knife",
-      "nameEn": "Butcher Knife",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_KnifeButcher"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:cooked egg",
-      "nameEn": "Cooked Egg",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_CookedEgg",
-        "CookedEgg"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
-    },
-    {
-      "id": "recipe:copper knife",
-      "nameEn": "Copper Knife",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_KnifeCopper"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:dundr",
-      "nameEn": "Dundr",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_StaffLightning"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:dyrnwyn",
-      "nameEn": "Dyrnwyn",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordFire"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:early axes",
-      "nameEn": "Early Axes",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_AxeEarly"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:47.392Z"
     },
     {
       "id": "recipe:extravagant green cap",
       "nameEn": "Extravagant Green Cap",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_HelmetHat4"
@@ -2430,14 +2297,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:49.869Z"
     },
     {
       "id": "recipe:extravagant orange cap",
       "nameEn": "Extravagant Orange Cap",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_HelmetHat9"
@@ -2445,89 +2313,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:fang spear",
-      "nameEn": "Fang Spear",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SpearWolfFang"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:fenris coat",
-      "nameEn": "Fenris Coat",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorFenrirChest"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:fenris hood",
-      "nameEn": "Fenris Hood",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_HelmetFenrir"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:fenris leggings",
-      "nameEn": "Fenris Leggings",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorFenrirLegs"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:fishing hat",
-      "nameEn": "Fishing Hat",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_HelmetFishingHat"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:50.223Z"
     },
     {
       "id": "recipe:harvest tunic",
       "nameEn": "Harvest Tunic",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_ArmorHarvester1"
@@ -2535,91 +2329,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:hearty mountain logger s stew",
-      "nameEn": "Hearty Mountain Logger's Stew",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastMountains",
-        "FeastMountains"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
-    },
-    {
-      "id": "recipe:hood of ask",
-      "nameEn": "Hood of Ask",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_HelmetMedium_Ashlands"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:hood of embla",
-      "nameEn": "Hood of Embla",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_HelmetMage_Ashlands"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:huntsman bow",
-      "nameEn": "Huntsman Bow",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BowHuntsman"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:klossen",
-      "nameEn": "Klossen",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_MaceEldner_Nature"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:52.346Z"
     },
     {
       "id": "recipe:leather trousers",
       "nameEn": "Leather Trousers",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_ArmorLeatherLegs"
@@ -2627,138 +2345,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:loincloth of the bear",
-      "nameEn": "Loincloth of the Bear",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorBerserkerLegs"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:mushrooms galore la mistlands",
-      "nameEn": "Mushrooms Galore la Mistlands",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastMistlands",
-        "FeastMistlands"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
-    },
-    {
-      "id": "recipe:nidhgg",
-      "nameEn": "Nidhgg",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordNiedhogg"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:nidhgg the bleeding",
-      "nameEn": "Nidhgg the Bleeding",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordNiedhogg_Blood"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:nidhgg the primal",
-      "nameEn": "Nidhgg the Primal",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordNiedhogg_Nature"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:nidhgg the thundering",
-      "nameEn": "Nidhgg the Thundering",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordNiedhogg_Lightning"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:patterns of the bear",
-      "nameEn": "Patterns of the Bear",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorBerserkerChest"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:plains pie picnic",
-      "nameEn": "Plains Pie Picnic",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastPlains",
-        "FeastPlains"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:54.116Z"
     },
     {
       "id": "recipe:pointy hat",
       "nameEn": "Pointy Hat",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_HelmetPointyHat"
@@ -2766,44 +2361,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:primal berserkir axes",
-      "nameEn": "Primal Berserkir Axes",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_AxeBerzerkr_Nature"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:primal slayer",
-      "nameEn": "Primal Slayer",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordSlayer_Nature"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:56.597Z"
     },
     {
       "id": "recipe:rag trousers",
       "nameEn": "Rag Trousers",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_ArmorRagsLegs"
@@ -2811,91 +2377,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:ripper",
-      "nameEn": "Ripper",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_CrossbowRipper"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:robes of embla",
-      "nameEn": "Robes of Embla",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorMageChest_Ashlands"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:root ripper",
-      "nameEn": "Root Ripper",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_CrossbowRipper_Nature"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:sailor s bounty",
-      "nameEn": "Sailor's Bounty",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastOceans",
-        "FeastOceans"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
-    },
-    {
-      "id": "recipe:scourging slayer",
-      "nameEn": "Scourging Slayer",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordSlayer_Lightning"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:57.658Z"
     },
     {
       "id": "recipe:serving tray",
       "nameEn": "Serving Tray",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_Feaster"
@@ -2903,14 +2393,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "consumable"
+      "functionalFamily": "consumable",
+      "reviewedAt": "2026-08-13T20:41:21.495Z"
     },
     {
       "id": "recipe:simple purple cap",
       "nameEn": "Simple Purple Cap",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_HelmetHat10"
@@ -2918,14 +2409,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:59.424Z"
     },
     {
       "id": "recipe:simple red cap",
       "nameEn": "Simple Red Cap",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_HelmetHat5"
@@ -2933,164 +2425,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:skoll and hati",
-      "nameEn": "Skoll and Hati",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_KnifeSkollAndHati"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:skull splittur",
-      "nameEn": "Skull Splittur",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_Battleaxe_SkullSplittur"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:spinesnap",
-      "nameEn": "Spinesnap",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BowSpineSnap"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:splitnir the bleeding",
-      "nameEn": "Splitnir the Bleeding",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SpearSplitner_Blood"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:splitnir the primal",
-      "nameEn": "Splitnir the Primal",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SpearSplitner_Nature"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:splitnir the storming",
-      "nameEn": "Splitnir the Storming",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SpearSplitner_Lightning"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:staff of fracturing",
-      "nameEn": "Staff of Fracturing",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_StaffClusterbomb"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:staff of the wild",
-      "nameEn": "Staff of the Wild",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_StaffGreenRoots"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:storm ripper",
-      "nameEn": "Storm Ripper",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_CrossbowRipper_Lightning"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:storm star",
-      "nameEn": "Storm Star",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_MaceEldner_Lightning"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:41:59.777Z"
     },
     {
       "id": "recipe:straw hat",
       "nameEn": "Straw Hat",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_HelmetStrawhat"
@@ -3098,168 +2441,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:swamp dweller s delight",
-      "nameEn": "Swamp Dweller's Delight",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastSwamps",
-        "FeastSwamps"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
-    },
-    {
-      "id": "recipe:thundering berserkir axes",
-      "nameEn": "Thundering Berserkir Axes",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_AxeBerzerkr_Lightning"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:troll leather hood",
-      "nameEn": "Troll Leather Hood",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_HelmetTrollLeather"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:trollstav",
-      "nameEn": "Trollstav",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_StaffRedTroll"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:trousers of ask",
-      "nameEn": "Trousers of Ask",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorMediumLegs_Ashlands"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:trousers of embla",
-      "nameEn": "Trousers of Embla",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorMageLegs_Ashlands"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:vilebone cage",
-      "nameEn": "Vilebone Cage",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorBerserkerUndeadChest"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:vilebone drapes",
-      "nameEn": "Vilebone Drapes",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArmorBerserkerUndeadLegs"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:vilebone visage",
-      "nameEn": "Vilebone Visage",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_HelmetBerserkerUndead"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe-piece:whole roasted meadow boar",
-      "nameEn": "Whole Roasted Meadow Boar",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_FeastMeadows",
-        "FeastMeadows"
-      ],
-      "sourceKinds": [
-        "recipe",
-        "piece"
-      ],
-      "functionalFamily": "consumable"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:03.669Z"
     },
     {
       "id": "recipe:wooden atgeir",
       "nameEn": "Wooden Atgeir",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_AtgeirWood"
@@ -3267,14 +2457,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:06.852Z"
     },
     {
       "id": "recipe:wooden axe",
       "nameEn": "Wooden Axe",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_AxeWood"
@@ -3282,14 +2473,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:07.205Z"
     },
     {
       "id": "recipe:wooden battleaxe",
       "nameEn": "Wooden Battleaxe",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_BattleaxeWood"
@@ -3297,14 +2489,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:07.560Z"
     },
     {
       "id": "recipe:wooden knife",
       "nameEn": "Wooden Knife",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_KnifeWood"
@@ -3312,14 +2505,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:07.913Z"
     },
     {
       "id": "recipe:wooden mace",
       "nameEn": "Wooden Mace",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_MaceWood"
@@ -3327,14 +2521,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:08.267Z"
     },
     {
       "id": "recipe:wooden sledge",
       "nameEn": "Wooden Sledge",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_SledgeWood"
@@ -3342,14 +2537,15 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:08.621Z"
     },
     {
       "id": "recipe:wooden spear",
       "nameEn": "Wooden Spear",
       "classification": "functional_candidate",
       "confidence": "high",
-      "reviewStatus": "pending",
+      "reviewStatus": "rejected",
       "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
       "externalIds": [
         "Recipe_SpearWood"
@@ -3357,37 +2553,8 @@
       "sourceKinds": [
         "recipe"
       ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:wooden sword",
-      "nameEn": "Wooden Sword",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_SwordWood"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:wound ripper",
-      "nameEn": "Wound Ripper",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_CrossbowRipper_Blood"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
+      "functionalFamily": "equipment",
+      "reviewedAt": "2026-08-13T20:42:08.975Z"
     },
     {
       "id": "piece:archery target",
@@ -4300,20 +3467,6 @@
       ]
     },
     {
-      "id": "piece:cooked asksvin tail",
-      "nameEn": "Cooked Asksvin Tail",
-      "classification": "manual_review",
-      "confidence": "low",
-      "reviewStatus": "pending",
-      "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
-      "externalIds": [
-        "CookedAsksvinMeat"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
       "id": "piece:cooked bear meat",
       "nameEn": "Cooked Bear Meat",
       "classification": "manual_review",
@@ -4322,20 +3475,6 @@
       "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
       "externalIds": [
         "CookedBjornMeat"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
-      "id": "piece:cooked boar meat",
-      "nameEn": "Cooked Boar Meat",
-      "classification": "manual_review",
-      "confidence": "low",
-      "reviewStatus": "pending",
-      "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
-      "externalIds": [
-        "CookedMeat"
       ],
       "sourceKinds": [
         "piece"
@@ -4392,20 +3531,6 @@
       "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
       "externalIds": [
         "CookedLoxMeat"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
-      "id": "piece:cooked seeker meat",
-      "nameEn": "Cooked Seeker Meat",
-      "classification": "manual_review",
-      "confidence": "low",
-      "reviewStatus": "pending",
-      "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
-      "externalIds": [
-        "CookedBugMeat"
       ],
       "sourceKinds": [
         "piece"

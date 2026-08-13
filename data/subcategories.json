@@ -1,15 +1,296 @@
 [
-  { "id": "clubs", "category": "Armas", "name": { "es": "Mazas y martillos", "en": "Maces and hammers" }, "itemIds": ["club", "bronze_mace", "iron_mace", "frostner", "iron_sledge", "porcupine", "demolisher", "flametal_mace"] },
-  { "id": "knives", "category": "Armas", "name": { "es": "Cuchillos", "en": "Knives" }, "itemIds": ["flint_knife", "silver_knife", "black_metal_knife", "abyssal_razor"] },
-  { "id": "spears", "category": "Armas", "name": { "es": "Lanzas", "en": "Spears" }, "itemIds": ["flint_spear", "bronze_spear", "ancient_bark_spear", "carapace_spear", "abyssal_harpoon"] },
-  { "id": "bows", "category": "Armas", "name": { "es": "Arcos", "en": "Bows" }, "itemIds": ["crude_bow", "finewood_bow", "draugr_fang"] },
-  { "id": "arrows", "category": "Armas", "name": { "es": "Flechas y proyectiles", "en": "Arrows and projectiles" }, "itemIds": ["fire_arrow", "flinthead_arrow", "wood_arrow", "obsidian_arrow", "frost_arrow", "needle_arrow", "flametal_missile", "bronzehead_arrow", "ironhead_arrow", "silver_arrow", "poison_arrow", "carapace_arrow", "charred_arrow", "bone_bolt", "iron_bolt", "black_metal_bolt", "carapace_bolt", "charred_bolt", "ooze_bomb", "bile_bomb", "blob_bomb_poison", "blob_bomb_elite_poison", "blob_bomb_frost", "blob_bomb_tar", "blob_bomb_lava", "basalt_bomb", "smoke_bomb", "explosive_payload"] },
-  { "id": "swords", "category": "Armas", "name": { "es": "Espadas", "en": "Swords" }, "itemIds": ["bronze_sword", "iron_sword", "silver_sword", "black_metal_sword", "krom", "mistwalker", "nidhogg", "slayer"] },
-  { "id": "atgeirs", "category": "Armas", "name": { "es": "Atgeirs y armas de asta", "en": "Atgeirs and polearms" }, "itemIds": ["bronze_atgeir", "iron_atgeir", "black_metal_atgeir", "himminafl", "splitnir"] },
-  { "id": "battleaxes", "category": "Armas", "name": { "es": "Hachas de batalla", "en": "Battleaxes" }, "itemIds": ["battleaxe", "crystal_battleaxe", "black_metal_battleaxe", "berserkir_axes"] },
-  { "id": "crossbows", "category": "Armas", "name": { "es": "Ballestas", "en": "Crossbows" }, "itemIds": ["arbalest"] },
-  { "id": "staves", "category": "Armas", "name": { "es": "Bastones", "en": "Staves" }, "itemIds": ["staff_of_embers", "staff_of_frost", "staff_of_protection", "dead_raiser"] },
-  { "id": "special_weapons", "category": "Armas", "name": { "es": "Armas especiales", "en": "Special weapons" }, "itemIds": ["stagbreaker", "ash_fang", "blood_fang", "storm_fang", "root_fang"] },
-  { "id": "prepared_food", "category": "Comida", "name": { "es": "Alimentos preparados", "en": "Prepared foods" }, "itemIds": ["cooked_meat", "grilled_neck_tail", "carrot_soup", "boar_jerky", "queens_jam", "deer_stew", "minced_meat_sauce", "sausages", "turnip_stew", "black_soup", "muckshake", "onion_soup", "eyescream", "wolf_skewer", "wolf_jerky", "bread", "blood_pudding", "lox_meat_pie", "salad", "seeker_aspic", "yggdrasil_porridge", "misthare_supreme", "stuffed_mushroom", "meat_platter", "mashed_meat", "scorching_medley", "serpent_stew", "fish_wraps"] },
-  { "id": "brewed_consumables", "category": "Comida", "name": { "es": "Hidromieles, tónicos y pócimas", "en": "Meads, tonics and potions" }, "itemIds": ["poison_resistance_mead", "medium_health_mead", "medium_stamina_mead", "barley_wine", "minor_health_mead", "minor_stamina_mead", "frost_resistance_mead", "tasty_mead", "major_health_mead", "minor_eitr_mead", "lingering_health_mead", "lingering_stamina_mead", "lingering_eitr_mead", "anti_sting_concoction", "berserkir_mead", "ratatosk_tonic", "lightfoot_mead", "troll_endurance_mead", "vananidir_draught", "animal_whispers_brew"] }
+  {
+    "id": "clubs",
+    "category": "Armas",
+    "name": {
+      "es": "Mazas y martillos",
+      "en": "Maces and hammers"
+    },
+    "itemIds": [
+      "club",
+      "bronze_mace",
+      "iron_mace",
+      "frostner",
+      "iron_sledge",
+      "porcupine",
+      "demolisher",
+      "flametal_mace",
+      "bloodgeon",
+      "klossen",
+      "storm_star"
+    ]
+  },
+  {
+    "id": "knives",
+    "category": "Armas",
+    "name": {
+      "es": "Cuchillos",
+      "en": "Knives"
+    },
+    "itemIds": [
+      "flint_knife",
+      "silver_knife",
+      "black_metal_knife",
+      "abyssal_razor",
+      "copper_knife",
+      "skoll_and_hati"
+    ]
+  },
+  {
+    "id": "spears",
+    "category": "Armas",
+    "name": {
+      "es": "Lanzas",
+      "en": "Spears"
+    },
+    "itemIds": [
+      "flint_spear",
+      "bronze_spear",
+      "ancient_bark_spear",
+      "carapace_spear",
+      "abyssal_harpoon",
+      "fang_spear",
+      "splitnir_the_bleeding",
+      "splitnir_the_primal",
+      "splitnir_the_storming"
+    ]
+  },
+  {
+    "id": "bows",
+    "category": "Armas",
+    "name": {
+      "es": "Arcos",
+      "en": "Bows"
+    },
+    "itemIds": [
+      "crude_bow",
+      "finewood_bow",
+      "draugr_fang",
+      "huntsman_bow",
+      "spinesnap"
+    ]
+  },
+  {
+    "id": "arrows",
+    "category": "Armas",
+    "name": {
+      "es": "Flechas y proyectiles",
+      "en": "Arrows and projectiles"
+    },
+    "itemIds": [
+      "fire_arrow",
+      "flinthead_arrow",
+      "wood_arrow",
+      "obsidian_arrow",
+      "frost_arrow",
+      "needle_arrow",
+      "flametal_missile",
+      "bronzehead_arrow",
+      "ironhead_arrow",
+      "silver_arrow",
+      "poison_arrow",
+      "carapace_arrow",
+      "charred_arrow",
+      "bone_bolt",
+      "iron_bolt",
+      "black_metal_bolt",
+      "carapace_bolt",
+      "charred_bolt",
+      "ooze_bomb",
+      "bile_bomb",
+      "blob_bomb_poison",
+      "blob_bomb_elite_poison",
+      "blob_bomb_frost",
+      "blob_bomb_tar",
+      "blob_bomb_lava",
+      "basalt_bomb",
+      "smoke_bomb",
+      "explosive_payload"
+    ]
+  },
+  {
+    "id": "swords",
+    "category": "Armas",
+    "name": {
+      "es": "Espadas",
+      "en": "Swords"
+    },
+    "itemIds": [
+      "bronze_sword",
+      "iron_sword",
+      "silver_sword",
+      "black_metal_sword",
+      "krom",
+      "mistwalker",
+      "nidhogg",
+      "slayer",
+      "brutal_slayer",
+      "dyrnwyn",
+      "nidhogg_bleeding",
+      "nidhogg_primal",
+      "nidhogg_thundering",
+      "primal_slayer",
+      "scourging_slayer",
+      "wooden_sword"
+    ]
+  },
+  {
+    "id": "atgeirs",
+    "category": "Armas",
+    "name": {
+      "es": "Atgeirs y armas de asta",
+      "en": "Atgeirs and polearms"
+    },
+    "itemIds": [
+      "bronze_atgeir",
+      "iron_atgeir",
+      "black_metal_atgeir",
+      "himminafl",
+      "splitnir"
+    ]
+  },
+  {
+    "id": "battleaxes",
+    "category": "Armas",
+    "name": {
+      "es": "Hachas de batalla",
+      "en": "Battleaxes"
+    },
+    "itemIds": [
+      "battleaxe",
+      "crystal_battleaxe",
+      "black_metal_battleaxe",
+      "berserkir_axes",
+      "bleeding_berserkir_axes",
+      "early_axes",
+      "primal_berserkir_axes",
+      "skull_splittur",
+      "thundering_berserkir_axes"
+    ]
+  },
+  {
+    "id": "crossbows",
+    "category": "Armas",
+    "name": {
+      "es": "Ballestas",
+      "en": "Crossbows"
+    },
+    "itemIds": [
+      "arbalest",
+      "ripper",
+      "root_ripper",
+      "storm_ripper",
+      "wound_ripper"
+    ]
+  },
+  {
+    "id": "staves",
+    "category": "Armas",
+    "name": {
+      "es": "Bastones",
+      "en": "Staves"
+    },
+    "itemIds": [
+      "staff_of_embers",
+      "staff_of_frost",
+      "staff_of_protection",
+      "dead_raiser",
+      "dundr",
+      "staff_of_fracturing",
+      "staff_of_the_wild",
+      "trollstav"
+    ]
+  },
+  {
+    "id": "special_weapons",
+    "category": "Armas",
+    "name": {
+      "es": "Armas especiales",
+      "en": "Special weapons"
+    },
+    "itemIds": [
+      "stagbreaker",
+      "ash_fang",
+      "blood_fang",
+      "storm_fang",
+      "root_fang"
+    ]
+  },
+  {
+    "id": "prepared_food",
+    "category": "Comida",
+    "name": {
+      "es": "Alimentos preparados",
+      "en": "Prepared foods"
+    },
+    "itemIds": [
+      "cooked_meat",
+      "grilled_neck_tail",
+      "carrot_soup",
+      "boar_jerky",
+      "queens_jam",
+      "deer_stew",
+      "minced_meat_sauce",
+      "sausages",
+      "turnip_stew",
+      "black_soup",
+      "muckshake",
+      "onion_soup",
+      "eyescream",
+      "wolf_skewer",
+      "wolf_jerky",
+      "bread",
+      "blood_pudding",
+      "lox_meat_pie",
+      "salad",
+      "seeker_aspic",
+      "yggdrasil_porridge",
+      "misthare_supreme",
+      "stuffed_mushroom",
+      "meat_platter",
+      "mashed_meat",
+      "scorching_medley",
+      "serpent_stew",
+      "fish_wraps",
+      "ashlands_gourmet_bowl",
+      "black_forest_buffet_platter",
+      "cooked_egg",
+      "hearty_mountain_logger_s_stew",
+      "mistlands_mushroom_feast",
+      "plains_pie_picnic",
+      "sailor_s_bounty",
+      "swamp_dweller_s_delight",
+      "meadows_roasted_boar_feast"
+    ]
+  },
+  {
+    "id": "brewed_consumables",
+    "category": "Comida",
+    "name": {
+      "es": "Hidromieles, tónicos y pócimas",
+      "en": "Meads, tonics and potions"
+    },
+    "itemIds": [
+      "poison_resistance_mead",
+      "medium_health_mead",
+      "medium_stamina_mead",
+      "barley_wine",
+      "minor_health_mead",
+      "minor_stamina_mead",
+      "frost_resistance_mead",
+      "tasty_mead",
+      "major_health_mead",
+      "minor_eitr_mead",
+      "lingering_health_mead",
+      "lingering_stamina_mead",
+      "lingering_eitr_mead",
+      "anti_sting_concoction",
+      "berserkir_mead",
+      "ratatosk_tonic",
+      "lightfoot_mead",
+      "troll_endurance_mead",
+      "vananidir_draught",
+      "animal_whispers_brew"
+    ]
+  }
 ]

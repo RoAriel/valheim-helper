@@ -1,50 +1,430 @@
 [
-  { "itemId": "cooked_meat", "health": 40, "stamina": 30, "healing": 2, "durationSeconds": 1200 },
-  { "itemId": "grilled_neck_tail", "health": 25, "stamina": 8, "healing": 2, "durationSeconds": 1200 },
-  { "itemId": "carrot_soup", "health": 15, "stamina": 45, "healing": 2, "durationSeconds": 1500 },
-  { "itemId": "boar_jerky", "health": 23, "stamina": 23, "healing": 2, "durationSeconds": 1800 },
-  { "itemId": "queens_jam", "health": 14, "stamina": 40, "healing": 2, "durationSeconds": 1500 },
-  { "itemId": "deer_stew", "health": 45, "stamina": 15, "healing": 3, "durationSeconds": 1500 },
-  { "itemId": "minced_meat_sauce", "health": 40, "stamina": 13, "healing": 3, "durationSeconds": 1500 },
-  { "itemId": "sausages", "health": 55, "stamina": 18, "healing": 3, "durationSeconds": 1500 },
-  { "itemId": "turnip_stew", "health": 18, "stamina": 55, "healing": 2, "durationSeconds": 1500 },
-  { "itemId": "poison_resistance_mead", "durationSeconds": 600, "effects": ["Resistencia al veneno"] },
-  { "itemId": "black_soup", "health": 50, "stamina": 17, "healing": 3, "durationSeconds": 1500 },
-  { "itemId": "muckshake", "health": 16, "stamina": 50, "healing": 1, "durationSeconds": 1500 },
-  { "itemId": "medium_health_mead", "effects": ["Curación media"] },
-  { "itemId": "medium_stamina_mead", "effects": ["Recuperación de aguante media"] },
-  { "itemId": "onion_soup", "health": 16, "stamina": 60, "healing": 2, "durationSeconds": 1500 },
-  { "itemId": "eyescream", "health": 21, "stamina": 65, "healing": 1, "durationSeconds": 1500 },
-  { "itemId": "wolf_skewer", "health": 65, "stamina": 21, "healing": 3, "durationSeconds": 1500 },
-  { "itemId": "wolf_jerky", "health": 33, "stamina": 33, "healing": 2, "durationSeconds": 1800 },
-  { "itemId": "bread", "health": 23, "stamina": 70, "healing": 2, "durationSeconds": 1500 },
-  { "itemId": "blood_pudding", "health": 25, "stamina": 75, "healing": 2, "durationSeconds": 1500 },
-  { "itemId": "lox_meat_pie", "health": 75, "stamina": 24, "healing": 4, "durationSeconds": 1800 },
-  { "itemId": "barley_wine", "durationSeconds": 600, "effects": ["Resistencia al fuego"] },
-  { "itemId": "salad", "health": 15, "stamina": 80, "healing": 1, "durationSeconds": 1500 },
-  { "itemId": "seeker_aspic", "health": 12, "stamina": 13, "eitr": 85, "healing": 1, "durationSeconds": 1500 },
-  { "itemId": "yggdrasil_porridge", "health": 13, "stamina": 13, "eitr": 80, "healing": 1, "durationSeconds": 1500 },
-  { "itemId": "misthare_supreme", "health": 85, "stamina": 28, "healing": 4, "durationSeconds": 1500 },
-  { "itemId": "stuffed_mushroom", "health": 14, "stamina": 15, "eitr": 75, "healing": 1, "durationSeconds": 1500 },
-  { "itemId": "meat_platter", "health": 80, "stamina": 26, "healing": 4, "durationSeconds": 1500 },
-  { "itemId": "mashed_meat", "health": 90, "stamina": 28, "healing": 5, "durationSeconds": 1500 },
-  { "itemId": "scorching_medley", "health": 20, "stamina": 85, "healing": 1, "durationSeconds": 1500 },
-  { "itemId": "serpent_stew", "health": 80, "stamina": 26, "healing": 4, "durationSeconds": 1500 },
-  { "itemId": "fish_wraps", "health": 70, "stamina": 23, "healing": 3, "durationSeconds": 1500 },
-  { "itemId": "minor_health_mead", "effects": ["Curación menor"] },
-  { "itemId": "minor_stamina_mead", "effects": ["Recuperación de aguante menor"] },
-  { "itemId": "frost_resistance_mead", "durationSeconds": 600, "effects": ["Resistencia al frío"] },
-  { "itemId": "tasty_mead", "durationSeconds": 10, "effects": ["Recuperación de aguante +100%", "Regeneración de salud -50%"] },
-  { "itemId": "major_health_mead", "durationSeconds": 10, "effects": ["Curación mayor: 125 salud"] },
-  { "itemId": "minor_eitr_mead", "durationSeconds": 10, "effects": ["Recupera 125 de eitr"] },
-  { "itemId": "lingering_health_mead", "durationSeconds": 300, "effects": ["Regeneración de salud +25%"] },
-  { "itemId": "lingering_stamina_mead", "durationSeconds": 300, "effects": ["Regeneración de aguante +25%"] },
-  { "itemId": "lingering_eitr_mead", "durationSeconds": 300, "effects": ["Regeneración de eitr +25%"] },
-  { "itemId": "anti_sting_concoction", "durationSeconds": 600, "effects": ["Evita ataques de mosquito de la muerte"] },
-  { "itemId": "berserkir_mead", "durationSeconds": 20, "effects": ["Coste de aguante ofensivo -80%", "Debilidad física"] },
-  { "itemId": "ratatosk_tonic", "durationSeconds": 600, "effects": ["Velocidad de carrera +15%", "Velocidad al nadar +7.5%"] },
-  { "itemId": "lightfoot_mead", "durationSeconds": 600, "effects": ["Coste de salto -30%", "Altura de salto +20%"] },
-  { "itemId": "troll_endurance_mead", "durationSeconds": 300, "effects": ["Capacidad de carga +250"] },
-  { "itemId": "vananidir_draught", "durationSeconds": 300, "effects": ["Coste de aguante al nadar -50%"] },
-  { "itemId": "animal_whispers_brew", "durationSeconds": 600, "effects": ["Velocidad de domesticación x2"] }
+  {
+    "itemId": "cooked_meat",
+    "health": 40,
+    "stamina": 30,
+    "healing": 2,
+    "durationSeconds": 1200
+  },
+  {
+    "itemId": "grilled_neck_tail",
+    "health": 25,
+    "stamina": 8,
+    "healing": 2,
+    "durationSeconds": 1200
+  },
+  {
+    "itemId": "carrot_soup",
+    "health": 15,
+    "stamina": 45,
+    "healing": 2,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "boar_jerky",
+    "health": 23,
+    "stamina": 23,
+    "healing": 2,
+    "durationSeconds": 1800
+  },
+  {
+    "itemId": "queens_jam",
+    "health": 14,
+    "stamina": 40,
+    "healing": 2,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "deer_stew",
+    "health": 45,
+    "stamina": 15,
+    "healing": 3,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "minced_meat_sauce",
+    "health": 40,
+    "stamina": 13,
+    "healing": 3,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "sausages",
+    "health": 55,
+    "stamina": 18,
+    "healing": 3,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "turnip_stew",
+    "health": 18,
+    "stamina": 55,
+    "healing": 2,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "poison_resistance_mead",
+    "durationSeconds": 600,
+    "effects": [
+      "Resistencia al veneno"
+    ]
+  },
+  {
+    "itemId": "black_soup",
+    "health": 50,
+    "stamina": 17,
+    "healing": 3,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "muckshake",
+    "health": 16,
+    "stamina": 50,
+    "healing": 1,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "medium_health_mead",
+    "effects": [
+      "Curación media"
+    ]
+  },
+  {
+    "itemId": "medium_stamina_mead",
+    "effects": [
+      "Recuperación de aguante media"
+    ]
+  },
+  {
+    "itemId": "onion_soup",
+    "health": 16,
+    "stamina": 60,
+    "healing": 2,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "eyescream",
+    "health": 21,
+    "stamina": 65,
+    "healing": 1,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "wolf_skewer",
+    "health": 65,
+    "stamina": 21,
+    "healing": 3,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "wolf_jerky",
+    "health": 33,
+    "stamina": 33,
+    "healing": 2,
+    "durationSeconds": 1800
+  },
+  {
+    "itemId": "bread",
+    "health": 23,
+    "stamina": 70,
+    "healing": 2,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "blood_pudding",
+    "health": 25,
+    "stamina": 75,
+    "healing": 2,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "lox_meat_pie",
+    "health": 75,
+    "stamina": 24,
+    "healing": 4,
+    "durationSeconds": 1800
+  },
+  {
+    "itemId": "barley_wine",
+    "durationSeconds": 600,
+    "effects": [
+      "Resistencia al fuego"
+    ]
+  },
+  {
+    "itemId": "salad",
+    "health": 15,
+    "stamina": 80,
+    "healing": 1,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "seeker_aspic",
+    "health": 12,
+    "stamina": 13,
+    "eitr": 85,
+    "healing": 1,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "yggdrasil_porridge",
+    "health": 13,
+    "stamina": 13,
+    "eitr": 80,
+    "healing": 1,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "misthare_supreme",
+    "health": 85,
+    "stamina": 28,
+    "healing": 4,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "stuffed_mushroom",
+    "health": 14,
+    "stamina": 15,
+    "eitr": 75,
+    "healing": 1,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "meat_platter",
+    "health": 80,
+    "stamina": 26,
+    "healing": 4,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "mashed_meat",
+    "health": 90,
+    "stamina": 28,
+    "healing": 5,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "scorching_medley",
+    "health": 20,
+    "stamina": 85,
+    "healing": 1,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "serpent_stew",
+    "health": 80,
+    "stamina": 26,
+    "healing": 4,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "fish_wraps",
+    "health": 70,
+    "stamina": 23,
+    "healing": 3,
+    "durationSeconds": 1500
+  },
+  {
+    "itemId": "minor_health_mead",
+    "effects": [
+      "Curación menor"
+    ]
+  },
+  {
+    "itemId": "minor_stamina_mead",
+    "effects": [
+      "Recuperación de aguante menor"
+    ]
+  },
+  {
+    "itemId": "frost_resistance_mead",
+    "durationSeconds": 600,
+    "effects": [
+      "Resistencia al frío"
+    ]
+  },
+  {
+    "itemId": "tasty_mead",
+    "durationSeconds": 10,
+    "effects": [
+      "Recuperación de aguante +100%",
+      "Regeneración de salud -50%"
+    ]
+  },
+  {
+    "itemId": "major_health_mead",
+    "durationSeconds": 10,
+    "effects": [
+      "Curación mayor: 125 salud"
+    ]
+  },
+  {
+    "itemId": "minor_eitr_mead",
+    "durationSeconds": 10,
+    "effects": [
+      "Recupera 125 de eitr"
+    ]
+  },
+  {
+    "itemId": "lingering_health_mead",
+    "durationSeconds": 300,
+    "effects": [
+      "Regeneración de salud +25%"
+    ]
+  },
+  {
+    "itemId": "lingering_stamina_mead",
+    "durationSeconds": 300,
+    "effects": [
+      "Regeneración de aguante +25%"
+    ]
+  },
+  {
+    "itemId": "lingering_eitr_mead",
+    "durationSeconds": 300,
+    "effects": [
+      "Regeneración de eitr +25%"
+    ]
+  },
+  {
+    "itemId": "anti_sting_concoction",
+    "durationSeconds": 600,
+    "effects": [
+      "Evita ataques de mosquito de la muerte"
+    ]
+  },
+  {
+    "itemId": "berserkir_mead",
+    "durationSeconds": 20,
+    "effects": [
+      "Coste de aguante ofensivo -80%",
+      "Debilidad física"
+    ]
+  },
+  {
+    "itemId": "ratatosk_tonic",
+    "durationSeconds": 600,
+    "effects": [
+      "Velocidad de carrera +15%",
+      "Velocidad al nadar +7.5%"
+    ]
+  },
+  {
+    "itemId": "lightfoot_mead",
+    "durationSeconds": 600,
+    "effects": [
+      "Coste de salto -30%",
+      "Altura de salto +20%"
+    ]
+  },
+  {
+    "itemId": "troll_endurance_mead",
+    "durationSeconds": 300,
+    "effects": [
+      "Capacidad de carga +250"
+    ]
+  },
+  {
+    "itemId": "vananidir_draught",
+    "durationSeconds": 300,
+    "effects": [
+      "Coste de aguante al nadar -50%"
+    ]
+  },
+  {
+    "itemId": "animal_whispers_brew",
+    "durationSeconds": 600,
+    "effects": [
+      "Velocidad de domesticación x2"
+    ]
+  },
+  {
+    "itemId": "ashlands_gourmet_bowl",
+    "health": 75,
+    "stamina": 75,
+    "eitr": 38,
+    "healing": 6,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  },
+  {
+    "itemId": "black_forest_buffet_platter",
+    "health": 35,
+    "stamina": 35,
+    "healing": 3,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  },
+  {
+    "itemId": "cooked_egg",
+    "health": 35,
+    "stamina": 12,
+    "healing": 2,
+    "durationSeconds": 1200
+  },
+  {
+    "itemId": "hearty_mountain_logger_s_stew",
+    "health": 45,
+    "stamina": 45,
+    "healing": 3,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  },
+  {
+    "itemId": "mistlands_mushroom_feast",
+    "health": 65,
+    "stamina": 65,
+    "eitr": 33,
+    "healing": 5,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  },
+  {
+    "itemId": "plains_pie_picnic",
+    "health": 55,
+    "stamina": 55,
+    "healing": 4,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  },
+  {
+    "itemId": "sailor_s_bounty",
+    "health": 45,
+    "stamina": 45,
+    "healing": 3,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  },
+  {
+    "itemId": "swamp_dweller_s_delight",
+    "health": 35,
+    "stamina": 35,
+    "healing": 3,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  },
+  {
+    "itemId": "meadows_roasted_boar_feast",
+    "health": 35,
+    "stamina": 35,
+    "healing": 2,
+    "durationSeconds": 3000,
+    "effects": [
+      "Banquete compartido: 10 porciones"
+    ]
+  }
 ]

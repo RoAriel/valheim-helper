@@ -22,7 +22,7 @@ test("renderiza el catálogo ampliado de Valheim Helper", async () => {
   assert.match(html, /<html lang="es">/);
   assert.match(html, /<title>Valheim Helper — Recetas y materiales<\/title>/);
   assert.match(html, /Revisión de datos/);
-  assert.match(html, /310/);
+  assert.match(html, /227/);
   assert.match(html, /Valheim <!-- -->0\.221\.12/);
   assert.match(html, /Buscar por objeto o nombre en inglés/);
   assert.match(html, /Limpiar filtros/);
@@ -30,7 +30,7 @@ test("renderiza el catálogo ampliado de Valheim Helper", async () => {
   assert.match(html, /Praderas.*Meadows/);
   assert.match(html, /Tierras de Niebla.*Mistlands/);
   assert.match(html, /MODO PLANIFICAR/);
-  assert.match(html, /296<!-- --> objetos/);
+  assert.match(html, /356<!-- --> objetos/);
   assert.match(html, /Hacha de sílex/);
   assert.match(html, /Flint axe/);
   assert.match(html, /A mano/);

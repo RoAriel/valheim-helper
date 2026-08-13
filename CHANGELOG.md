@@ -1,5 +1,20 @@
 # Cambios
 
+## Datos 0.1.24 — 2026-08-13
+
+- Se incorporaron los 60 candidatos funcionales aprobados: ocho banquetes, el huevo cocinado y 51 armas o piezas de defensa.
+- Cada banquete registra sus diez porciones como efecto de uso y muestra salud, aguante, eitr, curación y duración; se añadió la Mesa de preparación de alimentos como estación propia.
+- Las recetas de equipo incluyen fabricación, mejoras consecutivas y niveles requeridos de banco de trabajo, forja, forja negra o mesa Galdr.
+- Se registraron 36 ingredientes faltantes y nueve fuentes de obtención para mantener completa la procedencia mostrada por el planificador.
+- El catálogo alcanza 356 objetos funcionales para Valheim `0.221.12`.
+
+## Auditoría editorial — 2026-08-13
+
+- Se revisaron los 10 candidatos de consumibles y los 70 de equipo para Valheim `0.221.12`.
+- Se aprobaron 60 altas funcionales futuras y se rechazaron 20 falsos positivos, equivalencias, artículos de comerciante, cosméticos o armas no fabricables.
+- Los candidatos pendientes bajaron de 310 a 230 sin modificar todavía el catálogo productivo.
+- Las decisiones y sus criterios quedaron documentados en `docs/auditoria-consumibles-equipo-0.221.12.md`.
+
 ## Datos 0.1.23 — 2026-08-13
 
 - Se incorporaron doce construcciones funcionales verificadas: estaciones, almacenamiento, descanso, cartografía, fuego, portal y defensa de base.
