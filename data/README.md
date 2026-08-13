@@ -15,6 +15,7 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 - `recipes.json`: fabricación inicial y mejoras de cada objeto.
 - `functional-crafting-audit.json`: contrato de cobertura funcional por bioma para la versión de juego indicada.
 - `consumable-coverage.json`: inventario de familias de hidromieles y pociones que debe cubrir la auditoría de consumibles.
+- `approved-incorporations.json`: contrato de las altas aprobadas e incorporadas en el bloque 0.1.24.
 - `provenance.json`: fuentes, evidencia y deuda de trazabilidad del catálogo por bloques verificables.
 - `update-candidates.json`: inventario editorial de entradas externas clasificadas; no forma parte del catálogo publicado ni se usa para fabricar objetos.
 - `station-extensions.json`: relación entre estaciones, objetos físicos de estación, nivel máximo y extensiones funcionales.

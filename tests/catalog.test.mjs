@@ -5,6 +5,7 @@ const { buildGoalPlan, buildUpgradeCostSummaries, catalog, foodEffects, manifest
 const { filterCatalogItems, resolveSelectedItem } = await import("../data/catalog-filters.ts");
 const audit = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/functional-crafting-audit.json", import.meta.url), "utf8"));
 const consumableCoverage = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/consumable-coverage.json", import.meta.url), "utf8"));
+const approvedIncorporations = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/approved-incorporations.json", import.meta.url), "utf8"));
 const { provenance, provenanceSummary, validateProvenance } = await import("../data/provenance.ts");
 const { candidatesFromClassification, reviewCandidate, updateCandidates, validateUpdateCandidates } = await import("../data/update-candidates.ts");
 
@@ -16,7 +17,7 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
   assert.deepEqual(validateProvenance(), []);
   assert.equal(provenance.catalogVersion, manifest.catalogVersion);
   assert.equal(provenance.gameVersion, manifest.gameVersion);
-  assert.deepEqual(provenanceSummary(), { verified: 4, partially_verified: 1, legacy_unattributed: 1 });
+  assert.deepEqual(provenanceSummary(), { verified: 5, partially_verified: 1, legacy_unattributed: 1 });
 
   const invalid = structuredClone(provenance);
   invalid.records.find((record) => record.status === "verified").sourceIds = ["missing_source"];
@@ -25,9 +26,25 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
 
 test("mantiene los candidatos editoriales separados y coherentes con el catálogo", () => {
   assert.deepEqual(validateUpdateCandidates(), []);
-  assert.equal(updateCandidates.candidates.length, 459);
-  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 310);
+  assert.equal(updateCandidates.candidates.length, 399);
+  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 227);
+  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "approved").length, 0);
+  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "rejected").length, 19);
   assert.ok(updateCandidates.candidates.every((entry) => entry.externalIds.length > 0));
+});
+
+test("mantiene incorporados los 9 consumibles y 51 equipos aprobados", () => {
+  assert.equal(approvedIncorporations.gameVersion, manifest.gameVersion);
+  assert.equal(approvedIncorporations.catalogVersion, manifest.catalogVersion);
+  assert.equal(approvedIncorporations.consumables.length, 9);
+  assert.equal(approvedIncorporations.equipment.length, 51);
+  for (const itemId of [...approvedIncorporations.consumables, ...approvedIncorporations.equipment]) {
+    assert.ok(catalog.items.some((item) => item.id === itemId), `falta alta aprobada: ${itemId}`);
+    assert.ok(catalog.recipes.some((recipe) => recipe.itemId === itemId), `falta receta aprobada: ${itemId}`);
+  }
+  for (const itemId of approvedIncorporations.consumables) {
+    assert.ok(foodEffects.some((effect) => effect.itemId === itemId), `faltan efectos aprobados: ${itemId}`);
+  }
 });
 
 test("registra decisiones editoriales y las conserva al regenerar candidatos", async () => {
@@ -111,7 +128,7 @@ test("agrupa estaciones, extensiones y procesadores bajo un filtro funcional", (
 
 test("incluye el bloque completo de progresión normal de Praderas", () => {
   const meadowsItems = catalog.items.filter((item) => item.stageBiomeId === "meadows");
-  assert.equal(meadowsItems.length, 66);
+  assert.equal(meadowsItems.length, 69);
   for (const itemId of ["antler_pickaxe", "leather_tunic", "beehive", "raft", "thatch_roof_45", "stakewall"]) {
     assert.ok(meadowsItems.some((item) => item.id === itemId), `falta ${itemId}`);
   }

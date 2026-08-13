@@ -1,20 +1,135 @@
 [
-  { "id": "hand", "name": { "es": "A mano", "en": "Hand" } },
-  { "id": "hammer", "name": { "es": "Martillo", "en": "Hammer" } },
-  { "id": "workbench", "name": { "es": "Banco de trabajo", "en": "Workbench" } },
-  { "id": "cooking_station", "name": { "es": "Estación de cocina", "en": "Cooking station" } },
-  { "id": "forge", "name": { "es": "Forja", "en": "Forge" } },
-  { "id": "cauldron", "name": { "es": "Caldero", "en": "Cauldron" } },
-  { "id": "mead_ketill", "name": { "es": "Hervidor de hidromiel", "en": "Mead ketill" } },
-  { "id": "fermenter", "name": { "es": "Fermentador", "en": "Fermenter" } },
-  { "id": "artisan_table", "name": { "es": "Mesa de artesano", "en": "Artisan table" } },
-  { "id": "blast_furnace", "name": { "es": "Horno alto", "en": "Blast furnace" } },
-  { "id": "windmill", "name": { "es": "Molino de viento", "en": "Windmill" } },
-  { "id": "spinning_wheel", "name": { "es": "Rueca", "en": "Spinning wheel" } },
-  { "id": "stone_oven", "name": { "es": "Horno de piedra", "en": "Stone oven" } },
-  { "id": "black_forge", "name": { "es": "Forja negra", "en": "Black forge" } },
-  { "id": "galdr_table", "name": { "es": "Mesa Galdr", "en": "Galdr table" } },
-  { "id": "eitr_refinery", "name": { "es": "Refinería de eitr", "en": "Eitr refinery" } },
-  { "id": "workbench_nearby", "name": { "es": "Banco de trabajo cercano", "en": "Nearby workbench" } },
-  { "id": "stonecutter", "name": { "es": "Cantero", "en": "Stonecutter" } }
+  {
+    "id": "hand",
+    "name": {
+      "es": "A mano",
+      "en": "Hand"
+    }
+  },
+  {
+    "id": "hammer",
+    "name": {
+      "es": "Martillo",
+      "en": "Hammer"
+    }
+  },
+  {
+    "id": "workbench",
+    "name": {
+      "es": "Banco de trabajo",
+      "en": "Workbench"
+    }
+  },
+  {
+    "id": "cooking_station",
+    "name": {
+      "es": "Estación de cocina",
+      "en": "Cooking station"
+    }
+  },
+  {
+    "id": "forge",
+    "name": {
+      "es": "Forja",
+      "en": "Forge"
+    }
+  },
+  {
+    "id": "cauldron",
+    "name": {
+      "es": "Caldero",
+      "en": "Cauldron"
+    }
+  },
+  {
+    "id": "mead_ketill",
+    "name": {
+      "es": "Hervidor de hidromiel",
+      "en": "Mead ketill"
+    }
+  },
+  {
+    "id": "fermenter",
+    "name": {
+      "es": "Fermentador",
+      "en": "Fermenter"
+    }
+  },
+  {
+    "id": "artisan_table",
+    "name": {
+      "es": "Mesa de artesano",
+      "en": "Artisan table"
+    }
+  },
+  {
+    "id": "blast_furnace",
+    "name": {
+      "es": "Horno alto",
+      "en": "Blast furnace"
+    }
+  },
+  {
+    "id": "windmill",
+    "name": {
+      "es": "Molino de viento",
+      "en": "Windmill"
+    }
+  },
+  {
+    "id": "spinning_wheel",
+    "name": {
+      "es": "Rueca",
+      "en": "Spinning wheel"
+    }
+  },
+  {
+    "id": "stone_oven",
+    "name": {
+      "es": "Horno de piedra",
+      "en": "Stone oven"
+    }
+  },
+  {
+    "id": "black_forge",
+    "name": {
+      "es": "Forja negra",
+      "en": "Black forge"
+    }
+  },
+  {
+    "id": "galdr_table",
+    "name": {
+      "es": "Mesa Galdr",
+      "en": "Galdr table"
+    }
+  },
+  {
+    "id": "eitr_refinery",
+    "name": {
+      "es": "Refinería de eitr",
+      "en": "Eitr refinery"
+    }
+  },
+  {
+    "id": "workbench_nearby",
+    "name": {
+      "es": "Banco de trabajo cercano",
+      "en": "Nearby workbench"
+    }
+  },
+  {
+    "id": "stonecutter",
+    "name": {
+      "es": "Cantero",
+      "en": "Stonecutter"
+    }
+  },
+  {
+    "id": "food_preparation_table",
+    "name": {
+      "es": "Mesa de preparación de alimentos",
+      "en": "Food preparation table"
+    }
+  }
 ]

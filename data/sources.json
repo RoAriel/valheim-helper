@@ -1,101 +1,1151 @@
 [
-  { "id": "stones_rocks", "name": { "es": "Piedras y rocas", "en": "Stones and rocks" }, "biomeIds": ["meadows"] },
-  { "id": "flint_shore", "name": { "es": "Orillas y playas", "en": "Shorelines and beaches" }, "biomeIds": ["meadows"] },
-  { "id": "birch_oak", "name": { "es": "Abedules y robles", "en": "Birch and oak trees" }, "biomeIds": ["meadows"], "requirement": "Hacha de bronce o superior" },
-  { "id": "pine", "name": { "es": "Pinos", "en": "Pine trees" }, "biomeIds": ["black_forest"] },
-  { "id": "deer", "name": { "es": "Ciervos", "en": "Deer" }, "biomeIds": ["meadows"] },
-  { "id": "branches_trees", "name": { "es": "Ramas y árboles", "en": "Branches and trees" }, "biomeIds": ["meadows"] },
-  { "id": "copper_deposit", "name": { "es": "Depósitos de cobre", "en": "Copper deposits" }, "biomeIds": ["black_forest"], "requirement": "Pico de asta o superior" },
-  { "id": "tin_deposit", "name": { "es": "Depósitos de estaño junto al agua", "en": "Tin deposits near water" }, "biomeIds": ["black_forest"], "requirement": "Pico de asta o superior" },
-  { "id": "bronze_forge", "name": { "es": "Combinar cobre y estaño en la forja", "en": "Combine copper and tin at a forge" }, "biomeIds": ["black_forest"], "requirement": "Fundición y forja" },
-  { "id": "boar", "name": { "es": "Jabalíes", "en": "Boars" }, "biomeIds": ["meadows"] },
-  { "id": "greydwarf", "name": { "es": "Enanos grises", "en": "Greydwarfs" }, "biomeIds": ["black_forest"] },
-  { "id": "surtling_core", "name": { "es": "Cámaras funerarias o surtlings", "en": "Burial chambers or surtlings" }, "biomeIds": ["black_forest", "swamp"] },
-  { "id": "bronze_nails_forge", "name": { "es": "Fabricados con bronce en la forja", "en": "Crafted from bronze at a forge" }, "biomeIds": ["black_forest"], "requirement": "Forja" },
-  { "id": "skeleton", "name": { "es": "Esqueletos y restos óseos", "en": "Skeletons and skeletal remains" }, "biomeIds": ["black_forest", "swamp"] },
-  { "id": "forest_mushroom", "name": { "es": "Suelo del bosque", "en": "Forest floor" }, "biomeIds": ["meadows", "black_forest"] },
-  { "id": "carrot_farming", "name": { "es": "Cultivada a partir de semillas", "en": "Grown from seeds" }, "biomeIds": ["black_forest"], "requirement": "Cultivador" }
-  ,{ "id": "eikthyr", "name": { "es": "Eikthyr", "en": "Eikthyr" }, "biomeIds": ["meadows"], "requirement": "Derrotar al primer jefe" }
-  ,{ "id": "birds", "name": { "es": "Aves", "en": "Birds" }, "biomeIds": ["meadows"] }
-  ,{ "id": "boar_deer", "name": { "es": "Jabalíes y ciervos", "en": "Boars and deer" }, "biomeIds": ["meadows"] }
-  ,{ "id": "neck", "name": { "es": "Necks", "en": "Necks" }, "biomeIds": ["meadows"] }
-  ,{ "id": "abandoned_meadows_hives", "name": { "es": "Colmenas de edificios abandonados", "en": "Hives in abandoned buildings" }, "biomeIds": ["meadows"], "requirement": "Destruir la colmena salvaje" }
-  ,{ "id": "troll", "name": { "es": "Troles", "en": "Trolls" }, "biomeIds": ["black_forest"] }
-  ,{ "id": "blueberry_bushes", "name": { "es": "Arbustos de arándanos", "en": "Blueberry bushes" }, "biomeIds": ["black_forest"] }
-  ,{ "id": "raspberry_bushes", "name": { "es": "Arbustos de frambuesas", "en": "Raspberry bushes" }, "biomeIds": ["meadows", "black_forest"] }
-  ,{ "id": "beehive_production", "name": { "es": "Colmenas construidas", "en": "Built beehives" }, "biomeIds": ["meadows"], "requirement": "Una colmena con abejas contentas" }
-  ,{ "id": "charcoal_kiln_production", "name": { "es": "Horno de carbón", "en": "Charcoal kiln" }, "biomeIds": ["black_forest"], "requirement": "Horno de carbón" }
-  ,{ "id": "cooking_deer_meat", "name": { "es": "Estación de cocina", "en": "Cooking station" }, "biomeIds": ["meadows", "black_forest"], "requirement": "Cocinar carne de ciervo" }
-  ,{ "id": "sunken_crypts", "name": { "es": "Criptas sumergidas", "en": "Sunken crypts" }, "biomeIds": ["swamp"], "requirement": "Llave de los Pantanos" }
-  ,{ "id": "ancient_trees", "name": { "es": "Árboles antiguos", "en": "Ancient trees" }, "biomeIds": ["swamp"], "requirement": "Hacha de bronce o superior" }
-  ,{ "id": "abomination", "name": { "es": "Abominaciones", "en": "Abominations" }, "biomeIds": ["swamp"] }
-  ,{ "id": "draugr", "name": { "es": "Draugr", "en": "Draugr" }, "biomeIds": ["swamp"] }
-  ,{ "id": "swamp_thistle", "name": { "es": "Suelo de Pantanos", "en": "Swamp floor" }, "biomeIds": ["swamp"] }
-  ,{ "id": "turnip_farming", "name": { "es": "Cultivado a partir de semillas", "en": "Grown from seeds" }, "biomeIds": ["swamp"], "requirement": "Cultivador" }
-  ,{ "id": "wraith", "name": { "es": "Espectros", "en": "Wraiths" }, "biomeIds": ["swamp"] }
-  ,{ "id": "iron_nails_forge", "name": { "es": "Fabricados con hierro en la forja", "en": "Crafted from iron at a forge" }, "biomeIds": ["swamp"], "requirement": "Forja" }
-  ,{ "id": "meadows_dandelions", "name": { "es": "Suelo de Praderas", "en": "Meadows floor" }, "biomeIds": ["meadows"] }
-  ,{ "id": "leech", "name": { "es": "Sanguijuelas", "en": "Leeches" }, "biomeIds": ["swamp"] }
-  ,{ "id": "cauldron_mead_base", "name": { "es": "Preparación culinaria", "en": "Food preparation" }, "biomeIds": ["black_forest"], "requirement": "Caldero o Hervidor de hidromiel, según la receta" }
-  ,{ "id": "fermenter_mead", "name": { "es": "Fermentador", "en": "Fermenter" }, "biomeIds": ["black_forest"], "requirement": "Fermentador" }
-  ,{ "id": "silver_veins", "name": { "es": "Vetas de plata", "en": "Silver veins" }, "biomeIds": ["mountains"], "requirement": "Fúrcula y pico de hierro" }
-  ,{ "id": "wolves", "name": { "es": "Lobos", "en": "Wolves" }, "biomeIds": ["mountains"] }
-  ,{ "id": "drakes", "name": { "es": "Dracos", "en": "Drakes" }, "biomeIds": ["mountains"] }
-  ,{ "id": "haldor", "name": { "es": "Haldor", "en": "Haldor" }, "biomeIds": ["black_forest"], "requirement": "Mercader" }
-  ,{ "id": "oozer", "name": { "es": "Oozers y blobs", "en": "Oozers and blobs" }, "biomeIds": ["swamp"] }
-  ,{ "id": "cloudberry_bushes", "name": { "es": "Arbustos de moras de los pantanos", "en": "Cloudberry bushes" }, "biomeIds": ["plains"] }
-  ,{ "id": "yellow_mushrooms", "name": { "es": "Cámaras y criptas", "en": "Burial chambers and crypts" }, "biomeIds": ["black_forest", "swamp"] }
-  ,{ "id": "guck_sacks", "name": { "es": "Sacos de guck de los árboles antiguos", "en": "Guck sacks on ancient trees" }, "biomeIds": ["swamp"], "requirement": "Hacha de bronce o superior" }
-  ,{ "id": "obsidian_deposits", "name": { "es": "Depósitos de obsidiana", "en": "Obsidian deposits" }, "biomeIds": ["mountains"], "requirement": "Pico de hierro o superior" }
-  ,{ "id": "onion_farming", "name": { "es": "Cultivada a partir de semillas de cebolla", "en": "Grown from onion seeds" }, "biomeIds": ["mountains"], "requirement": "Cultivador" }
-  ,{ "id": "moder", "name": { "es": "Moder", "en": "Moder" }, "biomeIds": ["mountains"], "requirement": "Derrotar al jefe de Montañas" }
-  ,{ "id": "draugr_elite", "name": { "es": "Draugr de élite", "en": "Draugr elite" }, "biomeIds": ["swamp"] }
-  ,{ "id": "stone_golem", "name": { "es": "Gólems de piedra", "en": "Stone golems" }, "biomeIds": ["mountains"] }
-  ,{ "id": "fulings", "name": { "es": "Fulings", "en": "Fulings" }, "biomeIds": ["plains"] }
-  ,{ "id": "blast_furnace_production", "name": { "es": "Horno alto", "en": "Blast furnace" }, "biomeIds": ["plains"], "requirement": "Horno alto" }
-  ,{ "id": "flax_farming", "name": { "es": "Cultivado a partir de lino", "en": "Grown from flax" }, "biomeIds": ["plains"], "requirement": "Cultivador" }
-  ,{ "id": "spinning_wheel_production", "name": { "es": "Rueca", "en": "Spinning wheel" }, "biomeIds": ["plains"], "requirement": "Rueca" }
-  ,{ "id": "barley_farming", "name": { "es": "Cultivada a partir de cebada", "en": "Grown from barley" }, "biomeIds": ["plains"], "requirement": "Cultivador" }
-  ,{ "id": "windmill_production", "name": { "es": "Molino de viento", "en": "Windmill" }, "biomeIds": ["plains"], "requirement": "Molino de viento" }
-  ,{ "id": "lox", "name": { "es": "Lox", "en": "Lox" }, "biomeIds": ["plains"] }
-  ,{ "id": "deathsquito", "name": { "es": "Mosquitos de la muerte", "en": "Deathsquitos" }, "biomeIds": ["plains"] }
-  ,{ "id": "mistlands_remains", "name": { "es": "Restos petrificados", "en": "Petrified remains" }, "biomeIds": ["mistlands"], "requirement": "Pico de metal negro o superior" }
-  ,{ "id": "infested_mines", "name": { "es": "Minas infestadas", "en": "Infested mines" }, "biomeIds": ["mistlands"] }
-  ,{ "id": "yggdrasil_shoots", "name": { "es": "Brotes de Yggdrasil", "en": "Yggdrasil shoots" }, "biomeIds": ["mistlands"], "requirement": "Hacha de metal negro o superior" }
-  ,{ "id": "sap_extractor_production", "name": { "es": "Extractor de savia", "en": "Sap extractor" }, "biomeIds": ["mistlands"], "requirement": "Extractor de savia" }
-  ,{ "id": "ancient_remains", "name": { "es": "Restos antiguos", "en": "Ancient remains" }, "biomeIds": ["mistlands"], "requirement": "Pico de metal negro o superior" }
-  ,{ "id": "eitr_refinery_production", "name": { "es": "Refinería de eitr", "en": "Eitr refinery" }, "biomeIds": ["mistlands"], "requirement": "Refinería de eitr" }
-  ,{ "id": "dvergr_components", "name": { "es": "Componentes dvergr", "en": "Dvergr components" }, "biomeIds": ["mistlands"] }
-  ,{ "id": "seekers", "name": { "es": "Seekers", "en": "Seekers" }, "biomeIds": ["mistlands"] }
-  ,{ "id": "seeker_soldiers", "name": { "es": "Soldados seeker", "en": "Seeker soldiers" }, "biomeIds": ["mistlands"] }
-  ,{ "id": "gjall", "name": { "es": "Gjall", "en": "Gjall" }, "biomeIds": ["mistlands"] }
-  ,{ "id": "mistlands_plants", "name": { "es": "Vegetación de las Tierras de Niebla", "en": "Mistlands plants" }, "biomeIds": ["mistlands"] }
-  ,{ "id": "mist_hare", "name": { "es": "Liebre de niebla", "en": "Mist hare" }, "biomeIds": ["mistlands"] }
-  ,{ "id": "wisp_fountain_production", "name": { "es": "Fuente de luces errantes", "en": "Wisp fountain" }, "biomeIds": ["mistlands"], "requirement": "Fuente de luces errantes" }
-  ,{ "id": "the_queen", "name": { "es": "La Reina", "en": "The Queen" }, "biomeIds": ["mistlands"], "requirement": "Derrotar al jefe de Tierras de Niebla" }
-  ,{ "id": "black_forge_production", "name": { "es": "Forja negra", "en": "Black forge" }, "biomeIds": ["mistlands"], "requirement": "Forja negra" }
-  ,{ "id": "ashlands_trees", "name": { "es": "Árboles de Tierras Cenicientas", "en": "Ashlands trees" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "flametal_pillars", "name": { "es": "Pilares de flametal", "en": "Flametal pillars" }, "biomeIds": ["ashlands"], "requirement": "Pico de metal negro o superior" }
-  ,{ "id": "asksvins", "name": { "es": "Asksvins", "en": "Asksvins" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "charred_warriors", "name": { "es": "Guerreros carbonizados", "en": "Charred warriors" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "morgens", "name": { "es": "Morgens", "en": "Morgens" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "bonemaw_serpent", "name": { "es": "Serpiente bocahuesos", "en": "Bonemaw serpent" }, "biomeIds": ["ashlands", "ocean"] }
-  ,{ "id": "ashlands_plants", "name": { "es": "Vegetación de Tierras Cenicientas", "en": "Ashlands plants" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "voltures", "name": { "es": "Voltures", "en": "Voltures" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "charred_fortresses", "name": { "es": "Fortalezas carbonizadas", "en": "Charred fortresses" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "sulfur_vents", "name": { "es": "Fumarolas de azufre", "en": "Sulfur vents" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "ashvine", "name": { "es": "Enredaderas de ceniza", "en": "Ashvines" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "bog_witch", "name": { "es": "Bruja del Pantano", "en": "Bog Witch" }, "biomeIds": ["swamp"], "requirement": "Mercader" }
-  ,{ "id": "leviathans", "name": { "es": "Leviatanes", "en": "Leviathans" }, "biomeIds": ["ocean"], "requirement": "Pico de hierro o superior" }
-  ,{ "id": "ocean_fishing", "name": { "es": "Pesca oceánica", "en": "Ocean fishing" }, "biomeIds": ["ocean"], "requirement": "Caña de pescar" }
-  ,{ "id": "cooking_fish", "name": { "es": "Estación de cocina", "en": "Cooking station" }, "biomeIds": ["ocean"], "requirement": "Cocinar pescado" }
-  ,{ "id": "serpents", "name": { "es": "Serpientes marinas", "en": "Sea serpents" }, "biomeIds": ["ocean"] }
-  ,{ "id": "cooking_serpent_meat", "name": { "es": "Estación de cocina", "en": "Cooking station" }, "biomeIds": ["ocean"], "requirement": "Cocinar carne de serpiente" }
-  ,{ "id": "stonecutter_processing", "name": { "es": "Cantero", "en": "Stonecutter" }, "biomeIds": ["swamp"], "requirement": "Procesar piedra en un cantero" }
-  ,{ "id": "growths_tar_pits", "name": { "es": "Growths y pozos de alquitrán", "en": "Growths and tar pits" }, "biomeIds": ["plains"] }
-  ,{ "id": "lava_blobs", "name": { "es": "Blobs de lava", "en": "Lava blobs" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "hildir", "name": { "es": "Hildir", "en": "Hildir" }, "biomeIds": ["meadows"], "requirement": "Mercader" }
-  ,{ "id": "ashlands_ground", "name": { "es": "Suelo y ruinas de Tierras Cenicientas", "en": "Ashlands terrain and ruins" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "putrid_holes", "name": { "es": "Agujeros pútridos", "en": "Putrid holes" }, "biomeIds": ["ashlands"] }
-  ,{ "id": "artisan_table_processing", "name": { "es": "Mesa de artesano", "en": "Artisan table" }, "biomeIds": ["ashlands"], "requirement": "Mesa de artesano" }
+  {
+    "id": "stones_rocks",
+    "name": {
+      "es": "Piedras y rocas",
+      "en": "Stones and rocks"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "flint_shore",
+    "name": {
+      "es": "Orillas y playas",
+      "en": "Shorelines and beaches"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "birch_oak",
+    "name": {
+      "es": "Abedules y robles",
+      "en": "Birch and oak trees"
+    },
+    "biomeIds": [
+      "meadows"
+    ],
+    "requirement": "Hacha de bronce o superior"
+  },
+  {
+    "id": "pine",
+    "name": {
+      "es": "Pinos",
+      "en": "Pine trees"
+    },
+    "biomeIds": [
+      "black_forest"
+    ]
+  },
+  {
+    "id": "deer",
+    "name": {
+      "es": "Ciervos",
+      "en": "Deer"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "branches_trees",
+    "name": {
+      "es": "Ramas y árboles",
+      "en": "Branches and trees"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "copper_deposit",
+    "name": {
+      "es": "Depósitos de cobre",
+      "en": "Copper deposits"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Pico de asta o superior"
+  },
+  {
+    "id": "tin_deposit",
+    "name": {
+      "es": "Depósitos de estaño junto al agua",
+      "en": "Tin deposits near water"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Pico de asta o superior"
+  },
+  {
+    "id": "bronze_forge",
+    "name": {
+      "es": "Combinar cobre y estaño en la forja",
+      "en": "Combine copper and tin at a forge"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Fundición y forja"
+  },
+  {
+    "id": "boar",
+    "name": {
+      "es": "Jabalíes",
+      "en": "Boars"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "greydwarf",
+    "name": {
+      "es": "Enanos grises",
+      "en": "Greydwarfs"
+    },
+    "biomeIds": [
+      "black_forest"
+    ]
+  },
+  {
+    "id": "surtling_core",
+    "name": {
+      "es": "Cámaras funerarias o surtlings",
+      "en": "Burial chambers or surtlings"
+    },
+    "biomeIds": [
+      "black_forest",
+      "swamp"
+    ]
+  },
+  {
+    "id": "bronze_nails_forge",
+    "name": {
+      "es": "Fabricados con bronce en la forja",
+      "en": "Crafted from bronze at a forge"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Forja"
+  },
+  {
+    "id": "skeleton",
+    "name": {
+      "es": "Esqueletos y restos óseos",
+      "en": "Skeletons and skeletal remains"
+    },
+    "biomeIds": [
+      "black_forest",
+      "swamp"
+    ]
+  },
+  {
+    "id": "forest_mushroom",
+    "name": {
+      "es": "Suelo del bosque",
+      "en": "Forest floor"
+    },
+    "biomeIds": [
+      "meadows",
+      "black_forest"
+    ]
+  },
+  {
+    "id": "carrot_farming",
+    "name": {
+      "es": "Cultivada a partir de semillas",
+      "en": "Grown from seeds"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Cultivador"
+  },
+  {
+    "id": "eikthyr",
+    "name": {
+      "es": "Eikthyr",
+      "en": "Eikthyr"
+    },
+    "biomeIds": [
+      "meadows"
+    ],
+    "requirement": "Derrotar al primer jefe"
+  },
+  {
+    "id": "birds",
+    "name": {
+      "es": "Aves",
+      "en": "Birds"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "boar_deer",
+    "name": {
+      "es": "Jabalíes y ciervos",
+      "en": "Boars and deer"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "neck",
+    "name": {
+      "es": "Necks",
+      "en": "Necks"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "abandoned_meadows_hives",
+    "name": {
+      "es": "Colmenas de edificios abandonados",
+      "en": "Hives in abandoned buildings"
+    },
+    "biomeIds": [
+      "meadows"
+    ],
+    "requirement": "Destruir la colmena salvaje"
+  },
+  {
+    "id": "troll",
+    "name": {
+      "es": "Troles",
+      "en": "Trolls"
+    },
+    "biomeIds": [
+      "black_forest"
+    ]
+  },
+  {
+    "id": "blueberry_bushes",
+    "name": {
+      "es": "Arbustos de arándanos",
+      "en": "Blueberry bushes"
+    },
+    "biomeIds": [
+      "black_forest"
+    ]
+  },
+  {
+    "id": "raspberry_bushes",
+    "name": {
+      "es": "Arbustos de frambuesas",
+      "en": "Raspberry bushes"
+    },
+    "biomeIds": [
+      "meadows",
+      "black_forest"
+    ]
+  },
+  {
+    "id": "beehive_production",
+    "name": {
+      "es": "Colmenas construidas",
+      "en": "Built beehives"
+    },
+    "biomeIds": [
+      "meadows"
+    ],
+    "requirement": "Una colmena con abejas contentas"
+  },
+  {
+    "id": "charcoal_kiln_production",
+    "name": {
+      "es": "Horno de carbón",
+      "en": "Charcoal kiln"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Horno de carbón"
+  },
+  {
+    "id": "cooking_deer_meat",
+    "name": {
+      "es": "Estación de cocina",
+      "en": "Cooking station"
+    },
+    "biomeIds": [
+      "meadows",
+      "black_forest"
+    ],
+    "requirement": "Cocinar carne de ciervo"
+  },
+  {
+    "id": "sunken_crypts",
+    "name": {
+      "es": "Criptas sumergidas",
+      "en": "Sunken crypts"
+    },
+    "biomeIds": [
+      "swamp"
+    ],
+    "requirement": "Llave de los Pantanos"
+  },
+  {
+    "id": "ancient_trees",
+    "name": {
+      "es": "Árboles antiguos",
+      "en": "Ancient trees"
+    },
+    "biomeIds": [
+      "swamp"
+    ],
+    "requirement": "Hacha de bronce o superior"
+  },
+  {
+    "id": "abomination",
+    "name": {
+      "es": "Abominaciones",
+      "en": "Abominations"
+    },
+    "biomeIds": [
+      "swamp"
+    ]
+  },
+  {
+    "id": "draugr",
+    "name": {
+      "es": "Draugr",
+      "en": "Draugr"
+    },
+    "biomeIds": [
+      "swamp"
+    ]
+  },
+  {
+    "id": "swamp_thistle",
+    "name": {
+      "es": "Suelo de Pantanos",
+      "en": "Swamp floor"
+    },
+    "biomeIds": [
+      "swamp"
+    ]
+  },
+  {
+    "id": "turnip_farming",
+    "name": {
+      "es": "Cultivado a partir de semillas",
+      "en": "Grown from seeds"
+    },
+    "biomeIds": [
+      "swamp"
+    ],
+    "requirement": "Cultivador"
+  },
+  {
+    "id": "wraith",
+    "name": {
+      "es": "Espectros",
+      "en": "Wraiths"
+    },
+    "biomeIds": [
+      "swamp"
+    ]
+  },
+  {
+    "id": "iron_nails_forge",
+    "name": {
+      "es": "Fabricados con hierro en la forja",
+      "en": "Crafted from iron at a forge"
+    },
+    "biomeIds": [
+      "swamp"
+    ],
+    "requirement": "Forja"
+  },
+  {
+    "id": "meadows_dandelions",
+    "name": {
+      "es": "Suelo de Praderas",
+      "en": "Meadows floor"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "leech",
+    "name": {
+      "es": "Sanguijuelas",
+      "en": "Leeches"
+    },
+    "biomeIds": [
+      "swamp"
+    ]
+  },
+  {
+    "id": "cauldron_mead_base",
+    "name": {
+      "es": "Preparación culinaria",
+      "en": "Food preparation"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Caldero o Hervidor de hidromiel, según la receta"
+  },
+  {
+    "id": "fermenter_mead",
+    "name": {
+      "es": "Fermentador",
+      "en": "Fermenter"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Fermentador"
+  },
+  {
+    "id": "silver_veins",
+    "name": {
+      "es": "Vetas de plata",
+      "en": "Silver veins"
+    },
+    "biomeIds": [
+      "mountains"
+    ],
+    "requirement": "Fúrcula y pico de hierro"
+  },
+  {
+    "id": "wolves",
+    "name": {
+      "es": "Lobos",
+      "en": "Wolves"
+    },
+    "biomeIds": [
+      "mountains"
+    ]
+  },
+  {
+    "id": "drakes",
+    "name": {
+      "es": "Dracos",
+      "en": "Drakes"
+    },
+    "biomeIds": [
+      "mountains"
+    ]
+  },
+  {
+    "id": "haldor",
+    "name": {
+      "es": "Haldor",
+      "en": "Haldor"
+    },
+    "biomeIds": [
+      "black_forest"
+    ],
+    "requirement": "Mercader"
+  },
+  {
+    "id": "oozer",
+    "name": {
+      "es": "Oozers y blobs",
+      "en": "Oozers and blobs"
+    },
+    "biomeIds": [
+      "swamp"
+    ]
+  },
+  {
+    "id": "cloudberry_bushes",
+    "name": {
+      "es": "Arbustos de moras de los pantanos",
+      "en": "Cloudberry bushes"
+    },
+    "biomeIds": [
+      "plains"
+    ]
+  },
+  {
+    "id": "yellow_mushrooms",
+    "name": {
+      "es": "Cámaras y criptas",
+      "en": "Burial chambers and crypts"
+    },
+    "biomeIds": [
+      "black_forest",
+      "swamp"
+    ]
+  },
+  {
+    "id": "guck_sacks",
+    "name": {
+      "es": "Sacos de guck de los árboles antiguos",
+      "en": "Guck sacks on ancient trees"
+    },
+    "biomeIds": [
+      "swamp"
+    ],
+    "requirement": "Hacha de bronce o superior"
+  },
+  {
+    "id": "obsidian_deposits",
+    "name": {
+      "es": "Depósitos de obsidiana",
+      "en": "Obsidian deposits"
+    },
+    "biomeIds": [
+      "mountains"
+    ],
+    "requirement": "Pico de hierro o superior"
+  },
+  {
+    "id": "onion_farming",
+    "name": {
+      "es": "Cultivada a partir de semillas de cebolla",
+      "en": "Grown from onion seeds"
+    },
+    "biomeIds": [
+      "mountains"
+    ],
+    "requirement": "Cultivador"
+  },
+  {
+    "id": "moder",
+    "name": {
+      "es": "Moder",
+      "en": "Moder"
+    },
+    "biomeIds": [
+      "mountains"
+    ],
+    "requirement": "Derrotar al jefe de Montañas"
+  },
+  {
+    "id": "draugr_elite",
+    "name": {
+      "es": "Draugr de élite",
+      "en": "Draugr elite"
+    },
+    "biomeIds": [
+      "swamp"
+    ]
+  },
+  {
+    "id": "stone_golem",
+    "name": {
+      "es": "Gólems de piedra",
+      "en": "Stone golems"
+    },
+    "biomeIds": [
+      "mountains"
+    ]
+  },
+  {
+    "id": "fulings",
+    "name": {
+      "es": "Fulings",
+      "en": "Fulings"
+    },
+    "biomeIds": [
+      "plains"
+    ]
+  },
+  {
+    "id": "blast_furnace_production",
+    "name": {
+      "es": "Horno alto",
+      "en": "Blast furnace"
+    },
+    "biomeIds": [
+      "plains"
+    ],
+    "requirement": "Horno alto"
+  },
+  {
+    "id": "flax_farming",
+    "name": {
+      "es": "Cultivado a partir de lino",
+      "en": "Grown from flax"
+    },
+    "biomeIds": [
+      "plains"
+    ],
+    "requirement": "Cultivador"
+  },
+  {
+    "id": "spinning_wheel_production",
+    "name": {
+      "es": "Rueca",
+      "en": "Spinning wheel"
+    },
+    "biomeIds": [
+      "plains"
+    ],
+    "requirement": "Rueca"
+  },
+  {
+    "id": "barley_farming",
+    "name": {
+      "es": "Cultivada a partir de cebada",
+      "en": "Grown from barley"
+    },
+    "biomeIds": [
+      "plains"
+    ],
+    "requirement": "Cultivador"
+  },
+  {
+    "id": "windmill_production",
+    "name": {
+      "es": "Molino de viento",
+      "en": "Windmill"
+    },
+    "biomeIds": [
+      "plains"
+    ],
+    "requirement": "Molino de viento"
+  },
+  {
+    "id": "lox",
+    "name": {
+      "es": "Lox",
+      "en": "Lox"
+    },
+    "biomeIds": [
+      "plains"
+    ]
+  },
+  {
+    "id": "deathsquito",
+    "name": {
+      "es": "Mosquitos de la muerte",
+      "en": "Deathsquitos"
+    },
+    "biomeIds": [
+      "plains"
+    ]
+  },
+  {
+    "id": "mistlands_remains",
+    "name": {
+      "es": "Restos petrificados",
+      "en": "Petrified remains"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Pico de metal negro o superior"
+  },
+  {
+    "id": "infested_mines",
+    "name": {
+      "es": "Minas infestadas",
+      "en": "Infested mines"
+    },
+    "biomeIds": [
+      "mistlands"
+    ]
+  },
+  {
+    "id": "yggdrasil_shoots",
+    "name": {
+      "es": "Brotes de Yggdrasil",
+      "en": "Yggdrasil shoots"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Hacha de metal negro o superior"
+  },
+  {
+    "id": "sap_extractor_production",
+    "name": {
+      "es": "Extractor de savia",
+      "en": "Sap extractor"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Extractor de savia"
+  },
+  {
+    "id": "ancient_remains",
+    "name": {
+      "es": "Restos antiguos",
+      "en": "Ancient remains"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Pico de metal negro o superior"
+  },
+  {
+    "id": "eitr_refinery_production",
+    "name": {
+      "es": "Refinería de eitr",
+      "en": "Eitr refinery"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Refinería de eitr"
+  },
+  {
+    "id": "dvergr_components",
+    "name": {
+      "es": "Componentes dvergr",
+      "en": "Dvergr components"
+    },
+    "biomeIds": [
+      "mistlands"
+    ]
+  },
+  {
+    "id": "seekers",
+    "name": {
+      "es": "Seekers",
+      "en": "Seekers"
+    },
+    "biomeIds": [
+      "mistlands"
+    ]
+  },
+  {
+    "id": "seeker_soldiers",
+    "name": {
+      "es": "Soldados seeker",
+      "en": "Seeker soldiers"
+    },
+    "biomeIds": [
+      "mistlands"
+    ]
+  },
+  {
+    "id": "gjall",
+    "name": {
+      "es": "Gjall",
+      "en": "Gjall"
+    },
+    "biomeIds": [
+      "mistlands"
+    ]
+  },
+  {
+    "id": "mistlands_plants",
+    "name": {
+      "es": "Vegetación de las Tierras de Niebla",
+      "en": "Mistlands plants"
+    },
+    "biomeIds": [
+      "mistlands"
+    ]
+  },
+  {
+    "id": "mist_hare",
+    "name": {
+      "es": "Liebre de niebla",
+      "en": "Mist hare"
+    },
+    "biomeIds": [
+      "mistlands"
+    ]
+  },
+  {
+    "id": "wisp_fountain_production",
+    "name": {
+      "es": "Fuente de luces errantes",
+      "en": "Wisp fountain"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Fuente de luces errantes"
+  },
+  {
+    "id": "the_queen",
+    "name": {
+      "es": "La Reina",
+      "en": "The Queen"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Derrotar al jefe de Tierras de Niebla"
+  },
+  {
+    "id": "black_forge_production",
+    "name": {
+      "es": "Forja negra",
+      "en": "Black forge"
+    },
+    "biomeIds": [
+      "mistlands"
+    ],
+    "requirement": "Forja negra"
+  },
+  {
+    "id": "ashlands_trees",
+    "name": {
+      "es": "Árboles de Tierras Cenicientas",
+      "en": "Ashlands trees"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "flametal_pillars",
+    "name": {
+      "es": "Pilares de flametal",
+      "en": "Flametal pillars"
+    },
+    "biomeIds": [
+      "ashlands"
+    ],
+    "requirement": "Pico de metal negro o superior"
+  },
+  {
+    "id": "asksvins",
+    "name": {
+      "es": "Asksvins",
+      "en": "Asksvins"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "charred_warriors",
+    "name": {
+      "es": "Guerreros carbonizados",
+      "en": "Charred warriors"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "morgens",
+    "name": {
+      "es": "Morgens",
+      "en": "Morgens"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "bonemaw_serpent",
+    "name": {
+      "es": "Serpiente bocahuesos",
+      "en": "Bonemaw serpent"
+    },
+    "biomeIds": [
+      "ashlands",
+      "ocean"
+    ]
+  },
+  {
+    "id": "ashlands_plants",
+    "name": {
+      "es": "Vegetación de Tierras Cenicientas",
+      "en": "Ashlands plants"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "voltures",
+    "name": {
+      "es": "Voltures",
+      "en": "Voltures"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "charred_fortresses",
+    "name": {
+      "es": "Fortalezas carbonizadas",
+      "en": "Charred fortresses"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "sulfur_vents",
+    "name": {
+      "es": "Fumarolas de azufre",
+      "en": "Sulfur vents"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "ashvine",
+    "name": {
+      "es": "Enredaderas de ceniza",
+      "en": "Ashvines"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "bog_witch",
+    "name": {
+      "es": "Bruja del Pantano",
+      "en": "Bog Witch"
+    },
+    "biomeIds": [
+      "swamp"
+    ],
+    "requirement": "Mercader"
+  },
+  {
+    "id": "leviathans",
+    "name": {
+      "es": "Leviatanes",
+      "en": "Leviathans"
+    },
+    "biomeIds": [
+      "ocean"
+    ],
+    "requirement": "Pico de hierro o superior"
+  },
+  {
+    "id": "ocean_fishing",
+    "name": {
+      "es": "Pesca oceánica",
+      "en": "Ocean fishing"
+    },
+    "biomeIds": [
+      "ocean"
+    ],
+    "requirement": "Caña de pescar"
+  },
+  {
+    "id": "cooking_fish",
+    "name": {
+      "es": "Estación de cocina",
+      "en": "Cooking station"
+    },
+    "biomeIds": [
+      "ocean"
+    ],
+    "requirement": "Cocinar pescado"
+  },
+  {
+    "id": "serpents",
+    "name": {
+      "es": "Serpientes marinas",
+      "en": "Sea serpents"
+    },
+    "biomeIds": [
+      "ocean"
+    ]
+  },
+  {
+    "id": "cooking_serpent_meat",
+    "name": {
+      "es": "Estación de cocina",
+      "en": "Cooking station"
+    },
+    "biomeIds": [
+      "ocean"
+    ],
+    "requirement": "Cocinar carne de serpiente"
+  },
+  {
+    "id": "stonecutter_processing",
+    "name": {
+      "es": "Cantero",
+      "en": "Stonecutter"
+    },
+    "biomeIds": [
+      "swamp"
+    ],
+    "requirement": "Procesar piedra en un cantero"
+  },
+  {
+    "id": "growths_tar_pits",
+    "name": {
+      "es": "Growths y pozos de alquitrán",
+      "en": "Growths and tar pits"
+    },
+    "biomeIds": [
+      "plains"
+    ]
+  },
+  {
+    "id": "lava_blobs",
+    "name": {
+      "es": "Blobs de lava",
+      "en": "Lava blobs"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "hildir",
+    "name": {
+      "es": "Hildir",
+      "en": "Hildir"
+    },
+    "biomeIds": [
+      "meadows"
+    ],
+    "requirement": "Mercader"
+  },
+  {
+    "id": "ashlands_ground",
+    "name": {
+      "es": "Suelo y ruinas de Tierras Cenicientas",
+      "en": "Ashlands terrain and ruins"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "putrid_holes",
+    "name": {
+      "es": "Agujeros pútridos",
+      "en": "Putrid holes"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "artisan_table_processing",
+    "name": {
+      "es": "Mesa de artesano",
+      "en": "Artisan table"
+    },
+    "biomeIds": [
+      "ashlands"
+    ],
+    "requirement": "Mesa de artesano"
+  },
+  {
+    "id": "bear",
+    "name": {
+      "es": "Osos",
+      "en": "Bears"
+    },
+    "biomeIds": [
+      "black_forest"
+    ]
+  },
+  {
+    "id": "mountain_caves",
+    "name": {
+      "es": "Cuevas de las Montañas",
+      "en": "Mountain caves"
+    },
+    "biomeIds": [
+      "mountains"
+    ]
+  },
+  {
+    "id": "abandoned_houses",
+    "name": {
+      "es": "Cofres de casas abandonadas",
+      "en": "Abandoned house chests"
+    },
+    "biomeIds": [
+      "meadows"
+    ]
+  },
+  {
+    "id": "hens_and_haldor",
+    "name": {
+      "es": "Gallinas o Haldor",
+      "en": "Hens or Haldor"
+    },
+    "biomeIds": [
+      "plains",
+      "black_forest"
+    ],
+    "requirement": "Derrotar a Yagluth para comprar el primer huevo a Haldor."
+  },
+  {
+    "id": "world_fishing",
+    "name": {
+      "es": "Pesca en los distintos biomas",
+      "en": "Fishing across biomes"
+    },
+    "biomeIds": [
+      "meadows",
+      "black_forest",
+      "swamp",
+      "mountains",
+      "plains",
+      "mistlands",
+      "ashlands",
+      "ocean"
+    ]
+  },
+  {
+    "id": "food_preparation",
+    "name": {
+      "es": "Cocina, caldero o mesa de preparación",
+      "en": "Cooking, cauldron or food preparation"
+    },
+    "biomeIds": [
+      "meadows",
+      "black_forest",
+      "swamp",
+      "mountains",
+      "plains",
+      "mistlands",
+      "ashlands",
+      "ocean"
+    ]
+  },
+  {
+    "id": "fallen_valkyries",
+    "name": {
+      "es": "Valquirias caídas",
+      "en": "Fallen Valkyries"
+    },
+    "biomeIds": [
+      "ashlands"
+    ]
+  },
+  {
+    "id": "vile",
+    "name": {
+      "es": "Viles",
+      "en": "Viles"
+    },
+    "biomeIds": [
+      "plains"
+    ]
+  },
+  {
+    "id": "crafted_equipment",
+    "name": {
+      "es": "Equipo fabricado previamente",
+      "en": "Previously crafted equipment"
+    },
+    "biomeIds": [
+      "mistlands",
+      "ashlands"
+    ]
+  }
 ]

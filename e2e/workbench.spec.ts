@@ -9,7 +9,7 @@ test("el catálogo se adapta a los tamaños de referencia", async ({ page }, tes
 
   if (testInfo.project.name === "mobile-390") {
     await expect(page.locator(".field-biome-list")).toBeVisible();
-    await expect(page.getByRole("button", { name: /Praderas/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: "ᛃ Praderas", exact: true })).toBeVisible();
     await expect(page.locator(".field-biome-list")).toHaveCSS("overflow-x", "auto");
   }
 
@@ -39,7 +39,7 @@ test("la búsqueda, filtros y estado vacío mantienen un detalle coherente", asy
 
   await page.getByRole("button", { name: "Limpiar filtros" }).last().click();
   await expect(search).toHaveValue("");
-  await expect(page.getByText("296 objetos")).toBeVisible();
+  await expect(page.getByText("356 objetos")).toBeVisible();
 
   await page.getByRole("button", { name: "Comida", exact: true }).click();
   await expect(page.getByRole("group", { name: "Filtrar Comida" })).toBeVisible();
@@ -139,16 +139,17 @@ test("la revisión de datos separa candidatos pendientes del catálogo", async (
   await page.getByRole("tab", { name: /Revisión de datos/ }).click();
   await expect(page.getByRole("heading", { name: "Objetos pendientes" })).toBeVisible();
   await expect(page.getByText("Vista de solo lectura")).toBeVisible();
-  await expect(page.getByText("310", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("227", { exact: true }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "Funcionales", exact: true }).click();
+  await page.getByLabel("Mostrar aprobados, rechazados, conocidos y excluidos").check();
   await page.getByLabel("Familia").selectOption("consumable");
   await expect(page.locator(".field-candidate").first()).toBeVisible();
   await expect(page.locator(".field-candidate-grid")).toContainText("Consumibles");
 
   const search = page.getByRole("textbox", { name: "Buscar candidatos" });
-  await search.fill("Recipe_FeastAshlands");
-  await expect(page.getByRole("heading", { name: "Ashlands Gourmet Bowl" })).toBeVisible();
+  await search.fill("Recipe_Feaster");
+  await expect(page.getByRole("heading", { name: "Serving Tray" })).toBeVisible();
 
   await page.getByRole("tab", { name: "Catálogo" }).click();
   await expect(page.getByRole("heading", { name: "¿Qué querés preparar?" })).toBeVisible();

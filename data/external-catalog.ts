@@ -146,6 +146,17 @@ const externalMaterialAliases: Record<string, string> = {
   [normalizeEnglishName("Corewood")]: "core_wood",
 };
 
+const externalItemAliases: Record<string, string> = {
+  [normalizeEnglishName("Nidhgg the Bleeding")]: normalizeEnglishName("Nidhögg the Bleeding"),
+  [normalizeEnglishName("Nidhgg the Primal")]: normalizeEnglishName("Nidhögg the Primal"),
+  [normalizeEnglishName("Nidhgg the Thundering")]: normalizeEnglishName("Nidhögg the Thundering"),
+};
+
+function normalizedItemName(value: string) {
+  const normalized = normalizeEnglishName(value);
+  return externalItemAliases[normalized] ?? normalized;
+}
+
 function normalizedCosts(costs: MaterialCost[]) {
   return Object.fromEntries(costs.map((cost) => [cost.materialId, cost.amount]).sort(([a], [b]) => a.localeCompare(b)));
 }
@@ -176,10 +187,10 @@ function compareRecipe(localRecipe: Recipe, external: ExternalCatalogEntry, mate
 export function buildSemanticDiff(snapshot: ExternalCatalogSnapshot, generatedAt = new Date().toISOString()): SemanticDiff {
   const externalByName = new Map<string, ExternalCatalogEntry[]>();
   for (const entry of snapshot.entries) {
-    const key = normalizeEnglishName(entry.itemNameEn);
+    const key = normalizedItemName(entry.itemNameEn);
     externalByName.set(key, [...(externalByName.get(key) ?? []), entry]);
   }
-  const localNames = new Set(items.map((item) => normalizeEnglishName(item.name.en)));
+  const localNames = new Set(items.map((item) => normalizedItemName(item.name.en)));
   const materialIds = new Map(materials.map((material) => [normalizeEnglishName(material.name.en), material.id]));
   for (const [externalName, materialId] of Object.entries(externalMaterialAliases)) materialIds.set(externalName, materialId);
   const modified: SemanticDiff["modified"] = [];
@@ -190,7 +201,7 @@ export function buildSemanticDiff(snapshot: ExternalCatalogSnapshot, generatedAt
   let unchanged = 0;
 
   for (const item of items) {
-    const candidates = (externalByName.get(normalizeEnglishName(item.name.en)) ?? []).filter((entry) =>
+    const candidates = (externalByName.get(normalizedItemName(item.name.en)) ?? []).filter((entry) =>
       entry.sourceKind === "recipe" || item.category === "Construcción",
     );
     if (!candidates.length) { localOnly.push({ itemId: item.id, itemNameEn: item.name.en }); continue; }
@@ -211,7 +222,7 @@ export function buildSemanticDiff(snapshot: ExternalCatalogSnapshot, generatedAt
     else unchanged += 1;
   }
 
-  const externalOnly = snapshot.entries.filter((entry) => !localNames.has(normalizeEnglishName(entry.itemNameEn))).map((entry) => ({
+  const externalOnly = snapshot.entries.filter((entry) => !localNames.has(normalizedItemName(entry.itemNameEn))).map((entry) => ({
     externalId: entry.externalId, itemNameEn: entry.itemNameEn, sourceKind: entry.sourceKind,
   }));
   return {

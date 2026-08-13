@@ -1,171 +1,2400 @@
 [
-  { "id": "stone", "name": { "es": "Piedra", "en": "Stone" }, "icon": "🪨", "sourceIds": ["stones_rocks"] },
-  { "id": "flint", "name": { "es": "Sílex", "en": "Flint" }, "icon": "🪨", "sourceIds": ["flint_shore"] },
-  { "id": "fine_wood", "name": { "es": "Madera fina", "en": "Fine wood" }, "icon": "🪵", "sourceIds": ["birch_oak"] },
-  { "id": "core_wood", "name": { "es": "Madera de núcleo", "en": "Core wood" }, "icon": "🌲", "sourceIds": ["pine"] },
-  { "id": "deer_hide", "name": { "es": "Piel de ciervo", "en": "Deer hide" }, "icon": "🦌", "sourceIds": ["deer"] },
-  { "id": "wood", "name": { "es": "Madera", "en": "Wood" }, "icon": "🪵", "sourceIds": ["branches_trees"] },
-  { "id": "copper", "name": { "es": "Cobre", "en": "Copper" }, "icon": "🟠", "sourceIds": ["copper_deposit"] },
-  { "id": "tin", "name": { "es": "Estaño", "en": "Tin" }, "icon": "⚪", "sourceIds": ["tin_deposit"] },
-  { "id": "bronze", "name": { "es": "Bronce", "en": "Bronze" }, "icon": "🔶", "sourceIds": ["bronze_forge"] },
-  { "id": "leather_scraps", "name": { "es": "Retales de cuero", "en": "Leather scraps" }, "icon": "🐗", "sourceIds": ["boar"] },
-  { "id": "greydwarf_eye", "name": { "es": "Ojo de enano gris", "en": "Greydwarf eye" }, "icon": "👁️", "sourceIds": ["greydwarf"] },
-  { "id": "surtling_core", "name": { "es": "Núcleo de surtling", "en": "Surtling core" }, "icon": "🔥", "sourceIds": ["surtling_core"] },
-  { "id": "resin", "name": { "es": "Resina", "en": "Resin" }, "icon": "💧", "sourceIds": ["greydwarf"] },
-  { "id": "bronze_nails", "name": { "es": "Clavos de bronce", "en": "Bronze nails" }, "icon": "🔩", "sourceIds": ["bronze_nails_forge"] },
-  { "id": "deer_trophy", "name": { "es": "Trofeo de ciervo", "en": "Deer trophy" }, "icon": "🦌", "sourceIds": ["deer"] },
-  { "id": "bone_fragments", "name": { "es": "Fragmentos de hueso", "en": "Bone fragments" }, "icon": "🦴", "sourceIds": ["skeleton"] },
-  { "id": "mushroom", "name": { "es": "Hongo", "en": "Mushroom" }, "icon": "🍄", "sourceIds": ["forest_mushroom"] },
-  { "id": "carrot", "name": { "es": "Zanahoria", "en": "Carrot" }, "icon": "🥕", "sourceIds": ["carrot_farming"] }
-  ,{ "id": "hard_antler", "name": { "es": "Asta dura", "en": "Hard antler" }, "icon": "🦌", "sourceIds": ["eikthyr"] }
-  ,{ "id": "feathers", "name": { "es": "Plumas", "en": "Feathers" }, "icon": "🪶", "sourceIds": ["birds"] }
-  ,{ "id": "raw_meat", "name": { "es": "Carne cruda", "en": "Raw meat" }, "icon": "🥩", "sourceIds": ["boar_deer"] }
-  ,{ "id": "neck_tail", "name": { "es": "Cola de Neck", "en": "Neck tail" }, "icon": "🦎", "sourceIds": ["neck"] }
-  ,{ "id": "queen_bee", "name": { "es": "Reina abeja", "en": "Queen bee" }, "icon": "🐝", "sourceIds": ["abandoned_meadows_hives"] }
-  ,{ "id": "troll_hide", "name": { "es": "Piel de trol", "en": "Troll hide" }, "icon": "🐲", "sourceIds": ["troll"] }
-  ,{ "id": "blueberries", "name": { "es": "Arándanos", "en": "Blueberries" }, "icon": "🫐", "sourceIds": ["blueberry_bushes"] }
-  ,{ "id": "raspberries", "name": { "es": "Frambuesas", "en": "Raspberries" }, "icon": "🍓", "sourceIds": ["raspberry_bushes"] }
-  ,{ "id": "honey", "name": { "es": "Miel", "en": "Honey" }, "icon": "🍯", "sourceIds": ["beehive_production"] }
-  ,{ "id": "coal", "name": { "es": "Carbón", "en": "Coal" }, "icon": "⬛", "sourceIds": ["charcoal_kiln_production"] }
-  ,{ "id": "boar_meat", "name": { "es": "Carne de jabalí", "en": "Boar meat" }, "icon": "🥩", "sourceIds": ["boar"] }
-  ,{ "id": "raw_deer_meat", "name": { "es": "Carne de ciervo cruda", "en": "Raw deer meat" }, "icon": "🥩", "sourceIds": ["deer"] }
-  ,{ "id": "cooked_deer_meat", "name": { "es": "Carne de ciervo cocinada", "en": "Cooked deer meat" }, "icon": "🍖", "sourceIds": ["cooking_deer_meat"] }
-  ,{ "id": "iron", "name": { "es": "Hierro", "en": "Iron" }, "icon": "⬜", "sourceIds": ["sunken_crypts"] }
-  ,{ "id": "ancient_bark", "name": { "es": "Corteza ancestral", "en": "Ancient bark" }, "icon": "🪵", "sourceIds": ["ancient_trees"] }
-  ,{ "id": "root", "name": { "es": "Raíz", "en": "Root" }, "icon": "🌿", "sourceIds": ["abomination"] }
-  ,{ "id": "entrails", "name": { "es": "Entrañas", "en": "Entrails" }, "icon": "🫀", "sourceIds": ["draugr"] }
-  ,{ "id": "thistle", "name": { "es": "Cardo", "en": "Thistle" }, "icon": "🌱", "sourceIds": ["swamp_thistle"] }
-  ,{ "id": "turnip", "name": { "es": "Nabo", "en": "Turnip" }, "icon": "🥬", "sourceIds": ["turnip_farming"] }
-  ,{ "id": "chain", "name": { "es": "Cadena", "en": "Chain" }, "icon": "⛓️", "sourceIds": ["wraith"] }
-  ,{ "id": "iron_nails", "name": { "es": "Clavos de hierro", "en": "Iron nails" }, "icon": "🔩", "sourceIds": ["iron_nails_forge"] }
-  ,{ "id": "dandelion", "name": { "es": "Diente de león", "en": "Dandelion" }, "icon": "🌼", "sourceIds": ["meadows_dandelions"] }
-  ,{ "id": "bloodbag", "name": { "es": "Saco de sangre", "en": "Bloodbag" }, "icon": "🩸", "sourceIds": ["leech"] }
-  ,{ "id": "mead_base_poison_resist", "name": { "es": "Base de hidromiel: resistencia al veneno", "en": "Mead base: poison resistance" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "poison_resistance_mead", "name": { "es": "Hidromiel de resistencia al veneno", "en": "Poison resistance mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "silver", "name": { "es": "Plata", "en": "Silver" }, "icon": "⚪", "sourceIds": ["silver_veins"] }
-  ,{ "id": "wolf_pelt", "name": { "es": "Piel de lobo", "en": "Wolf pelt" }, "icon": "🐺", "sourceIds": ["wolves"] }
-  ,{ "id": "wolf_trophy", "name": { "es": "Trofeo de lobo", "en": "Wolf trophy" }, "icon": "🐺", "sourceIds": ["wolves"] }
-  ,{ "id": "wolf_fang", "name": { "es": "Colmillo de lobo", "en": "Wolf fang" }, "icon": "🦷", "sourceIds": ["wolves"] }
-  ,{ "id": "drake_trophy", "name": { "es": "Trofeo de draco", "en": "Drake trophy" }, "icon": "🐉", "sourceIds": ["drakes"] }
-  ,{ "id": "freeze_gland", "name": { "es": "Glándula congelante", "en": "Freeze gland" }, "icon": "❄️", "sourceIds": ["drakes"] }
-  ,{ "id": "ymir_flesh", "name": { "es": "Carne de Ymir", "en": "Ymir flesh" }, "icon": "🥩", "sourceIds": ["haldor"] }
-  ,{ "id": "ooze", "name": { "es": "Lodo", "en": "Ooze" }, "icon": "🟢", "sourceIds": ["oozer"] }
-  ,{ "id": "cloudberries", "name": { "es": "Moras de los pantanos", "en": "Cloudberries" }, "icon": "🟡", "sourceIds": ["cloudberry_bushes"] }
-  ,{ "id": "yellow_mushroom", "name": { "es": "Hongo amarillo", "en": "Yellow mushroom" }, "icon": "🍄", "sourceIds": ["yellow_mushrooms"] }
-  ,{ "id": "guck", "name": { "es": "Guck", "en": "Guck" }, "icon": "🟢", "sourceIds": ["guck_sacks"] }
-  ,{ "id": "obsidian", "name": { "es": "Obsidiana", "en": "Obsidian" }, "icon": "⬛", "sourceIds": ["obsidian_deposits"] }
-  ,{ "id": "onion", "name": { "es": "Cebolla", "en": "Onion" }, "icon": "🧅", "sourceIds": ["onion_farming"] }
-  ,{ "id": "wolf_meat", "name": { "es": "Carne de lobo", "en": "Wolf meat" }, "icon": "🥩", "sourceIds": ["wolves"] }
-  ,{ "id": "dragon_tear", "name": { "es": "Lágrima de dragón", "en": "Dragon tear" }, "icon": "💧", "sourceIds": ["moder"] }
-  ,{ "id": "mead_base_health_medium", "name": { "es": "Base de hidromiel: curación media", "en": "Mead base: medium healing" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "medium_health_mead", "name": { "es": "Hidromiel de curación media", "en": "Medium healing mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "mead_base_stamina_medium", "name": { "es": "Base de hidromiel: aguante medio", "en": "Mead base: medium stamina" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "medium_stamina_mead", "name": { "es": "Hidromiel de aguante medio", "en": "Medium stamina mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "draugr_elite_trophy", "name": { "es": "Trofeo de draugr de élite", "en": "Draugr elite trophy" }, "icon": "🏆", "sourceIds": ["draugr_elite"] }
-  ,{ "id": "crystal", "name": { "es": "Cristal", "en": "Crystal" }, "icon": "🔷", "sourceIds": ["stone_golem"] }
-  ,{ "id": "black_metal_scrap", "name": { "es": "Chatarra de metal negro", "en": "Black metal scrap" }, "icon": "⬛", "sourceIds": ["fulings"] }
-  ,{ "id": "black_metal", "name": { "es": "Metal negro", "en": "Black metal" }, "icon": "⬛", "sourceIds": ["blast_furnace_production"] }
-  ,{ "id": "flax", "name": { "es": "Lino", "en": "Flax" }, "icon": "🌾", "sourceIds": ["flax_farming"] }
-  ,{ "id": "linen_thread", "name": { "es": "Hilo de lino", "en": "Linen thread" }, "icon": "🧵", "sourceIds": ["spinning_wheel_production"] }
-  ,{ "id": "barley", "name": { "es": "Cebada", "en": "Barley" }, "icon": "🌾", "sourceIds": ["barley_farming"] }
-  ,{ "id": "barley_flour", "name": { "es": "Harina de cebada", "en": "Barley flour" }, "icon": "🌾", "sourceIds": ["windmill_production"] }
-  ,{ "id": "lox_meat", "name": { "es": "Carne de lox", "en": "Lox meat" }, "icon": "🥩", "sourceIds": ["lox"] }
-  ,{ "id": "lox_pelt", "name": { "es": "Piel de lox", "en": "Lox pelt" }, "icon": "🦬", "sourceIds": ["lox"] }
-  ,{ "id": "needle", "name": { "es": "Aguja", "en": "Needle" }, "icon": "🪡", "sourceIds": ["deathsquito"] }
-  ,{ "id": "bread_dough", "name": { "es": "Masa de pan", "en": "Bread dough" }, "icon": "🍞", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "unbaked_lox_pie", "name": { "es": "Pastel de lox sin hornear", "en": "Unbaked lox pie" }, "icon": "🥧", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "barley_wine_base", "name": { "es": "Base de vino de cebada", "en": "Barley wine base" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "barley_wine", "name": { "es": "Vino de cebada", "en": "Barley wine" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "black_marble", "name": { "es": "Mármol negro", "en": "Black marble" }, "icon": "⬛", "sourceIds": ["mistlands_remains"] }
-  ,{ "id": "black_core", "name": { "es": "Núcleo negro", "en": "Black core" }, "icon": "⚫", "sourceIds": ["infested_mines"] }
-  ,{ "id": "yggdrasil_wood", "name": { "es": "Madera de Yggdrasil", "en": "Yggdrasil wood" }, "icon": "🌳", "sourceIds": ["yggdrasil_shoots"] }
-  ,{ "id": "sap", "name": { "es": "Savia", "en": "Sap" }, "icon": "🟡", "sourceIds": ["sap_extractor_production"] }
-  ,{ "id": "soft_tissue", "name": { "es": "Tejido blando", "en": "Soft tissue" }, "icon": "🧠", "sourceIds": ["ancient_remains"] }
-  ,{ "id": "refined_eitr", "name": { "es": "Eitr refinado", "en": "Refined eitr" }, "icon": "✨", "sourceIds": ["eitr_refinery_production"] }
-  ,{ "id": "dvergr_extractor", "name": { "es": "Extractor dvergr", "en": "Dvergr extractor" }, "icon": "⚙️", "sourceIds": ["dvergr_components"] }
-  ,{ "id": "carapace", "name": { "es": "Caparazón", "en": "Carapace" }, "icon": "🪲", "sourceIds": ["seekers"] }
-  ,{ "id": "scale_hide", "name": { "es": "Piel escamada", "en": "Scale hide" }, "icon": "🟫", "sourceIds": ["seekers"] }
-  ,{ "id": "mandible", "name": { "es": "Mandíbula", "en": "Mandible" }, "icon": "🦷", "sourceIds": ["seeker_soldiers"] }
-  ,{ "id": "bilebag", "name": { "es": "Saco de bilis", "en": "Bilebag" }, "icon": "🟢", "sourceIds": ["gjall"] }
-  ,{ "id": "royal_jelly", "name": { "es": "Jalea real", "en": "Royal jelly" }, "icon": "🍯", "sourceIds": ["infested_mines"] }
-  ,{ "id": "jotun_puffs", "name": { "es": "Hongos Jotun", "en": "Jotun puffs" }, "icon": "🍄", "sourceIds": ["mistlands_plants"] }
-  ,{ "id": "magecap", "name": { "es": "Sombrero de mago", "en": "Magecap" }, "icon": "🍄", "sourceIds": ["mistlands_plants"] }
-  ,{ "id": "seeker_meat", "name": { "es": "Carne de seeker", "en": "Seeker meat" }, "icon": "🥩", "sourceIds": ["seekers"] }
-  ,{ "id": "hare_meat", "name": { "es": "Carne de liebre", "en": "Hare meat" }, "icon": "🥩", "sourceIds": ["mist_hare"] }
-  ,{ "id": "wisp", "name": { "es": "Luz errante", "en": "Wisp" }, "icon": "💡", "sourceIds": ["wisp_fountain_production"] }
-  ,{ "id": "torn_spirit", "name": { "es": "Espíritu desgarrado", "en": "Torn spirit" }, "icon": "👻", "sourceIds": ["the_queen"] }
-  ,{ "id": "blood_clot", "name": { "es": "Coágulo de sangre", "en": "Blood clot" }, "icon": "🩸", "sourceIds": ["gjall"] }
-  ,{ "id": "mechanical_spring", "name": { "es": "Resorte mecánico", "en": "Mechanical spring" }, "icon": "⚙️", "sourceIds": ["black_forge_production"] }
-  ,{ "id": "skeleton_trophy", "name": { "es": "Trofeo de esqueleto", "en": "Skeleton trophy" }, "icon": "🏆", "sourceIds": ["skeleton"] }
-  ,{ "id": "uncooked_misthare_supreme", "name": { "es": "Liebre suprema sin cocinar", "en": "Uncooked misthare supreme" }, "icon": "🍲", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "uncooked_stuffed_mushroom", "name": { "es": "Hongo relleno sin cocinar", "en": "Uncooked stuffed mushroom" }, "icon": "🍄", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "uncooked_meat_platter", "name": { "es": "Bandeja de carne sin cocinar", "en": "Uncooked meat platter" }, "icon": "🍖", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "ashwood", "name": { "es": "Madera de ceniza", "en": "Ashwood" }, "icon": "🪵", "sourceIds": ["ashlands_trees"] }
-  ,{ "id": "flametal", "name": { "es": "Flametal", "en": "Flametal" }, "icon": "🔥", "sourceIds": ["flametal_pillars"] }
-  ,{ "id": "asksvin_hide", "name": { "es": "Piel de asksvin", "en": "Asksvin hide" }, "icon": "🦎", "sourceIds": ["asksvins"] }
-  ,{ "id": "asksvin_tail", "name": { "es": "Cola de asksvin", "en": "Asksvin tail" }, "icon": "🦎", "sourceIds": ["asksvins"] }
-  ,{ "id": "charred_bone", "name": { "es": "Hueso carbonizado", "en": "Charred bone" }, "icon": "🦴", "sourceIds": ["charred_warriors"] }
-  ,{ "id": "morgen_sinew", "name": { "es": "Tendón de morgen", "en": "Morgen sinew" }, "icon": "🧶", "sourceIds": ["morgens"] }
-  ,{ "id": "morgen_heart", "name": { "es": "Corazón de morgen", "en": "Morgen heart" }, "icon": "❤️", "sourceIds": ["morgens"] }
-  ,{ "id": "bonemaw_tooth", "name": { "es": "Diente de bocahuesos", "en": "Bonemaw tooth" }, "icon": "🦷", "sourceIds": ["bonemaw_serpent"] }
-  ,{ "id": "fiddlehead", "name": { "es": "Brote de helecho", "en": "Fiddlehead" }, "icon": "🌿", "sourceIds": ["ashlands_plants"] }
-  ,{ "id": "volture_meat", "name": { "es": "Carne de volture", "en": "Volture meat" }, "icon": "🥩", "sourceIds": ["voltures"] }
-  ,{ "id": "ceramic_plate", "name": { "es": "Placa cerámica", "en": "Ceramic plate" }, "icon": "⬜", "sourceIds": ["charred_fortresses"] }
-  ,{ "id": "charred_cogwheel", "name": { "es": "Engranaje carbonizado", "en": "Charred cogwheel" }, "icon": "⚙️", "sourceIds": ["charred_fortresses"] }
-  ,{ "id": "bloodstone", "name": { "es": "Piedra de sangre", "en": "Bloodstone" }, "icon": "🔴", "sourceIds": ["charred_fortresses"] }
-  ,{ "id": "iolite", "name": { "es": "Iolita", "en": "Iolite" }, "icon": "🔵", "sourceIds": ["charred_fortresses"] }
-  ,{ "id": "jade", "name": { "es": "Jade", "en": "Jade" }, "icon": "🟢", "sourceIds": ["charred_fortresses"] }
-  ,{ "id": "sulfur", "name": { "es": "Azufre", "en": "Sulfur" }, "icon": "🟡", "sourceIds": ["sulfur_vents"] }
-  ,{ "id": "chitin", "name": { "es": "Quitina", "en": "Chitin" }, "icon": "🪲", "sourceIds": ["leviathans"] }
-  ,{ "id": "fish", "name": { "es": "Pescado", "en": "Fish" }, "icon": "🐟", "sourceIds": ["ocean_fishing"] }
-  ,{ "id": "cooked_fish", "name": { "es": "Pescado cocinado", "en": "Cooked fish" }, "icon": "🐟", "sourceIds": ["cooking_fish"] }
-  ,{ "id": "serpent_meat", "name": { "es": "Carne de serpiente", "en": "Serpent meat" }, "icon": "🥩", "sourceIds": ["serpents"] }
-  ,{ "id": "cooked_serpent_meat", "name": { "es": "Carne de serpiente cocinada", "en": "Cooked serpent meat" }, "icon": "🍖", "sourceIds": ["cooking_serpent_meat"] }
-  ,{ "id": "serpent_scale", "name": { "es": "Escama de serpiente", "en": "Serpent scale" }, "icon": "🛡️", "sourceIds": ["serpents"] }
-  ,{ "id": "serpent_trophy", "name": { "es": "Trofeo de serpiente", "en": "Serpent trophy" }, "icon": "🏆", "sourceIds": ["serpents"] }
-  ,{ "id": "fishing_bait", "name": { "es": "Cebo de pesca", "en": "Fishing bait" }, "icon": "🪱", "sourceIds": ["haldor"] }
-  ,{ "id": "vineberry_cluster", "name": { "es": "Racimo de vineberry", "en": "Vineberry cluster" }, "icon": "🍇", "sourceIds": ["ashvine"] }
-  ,{ "id": "smoke_puff", "name": { "es": "Humo puff", "en": "Smoke puff" }, "icon": "🍄", "sourceIds": ["mistlands_plants"] }
-  ,{ "id": "mead_base_health_major", "name": { "es": "Base: curación mayor", "en": "Mead base: major healing" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_eitr_minor", "name": { "es": "Base: eitr menor", "en": "Mead base: minor eitr" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_health_lingering", "name": { "es": "Base: salud persistente", "en": "Mead base: lingering health" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_stamina_lingering", "name": { "es": "Base: aguante persistente", "en": "Mead base: lingering stamina" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_eitr_lingering", "name": { "es": "Base: eitr persistente", "en": "Mead base: lingering eitr" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "grouper", "name": { "es": "Mero", "en": "Grouper" }, "icon": "🐟", "sourceIds": ["ocean_fishing"] }
-  ,{ "id": "fragrant_bundle", "name": { "es": "Atado fragante", "en": "Fragrant bundle" }, "icon": "🌿", "sourceIds": ["bog_witch"] }
-  ,{ "id": "toadstool", "name": { "es": "Amanita", "en": "Toadstool" }, "icon": "🍄", "sourceIds": ["bog_witch"] }
-  ,{ "id": "cured_squirrel_hamstring", "name": { "es": "Corvejón de ardilla curado", "en": "Cured squirrel hamstring" }, "icon": "🥩", "sourceIds": ["bog_witch"] }
-  ,{ "id": "trollfish", "name": { "es": "Pez trol", "en": "Trollfish" }, "icon": "🐟", "sourceIds": ["bog_witch"] }
-  ,{ "id": "powdered_dragon_eggshells", "name": { "es": "Cáscaras de huevo de dragón en polvo", "en": "Powdered dragon eggshells" }, "icon": "🥚", "sourceIds": ["bog_witch"] }
-  ,{ "id": "perch", "name": { "es": "Perca", "en": "Perch" }, "icon": "🐟", "sourceIds": ["bog_witch"] }
-  ,{ "id": "fresh_seaweed", "name": { "es": "Alga fresca", "en": "Fresh seaweed" }, "icon": "🌿", "sourceIds": ["bog_witch"] }
-  ,{ "id": "pungent_pebbles", "name": { "es": "Guijarros pungentes", "en": "Pungent pebbles" }, "icon": "🪨", "sourceIds": ["bog_witch"] }
-  ,{ "id": "mead_base_anti_sting", "name": { "es": "Base: anti-picadura", "en": "Mead base: anti-sting" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_berserkir", "name": { "es": "Base: berserkir", "en": "Mead base: berserkir" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_ratatosk", "name": { "es": "Base: Ratatosk", "en": "Mead base: Ratatosk" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_lightfoot", "name": { "es": "Base: Ligereza", "en": "Mead base: Lightfoot" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_troll_endurance", "name": { "es": "Base: resistencia de trol", "en": "Mead base: Troll endurance" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_vananidir", "name": { "es": "Base: Vananidir", "en": "Mead base: Vananidir" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_animal_whispers", "name": { "es": "Base: Susurros animales", "en": "Mead base: Animal whispers" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_health_minor", "name": { "es": "Base de hidromiel: curación menor", "en": "Mead base: minor healing" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_stamina_minor", "name": { "es": "Base de hidromiel: aguante menor", "en": "Mead base: minor stamina" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_frost_resist", "name": { "es": "Base de hidromiel: resistencia al frío", "en": "Mead base: frost resistance" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "mead_base_tasty", "name": { "es": "Base de hidromiel: sabrosa", "en": "Mead base: tasty" }, "icon": "🧪", "sourceIds": ["cauldron_mead_base"] }
-  ,{ "id": "minor_health_mead", "name": { "es": "Hidromiel de curación menor", "en": "Minor healing mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "minor_stamina_mead", "name": { "es": "Hidromiel de aguante menor", "en": "Minor stamina mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "frost_resistance_mead", "name": { "es": "Hidromiel de resistencia al frío", "en": "Frost resistance mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "tasty_mead", "name": { "es": "Hidromiel sabrosa", "en": "Tasty mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
-  ,{ "id": "sharpening_stone", "name": { "es": "Piedra de afilar", "en": "Sharpening Stone" }, "icon": "🪨", "sourceIds": ["stonecutter_processing"] }
-  ,{ "id": "corked_vial", "name": { "es": "Vial con corcho", "en": "Corked Vial" }, "icon": "🧪", "sourceIds": ["bog_witch"] }
-  ,{ "id": "proustite_powder", "name": { "es": "Polvo de proustitas", "en": "Proustite Powder" }, "icon": "✨", "sourceIds": ["lava_blobs"] }
-  ,{ "id": "blob_trophy", "name": { "es": "Trofeo de blob", "en": "Blob Trophy" }, "icon": "🏆", "sourceIds": ["oozer"] }
-  ,{ "id": "growth_trophy", "name": { "es": "Trofeo de growth", "en": "Growth Trophy" }, "icon": "🏆", "sourceIds": ["growths_tar_pits"] }
-  ,{ "id": "tar", "name": { "es": "Alquitrán", "en": "Tar" }, "icon": "⚫", "sourceIds": ["growths_tar_pits"] }
-  ,{ "id": "asksvin_bladder", "name": { "es": "Vejiga de asksvin", "en": "Asksvin Bladder" }, "icon": "🫧", "sourceIds": ["asksvins"] }
-  ,{ "id": "majestic_carapace", "name": { "es": "Caparazón majestuoso", "en": "Majestic Carapace" }, "icon": "🪲", "sourceIds": ["the_queen"] }
-  ,{ "id": "barrel_hoops", "name": { "es": "Aros de barril", "en": "Barrel Hoops" }, "icon": "⭕", "sourceIds": ["haldor"] }
-  ,{ "id": "iron_pit", "name": { "es": "Brasero de hierro", "en": "Iron Pit" }, "icon": "🔥", "sourceIds": ["hildir"] }
-  ,{ "id": "grausten", "name": { "es": "Grausten", "en": "Grausten" }, "icon": "🪨", "sourceIds": ["ashlands_ground"] }
-  ,{ "id": "molten_core", "name": { "es": "Núcleo fundido", "en": "Molten Core" }, "icon": "🔥", "sourceIds": ["putrid_holes"] }
-  ,{ "id": "shield_core", "name": { "es": "Núcleo de escudo", "en": "Shield Core" }, "icon": "🔵", "sourceIds": ["artisan_table_processing"] }
+  {
+    "id": "stone",
+    "name": {
+      "es": "Piedra",
+      "en": "Stone"
+    },
+    "icon": "🪨",
+    "sourceIds": [
+      "stones_rocks"
+    ]
+  },
+  {
+    "id": "flint",
+    "name": {
+      "es": "Sílex",
+      "en": "Flint"
+    },
+    "icon": "🪨",
+    "sourceIds": [
+      "flint_shore"
+    ]
+  },
+  {
+    "id": "fine_wood",
+    "name": {
+      "es": "Madera fina",
+      "en": "Fine wood"
+    },
+    "icon": "🪵",
+    "sourceIds": [
+      "birch_oak"
+    ]
+  },
+  {
+    "id": "core_wood",
+    "name": {
+      "es": "Madera de núcleo",
+      "en": "Core wood"
+    },
+    "icon": "🌲",
+    "sourceIds": [
+      "pine"
+    ]
+  },
+  {
+    "id": "deer_hide",
+    "name": {
+      "es": "Piel de ciervo",
+      "en": "Deer hide"
+    },
+    "icon": "🦌",
+    "sourceIds": [
+      "deer"
+    ]
+  },
+  {
+    "id": "wood",
+    "name": {
+      "es": "Madera",
+      "en": "Wood"
+    },
+    "icon": "🪵",
+    "sourceIds": [
+      "branches_trees"
+    ]
+  },
+  {
+    "id": "copper",
+    "name": {
+      "es": "Cobre",
+      "en": "Copper"
+    },
+    "icon": "🟠",
+    "sourceIds": [
+      "copper_deposit"
+    ]
+  },
+  {
+    "id": "tin",
+    "name": {
+      "es": "Estaño",
+      "en": "Tin"
+    },
+    "icon": "⚪",
+    "sourceIds": [
+      "tin_deposit"
+    ]
+  },
+  {
+    "id": "bronze",
+    "name": {
+      "es": "Bronce",
+      "en": "Bronze"
+    },
+    "icon": "🔶",
+    "sourceIds": [
+      "bronze_forge"
+    ]
+  },
+  {
+    "id": "leather_scraps",
+    "name": {
+      "es": "Retales de cuero",
+      "en": "Leather scraps"
+    },
+    "icon": "🐗",
+    "sourceIds": [
+      "boar"
+    ]
+  },
+  {
+    "id": "greydwarf_eye",
+    "name": {
+      "es": "Ojo de enano gris",
+      "en": "Greydwarf eye"
+    },
+    "icon": "👁️",
+    "sourceIds": [
+      "greydwarf"
+    ]
+  },
+  {
+    "id": "surtling_core",
+    "name": {
+      "es": "Núcleo de surtling",
+      "en": "Surtling core"
+    },
+    "icon": "🔥",
+    "sourceIds": [
+      "surtling_core"
+    ]
+  },
+  {
+    "id": "resin",
+    "name": {
+      "es": "Resina",
+      "en": "Resin"
+    },
+    "icon": "💧",
+    "sourceIds": [
+      "greydwarf"
+    ]
+  },
+  {
+    "id": "bronze_nails",
+    "name": {
+      "es": "Clavos de bronce",
+      "en": "Bronze nails"
+    },
+    "icon": "🔩",
+    "sourceIds": [
+      "bronze_nails_forge"
+    ]
+  },
+  {
+    "id": "deer_trophy",
+    "name": {
+      "es": "Trofeo de ciervo",
+      "en": "Deer trophy"
+    },
+    "icon": "🦌",
+    "sourceIds": [
+      "deer"
+    ]
+  },
+  {
+    "id": "bone_fragments",
+    "name": {
+      "es": "Fragmentos de hueso",
+      "en": "Bone fragments"
+    },
+    "icon": "🦴",
+    "sourceIds": [
+      "skeleton"
+    ]
+  },
+  {
+    "id": "mushroom",
+    "name": {
+      "es": "Hongo",
+      "en": "Mushroom"
+    },
+    "icon": "🍄",
+    "sourceIds": [
+      "forest_mushroom"
+    ]
+  },
+  {
+    "id": "carrot",
+    "name": {
+      "es": "Zanahoria",
+      "en": "Carrot"
+    },
+    "icon": "🥕",
+    "sourceIds": [
+      "carrot_farming"
+    ]
+  },
+  {
+    "id": "hard_antler",
+    "name": {
+      "es": "Asta dura",
+      "en": "Hard antler"
+    },
+    "icon": "🦌",
+    "sourceIds": [
+      "eikthyr"
+    ]
+  },
+  {
+    "id": "feathers",
+    "name": {
+      "es": "Plumas",
+      "en": "Feathers"
+    },
+    "icon": "🪶",
+    "sourceIds": [
+      "birds"
+    ]
+  },
+  {
+    "id": "raw_meat",
+    "name": {
+      "es": "Carne cruda",
+      "en": "Raw meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "boar_deer"
+    ]
+  },
+  {
+    "id": "neck_tail",
+    "name": {
+      "es": "Cola de Neck",
+      "en": "Neck tail"
+    },
+    "icon": "🦎",
+    "sourceIds": [
+      "neck"
+    ]
+  },
+  {
+    "id": "queen_bee",
+    "name": {
+      "es": "Reina abeja",
+      "en": "Queen bee"
+    },
+    "icon": "🐝",
+    "sourceIds": [
+      "abandoned_meadows_hives"
+    ]
+  },
+  {
+    "id": "troll_hide",
+    "name": {
+      "es": "Piel de trol",
+      "en": "Troll hide"
+    },
+    "icon": "🐲",
+    "sourceIds": [
+      "troll"
+    ]
+  },
+  {
+    "id": "blueberries",
+    "name": {
+      "es": "Arándanos",
+      "en": "Blueberries"
+    },
+    "icon": "🫐",
+    "sourceIds": [
+      "blueberry_bushes"
+    ]
+  },
+  {
+    "id": "raspberries",
+    "name": {
+      "es": "Frambuesas",
+      "en": "Raspberries"
+    },
+    "icon": "🍓",
+    "sourceIds": [
+      "raspberry_bushes"
+    ]
+  },
+  {
+    "id": "honey",
+    "name": {
+      "es": "Miel",
+      "en": "Honey"
+    },
+    "icon": "🍯",
+    "sourceIds": [
+      "beehive_production"
+    ]
+  },
+  {
+    "id": "coal",
+    "name": {
+      "es": "Carbón",
+      "en": "Coal"
+    },
+    "icon": "⬛",
+    "sourceIds": [
+      "charcoal_kiln_production"
+    ]
+  },
+  {
+    "id": "boar_meat",
+    "name": {
+      "es": "Carne de jabalí",
+      "en": "Boar meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "boar"
+    ]
+  },
+  {
+    "id": "raw_deer_meat",
+    "name": {
+      "es": "Carne de ciervo cruda",
+      "en": "Raw deer meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "deer"
+    ]
+  },
+  {
+    "id": "cooked_deer_meat",
+    "name": {
+      "es": "Carne de ciervo cocinada",
+      "en": "Cooked deer meat"
+    },
+    "icon": "🍖",
+    "sourceIds": [
+      "cooking_deer_meat"
+    ]
+  },
+  {
+    "id": "iron",
+    "name": {
+      "es": "Hierro",
+      "en": "Iron"
+    },
+    "icon": "⬜",
+    "sourceIds": [
+      "sunken_crypts"
+    ]
+  },
+  {
+    "id": "ancient_bark",
+    "name": {
+      "es": "Corteza ancestral",
+      "en": "Ancient bark"
+    },
+    "icon": "🪵",
+    "sourceIds": [
+      "ancient_trees"
+    ]
+  },
+  {
+    "id": "root",
+    "name": {
+      "es": "Raíz",
+      "en": "Root"
+    },
+    "icon": "🌿",
+    "sourceIds": [
+      "abomination"
+    ]
+  },
+  {
+    "id": "entrails",
+    "name": {
+      "es": "Entrañas",
+      "en": "Entrails"
+    },
+    "icon": "🫀",
+    "sourceIds": [
+      "draugr"
+    ]
+  },
+  {
+    "id": "thistle",
+    "name": {
+      "es": "Cardo",
+      "en": "Thistle"
+    },
+    "icon": "🌱",
+    "sourceIds": [
+      "swamp_thistle"
+    ]
+  },
+  {
+    "id": "turnip",
+    "name": {
+      "es": "Nabo",
+      "en": "Turnip"
+    },
+    "icon": "🥬",
+    "sourceIds": [
+      "turnip_farming"
+    ]
+  },
+  {
+    "id": "chain",
+    "name": {
+      "es": "Cadena",
+      "en": "Chain"
+    },
+    "icon": "⛓️",
+    "sourceIds": [
+      "wraith"
+    ]
+  },
+  {
+    "id": "iron_nails",
+    "name": {
+      "es": "Clavos de hierro",
+      "en": "Iron nails"
+    },
+    "icon": "🔩",
+    "sourceIds": [
+      "iron_nails_forge"
+    ]
+  },
+  {
+    "id": "dandelion",
+    "name": {
+      "es": "Diente de león",
+      "en": "Dandelion"
+    },
+    "icon": "🌼",
+    "sourceIds": [
+      "meadows_dandelions"
+    ]
+  },
+  {
+    "id": "bloodbag",
+    "name": {
+      "es": "Saco de sangre",
+      "en": "Bloodbag"
+    },
+    "icon": "🩸",
+    "sourceIds": [
+      "leech"
+    ]
+  },
+  {
+    "id": "mead_base_poison_resist",
+    "name": {
+      "es": "Base de hidromiel: resistencia al veneno",
+      "en": "Mead base: poison resistance"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "poison_resistance_mead",
+    "name": {
+      "es": "Hidromiel de resistencia al veneno",
+      "en": "Poison resistance mead"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "silver",
+    "name": {
+      "es": "Plata",
+      "en": "Silver"
+    },
+    "icon": "⚪",
+    "sourceIds": [
+      "silver_veins"
+    ]
+  },
+  {
+    "id": "wolf_pelt",
+    "name": {
+      "es": "Piel de lobo",
+      "en": "Wolf pelt"
+    },
+    "icon": "🐺",
+    "sourceIds": [
+      "wolves"
+    ]
+  },
+  {
+    "id": "wolf_trophy",
+    "name": {
+      "es": "Trofeo de lobo",
+      "en": "Wolf trophy"
+    },
+    "icon": "🐺",
+    "sourceIds": [
+      "wolves"
+    ]
+  },
+  {
+    "id": "wolf_fang",
+    "name": {
+      "es": "Colmillo de lobo",
+      "en": "Wolf fang"
+    },
+    "icon": "🦷",
+    "sourceIds": [
+      "wolves"
+    ]
+  },
+  {
+    "id": "drake_trophy",
+    "name": {
+      "es": "Trofeo de draco",
+      "en": "Drake trophy"
+    },
+    "icon": "🐉",
+    "sourceIds": [
+      "drakes"
+    ]
+  },
+  {
+    "id": "freeze_gland",
+    "name": {
+      "es": "Glándula congelante",
+      "en": "Freeze gland"
+    },
+    "icon": "❄️",
+    "sourceIds": [
+      "drakes"
+    ]
+  },
+  {
+    "id": "ymir_flesh",
+    "name": {
+      "es": "Carne de Ymir",
+      "en": "Ymir flesh"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "haldor"
+    ]
+  },
+  {
+    "id": "ooze",
+    "name": {
+      "es": "Lodo",
+      "en": "Ooze"
+    },
+    "icon": "🟢",
+    "sourceIds": [
+      "oozer"
+    ]
+  },
+  {
+    "id": "cloudberries",
+    "name": {
+      "es": "Moras de los pantanos",
+      "en": "Cloudberries"
+    },
+    "icon": "🟡",
+    "sourceIds": [
+      "cloudberry_bushes"
+    ]
+  },
+  {
+    "id": "yellow_mushroom",
+    "name": {
+      "es": "Hongo amarillo",
+      "en": "Yellow mushroom"
+    },
+    "icon": "🍄",
+    "sourceIds": [
+      "yellow_mushrooms"
+    ]
+  },
+  {
+    "id": "guck",
+    "name": {
+      "es": "Guck",
+      "en": "Guck"
+    },
+    "icon": "🟢",
+    "sourceIds": [
+      "guck_sacks"
+    ]
+  },
+  {
+    "id": "obsidian",
+    "name": {
+      "es": "Obsidiana",
+      "en": "Obsidian"
+    },
+    "icon": "⬛",
+    "sourceIds": [
+      "obsidian_deposits"
+    ]
+  },
+  {
+    "id": "onion",
+    "name": {
+      "es": "Cebolla",
+      "en": "Onion"
+    },
+    "icon": "🧅",
+    "sourceIds": [
+      "onion_farming"
+    ]
+  },
+  {
+    "id": "wolf_meat",
+    "name": {
+      "es": "Carne de lobo",
+      "en": "Wolf meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "wolves"
+    ]
+  },
+  {
+    "id": "dragon_tear",
+    "name": {
+      "es": "Lágrima de dragón",
+      "en": "Dragon tear"
+    },
+    "icon": "💧",
+    "sourceIds": [
+      "moder"
+    ]
+  },
+  {
+    "id": "mead_base_health_medium",
+    "name": {
+      "es": "Base de hidromiel: curación media",
+      "en": "Mead base: medium healing"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "medium_health_mead",
+    "name": {
+      "es": "Hidromiel de curación media",
+      "en": "Medium healing mead"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "mead_base_stamina_medium",
+    "name": {
+      "es": "Base de hidromiel: aguante medio",
+      "en": "Mead base: medium stamina"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "medium_stamina_mead",
+    "name": {
+      "es": "Hidromiel de aguante medio",
+      "en": "Medium stamina mead"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "draugr_elite_trophy",
+    "name": {
+      "es": "Trofeo de draugr de élite",
+      "en": "Draugr elite trophy"
+    },
+    "icon": "🏆",
+    "sourceIds": [
+      "draugr_elite"
+    ]
+  },
+  {
+    "id": "crystal",
+    "name": {
+      "es": "Cristal",
+      "en": "Crystal"
+    },
+    "icon": "🔷",
+    "sourceIds": [
+      "stone_golem"
+    ]
+  },
+  {
+    "id": "black_metal_scrap",
+    "name": {
+      "es": "Chatarra de metal negro",
+      "en": "Black metal scrap"
+    },
+    "icon": "⬛",
+    "sourceIds": [
+      "fulings"
+    ]
+  },
+  {
+    "id": "black_metal",
+    "name": {
+      "es": "Metal negro",
+      "en": "Black metal"
+    },
+    "icon": "⬛",
+    "sourceIds": [
+      "blast_furnace_production"
+    ]
+  },
+  {
+    "id": "flax",
+    "name": {
+      "es": "Lino",
+      "en": "Flax"
+    },
+    "icon": "🌾",
+    "sourceIds": [
+      "flax_farming"
+    ]
+  },
+  {
+    "id": "linen_thread",
+    "name": {
+      "es": "Hilo de lino",
+      "en": "Linen thread"
+    },
+    "icon": "🧵",
+    "sourceIds": [
+      "spinning_wheel_production"
+    ]
+  },
+  {
+    "id": "barley",
+    "name": {
+      "es": "Cebada",
+      "en": "Barley"
+    },
+    "icon": "🌾",
+    "sourceIds": [
+      "barley_farming"
+    ]
+  },
+  {
+    "id": "barley_flour",
+    "name": {
+      "es": "Harina de cebada",
+      "en": "Barley flour"
+    },
+    "icon": "🌾",
+    "sourceIds": [
+      "windmill_production"
+    ]
+  },
+  {
+    "id": "lox_meat",
+    "name": {
+      "es": "Carne de lox",
+      "en": "Lox meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "lox"
+    ]
+  },
+  {
+    "id": "lox_pelt",
+    "name": {
+      "es": "Piel de lox",
+      "en": "Lox pelt"
+    },
+    "icon": "🦬",
+    "sourceIds": [
+      "lox"
+    ]
+  },
+  {
+    "id": "needle",
+    "name": {
+      "es": "Aguja",
+      "en": "Needle"
+    },
+    "icon": "🪡",
+    "sourceIds": [
+      "deathsquito"
+    ]
+  },
+  {
+    "id": "bread_dough",
+    "name": {
+      "es": "Masa de pan",
+      "en": "Bread dough"
+    },
+    "icon": "🍞",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "unbaked_lox_pie",
+    "name": {
+      "es": "Pastel de lox sin hornear",
+      "en": "Unbaked lox pie"
+    },
+    "icon": "🥧",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "barley_wine_base",
+    "name": {
+      "es": "Base de vino de cebada",
+      "en": "Barley wine base"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "barley_wine",
+    "name": {
+      "es": "Vino de cebada",
+      "en": "Barley wine"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "black_marble",
+    "name": {
+      "es": "Mármol negro",
+      "en": "Black marble"
+    },
+    "icon": "⬛",
+    "sourceIds": [
+      "mistlands_remains"
+    ]
+  },
+  {
+    "id": "black_core",
+    "name": {
+      "es": "Núcleo negro",
+      "en": "Black core"
+    },
+    "icon": "⚫",
+    "sourceIds": [
+      "infested_mines"
+    ]
+  },
+  {
+    "id": "yggdrasil_wood",
+    "name": {
+      "es": "Madera de Yggdrasil",
+      "en": "Yggdrasil wood"
+    },
+    "icon": "🌳",
+    "sourceIds": [
+      "yggdrasil_shoots"
+    ]
+  },
+  {
+    "id": "sap",
+    "name": {
+      "es": "Savia",
+      "en": "Sap"
+    },
+    "icon": "🟡",
+    "sourceIds": [
+      "sap_extractor_production"
+    ]
+  },
+  {
+    "id": "soft_tissue",
+    "name": {
+      "es": "Tejido blando",
+      "en": "Soft tissue"
+    },
+    "icon": "🧠",
+    "sourceIds": [
+      "ancient_remains"
+    ]
+  },
+  {
+    "id": "refined_eitr",
+    "name": {
+      "es": "Eitr refinado",
+      "en": "Refined eitr"
+    },
+    "icon": "✨",
+    "sourceIds": [
+      "eitr_refinery_production"
+    ]
+  },
+  {
+    "id": "dvergr_extractor",
+    "name": {
+      "es": "Extractor dvergr",
+      "en": "Dvergr extractor"
+    },
+    "icon": "⚙️",
+    "sourceIds": [
+      "dvergr_components"
+    ]
+  },
+  {
+    "id": "carapace",
+    "name": {
+      "es": "Caparazón",
+      "en": "Carapace"
+    },
+    "icon": "🪲",
+    "sourceIds": [
+      "seekers"
+    ]
+  },
+  {
+    "id": "scale_hide",
+    "name": {
+      "es": "Piel escamada",
+      "en": "Scale hide"
+    },
+    "icon": "🟫",
+    "sourceIds": [
+      "seekers"
+    ]
+  },
+  {
+    "id": "mandible",
+    "name": {
+      "es": "Mandíbula",
+      "en": "Mandible"
+    },
+    "icon": "🦷",
+    "sourceIds": [
+      "seeker_soldiers"
+    ]
+  },
+  {
+    "id": "bilebag",
+    "name": {
+      "es": "Saco de bilis",
+      "en": "Bilebag"
+    },
+    "icon": "🟢",
+    "sourceIds": [
+      "gjall"
+    ]
+  },
+  {
+    "id": "royal_jelly",
+    "name": {
+      "es": "Jalea real",
+      "en": "Royal jelly"
+    },
+    "icon": "🍯",
+    "sourceIds": [
+      "infested_mines"
+    ]
+  },
+  {
+    "id": "jotun_puffs",
+    "name": {
+      "es": "Hongos Jotun",
+      "en": "Jotun puffs"
+    },
+    "icon": "🍄",
+    "sourceIds": [
+      "mistlands_plants"
+    ]
+  },
+  {
+    "id": "magecap",
+    "name": {
+      "es": "Sombrero de mago",
+      "en": "Magecap"
+    },
+    "icon": "🍄",
+    "sourceIds": [
+      "mistlands_plants"
+    ]
+  },
+  {
+    "id": "seeker_meat",
+    "name": {
+      "es": "Carne de seeker",
+      "en": "Seeker meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "seekers"
+    ]
+  },
+  {
+    "id": "hare_meat",
+    "name": {
+      "es": "Carne de liebre",
+      "en": "Hare meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "mist_hare"
+    ]
+  },
+  {
+    "id": "wisp",
+    "name": {
+      "es": "Luz errante",
+      "en": "Wisp"
+    },
+    "icon": "💡",
+    "sourceIds": [
+      "wisp_fountain_production"
+    ]
+  },
+  {
+    "id": "torn_spirit",
+    "name": {
+      "es": "Espíritu desgarrado",
+      "en": "Torn spirit"
+    },
+    "icon": "👻",
+    "sourceIds": [
+      "the_queen"
+    ]
+  },
+  {
+    "id": "blood_clot",
+    "name": {
+      "es": "Coágulo de sangre",
+      "en": "Blood clot"
+    },
+    "icon": "🩸",
+    "sourceIds": [
+      "gjall"
+    ]
+  },
+  {
+    "id": "mechanical_spring",
+    "name": {
+      "es": "Resorte mecánico",
+      "en": "Mechanical spring"
+    },
+    "icon": "⚙️",
+    "sourceIds": [
+      "black_forge_production"
+    ]
+  },
+  {
+    "id": "skeleton_trophy",
+    "name": {
+      "es": "Trofeo de esqueleto",
+      "en": "Skeleton trophy"
+    },
+    "icon": "🏆",
+    "sourceIds": [
+      "skeleton"
+    ]
+  },
+  {
+    "id": "uncooked_misthare_supreme",
+    "name": {
+      "es": "Liebre suprema sin cocinar",
+      "en": "Uncooked misthare supreme"
+    },
+    "icon": "🍲",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "uncooked_stuffed_mushroom",
+    "name": {
+      "es": "Hongo relleno sin cocinar",
+      "en": "Uncooked stuffed mushroom"
+    },
+    "icon": "🍄",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "uncooked_meat_platter",
+    "name": {
+      "es": "Bandeja de carne sin cocinar",
+      "en": "Uncooked meat platter"
+    },
+    "icon": "🍖",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "ashwood",
+    "name": {
+      "es": "Madera de ceniza",
+      "en": "Ashwood"
+    },
+    "icon": "🪵",
+    "sourceIds": [
+      "ashlands_trees"
+    ]
+  },
+  {
+    "id": "flametal",
+    "name": {
+      "es": "Flametal",
+      "en": "Flametal"
+    },
+    "icon": "🔥",
+    "sourceIds": [
+      "flametal_pillars"
+    ]
+  },
+  {
+    "id": "asksvin_hide",
+    "name": {
+      "es": "Piel de asksvin",
+      "en": "Asksvin hide"
+    },
+    "icon": "🦎",
+    "sourceIds": [
+      "asksvins"
+    ]
+  },
+  {
+    "id": "asksvin_tail",
+    "name": {
+      "es": "Cola de asksvin",
+      "en": "Asksvin tail"
+    },
+    "icon": "🦎",
+    "sourceIds": [
+      "asksvins"
+    ]
+  },
+  {
+    "id": "charred_bone",
+    "name": {
+      "es": "Hueso carbonizado",
+      "en": "Charred bone"
+    },
+    "icon": "🦴",
+    "sourceIds": [
+      "charred_warriors"
+    ]
+  },
+  {
+    "id": "morgen_sinew",
+    "name": {
+      "es": "Tendón de morgen",
+      "en": "Morgen sinew"
+    },
+    "icon": "🧶",
+    "sourceIds": [
+      "morgens"
+    ]
+  },
+  {
+    "id": "morgen_heart",
+    "name": {
+      "es": "Corazón de morgen",
+      "en": "Morgen heart"
+    },
+    "icon": "❤️",
+    "sourceIds": [
+      "morgens"
+    ]
+  },
+  {
+    "id": "bonemaw_tooth",
+    "name": {
+      "es": "Diente de bocahuesos",
+      "en": "Bonemaw tooth"
+    },
+    "icon": "🦷",
+    "sourceIds": [
+      "bonemaw_serpent"
+    ]
+  },
+  {
+    "id": "fiddlehead",
+    "name": {
+      "es": "Brote de helecho",
+      "en": "Fiddlehead"
+    },
+    "icon": "🌿",
+    "sourceIds": [
+      "ashlands_plants"
+    ]
+  },
+  {
+    "id": "volture_meat",
+    "name": {
+      "es": "Carne de volture",
+      "en": "Volture meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "voltures"
+    ]
+  },
+  {
+    "id": "ceramic_plate",
+    "name": {
+      "es": "Placa cerámica",
+      "en": "Ceramic plate"
+    },
+    "icon": "⬜",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "charred_cogwheel",
+    "name": {
+      "es": "Engranaje carbonizado",
+      "en": "Charred cogwheel"
+    },
+    "icon": "⚙️",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "bloodstone",
+    "name": {
+      "es": "Piedra de sangre",
+      "en": "Bloodstone"
+    },
+    "icon": "🔴",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "iolite",
+    "name": {
+      "es": "Iolita",
+      "en": "Iolite"
+    },
+    "icon": "🔵",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "jade",
+    "name": {
+      "es": "Jade",
+      "en": "Jade"
+    },
+    "icon": "🟢",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "sulfur",
+    "name": {
+      "es": "Azufre",
+      "en": "Sulfur"
+    },
+    "icon": "🟡",
+    "sourceIds": [
+      "sulfur_vents"
+    ]
+  },
+  {
+    "id": "chitin",
+    "name": {
+      "es": "Quitina",
+      "en": "Chitin"
+    },
+    "icon": "🪲",
+    "sourceIds": [
+      "leviathans"
+    ]
+  },
+  {
+    "id": "fish",
+    "name": {
+      "es": "Pescado",
+      "en": "Fish"
+    },
+    "icon": "🐟",
+    "sourceIds": [
+      "ocean_fishing"
+    ]
+  },
+  {
+    "id": "cooked_fish",
+    "name": {
+      "es": "Pescado cocinado",
+      "en": "Cooked fish"
+    },
+    "icon": "🐟",
+    "sourceIds": [
+      "cooking_fish"
+    ]
+  },
+  {
+    "id": "serpent_meat",
+    "name": {
+      "es": "Carne de serpiente",
+      "en": "Serpent meat"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "serpents"
+    ]
+  },
+  {
+    "id": "cooked_serpent_meat",
+    "name": {
+      "es": "Carne de serpiente cocinada",
+      "en": "Cooked serpent meat"
+    },
+    "icon": "🍖",
+    "sourceIds": [
+      "cooking_serpent_meat"
+    ]
+  },
+  {
+    "id": "serpent_scale",
+    "name": {
+      "es": "Escama de serpiente",
+      "en": "Serpent scale"
+    },
+    "icon": "🛡️",
+    "sourceIds": [
+      "serpents"
+    ]
+  },
+  {
+    "id": "serpent_trophy",
+    "name": {
+      "es": "Trofeo de serpiente",
+      "en": "Serpent trophy"
+    },
+    "icon": "🏆",
+    "sourceIds": [
+      "serpents"
+    ]
+  },
+  {
+    "id": "fishing_bait",
+    "name": {
+      "es": "Cebo de pesca",
+      "en": "Fishing bait"
+    },
+    "icon": "🪱",
+    "sourceIds": [
+      "haldor"
+    ]
+  },
+  {
+    "id": "vineberry_cluster",
+    "name": {
+      "es": "Racimo de vineberry",
+      "en": "Vineberry cluster"
+    },
+    "icon": "🍇",
+    "sourceIds": [
+      "ashvine"
+    ]
+  },
+  {
+    "id": "smoke_puff",
+    "name": {
+      "es": "Humo puff",
+      "en": "Smoke puff"
+    },
+    "icon": "🍄",
+    "sourceIds": [
+      "mistlands_plants"
+    ]
+  },
+  {
+    "id": "mead_base_health_major",
+    "name": {
+      "es": "Base: curación mayor",
+      "en": "Mead base: major healing"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_eitr_minor",
+    "name": {
+      "es": "Base: eitr menor",
+      "en": "Mead base: minor eitr"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_health_lingering",
+    "name": {
+      "es": "Base: salud persistente",
+      "en": "Mead base: lingering health"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_stamina_lingering",
+    "name": {
+      "es": "Base: aguante persistente",
+      "en": "Mead base: lingering stamina"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_eitr_lingering",
+    "name": {
+      "es": "Base: eitr persistente",
+      "en": "Mead base: lingering eitr"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "grouper",
+    "name": {
+      "es": "Mero",
+      "en": "Grouper"
+    },
+    "icon": "🐟",
+    "sourceIds": [
+      "ocean_fishing"
+    ]
+  },
+  {
+    "id": "fragrant_bundle",
+    "name": {
+      "es": "Atado fragante",
+      "en": "Fragrant bundle"
+    },
+    "icon": "🌿",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "toadstool",
+    "name": {
+      "es": "Amanita",
+      "en": "Toadstool"
+    },
+    "icon": "🍄",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "cured_squirrel_hamstring",
+    "name": {
+      "es": "Corvejón de ardilla curado",
+      "en": "Cured squirrel hamstring"
+    },
+    "icon": "🥩",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "trollfish",
+    "name": {
+      "es": "Pez trol",
+      "en": "Trollfish"
+    },
+    "icon": "🐟",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "powdered_dragon_eggshells",
+    "name": {
+      "es": "Cáscaras de huevo de dragón en polvo",
+      "en": "Powdered dragon eggshells"
+    },
+    "icon": "🥚",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "perch",
+    "name": {
+      "es": "Perca",
+      "en": "Perch"
+    },
+    "icon": "🐟",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "fresh_seaweed",
+    "name": {
+      "es": "Alga fresca",
+      "en": "Fresh seaweed"
+    },
+    "icon": "🌿",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "pungent_pebbles",
+    "name": {
+      "es": "Guijarros pungentes",
+      "en": "Pungent pebbles"
+    },
+    "icon": "🪨",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "mead_base_anti_sting",
+    "name": {
+      "es": "Base: anti-picadura",
+      "en": "Mead base: anti-sting"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_berserkir",
+    "name": {
+      "es": "Base: berserkir",
+      "en": "Mead base: berserkir"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_ratatosk",
+    "name": {
+      "es": "Base: Ratatosk",
+      "en": "Mead base: Ratatosk"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_lightfoot",
+    "name": {
+      "es": "Base: Ligereza",
+      "en": "Mead base: Lightfoot"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_troll_endurance",
+    "name": {
+      "es": "Base: resistencia de trol",
+      "en": "Mead base: Troll endurance"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_vananidir",
+    "name": {
+      "es": "Base: Vananidir",
+      "en": "Mead base: Vananidir"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_animal_whispers",
+    "name": {
+      "es": "Base: Susurros animales",
+      "en": "Mead base: Animal whispers"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_health_minor",
+    "name": {
+      "es": "Base de hidromiel: curación menor",
+      "en": "Mead base: minor healing"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_stamina_minor",
+    "name": {
+      "es": "Base de hidromiel: aguante menor",
+      "en": "Mead base: minor stamina"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_frost_resist",
+    "name": {
+      "es": "Base de hidromiel: resistencia al frío",
+      "en": "Mead base: frost resistance"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "mead_base_tasty",
+    "name": {
+      "es": "Base de hidromiel: sabrosa",
+      "en": "Mead base: tasty"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "cauldron_mead_base"
+    ]
+  },
+  {
+    "id": "minor_health_mead",
+    "name": {
+      "es": "Hidromiel de curación menor",
+      "en": "Minor healing mead"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "minor_stamina_mead",
+    "name": {
+      "es": "Hidromiel de aguante menor",
+      "en": "Minor stamina mead"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "frost_resistance_mead",
+    "name": {
+      "es": "Hidromiel de resistencia al frío",
+      "en": "Frost resistance mead"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "tasty_mead",
+    "name": {
+      "es": "Hidromiel sabrosa",
+      "en": "Tasty mead"
+    },
+    "icon": "🧴",
+    "sourceIds": [
+      "fermenter_mead"
+    ]
+  },
+  {
+    "id": "sharpening_stone",
+    "name": {
+      "es": "Piedra de afilar",
+      "en": "Sharpening Stone"
+    },
+    "icon": "🪨",
+    "sourceIds": [
+      "stonecutter_processing"
+    ]
+  },
+  {
+    "id": "corked_vial",
+    "name": {
+      "es": "Vial con corcho",
+      "en": "Corked Vial"
+    },
+    "icon": "🧪",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "proustite_powder",
+    "name": {
+      "es": "Polvo de proustitas",
+      "en": "Proustite Powder"
+    },
+    "icon": "✨",
+    "sourceIds": [
+      "lava_blobs"
+    ]
+  },
+  {
+    "id": "blob_trophy",
+    "name": {
+      "es": "Trofeo de blob",
+      "en": "Blob Trophy"
+    },
+    "icon": "🏆",
+    "sourceIds": [
+      "oozer"
+    ]
+  },
+  {
+    "id": "growth_trophy",
+    "name": {
+      "es": "Trofeo de growth",
+      "en": "Growth Trophy"
+    },
+    "icon": "🏆",
+    "sourceIds": [
+      "growths_tar_pits"
+    ]
+  },
+  {
+    "id": "tar",
+    "name": {
+      "es": "Alquitrán",
+      "en": "Tar"
+    },
+    "icon": "⚫",
+    "sourceIds": [
+      "growths_tar_pits"
+    ]
+  },
+  {
+    "id": "asksvin_bladder",
+    "name": {
+      "es": "Vejiga de asksvin",
+      "en": "Asksvin Bladder"
+    },
+    "icon": "🫧",
+    "sourceIds": [
+      "asksvins"
+    ]
+  },
+  {
+    "id": "majestic_carapace",
+    "name": {
+      "es": "Caparazón majestuoso",
+      "en": "Majestic Carapace"
+    },
+    "icon": "🪲",
+    "sourceIds": [
+      "the_queen"
+    ]
+  },
+  {
+    "id": "barrel_hoops",
+    "name": {
+      "es": "Aros de barril",
+      "en": "Barrel Hoops"
+    },
+    "icon": "⭕",
+    "sourceIds": [
+      "haldor"
+    ]
+  },
+  {
+    "id": "iron_pit",
+    "name": {
+      "es": "Brasero de hierro",
+      "en": "Iron Pit"
+    },
+    "icon": "🔥",
+    "sourceIds": [
+      "hildir"
+    ]
+  },
+  {
+    "id": "grausten",
+    "name": {
+      "es": "Grausten",
+      "en": "Grausten"
+    },
+    "icon": "🪨",
+    "sourceIds": [
+      "ashlands_ground"
+    ]
+  },
+  {
+    "id": "molten_core",
+    "name": {
+      "es": "Núcleo fundido",
+      "en": "Molten Core"
+    },
+    "icon": "🔥",
+    "sourceIds": [
+      "putrid_holes"
+    ]
+  },
+  {
+    "id": "shield_core",
+    "name": {
+      "es": "Núcleo de escudo",
+      "en": "Shield Core"
+    },
+    "icon": "🔵",
+    "sourceIds": [
+      "artisan_table_processing"
+    ]
+  },
+  {
+    "id": "cooked_asksvin_tail",
+    "name": {
+      "es": "Cola de asksvin cocinada",
+      "en": "Cooked Asksvin Tail"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "scorching_medley",
+    "name": {
+      "es": "Scorching Medley",
+      "en": "Scorching Medley"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "fiery_spice_powder",
+    "name": {
+      "es": "Polvo de especias ardientes",
+      "en": "Fiery Spice Powder"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "deer_stew",
+    "name": {
+      "es": "Deer Stew",
+      "en": "Deer Stew"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "queen_s_jam",
+    "name": {
+      "es": "Queen's Jam",
+      "en": "Queen's Jam"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "woodland_herb_blend",
+    "name": {
+      "es": "Mezcla de hierbas del bosque",
+      "en": "Woodland Herb Blend"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "berserkir_axes",
+    "name": {
+      "es": "Berserkir Axes",
+      "en": "Berserkir Axes"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "flametal_mace",
+    "name": {
+      "es": "Flametal Mace",
+      "en": "Flametal Mace"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "slayer",
+    "name": {
+      "es": "Slayer",
+      "en": "Slayer"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "egg",
+    "name": {
+      "es": "Huevo",
+      "en": "Egg"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "hens_and_haldor"
+    ]
+  },
+  {
+    "id": "celestial_feather",
+    "name": {
+      "es": "Pluma celestial",
+      "en": "Celestial Feather"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "fallen_valkyries"
+    ]
+  },
+  {
+    "id": "dyrnwyn_hilt_fragment",
+    "name": {
+      "es": "Fragmento de empuñadura de Dyrnwyn",
+      "en": "Dyrnwyn Hilt Fragment"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "dyrnwyn_blade_fragment",
+    "name": {
+      "es": "Fragmento de hoja de Dyrnwyn",
+      "en": "Dyrnwyn Blade Fragment"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "dyrnwyn_tip_fragment",
+    "name": {
+      "es": "Fragmento de punta de Dyrnwyn",
+      "en": "Dyrnwyn Tip Fragment"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "charred_fortresses"
+    ]
+  },
+  {
+    "id": "curious_axe_head",
+    "name": {
+      "es": "Cabeza de hacha curiosa",
+      "en": "Curious Axe Head"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "abandoned_houses"
+    ]
+  },
+  {
+    "id": "mysterious_axe_head",
+    "name": {
+      "es": "Cabeza de hacha misteriosa",
+      "en": "Mysterious Axe Head"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "abandoned_houses"
+    ]
+  },
+  {
+    "id": "fenris_hair",
+    "name": {
+      "es": "Pelo de Fenris",
+      "en": "Fenris Hair"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "mountain_caves"
+    ]
+  },
+  {
+    "id": "cultist_trophy",
+    "name": {
+      "es": "Trofeo de cultista",
+      "en": "Cultist Trophy"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "mountain_caves"
+    ]
+  },
+  {
+    "id": "pike",
+    "name": {
+      "es": "Lucio",
+      "en": "Pike"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "tuna",
+    "name": {
+      "es": "Atún",
+      "en": "Tuna"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "tetra",
+    "name": {
+      "es": "Tetra",
+      "en": "Tetra"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "giant_herring",
+    "name": {
+      "es": "Arenque gigante",
+      "en": "Giant Herring"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "coral_cod",
+    "name": {
+      "es": "Bacalao coralino",
+      "en": "Coral Cod"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "anglerfish",
+    "name": {
+      "es": "Rape abisal",
+      "en": "Anglerfish"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "northern_salmon",
+    "name": {
+      "es": "Salmón del norte",
+      "en": "Northern Salmon"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "magmafish",
+    "name": {
+      "es": "Pez magma",
+      "en": "Magmafish"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "pufferfish",
+    "name": {
+      "es": "Pez globo",
+      "en": "Pufferfish"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "world_fishing"
+    ]
+  },
+  {
+    "id": "wolf_skewer",
+    "name": {
+      "es": "Wolf Skewer",
+      "en": "Wolf Skewer"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "onion_soup",
+    "name": {
+      "es": "Onion Soup",
+      "en": "Onion Soup"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "mountain_peak_pepper_powder",
+    "name": {
+      "es": "Polvo de pimienta de las cumbres",
+      "en": "Mountain Peak Pepper Powder"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "bear_hide",
+    "name": {
+      "es": "Piel de oso",
+      "en": "Bear Hide"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bear"
+    ]
+  },
+  {
+    "id": "misthare_supreme",
+    "name": {
+      "es": "Misthare Supreme",
+      "en": "Misthare Supreme"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "cooked_seeker_meat",
+    "name": {
+      "es": "Carne de buscador cocinada",
+      "en": "Cooked Seeker Meat"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "yggdrasil_porridge",
+    "name": {
+      "es": "Yggdrasil Porridge",
+      "en": "Yggdrasil Porridge"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "herbs_of_the_hidden_hills",
+    "name": {
+      "es": "Hierbas de las colinas ocultas",
+      "en": "Herbs of the Hidden Hills"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "nidhgg",
+    "name": {
+      "es": "Nidhgg",
+      "en": "Nidhgg"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "crafted_equipment"
+    ]
+  },
+  {
+    "id": "bear_paw",
+    "name": {
+      "es": "Pata de oso",
+      "en": "Bear Paw"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bear"
+    ]
+  },
+  {
+    "id": "bread",
+    "name": {
+      "es": "Bread",
+      "en": "Bread"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "lox_meat_pie",
+    "name": {
+      "es": "Lox Meat Pie",
+      "en": "Lox Meat Pie"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "grasslands_herbalist_harvest",
+    "name": {
+      "es": "Cosecha del herbolario de las Llanuras",
+      "en": "Grasslands Herbalist Harvest"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "ripper",
+    "name": {
+      "es": "Ripper",
+      "en": "Ripper"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "crafted_equipment"
+    ]
+  },
+  {
+    "id": "seafarer_s_herbs",
+    "name": {
+      "es": "Hierbas del navegante",
+      "en": "Seafarer's Herbs"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "bog_witch"
+    ]
+  },
+  {
+    "id": "splitnir",
+    "name": {
+      "es": "Splitnir",
+      "en": "Splitnir"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "sausages",
+    "name": {
+      "es": "Sausages",
+      "en": "Sausages"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "turnip_stew",
+    "name": {
+      "es": "Turnip Stew",
+      "en": "Turnip Stew"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "troll_trophy",
+    "name": {
+      "es": "Trofeo de trol",
+      "en": "Troll Trophy"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  },
+  {
+    "id": "vile_ribcage",
+    "name": {
+      "es": "Caja torácica vil",
+      "en": "Vile Ribcage"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "vile"
+    ]
+  },
+  {
+    "id": "vile_trophy",
+    "name": {
+      "es": "Trofeo vil",
+      "en": "Vile Trophy"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "vile"
+    ]
+  },
+  {
+    "id": "cooked_boar_meat",
+    "name": {
+      "es": "Carne de jabalí cocinada",
+      "en": "Cooked Boar Meat"
+    },
+    "icon": "◈",
+    "sourceIds": [
+      "food_preparation"
+    ]
+  }
 ]
