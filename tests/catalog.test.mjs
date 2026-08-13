@@ -16,7 +16,7 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
   assert.deepEqual(validateProvenance(), []);
   assert.equal(provenance.catalogVersion, manifest.catalogVersion);
   assert.equal(provenance.gameVersion, manifest.gameVersion);
-  assert.deepEqual(provenanceSummary(), { verified: 2, partially_verified: 1, legacy_unattributed: 1 });
+  assert.deepEqual(provenanceSummary(), { verified: 4, partially_verified: 1, legacy_unattributed: 1 });
 
   const invalid = structuredClone(provenance);
   invalid.records.find((record) => record.status === "verified").sourceIds = ["missing_source"];
@@ -25,8 +25,8 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
 
 test("mantiene los candidatos editoriales separados y coherentes con el catálogo", () => {
   assert.deepEqual(validateUpdateCandidates(), []);
-  assert.equal(updateCandidates.candidates.length, 493);
-  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 348);
+  assert.equal(updateCandidates.candidates.length, 459);
+  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 310);
   assert.ok(updateCandidates.candidates.every((entry) => entry.externalIds.length > 0));
 });
 
@@ -68,6 +68,8 @@ test("relaciona cada estación con todas sus extensiones funcionales", () => {
   assert.deepEqual(workbench?.extensions.map((entry) => entry.itemId), ["chopping_block", "tanning_rack", "adze", "tool_shelf"]);
   assert.equal(stationRequirement("workbench", 4)?.extensionCount, 3);
   assert.equal(stationRequirement("hand", 4), null);
+  const artisanTable = catalog.stationExtensions.find((entry) => entry.stationId === "artisan_table");
+  assert.deepEqual(artisanTable?.extensions.map((entry) => entry.itemId), ["artisan_press"]);
   for (const group of catalog.stationExtensions) {
     assert.equal(group.maxLevel, group.extensions.length + 1);
     assert.ok(group.extensions.every((extension) => catalog.items.some((item) => item.id === extension.itemId)));
@@ -97,6 +99,14 @@ test("filtra el catálogo de forma coherente y conserva la selección sólo dent
   assert.deepEqual(noResults, []);
   assert.equal(resolveSelectedItem(noResults, "club"), null);
   assert.equal(resolveSelectedItem(bows, "club"), bows[0]);
+});
+
+test("agrupa estaciones, extensiones y procesadores bajo un filtro funcional", () => {
+  const progression = filterCatalogItems({ biomeId: "all", query: "", category: "Construcción", subcategoryId: "all", foodFocus: "all", infrastructureFocus: "stations_processing" });
+  for (const itemId of ["workbench_piece", "forge_piece", "smelter", "mead_ketill_piece", "artisan_press"]) {
+    assert.ok(progression.some((item) => item.id === itemId), `falta ${itemId} en Estaciones y proceso`);
+  }
+  assert.ok(!progression.some((item) => item.id === "dragon_bed"));
 });
 
 test("incluye el bloque completo de progresión normal de Praderas", () => {

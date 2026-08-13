@@ -5,6 +5,7 @@
   { "id": "cooking_station", "name": { "es": "Estación de cocina", "en": "Cooking station" } },
   { "id": "forge", "name": { "es": "Forja", "en": "Forge" } },
   { "id": "cauldron", "name": { "es": "Caldero", "en": "Cauldron" } },
+  { "id": "mead_ketill", "name": { "es": "Hervidor de hidromiel", "en": "Mead ketill" } },
   { "id": "fermenter", "name": { "es": "Fermentador", "en": "Fermenter" } },
   { "id": "artisan_table", "name": { "es": "Mesa de artesano", "en": "Artisan table" } },
   { "id": "blast_furnace", "name": { "es": "Horno alto", "en": "Blast furnace" } },

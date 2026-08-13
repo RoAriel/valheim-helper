@@ -5,7 +5,7 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 ## Estado del proyecto
 
 - Versión de la aplicación: `1.1.0`.
-- Versión del catálogo de datos: `0.1.21`.
+- Versión del catálogo de datos: `0.1.23`.
 - Versión de referencia de Valheim: `0.221.12`.
 - Interfaz en español.
 - Nombres de entidades en español e inglés.

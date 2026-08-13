@@ -156,4 +156,16 @@
   ,{ "id": "frost_resistance_mead", "name": { "es": "Hidromiel de resistencia al frío", "en": "Frost resistance mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
   ,{ "id": "tasty_mead", "name": { "es": "Hidromiel sabrosa", "en": "Tasty mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
   ,{ "id": "sharpening_stone", "name": { "es": "Piedra de afilar", "en": "Sharpening Stone" }, "icon": "🪨", "sourceIds": ["stonecutter_processing"] }
+  ,{ "id": "corked_vial", "name": { "es": "Vial con corcho", "en": "Corked Vial" }, "icon": "🧪", "sourceIds": ["bog_witch"] }
+  ,{ "id": "proustite_powder", "name": { "es": "Polvo de proustitas", "en": "Proustite Powder" }, "icon": "✨", "sourceIds": ["lava_blobs"] }
+  ,{ "id": "blob_trophy", "name": { "es": "Trofeo de blob", "en": "Blob Trophy" }, "icon": "🏆", "sourceIds": ["oozer"] }
+  ,{ "id": "growth_trophy", "name": { "es": "Trofeo de growth", "en": "Growth Trophy" }, "icon": "🏆", "sourceIds": ["growths_tar_pits"] }
+  ,{ "id": "tar", "name": { "es": "Alquitrán", "en": "Tar" }, "icon": "⚫", "sourceIds": ["growths_tar_pits"] }
+  ,{ "id": "asksvin_bladder", "name": { "es": "Vejiga de asksvin", "en": "Asksvin Bladder" }, "icon": "🫧", "sourceIds": ["asksvins"] }
+  ,{ "id": "majestic_carapace", "name": { "es": "Caparazón majestuoso", "en": "Majestic Carapace" }, "icon": "🪲", "sourceIds": ["the_queen"] }
+  ,{ "id": "barrel_hoops", "name": { "es": "Aros de barril", "en": "Barrel Hoops" }, "icon": "⭕", "sourceIds": ["haldor"] }
+  ,{ "id": "iron_pit", "name": { "es": "Brasero de hierro", "en": "Iron Pit" }, "icon": "🔥", "sourceIds": ["hildir"] }
+  ,{ "id": "grausten", "name": { "es": "Grausten", "en": "Grausten" }, "icon": "🪨", "sourceIds": ["ashlands_ground"] }
+  ,{ "id": "molten_core", "name": { "es": "Núcleo fundido", "en": "Molten Core" }, "icon": "🔥", "sourceIds": ["putrid_holes"] }
+  ,{ "id": "shield_core", "name": { "es": "Núcleo de escudo", "en": "Shield Core" }, "icon": "🔵", "sourceIds": ["artisan_table_processing"] }
 ]

@@ -16,5 +16,8 @@
   { "stationId": "black_forge", "stationItemId": "black_forge", "maxLevel": 5, "extensions": [
     { "itemId": "black_forge_cooler", "progressionOrder": 1 }, { "itemId": "black_forge_vise", "progressionOrder": 2 },
     { "itemId": "metal_cutter", "progressionOrder": 3 }, { "itemId": "gem_cutter", "progressionOrder": 4 }
+  ] },
+  { "stationId": "artisan_table", "stationItemId": "artisan_table_piece", "maxLevel": 2, "extensions": [
+    { "itemId": "artisan_press", "progressionOrder": 1 }
   ] }
 ]

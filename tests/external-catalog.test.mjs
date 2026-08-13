@@ -47,6 +47,14 @@ test("compara por identidad inglesa y campos funcionales sin aplicar cambios", (
   assert.deepEqual(changed.modified[0].changes[0], { field: "outputAmount", local: 1, external: 2 });
 });
 
+test("resuelve variantes compactas de nombres de materiales externos", () => {
+  const snapshot = buildExternalSnapshot(recipeHtml, pieceHtml, "2026-08-12T00:00:00.000Z");
+  snapshot.entries[0].levels[0].materials[0].nameEn = "Finewood";
+  const diff = buildSemanticDiff(snapshot);
+  assert.equal(diff.summary.unresolvedMaterials, 0);
+  assert.equal(diff.modified[0].changes[0].field, "materials");
+});
+
 test("clasifica candidatos externos con razones y conserva los casos dudosos", () => {
   const snapshot = buildExternalSnapshot(recipeHtml.replace("Recipe_StoneAxe", "Recipe_AxeFixture").replace("Stone axe", "Fixture War Axe"), pieceHtml, "2026-08-12T00:00:00.000Z");
   snapshot.entries.push({
@@ -60,4 +68,14 @@ test("clasifica candidatos externos con razones y conserva los casos dudosos", (
   assert.equal(report.classifications.find((entry) => entry.itemNameEn === "Fixture bench")?.classification, "manual_review");
   assert.ok(report.classifications.every((entry) => entry.reason.length > 0));
   assert.equal(nameSimilarity("Leather Trousers", "Leather pants"), 1 / 3);
+});
+
+test("excluye herramientas internas que no son objetos publicados", () => {
+  const snapshot = buildExternalSnapshot(recipeHtml, pieceHtml, "2026-08-12T00:00:00.000Z");
+  snapshot.entries[0].itemNameEn = "Stone Pickaxe";
+  snapshot.entries[0].externalId = "Recipe_PickaxeStone";
+  snapshot.entries.push({ ...structuredClone(snapshot.entries[0]), itemNameEn: "[item_torchmist]", externalId: "Recipe_TorchMist" });
+  const report = buildExternalClassification(snapshot);
+  assert.ok(report.classifications.filter((entry) => ["Stone Pickaxe", "[item_torchmist]"].includes(entry.itemNameEn))
+    .every((entry) => entry.classification === "technical_or_non_catalog"));
 });

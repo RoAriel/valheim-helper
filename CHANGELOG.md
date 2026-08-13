@@ -1,5 +1,22 @@
 # Cambios
 
+## Datos 0.1.23 — 2026-08-13
+
+- Se incorporaron doce construcciones funcionales verificadas: estaciones, almacenamiento, descanso, cartografía, fuego, portal y defensa de base.
+- El Hervidor de hidromiel se modeló como estación independiente y las veinte bases pasaron del caldero a esa estación.
+- La Prensa artesanal amplía la Mesa de artesano al nivel 2 y el Núcleo de escudo conserva su receta procesable.
+- Construcción ofrece el filtro **Estaciones y proceso**, que reúne estaciones, extensiones y procesadores esenciales para la progresión.
+- El Cofre del tesoro se excluyó expresamente por ser una pieza puramente decorativa.
+- El catálogo alcanza 296 objetos funcionales para Valheim `0.221.12`.
+
+## Datos 0.1.22 — 2026-08-13
+
+- Se incorporaron el Pico de metal negro y las 21 municiones funcionales pendientes: flechas, virotes, bombas de blob, bombas arrojadizas y carga de catapulta.
+- Se registraron lotes de salida, niveles de estación, mejoras y seis materiales con sus fuentes de obtención.
+- La comparación externa reconoce `Finewood` y `Corewood` como alias de los materiales locales y deja de informar falsos cambios por esa diferencia de escritura.
+- `Stone Pickaxe` y `[item_torchmist]` se clasifican como entradas técnicas, fuera del catálogo jugable publicado.
+- El catálogo alcanza 284 objetos funcionales para Valheim `0.221.12`.
+
 ## Aplicación 1.1.0 / Datos 0.1.21 — 2026-08-13
 
 - Se añadió el flujo editorial de actualización: diagnóstico, snapshot, comparación semántica, clasificación, candidatos y revisión S/N.

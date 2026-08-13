@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-13T18:05:45.945Z",
+  "generatedAt": "2026-08-13T20:00:13.419Z",
   "source": {
     "id": "jotunn_docs",
     "gameVersion": "0.221.12",
@@ -9,7 +9,7 @@
       "https://valheim-modding.github.io/Jotunn/data/pieces/piece-list.html"
     ]
   },
-  "catalogVersion": "0.1.21",
+  "catalogVersion": "0.1.23",
   "gameVersion": "0.221.12",
   "candidates": [
     {
@@ -875,6 +875,20 @@
       "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
       "externalIds": [
         "rug_straw"
+      ],
+      "sourceKinds": [
+        "piece"
+      ]
+    },
+    {
+      "id": "piece:treasure chest",
+      "nameEn": "Treasure Chest",
+      "classification": "decorative_or_cosmetic",
+      "confidence": "high",
+      "reviewStatus": "excluded",
+      "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
+      "externalIds": [
+        "piece_chest_treasure"
       ],
       "sourceKinds": [
         "piece"
@@ -1938,6 +1952,26 @@
       }
     },
     {
+      "id": "recipe:shield core",
+      "nameEn": "Shield Core",
+      "classification": "existing_material",
+      "confidence": "high",
+      "reviewStatus": "known",
+      "reason": "El nombre inglés coincide con un material local.",
+      "externalIds": [
+        "Recipe_ShieldCore"
+      ],
+      "sourceKinds": [
+        "recipe"
+      ],
+      "suggestedLocal": {
+        "entity": "material",
+        "id": "shield_core",
+        "nameEn": "Shield Core",
+        "similarity": 1
+      }
+    },
+    {
       "id": "piece:smoke puff",
       "nameEn": "Smoke Puff",
       "classification": "existing_material",
@@ -2138,36 +2172,6 @@
       }
     },
     {
-      "id": "recipe:item torchmist",
-      "nameEn": "[item_torchmist]",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_TorchMist"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "tool"
-    },
-    {
-      "id": "piece:artisan press",
-      "nameEn": "Artisan Press",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "artisan_ext1"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
       "id": "recipe-piece:ashlands gourmet bowl",
       "nameEn": "Ashlands Gourmet Bowl",
       "classification": "functional_candidate",
@@ -2185,21 +2189,6 @@
       "functionalFamily": "consumable"
     },
     {
-      "id": "piece:ashwood bed",
-      "nameEn": "Ashwood Bed",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "ashwood_bed"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
       "id": "recipe:asksvin cloak",
       "nameEn": "Asksvin Cloak",
       "classification": "functional_candidate",
@@ -2213,51 +2202,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:barrel",
-      "nameEn": "Barrel",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_chest_barrel"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "recipe:basalt bomb",
-      "nameEn": "Basalt Bomb",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombLava"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "recipe:bile bomb",
-      "nameEn": "Bile Bomb",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombBile"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
     },
     {
       "id": "recipe-piece:black forest buffet platter",
@@ -2277,51 +2221,6 @@
       "functionalFamily": "consumable"
     },
     {
-      "id": "recipe:black metal bolt",
-      "nameEn": "Black Metal Bolt",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BoltBlackmetal"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "piece:black metal chest",
-      "nameEn": "Black Metal Chest",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_chest_blackmetal"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "recipe:black metal pickaxe",
-      "nameEn": "Black Metal Pickaxe",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_PickaxeBlackMetal"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "tool"
-    },
-    {
       "id": "recipe:bleeding berserkir axes",
       "nameEn": "Bleeding Berserkir Axes",
       "classification": "functional_candidate",
@@ -2335,81 +2234,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:blob bomb elite poison",
-      "nameEn": "Blob Bomb: Elite Poison",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombBlob_PoisonElite"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "recipe:blob bomb frost",
-      "nameEn": "Blob Bomb: Frost",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombBlob_Frost"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "recipe:blob bomb lava",
-      "nameEn": "Blob Bomb: Lava",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombBlob_Lava"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "recipe:blob bomb poison",
-      "nameEn": "Blob Bomb: Poison",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombBlob_Poison"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "recipe:blob bomb tar",
-      "nameEn": "Blob Bomb: Tar",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombBlob_Tar"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
     },
     {
       "id": "recipe:bloodgeon",
@@ -2427,21 +2251,6 @@
       "functionalFamily": "equipment"
     },
     {
-      "id": "recipe:bone bolt",
-      "nameEn": "Bone Bolt",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BoltBone"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
       "id": "recipe:bone tower shield",
       "nameEn": "Bone Tower Shield",
       "classification": "functional_candidate",
@@ -2455,21 +2264,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:bonfire",
-      "nameEn": "Bonfire",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "bonfire"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe:breastplate of ask",
@@ -2517,21 +2311,6 @@
       "functionalFamily": "equipment"
     },
     {
-      "id": "recipe:bronzehead arrow",
-      "nameEn": "Bronzehead Arrow",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArrowBronze"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
       "id": "recipe:brutal slayer",
       "nameEn": "Brutal Slayer",
       "classification": "functional_candidate",
@@ -2560,81 +2339,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:carapace arrow",
-      "nameEn": "Carapace Arrow",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArrowCarapace"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "recipe:carapace bolt",
-      "nameEn": "Carapace Bolt",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BoltCarapace"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "piece:cartography table",
-      "nameEn": "Cartography Table",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_cartographytable"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "recipe:charred arrow",
-      "nameEn": "Charred Arrow",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArrowCharred"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "recipe:charred bolt",
-      "nameEn": "Charred Bolt",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BoltCharred"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
     },
     {
       "id": "recipe-piece:cooked egg",
@@ -2667,21 +2371,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:dragon bed",
-      "nameEn": "Dragon Bed",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_bed02"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe:dundr",
@@ -2727,21 +2416,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:explosive payload",
-      "nameEn": "Explosive Payload",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombSiege"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
     },
     {
       "id": "recipe:extravagant green cap",
@@ -2926,51 +2600,6 @@
       "functionalFamily": "equipment"
     },
     {
-      "id": "recipe:iron bolt",
-      "nameEn": "Iron Bolt",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BoltIron"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "piece:iron fire pit",
-      "nameEn": "Iron Fire Pit",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "fire_pit_iron"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "recipe:ironhead arrow",
-      "nameEn": "Ironhead Arrow",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArrowIron"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
       "id": "recipe:klossen",
       "nameEn": "Klossen",
       "classification": "functional_candidate",
@@ -3014,21 +2643,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:mead ketill",
-      "nameEn": "Mead Ketill",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_MeadCauldron"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe-piece:mushrooms galore la mistlands",
@@ -3108,21 +2722,6 @@
       "functionalFamily": "equipment"
     },
     {
-      "id": "recipe:ooze bomb",
-      "nameEn": "Ooze Bomb",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombOoze"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
       "id": "recipe:patterns of the bear",
       "nameEn": "Patterns of the Bear",
       "classification": "functional_candidate",
@@ -3136,21 +2735,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:personal chest",
-      "nameEn": "Personal Chest",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_chest_private"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe-piece:plains pie picnic",
@@ -3183,36 +2767,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:poison arrow",
-      "nameEn": "Poison Arrow",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArrowPoison"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
-      "id": "piece:portal stone",
-      "nameEn": "Portal Stone",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "portal_stone"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe:primal berserkir axes",
@@ -3352,51 +2906,6 @@
       "functionalFamily": "consumable"
     },
     {
-      "id": "recipe:shield core",
-      "nameEn": "Shield Core",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ShieldCore"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:shield generator",
-      "nameEn": "Shield Generator",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_shieldgenerator"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "recipe:silver arrow",
-      "nameEn": "Silver Arrow",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_ArrowSilver"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
-    },
-    {
       "id": "recipe:simple purple cap",
       "nameEn": "Simple Purple Cap",
       "classification": "functional_candidate",
@@ -3455,21 +2964,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "recipe:smoke bomb",
-      "nameEn": "Smoke Bomb",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_BombSmoke"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "ammunition"
     },
     {
       "id": "recipe:spinesnap",
@@ -3562,21 +3056,6 @@
       "functionalFamily": "equipment"
     },
     {
-      "id": "recipe:stone pickaxe",
-      "nameEn": "Stone Pickaxe",
-      "classification": "functional_candidate",
-      "confidence": "high",
-      "reviewStatus": "pending",
-      "reason": "Posee una receta de una familia funcional reconocida de equipo, arma, munición, consumible o herramienta.",
-      "externalIds": [
-        "Recipe_PickaxeStone"
-      ],
-      "sourceKinds": [
-        "recipe"
-      ],
-      "functionalFamily": "tool"
-    },
-    {
       "id": "recipe:storm ripper",
       "nameEn": "Storm Ripper",
       "classification": "functional_candidate",
@@ -3652,21 +3131,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:treasure chest",
-      "nameEn": "Treasure Chest",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_chest_treasure"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe:troll leather hood",
@@ -7173,6 +6637,20 @@
       }
     },
     {
+      "id": "recipe:item torchmist",
+      "nameEn": "[item_torchmist]",
+      "classification": "technical_or_non_catalog",
+      "confidence": "high",
+      "reviewStatus": "excluded",
+      "reason": "Es una acción, cultivo, prefab técnico o entrada sin coste fabricable.",
+      "externalIds": [
+        "Recipe_TorchMist"
+      ],
+      "sourceKinds": [
+        "recipe"
+      ]
+    },
+    {
       "id": "piece:ashvine",
       "nameEn": "Ashvine",
       "classification": "technical_or_non_catalog",
@@ -7394,6 +6872,20 @@
       ],
       "sourceKinds": [
         "piece"
+      ]
+    },
+    {
+      "id": "recipe:stone pickaxe",
+      "nameEn": "Stone Pickaxe",
+      "classification": "technical_or_non_catalog",
+      "confidence": "high",
+      "reviewStatus": "excluded",
+      "reason": "Es una acción, cultivo, prefab técnico o entrada sin coste fabricable.",
+      "externalIds": [
+        "Recipe_PickaxeStone"
+      ],
+      "sourceKinds": [
+        "recipe"
       ]
     }
   ]

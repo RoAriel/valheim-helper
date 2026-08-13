@@ -17,7 +17,7 @@ import {
   stations,
   subcategories,
 } from "@/data/catalog";
-import { filterCatalogItems, resolveSelectedItem, type CatalogCategory, type FoodFocus } from "@/data/catalog-filters";
+import { filterCatalogItems, resolveSelectedItem, type CatalogCategory, type FoodFocus, type InfrastructureFocus } from "@/data/catalog-filters";
 import type { UpdateDiagnosis } from "@/data/update-check";
 import { updateCandidates, type UpdateCandidate } from "@/data/update-candidates";
 
@@ -56,6 +56,7 @@ export default function Workbench() {
   const [category, setCategory] = useState<CatalogCategory>("Todos");
   const [subcategoryId, setSubcategoryId] = useState("all");
   const [foodFocus, setFoodFocus] = useState<FoodFocus>("all");
+  const [infrastructureFocus, setInfrastructureFocus] = useState<InfrastructureFocus>("all");
   const [selectedId, setSelectedId] = useState(items[0].id);
   const [updateDiagnosis, setUpdateDiagnosis] = useState<UpdateDiagnosis | null>(null);
   const [updateOpen, setUpdateOpen] = useState(false);
@@ -64,8 +65,8 @@ export default function Workbench() {
   const detailRef = useRef<HTMLElement>(null);
 
   const filteredItems = useMemo(
-    () => filterCatalogItems({ biomeId, query, category, subcategoryId, foodFocus }),
-    [biomeId, category, foodFocus, query, subcategoryId],
+    () => filterCatalogItems({ biomeId, query, category, subcategoryId, foodFocus, infrastructureFocus }),
+    [biomeId, category, foodFocus, infrastructureFocus, query, subcategoryId],
   );
   const availableSubcategories = category === "Todos" ? [] : subcategories.filter((subcategory) => subcategory.category === category);
   const selected = resolveSelectedItem(filteredItems, selectedId);
@@ -76,12 +77,14 @@ export default function Workbench() {
     setCategory("Todos");
     setSubcategoryId("all");
     setFoodFocus("all");
+    setInfrastructureFocus("all");
   }
 
   function selectCategory(nextCategory: CatalogCategory) {
     setCategory(nextCategory);
     setSubcategoryId("all");
     if (nextCategory !== "Comida") setFoodFocus("all");
+    if (nextCategory !== "Construcción") setInfrastructureFocus("all");
   }
 
   function selectItem(itemId: string) {
@@ -185,6 +188,13 @@ export default function Workbench() {
                   <option value="all">Todos los beneficios</option><option value="health">Prioriza salud</option><option value="healing">Curación</option><option value="resistance">Resistencia</option><option value="stamina">Prioriza aguante</option><option value="eitr">Aporta eitr</option><option value="mobility">Movilidad</option>
                 </select>
               </label>
+            )}
+            {category === "Construcción" && (
+              <div className="field-subfilter-row" role="group" aria-label="Filtrar construcciones funcionales">
+                <span>FUNCIÓN</span>
+                <button className={infrastructureFocus === "all" ? "active" : ""} aria-pressed={infrastructureFocus === "all"} onClick={() => setInfrastructureFocus("all")}>Todas</button>
+                <button className={infrastructureFocus === "stations_processing" ? "active" : ""} aria-pressed={infrastructureFocus === "stations_processing"} onClick={() => setInfrastructureFocus("stations_processing")}>Estaciones y proceso</button>
+              </div>
             )}
             <div className="field-summary">
               <span>{filteredItems.length} objetos</span>

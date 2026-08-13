@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "0.1.21",
+  "catalogVersion": "0.1.23",
   "gameVersion": "0.221.12",
   "policy": "La procedencia se incorpora gradualmente. Un registro legacy_unattributed reconoce una deuda documental y no equivale a una verificación por entidad.",
   "sources": [
@@ -27,6 +27,12 @@
       "type": "community",
       "name": "Valheim Wiki crafting station upgrades",
       "url": "https://valheim.fandom.com/wiki/Crafting_Structures"
+    },
+    {
+      "id": "valheim_wiki_ammunition_tools",
+      "type": "community",
+      "name": "Valheim Wiki: ammunition, bombs and Black Metal Pickaxe",
+      "url": "https://valheim.fandom.com/wiki/Category:Ammunition"
     }
   ],
   "records": [
@@ -61,6 +67,22 @@
       "verifiedAt": "2026-08-13",
       "sourceIds": ["jotunn_piece_list_0_221_12", "valheim_wiki_station_upgrades"],
       "evidence": "Las extensiones, sus materiales y los niveles máximos de las cuatro estaciones fueron contrastados con el volcado técnico y las páginas específicas de la wiki."
+    },
+    {
+      "id": "tools_ammunition_0_1_22",
+      "scope": "tools-and-ammunition",
+      "status": "verified",
+      "verifiedAt": "2026-08-13",
+      "sourceIds": ["jotunn_recipe_list_0_221_12", "valheim_wiki_ammunition_tools"],
+      "evidence": "Se incorporaron el Pico de metal negro y 21 municiones funcionales. Cantidades, lotes y mejoras se contrastaron con Jötunn; existencia y estaciones se confirmaron en las páginas de la wiki."
+    },
+    {
+      "id": "functional_infrastructure_0_1_23",
+      "scope": "functional-infrastructure",
+      "status": "verified",
+      "verifiedAt": "2026-08-13",
+      "sourceIds": ["jotunn_piece_list_0_221_12", "valheim_wiki_station_upgrades"],
+      "evidence": "Doce construcciones funcionales fueron verificadas contra el volcado técnico y páginas específicas de la wiki; Treasure Chest se excluyó por ser exclusivamente decorativo."
     }
   ]
 }

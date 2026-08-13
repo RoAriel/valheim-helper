@@ -32,8 +32,8 @@ export type ExternalClassificationReport = {
 
 const functionalRecipeId = /^Recipe_(Armor(?!Dress|Tunic)|Cape(?!Odin)|Arrow|Bolt|Axe|Battleaxe|Bow|Crossbow|Knife|Mace|Sword|Spear|Atgeir|Shield|Helmet|Bomb|Staff|Sledge|Pickaxe|Cultivator|Hoe|Hammer|Torch|Harpoon|Food|Cooked|Feast)/i;
 const functionalPieceId = /(workbench|forge|smelter|blastfurnace|kiln|portal|teleport|ship|karve|raft|cart|bed|chest|fire|hearth|cooking|fermenter|oven|windmill|spinningwheel|batteringram|catapult|shieldgenerator|sapcollector|beehive|stonecutter|artisan|cauldron|eitrrefinery)/i;
-const cosmeticPattern = /(dress|tunic\d|with (shawl|beads|cape)|headscarf|fur cap|celebratory cap|midsummer|yule|garland|banner|rug|carpet|curtain|throne|chair|stool|black marble table|long heavy table|round table|small table|darkwood table|odin|maypole|jack[- ]o|wreath|decor)/i;
-const technicalPattern = /^(cultivate|grass|remove|repair)$/i;
+const cosmeticPattern = /(dress|tunic\d|with (shawl|beads|cape)|headscarf|fur cap|celebratory cap|midsummer|yule|garland|banner|rug|carpet|curtain|throne|chair|stool|treasure chest|black marble table|long heavy table|round table|small table|darkwood table|odin|maypole|jack[- ]o|wreath|decor)/i;
+const technicalPattern = /^(cultivate|grass|remove|repair|stone pickaxe|\[item_.+\])$/i;
 const technicalId = /^(sapling_|.*_sapling|piece_remove|piece_repair|replant|cultivate)/i;
 
 function tokens(value: string) {

@@ -1,7 +1,9 @@
 import { foodEffects, items, subcategories, type Item } from "./catalog.ts";
+import progressionInfrastructure from "./progression-infrastructure.json" with { type: "json" };
 
 export type CatalogCategory = "Todos" | Item["category"];
 export type FoodFocus = "all" | "health" | "stamina" | "eitr" | "healing" | "resistance" | "mobility";
+export type InfrastructureFocus = "all" | "stations_processing";
 
 export type CatalogFilters = {
   biomeId: string;
@@ -9,6 +11,7 @@ export type CatalogFilters = {
   category: CatalogCategory;
   subcategoryId: string;
   foodFocus: FoodFocus;
+  infrastructureFocus?: InfrastructureFocus;
 };
 
 export function matchesFoodFocus(itemId: string, focus: FoodFocus) {
@@ -30,6 +33,7 @@ export function filterCatalogItems(filters: CatalogFilters) {
     (filters.biomeId === "all" || item.stageBiomeId === filters.biomeId)
     && (filters.category === "Todos" || item.category === filters.category)
     && (filters.subcategoryId === "all" || subcategory?.itemIds.includes(item.id))
+    && (filters.infrastructureFocus !== "stations_processing" || progressionInfrastructure.itemIds.includes(item.id))
     && matchesFoodFocus(item.id, filters.foodFocus)
     && `${item.name.es} ${item.name.en} ${item.category}`.toLocaleLowerCase("es").includes(normalizedQuery)
   ));
