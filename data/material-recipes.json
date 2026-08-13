@@ -171,5 +171,6 @@
     "stationId": "cooking_station",
     "outputAmount": 1,
     "materials": [{ "materialId": "serpent_meat", "amount": 1 }]
-  }
+  },
+  { "materialId": "sharpening_stone", "stationId": "stonecutter", "outputAmount": 1, "materials": [{ "materialId": "stone", "amount": 5 }] }
 ]

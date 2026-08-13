@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12T23:09:41.306Z",
+  "generatedAt": "2026-08-13T18:05:45.945Z",
   "source": {
     "id": "jotunn_docs",
     "gameVersion": "0.221.12",
@@ -9,7 +9,7 @@
       "https://valheim-modding.github.io/Jotunn/data/pieces/piece-list.html"
     ]
   },
-  "catalogVersion": "0.1.20",
+  "catalogVersion": "0.1.21",
   "gameVersion": "0.221.12",
   "candidates": [
     {
@@ -307,20 +307,6 @@
       ]
     },
     {
-      "id": "piece:butcher s table",
-      "nameEn": "Butcher's Table",
-      "classification": "decorative_or_cosmetic",
-      "confidence": "high",
-      "reviewStatus": "excluded",
-      "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
-      "externalIds": [
-        "cauldron_ext3_butchertable"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
       "id": "recipe:cape of odin",
       "nameEn": "Cape of Odin",
       "classification": "decorative_or_cosmetic",
@@ -332,20 +318,6 @@
       ],
       "sourceKinds": [
         "recipe"
-      ]
-    },
-    {
-      "id": "piece:cartography table",
-      "nameEn": "Cartography Table",
-      "classification": "decorative_or_cosmetic",
-      "confidence": "high",
-      "reviewStatus": "excluded",
-      "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
-      "externalIds": [
-        "piece_cartographytable"
-      ],
-      "sourceKinds": [
-        "piece"
       ]
     },
     {
@@ -427,20 +399,6 @@
       "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
       "externalIds": [
         "piece_CelebrationGarland"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
-      "id": "piece:food preparation table",
-      "nameEn": "Food Preparation Table",
-      "classification": "decorative_or_cosmetic",
-      "confidence": "high",
-      "reviewStatus": "excluded",
-      "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
-      "externalIds": [
-        "piece_preptable"
       ],
       "sourceKinds": [
         "piece"
@@ -853,20 +811,6 @@
       ]
     },
     {
-      "id": "piece:rune table",
-      "nameEn": "Rune Table",
-      "classification": "decorative_or_cosmetic",
-      "confidence": "high",
-      "reviewStatus": "excluded",
-      "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
-      "externalIds": [
-        "piece_magetable_ext"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
       "id": "recipe:simple undyed dress",
       "nameEn": "Simple Undyed Dress",
       "classification": "decorative_or_cosmetic",
@@ -931,34 +875,6 @@
       "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
       "externalIds": [
         "rug_straw"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
-      "id": "piece:table",
-      "nameEn": "Table",
-      "classification": "decorative_or_cosmetic",
-      "confidence": "high",
-      "reviewStatus": "excluded",
-      "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
-      "externalIds": [
-        "piece_table"
-      ],
-      "sourceKinds": [
-        "piece"
-      ]
-    },
-    {
-      "id": "piece:unfading candles",
-      "nameEn": "Unfading Candles",
-      "classification": "decorative_or_cosmetic",
-      "confidence": "high",
-      "reviewStatus": "excluded",
-      "reason": "El nombre o identificador corresponde a vestimenta cosmética o decoración explícita.",
-      "externalIds": [
-        "piece_magetable_ext2"
       ],
       "sourceKinds": [
         "piece"
@@ -2002,6 +1918,26 @@
       }
     },
     {
+      "id": "recipe:sharpening stone",
+      "nameEn": "Sharpening Stone",
+      "classification": "existing_material",
+      "confidence": "high",
+      "reviewStatus": "known",
+      "reason": "El nombre inglés coincide con un material local.",
+      "externalIds": [
+        "Recipe_SharpeningStone"
+      ],
+      "sourceKinds": [
+        "recipe"
+      ],
+      "suggestedLocal": {
+        "entity": "material",
+        "id": "sharpening_stone",
+        "nameEn": "Sharpening Stone",
+        "similarity": 1
+      }
+    },
+    {
       "id": "piece:smoke puff",
       "nameEn": "Smoke Puff",
       "classification": "existing_material",
@@ -2341,21 +2277,6 @@
       "functionalFamily": "consumable"
     },
     {
-      "id": "piece:black forge cooler",
-      "nameEn": "Black Forge Cooler",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "blackforge_ext1"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
       "id": "recipe:black metal bolt",
       "nameEn": "Black Metal Bolt",
       "classification": "functional_candidate",
@@ -2671,6 +2592,21 @@
       "functionalFamily": "ammunition"
     },
     {
+      "id": "piece:cartography table",
+      "nameEn": "Cartography Table",
+      "classification": "functional_candidate",
+      "confidence": "medium",
+      "reviewStatus": "pending",
+      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
+      "externalIds": [
+        "piece_cartographytable"
+      ],
+      "sourceKinds": [
+        "piece"
+      ],
+      "functionalFamily": "infrastructure"
+    },
+    {
       "id": "recipe:charred arrow",
       "nameEn": "Charred Arrow",
       "classification": "functional_candidate",
@@ -2913,51 +2849,6 @@
       "functionalFamily": "equipment"
     },
     {
-      "id": "piece:forge tool rack",
-      "nameEn": "Forge Tool Rack",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "forge_ext6"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "piece:gem cutter",
-      "nameEn": "Gem Cutter",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "blackforge_ext4_gemcutter"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "piece:grinding wheel",
-      "nameEn": "Grinding Wheel",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "forge_ext3"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
       "id": "recipe:harvest tunic",
       "nameEn": "Harvest Tunic",
       "classification": "functional_candidate",
@@ -3133,36 +3024,6 @@
       "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
       "externalIds": [
         "piece_MeadCauldron"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "piece:metal cutter",
-      "nameEn": "Metal Cutter",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "blackforge_ext3_metalcutter"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
-      "id": "piece:mortar and pestle",
-      "nameEn": "Mortar and Pestle",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "cauldron_ext5_mortarandpestle"
       ],
       "sourceKinds": [
         "piece"
@@ -3354,21 +3215,6 @@
       "functionalFamily": "infrastructure"
     },
     {
-      "id": "piece:pots and pans",
-      "nameEn": "Pots and Pans",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "cauldron_ext4_pots"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
       "id": "recipe:primal berserkir axes",
       "nameEn": "Primal Berserkir Axes",
       "classification": "functional_candidate",
@@ -3442,21 +3288,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:rolling pins and cutting boards",
-      "nameEn": "Rolling Pins and Cutting Boards",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "cauldron_ext6_rollingpins"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe:root ripper",
@@ -3641,21 +3472,6 @@
       "functionalFamily": "ammunition"
     },
     {
-      "id": "piece:spice rack",
-      "nameEn": "Spice Rack",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "cauldron_ext1_spice"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
       "id": "recipe:spinesnap",
       "nameEn": "Spinesnap",
       "classification": "functional_candidate",
@@ -3838,21 +3654,6 @@
       "functionalFamily": "equipment"
     },
     {
-      "id": "piece:tool shelf",
-      "nameEn": "Tool Shelf",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "piece_workbench_ext4"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
-    },
-    {
       "id": "piece:treasure chest",
       "nameEn": "Treasure Chest",
       "classification": "functional_candidate",
@@ -3926,21 +3727,6 @@
         "recipe"
       ],
       "functionalFamily": "equipment"
-    },
-    {
-      "id": "piece:vice",
-      "nameEn": "Vice",
-      "classification": "functional_candidate",
-      "confidence": "medium",
-      "reviewStatus": "pending",
-      "reason": "La pieza pertenece a una familia funcional reconocida de estación, transporte o infraestructura.",
-      "externalIds": [
-        "blackforge_ext2_vise"
-      ],
-      "sourceKinds": [
-        "piece"
-      ],
-      "functionalFamily": "infrastructure"
     },
     {
       "id": "recipe:vilebone cage",
@@ -5598,6 +5384,20 @@
       ]
     },
     {
+      "id": "piece:food preparation table",
+      "nameEn": "Food Preparation Table",
+      "classification": "manual_review",
+      "confidence": "low",
+      "reviewStatus": "pending",
+      "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
+      "externalIds": [
+        "piece_preptable"
+      ],
+      "sourceKinds": [
+        "piece"
+      ]
+    },
+    {
       "id": "piece:frosted sweetbread",
       "nameEn": "Frosted Sweetbread",
       "classification": "manual_review",
@@ -6529,6 +6329,20 @@
       ]
     },
     {
+      "id": "piece:rune table",
+      "nameEn": "Rune Table",
+      "classification": "manual_review",
+      "confidence": "low",
+      "reviewStatus": "pending",
+      "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
+      "externalIds": [
+        "piece_magetable_ext"
+      ],
+      "sourceKinds": [
+        "piece"
+      ]
+    },
+    {
       "id": "piece:sconce",
       "nameEn": "Sconce",
       "classification": "manual_review",
@@ -6582,20 +6396,6 @@
       ],
       "sourceKinds": [
         "piece"
-      ]
-    },
-    {
-      "id": "recipe:sharpening stone",
-      "nameEn": "Sharpening Stone",
-      "classification": "manual_review",
-      "confidence": "low",
-      "reviewStatus": "pending",
-      "reason": "Tiene una receta real, pero la familia no permite distinguir con seguridad objeto funcional, alimento, material o decoración.",
-      "externalIds": [
-        "Recipe_SharpeningStone"
-      ],
-      "sourceKinds": [
-        "recipe"
       ]
     },
     {
@@ -7011,6 +6811,20 @@
       ]
     },
     {
+      "id": "piece:table",
+      "nameEn": "Table",
+      "classification": "manual_review",
+      "confidence": "low",
+      "reviewStatus": "pending",
+      "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
+      "externalIds": [
+        "piece_table"
+      ],
+      "sourceKinds": [
+        "piece"
+      ]
+    },
+    {
       "id": "recipe:tankard",
       "nameEn": "Tankard",
       "classification": "manual_review",
@@ -7106,6 +6920,20 @@
       ],
       "sourceKinds": [
         "recipe"
+      ]
+    },
+    {
+      "id": "piece:unfading candles",
+      "nameEn": "Unfading Candles",
+      "classification": "manual_review",
+      "confidence": "low",
+      "reviewStatus": "pending",
+      "reason": "La información técnica disponible no alcanza para clasificarla automáticamente.",
+      "externalIds": [
+        "piece_magetable_ext2"
+      ],
+      "sourceKinds": [
+        "piece"
       ]
     },
     {

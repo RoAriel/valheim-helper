@@ -105,8 +105,9 @@ Si una receta o efecto no puede contrastarse para la versión objetivo, se manti
 1. Registrar primero biomas, estaciones, fuentes y materiales nuevos.
 2. Incorporar los objetos y sus recetas; incluir mejoras y cantidades de lote cuando correspondan.
 3. Para consumibles, actualizar la base, salida del fermentador y `food-effects.json` en el mismo bloque.
-4. Actualizar `subcategories.json` si cambia un objeto de Armas o Comida; cada objeto de una categoría con subfiltros debe pertenecer a una sola subcategoría.
-5. Ajustar `functional-crafting-audit.json` y `consumable-coverage.json` cuando se modifique la cobertura declarada.
+4. Si cambia una estación, actualizar `station-extensions.json` junto con las piezas que aumentan su nivel; no inferir una extensión a partir de `stationLevel`.
+5. Actualizar `subcategories.json` si cambia un objeto de Armas o Comida; cada objeto de una categoría con subfiltros debe pertenecer a una sola subcategoría.
+6. Ajustar `functional-crafting-audit.json` y `consumable-coverage.json` cuando se modifique la cobertura declarada.
 
 ## 4. Validar y publicar
 

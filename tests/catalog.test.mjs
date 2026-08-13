@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-const { buildGoalPlan, buildUpgradeCostSummaries, catalog, foodEffects, manifest, expandMaterialCosts, subcategories, validateCatalog } = await import("../data/catalog.ts");
+const { buildGoalPlan, buildUpgradeCostSummaries, catalog, foodEffects, manifest, expandMaterialCosts, stationRequirement, subcategories, validateCatalog } = await import("../data/catalog.ts");
 const { filterCatalogItems, resolveSelectedItem } = await import("../data/catalog-filters.ts");
 const audit = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/functional-crafting-audit.json", import.meta.url), "utf8"));
 const consumableCoverage = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../data/consumable-coverage.json", import.meta.url), "utf8"));
@@ -16,7 +16,7 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
   assert.deepEqual(validateProvenance(), []);
   assert.equal(provenance.catalogVersion, manifest.catalogVersion);
   assert.equal(provenance.gameVersion, manifest.gameVersion);
-  assert.deepEqual(provenanceSummary(), { verified: 1, partially_verified: 1, legacy_unattributed: 1 });
+  assert.deepEqual(provenanceSummary(), { verified: 2, partially_verified: 1, legacy_unattributed: 1 });
 
   const invalid = structuredClone(provenance);
   invalid.records.find((record) => record.status === "verified").sourceIds = ["missing_source"];
@@ -25,8 +25,8 @@ test("registra procedencia sin presentar la cobertura heredada como verificada",
 
 test("mantiene los candidatos editoriales separados y coherentes con el catálogo", () => {
   assert.deepEqual(validateUpdateCandidates(), []);
-  assert.equal(updateCandidates.candidates.length, 505);
-  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 355);
+  assert.equal(updateCandidates.candidates.length, 493);
+  assert.equal(updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length, 348);
   assert.ok(updateCandidates.candidates.every((entry) => entry.externalIds.length > 0));
 });
 
@@ -59,6 +59,19 @@ test("exige un tema visual válido para cada bioma", () => {
   const invalidCatalog = structuredClone(catalog);
   invalidCatalog.biomes.find((biome) => biome.id === "meadows").theme.accent = "oro";
   assert.ok(validateCatalog(invalidCatalog).includes("Color accent inválido para meadows"));
+});
+
+test("relaciona cada estación con todas sus extensiones funcionales", () => {
+  assert.deepEqual(validateCatalog(), []);
+  const workbench = catalog.stationExtensions.find((entry) => entry.stationId === "workbench");
+  assert.equal(workbench?.maxLevel, 5);
+  assert.deepEqual(workbench?.extensions.map((entry) => entry.itemId), ["chopping_block", "tanning_rack", "adze", "tool_shelf"]);
+  assert.equal(stationRequirement("workbench", 4)?.extensionCount, 3);
+  assert.equal(stationRequirement("hand", 4), null);
+  for (const group of catalog.stationExtensions) {
+    assert.equal(group.maxLevel, group.extensions.length + 1);
+    assert.ok(group.extensions.every((extension) => catalog.items.some((item) => item.id === extension.itemId)));
+  }
 });
 
 test("clasifica todas las armas en una sola subcategoría", () => {

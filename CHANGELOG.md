@@ -1,5 +1,14 @@
 # Cambios
 
+## Aplicación 1.1.0 / Datos 0.1.21 — 2026-08-13
+
+- Se añadió el flujo editorial de actualización: diagnóstico, snapshot, comparación semántica, clasificación, candidatos y revisión S/N.
+- La pestaña **Revisión de datos** permite consultar candidatos externos sin mezclarlos con el catálogo productivo.
+- Se estructuraron las extensiones del banco de trabajo, forja, caldero y forja negra, y la ficha muestra cómo alcanzar el nivel de estación exigido por cada receta.
+- Cada extensión de estación permite desplegar sus materias primas y la estación necesaria para construirla.
+- Se incorporaron doce extensiones funcionales faltantes, incluida la Estantería de herramientas, y la Piedra de afilar como material procesado.
+- El catálogo alcanza 262 objetos funcionales para Valheim `0.221.12`.
+
 ## Aplicación 1.0.1 — 2026-08-10
 
 - La ficha muestra la cantidad producida por lote para flechas, hidromieles y demás recetas múltiples.

@@ -4,8 +4,8 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 
 ## Estado del proyecto
 
-- Versión de la aplicación: `1.0.1`.
-- Versión del catálogo de datos: `0.1.20`.
+- Versión de la aplicación: `1.1.0`.
+- Versión del catálogo de datos: `0.1.21`.
 - Versión de referencia de Valheim: `0.221.12`.
 - Interfaz en español.
 - Nombres de entidades en español e inglés.
@@ -26,6 +26,7 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 - Mejoras de armas y herramientas por nivel.
 - Costo individual de cada mejora y resumen total desde nivel 1 hasta el nivel máximo.
 - Estación y nivel requeridos.
+- Extensiones necesarias para elevar bancos de trabajo, forjas y calderos, con su progresión habitual.
 - Origen, nombre bilingüe, bioma, requisito y fuentes alternativas de los materiales.
 - Diseño adaptable a computadora y teléfono.
 - Diagnóstico de actualizaciones bajo demanda, con comparación de la app, el catálogo y la versión estable de Valheim sin modificar los datos instalados.

@@ -7,6 +7,7 @@ import materialsData from "./materials.json" with { type: "json" };
 import recipesData from "./recipes.json" with { type: "json" };
 import sourcesData from "./sources.json" with { type: "json" };
 import stationsData from "./stations.json" with { type: "json" };
+import stationExtensionsData from "./station-extensions.json" with { type: "json" };
 import subcategoriesData from "./subcategories.json" with { type: "json" };
 
 export type BilingualName = { es: string; en: string };
@@ -22,6 +23,8 @@ export type BiomeTheme = { accent: string; surface: string; symbol: string };
 export type Biome = { id: string; name: BilingualName; theme: BiomeTheme };
 export type Subcategory = { id: string; category: Category; name: BilingualName; itemIds: string[] };
 export type Station = { id: string; name: BilingualName };
+export type StationExtension = { itemId: string; progressionOrder: number };
+export type StationExtensionGroup = { stationId: string; stationItemId: string; maxLevel: number; extensions: StationExtension[] };
 export type FoodEffect = { itemId: string; health?: number; stamina?: number; eitr?: number; healing?: number; durationSeconds?: number; effects?: string[] };
 export type GoalPlan = { itemId: string; materials: MaterialCost[]; stationIds: string[]; biomeIds: string[] };
 export type UpgradeCostSummary = { targetLevel: number; step: MaterialCost[]; cumulative: MaterialCost[] };
@@ -30,6 +33,7 @@ export const manifest = manifestData;
 export const biomes = biomesData as Biome[];
 export const subcategories = subcategoriesData as Subcategory[];
 export const stations = stationsData as Station[];
+export const stationExtensions = stationExtensionsData as StationExtensionGroup[];
 export const sources = sourcesData as Source[];
 export const materials = materialsData as Material[];
 export const items = itemsData as Item[];
@@ -46,8 +50,9 @@ export type Catalog = {
   recipes: Recipe[];
   materialRecipes: MaterialRecipe[];
   foodEffects: FoodEffect[];
+  stationExtensions: StationExtensionGroup[];
 };
-export const catalog: Catalog = { biomes, subcategories, stations, sources, materials, items, recipes, materialRecipes, foodEffects };
+export const catalog: Catalog = { biomes, subcategories, stations, sources, materials, items, recipes, materialRecipes, foodEffects, stationExtensions };
 
 export const byId = <T extends { id: string }>(entries: T[], id: string) => entries.find((entry) => entry.id === id);
 
@@ -105,7 +110,7 @@ function validateMaterialRecipeCycles(materialRecipes: MaterialRecipe[], errors:
 }
 
 export function validateCatalog(catalogToValidate: Catalog = catalog) {
-  const { biomes, subcategories, stations, sources, materials, items, recipes, materialRecipes, foodEffects } = catalogToValidate;
+  const { biomes, subcategories, stations, sources, materials, items, recipes, materialRecipes, foodEffects, stationExtensions } = catalogToValidate;
   const errors: string[] = [];
   validateUniqueIds(biomes, "Bioma", errors);
   validateUniqueIds(stations, "Estación", errors);
@@ -114,6 +119,21 @@ export function validateCatalog(catalogToValidate: Catalog = catalog) {
   validateUniqueIds(items, "Objeto", errors);
   validateUniqueIds(foodEffects.map((effect) => ({ id: effect.itemId })), "Efecto de comida", errors);
   validateUniqueIds(subcategories, "Subcategoría", errors);
+  validateUniqueIds(stationExtensions.map((entry) => ({ id: entry.stationId })), "Cadena de extensiones", errors);
+
+  const extensionItemIds = new Set<string>();
+  for (const group of stationExtensions) {
+    if (!stations.some((station) => station.id === group.stationId)) errors.push(`Estación inexistente en extensiones: ${group.stationId}`);
+    if (!items.some((item) => item.id === group.stationItemId)) errors.push(`Objeto de estación inexistente: ${group.stationItemId}`);
+    if (group.maxLevel !== group.extensions.length + 1) errors.push(`Nivel máximo incoherente para ${group.stationId}`);
+    const orders = group.extensions.map((extension) => extension.progressionOrder);
+    if (new Set(orders).size !== orders.length || orders.some((order, index) => order !== index + 1)) errors.push(`Orden de extensiones inválido para ${group.stationId}`);
+    for (const extension of group.extensions) {
+      if (!items.some((item) => item.id === extension.itemId)) errors.push(`Extensión inexistente para ${group.stationId}: ${extension.itemId}`);
+      if (extensionItemIds.has(extension.itemId)) errors.push(`Extensión repetida entre estaciones: ${extension.itemId}`);
+      extensionItemIds.add(extension.itemId);
+    }
+  }
 
   const subcategoryItemIds = new Map<string, number>();
   const categorizedCategories = new Set(subcategories.map((subcategory) => subcategory.category));
@@ -244,6 +264,12 @@ export function buildUpgradeCostSummaries(recipe: Recipe): UpgradeCostSummary[] 
     cumulative = mergeMaterialCosts([...cumulative, ...upgrade.materials]);
     return { targetLevel: upgrade.targetLevel, step: upgrade.materials, cumulative: [...cumulative] };
   });
+}
+
+export function stationRequirement(stationId: string, stationLevel: number) {
+  const group = stationExtensions.find((entry) => entry.stationId === stationId);
+  if (!group || stationLevel <= 1) return null;
+  return { group, extensionCount: Math.min(stationLevel - 1, group.extensions.length) };
 }
 
 export function buildGoalPlan(itemId: string): GoalPlan {

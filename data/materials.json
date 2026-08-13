@@ -155,4 +155,5 @@
   ,{ "id": "minor_stamina_mead", "name": { "es": "Hidromiel de aguante menor", "en": "Minor stamina mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
   ,{ "id": "frost_resistance_mead", "name": { "es": "Hidromiel de resistencia al frío", "en": "Frost resistance mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
   ,{ "id": "tasty_mead", "name": { "es": "Hidromiel sabrosa", "en": "Tasty mead" }, "icon": "🧴", "sourceIds": ["fermenter_mead"] }
+  ,{ "id": "sharpening_stone", "name": { "es": "Piedra de afilar", "en": "Sharpening Stone" }, "icon": "🪨", "sourceIds": ["stonecutter_processing"] }
 ]

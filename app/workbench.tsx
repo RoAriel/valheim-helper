@@ -12,6 +12,8 @@ import {
   materials,
   recipes,
   sources,
+  stationExtensions,
+  stationRequirement,
   stations,
   subcategories,
 } from "@/data/catalog";
@@ -314,6 +316,7 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
   const collectionBiomes = namesForMaterials(goalPlan.materials.map((cost) => cost.materialId));
   const foodEffect = foodEffects.find((effect) => effect.itemId === selected.id);
   const upgradeCosts = buildUpgradeCostSummaries(recipe);
+  const extensionGroup = stationExtensions.find((group) => group.stationItemId === selected.id);
 
   return (
     <aside ref={detailRef} className="field-detail" style={theme} aria-label={`Detalle de ${selected.name.es}`}>
@@ -332,9 +335,25 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
         {foodEffect.effects?.length && <ul className="field-effects">{foodEffect.effects.map((effect) => <li key={effect}>{effect}</li>)}</ul>}
       </section>}
       <section className="field-block"><div className="field-block-title"><h3>Fabricación</h3><span>{byId(stations, recipe.stationId)?.name.es}</span></div>
+        <StationLevelRequirement stationId={recipe.stationId} stationLevel={recipe.craft.stationLevel} />
         {(recipe.outputAmount ?? 1) > 1 && <p className="field-output">Produce <strong>×{recipe.outputAmount}</strong></p>}
         {recipe.craft.materials.map((cost) => <Cost key={cost.materialId} materialId={cost.materialId} amount={cost.amount} />)}
       </section>
+      {extensionGroup && <section className="field-block field-station-extensions" aria-label={`Extensiones de ${selected.name.es}`}>
+        <div className="field-block-title"><h3>Mejoras de estación</h3><span>Nivel máximo {extensionGroup.maxLevel}</span></div>
+        <p>Cada extensión distinta cercana aumenta un nivel. El orden muestra la progresión habitual.</p>
+        {extensionGroup.extensions.map((extension, index) => {
+          const extensionItem = byId(items, extension.itemId)!;
+          const extensionRecipe = recipes.find((entry) => entry.itemId === extension.itemId)!;
+          return <details key={extension.itemId} className="field-extension-detail">
+            <summary><b>Nivel {index + 2}</b><span>{extensionItem.icon}</span><span><strong>{extensionItem.name.es}</strong><small>{extensionItem.name.en}</small></span></summary>
+            <div className="field-extension-materials">
+              <p>Construcción · {byId(stations, extensionRecipe.stationId)?.name.es}</p>
+              {extensionRecipe.craft.materials.map((cost) => <Cost key={cost.materialId} materialId={cost.materialId} amount={cost.amount} />)}
+            </div>
+          </details>;
+        })}
+      </section>}
       {recipe.upgrades.length > 0 && <details className="field-block field-disclosure"><summary>Mejoras disponibles <span>{recipe.upgrades.length} niveles</span></summary>
         <section className="field-upgrade-total" aria-label={`Costo total desde nivel 1 hasta nivel ${upgradeCosts.at(-1)?.targetLevel}`}>
           <div><p>Costo total acumulado</p><strong>Nivel 1 → Nivel {upgradeCosts.at(-1)?.targetLevel}</strong></div>
@@ -342,6 +361,7 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
         </section>
         {upgradeCosts.map((upgrade) => <section className="field-upgrade" key={upgrade.targetLevel}>
           <h4>Mejora a nivel {upgrade.targetLevel}</h4>
+          <StationLevelRequirement stationId={recipe.stationId} stationLevel={recipe.upgrades.find((entry) => entry.targetLevel === upgrade.targetLevel)?.stationLevel ?? 1} />
           <p>Costo de este nivel</p>
           {upgrade.step.map((cost) => <Cost key={`step-${cost.materialId}`} materialId={cost.materialId} amount={cost.amount} />)}
         </section>)}
@@ -353,6 +373,16 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
       </details>
     </aside>
   );
+}
+
+function StationLevelRequirement({ stationId, stationLevel }: { stationId: string; stationLevel: number }) {
+  const requirement = stationRequirement(stationId, stationLevel);
+  if (!requirement) return null;
+  return <details className="field-station-requirement">
+    <summary>Requiere {byId(stations, stationId)?.name.es} nivel {stationLevel}</summary>
+    <p>Construí {requirement.extensionCount} {requirement.extensionCount === 1 ? "extensión distinta" : "extensiones distintas"} cerca de la estación.</p>
+    <ul>{requirement.group.extensions.map((extension) => <li key={extension.itemId}>{byId(items, extension.itemId)?.name.es}</li>)}</ul>
+  </details>;
 }
 
 function Cost({ materialId, amount }: { materialId: string; amount: number }) {

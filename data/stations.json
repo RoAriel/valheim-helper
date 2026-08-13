@@ -14,5 +14,6 @@
   { "id": "black_forge", "name": { "es": "Forja negra", "en": "Black forge" } },
   { "id": "galdr_table", "name": { "es": "Mesa Galdr", "en": "Galdr table" } },
   { "id": "eitr_refinery", "name": { "es": "Refinería de eitr", "en": "Eitr refinery" } },
-  { "id": "workbench_nearby", "name": { "es": "Banco de trabajo cercano", "en": "Nearby workbench" } }
+  { "id": "workbench_nearby", "name": { "es": "Banco de trabajo cercano", "en": "Nearby workbench" } },
+  { "id": "stonecutter", "name": { "es": "Cantero", "en": "Stonecutter" } }
 ]

@@ -5,11 +5,11 @@
   "biomes": [
     { "biomeId": "meadows", "expectedRecipeCount": 66, "requiredItemIds": ["antler_pickaxe", "raft", "beehive", "stakewall"] },
     { "biomeId": "black_forest", "expectedRecipeCount": 39, "requiredItemIds": ["portal", "karve", "smelter", "fermenter", "minor_health_mead", "tasty_mead", "ratatosk_tonic"] },
-    { "biomeId": "swamp", "expectedRecipeCount": 34, "requiredItemIds": ["stonecutter", "longship", "iron_pickaxe", "poison_resistance_mead", "berserkir_mead", "troll_endurance_mead"] },
-    { "biomeId": "mountains", "expectedRecipeCount": 20, "requiredItemIds": ["artisan_table_piece", "draugr_fang", "frostner", "stone_oven", "frost_resistance_mead", "animal_whispers_brew"] },
-    { "biomeId": "plains", "expectedRecipeCount": 23, "requiredItemIds": ["blast_furnace", "windmill", "padded_cuirass", "lox_saddle", "anti_sting_concoction"] },
-    { "biomeId": "mistlands", "expectedRecipeCount": 36, "requiredItemIds": ["eitr_refinery", "galdr_table", "mistwalker", "ballista", "major_health_mead", "minor_eitr_mead", "lightfoot_mead"] },
-    { "biomeId": "ashlands", "expectedRecipeCount": 25, "requiredItemIds": ["drakkar", "catapult", "slayer", "asksvin_saddle", "lingering_health_mead", "lingering_stamina_mead", "lingering_eitr_mead"] },
+    { "biomeId": "swamp", "expectedRecipeCount": 37, "requiredItemIds": ["stonecutter", "longship", "iron_pickaxe", "poison_resistance_mead", "berserkir_mead", "troll_endurance_mead", "grinding_wheel", "forge_tool_rack", "spice_rack"] },
+    { "biomeId": "mountains", "expectedRecipeCount": 22, "requiredItemIds": ["artisan_table_piece", "draugr_fang", "frostner", "stone_oven", "frost_resistance_mead", "animal_whispers_brew", "tool_shelf", "butchers_table"] },
+    { "biomeId": "plains", "expectedRecipeCount": 24, "requiredItemIds": ["blast_furnace", "windmill", "padded_cuirass", "lox_saddle", "anti_sting_concoction", "pots_and_pans"] },
+    { "biomeId": "mistlands", "expectedRecipeCount": 39, "requiredItemIds": ["eitr_refinery", "galdr_table", "mistwalker", "ballista", "major_health_mead", "minor_eitr_mead", "lightfoot_mead", "mortar_and_pestle", "black_forge_cooler", "black_forge_vise"] },
+    { "biomeId": "ashlands", "expectedRecipeCount": 28, "requiredItemIds": ["drakkar", "catapult", "slayer", "asksvin_saddle", "lingering_health_mead", "lingering_stamina_mead", "lingering_eitr_mead", "rolling_pins_cutting_boards", "metal_cutter", "gem_cutter"] },
     { "biomeId": "ocean", "expectedRecipeCount": 7, "requiredItemIds": ["abyssal_harpoon", "serpent_scale_shield", "serpent_stew", "heavy_fishing_bait", "vananidir_draught"] }
   ]
 }
