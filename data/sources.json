@@ -36,7 +36,7 @@
   ,{ "id": "iron_nails_forge", "name": { "es": "Fabricados con hierro en la forja", "en": "Crafted from iron at a forge" }, "biomeIds": ["swamp"], "requirement": "Forja" }
   ,{ "id": "meadows_dandelions", "name": { "es": "Suelo de Praderas", "en": "Meadows floor" }, "biomeIds": ["meadows"] }
   ,{ "id": "leech", "name": { "es": "Sanguijuelas", "en": "Leeches" }, "biomeIds": ["swamp"] }
-  ,{ "id": "cauldron_mead_base", "name": { "es": "Caldero", "en": "Cauldron" }, "biomeIds": ["black_forest"], "requirement": "Caldero" }
+  ,{ "id": "cauldron_mead_base", "name": { "es": "Preparación culinaria", "en": "Food preparation" }, "biomeIds": ["black_forest"], "requirement": "Caldero o Hervidor de hidromiel, según la receta" }
   ,{ "id": "fermenter_mead", "name": { "es": "Fermentador", "en": "Fermenter" }, "biomeIds": ["black_forest"], "requirement": "Fermentador" }
   ,{ "id": "silver_veins", "name": { "es": "Vetas de plata", "en": "Silver veins" }, "biomeIds": ["mountains"], "requirement": "Fúrcula y pico de hierro" }
   ,{ "id": "wolves", "name": { "es": "Lobos", "en": "Wolves" }, "biomeIds": ["mountains"] }
@@ -92,4 +92,10 @@
   ,{ "id": "serpents", "name": { "es": "Serpientes marinas", "en": "Sea serpents" }, "biomeIds": ["ocean"] }
   ,{ "id": "cooking_serpent_meat", "name": { "es": "Estación de cocina", "en": "Cooking station" }, "biomeIds": ["ocean"], "requirement": "Cocinar carne de serpiente" }
   ,{ "id": "stonecutter_processing", "name": { "es": "Cantero", "en": "Stonecutter" }, "biomeIds": ["swamp"], "requirement": "Procesar piedra en un cantero" }
+  ,{ "id": "growths_tar_pits", "name": { "es": "Growths y pozos de alquitrán", "en": "Growths and tar pits" }, "biomeIds": ["plains"] }
+  ,{ "id": "lava_blobs", "name": { "es": "Blobs de lava", "en": "Lava blobs" }, "biomeIds": ["ashlands"] }
+  ,{ "id": "hildir", "name": { "es": "Hildir", "en": "Hildir" }, "biomeIds": ["meadows"], "requirement": "Mercader" }
+  ,{ "id": "ashlands_ground", "name": { "es": "Suelo y ruinas de Tierras Cenicientas", "en": "Ashlands terrain and ruins" }, "biomeIds": ["ashlands"] }
+  ,{ "id": "putrid_holes", "name": { "es": "Agujeros pútridos", "en": "Putrid holes" }, "biomeIds": ["ashlands"] }
+  ,{ "id": "artisan_table_processing", "name": { "es": "Mesa de artesano", "en": "Artisan table" }, "biomeIds": ["ashlands"], "requirement": "Mesa de artesano" }
 ]

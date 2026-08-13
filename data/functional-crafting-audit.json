@@ -4,12 +4,12 @@
   "scope": "Objetos fabricables de progresión, estaciones, transporte, defensa, equipo y comida. Se excluyen variantes puramente decorativas.",
   "biomes": [
     { "biomeId": "meadows", "expectedRecipeCount": 66, "requiredItemIds": ["antler_pickaxe", "raft", "beehive", "stakewall"] },
-    { "biomeId": "black_forest", "expectedRecipeCount": 39, "requiredItemIds": ["portal", "karve", "smelter", "fermenter", "minor_health_mead", "tasty_mead", "ratatosk_tonic"] },
-    { "biomeId": "swamp", "expectedRecipeCount": 37, "requiredItemIds": ["stonecutter", "longship", "iron_pickaxe", "poison_resistance_mead", "berserkir_mead", "troll_endurance_mead", "grinding_wheel", "forge_tool_rack", "spice_rack"] },
-    { "biomeId": "mountains", "expectedRecipeCount": 22, "requiredItemIds": ["artisan_table_piece", "draugr_fang", "frostner", "stone_oven", "frost_resistance_mead", "animal_whispers_brew", "tool_shelf", "butchers_table"] },
-    { "biomeId": "plains", "expectedRecipeCount": 24, "requiredItemIds": ["blast_furnace", "windmill", "padded_cuirass", "lox_saddle", "anti_sting_concoction", "pots_and_pans"] },
-    { "biomeId": "mistlands", "expectedRecipeCount": 39, "requiredItemIds": ["eitr_refinery", "galdr_table", "mistwalker", "ballista", "major_health_mead", "minor_eitr_mead", "lightfoot_mead", "mortar_and_pestle", "black_forge_cooler", "black_forge_vise"] },
-    { "biomeId": "ashlands", "expectedRecipeCount": 28, "requiredItemIds": ["drakkar", "catapult", "slayer", "asksvin_saddle", "lingering_health_mead", "lingering_stamina_mead", "lingering_eitr_mead", "rolling_pins_cutting_boards", "metal_cutter", "gem_cutter"] },
+    { "biomeId": "black_forest", "expectedRecipeCount": 43, "requiredItemIds": ["portal", "karve", "smelter", "fermenter", "mead_ketill_piece", "cartography_table", "minor_health_mead", "tasty_mead", "ratatosk_tonic", "bronzehead_arrow"] },
+    { "biomeId": "swamp", "expectedRecipeCount": 43, "requiredItemIds": ["stonecutter", "longship", "iron_pickaxe", "bonfire", "personal_chest", "poison_resistance_mead", "berserkir_mead", "troll_endurance_mead", "grinding_wheel", "forge_tool_rack", "spice_rack", "ironhead_arrow", "ooze_bomb", "blob_bomb_poison"] },
+    { "biomeId": "mountains", "expectedRecipeCount": 27, "requiredItemIds": ["artisan_table_piece", "draugr_fang", "frostner", "stone_oven", "dragon_bed", "iron_fire_pit", "frost_resistance_mead", "animal_whispers_brew", "tool_shelf", "butchers_table", "silver_arrow", "poison_arrow", "blob_bomb_frost"] },
+    { "biomeId": "plains", "expectedRecipeCount": 26, "requiredItemIds": ["blast_furnace", "windmill", "black_metal_chest", "padded_cuirass", "lox_saddle", "anti_sting_concoction", "pots_and_pans", "blob_bomb_tar"] },
+    { "biomeId": "mistlands", "expectedRecipeCount": 47, "requiredItemIds": ["eitr_refinery", "galdr_table", "artisan_press", "mistwalker", "ballista", "major_health_mead", "minor_eitr_mead", "lightfoot_mead", "mortar_and_pestle", "black_forge_cooler", "black_forge_vise", "black_metal_pickaxe", "carapace_arrow", "black_metal_bolt", "bile_bomb"] },
+    { "biomeId": "ashlands", "expectedRecipeCount": 37, "requiredItemIds": ["drakkar", "catapult", "portal_stone", "shield_generator", "ashwood_bed", "slayer", "asksvin_saddle", "lingering_health_mead", "lingering_stamina_mead", "lingering_eitr_mead", "rolling_pins_cutting_boards", "metal_cutter", "gem_cutter", "charred_arrow", "charred_bolt", "basalt_bomb", "smoke_bomb", "explosive_payload"] },
     { "biomeId": "ocean", "expectedRecipeCount": 7, "requiredItemIds": ["abyssal_harpoon", "serpent_scale_shield", "serpent_stew", "heavy_fishing_bait", "vananidir_draught"] }
   ]
 }

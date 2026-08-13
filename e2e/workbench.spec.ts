@@ -39,11 +39,17 @@ test("la búsqueda, filtros y estado vacío mantienen un detalle coherente", asy
 
   await page.getByRole("button", { name: "Limpiar filtros" }).last().click();
   await expect(search).toHaveValue("");
-  await expect(page.getByText("262 objetos")).toBeVisible();
+  await expect(page.getByText("296 objetos")).toBeVisible();
 
   await page.getByRole("button", { name: "Comida", exact: true }).click();
   await expect(page.getByRole("group", { name: "Filtrar Comida" })).toBeVisible();
   await expect(page.getByRole("combobox")).toBeVisible();
+
+  await page.getByRole("button", { name: "Construcción", exact: true }).click();
+  await page.getByRole("button", { name: "Estaciones y proceso", exact: true }).click();
+  await expect(page.locator(".field-item-list")).toContainText("Banco de trabajo");
+  await expect(page.locator(".field-item-list")).toContainText("Hervidor de hidromiel");
+  await expect(page.locator(".field-item-list")).not.toContainText("Cama de dragón");
 });
 
 test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ page }, testInfo) => {
@@ -133,16 +139,16 @@ test("la revisión de datos separa candidatos pendientes del catálogo", async (
   await page.getByRole("tab", { name: /Revisión de datos/ }).click();
   await expect(page.getByRole("heading", { name: "Objetos pendientes" })).toBeVisible();
   await expect(page.getByText("Vista de solo lectura")).toBeVisible();
-  await expect(page.getByText("348", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("310", { exact: true }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "Funcionales", exact: true }).click();
-  await page.getByLabel("Familia").selectOption("ammunition");
+  await page.getByLabel("Familia").selectOption("consumable");
   await expect(page.locator(".field-candidate").first()).toBeVisible();
-  await expect(page.locator(".field-candidate-grid")).toContainText("Munición");
+  await expect(page.locator(".field-candidate-grid")).toContainText("Consumibles");
 
   const search = page.getByRole("textbox", { name: "Buscar candidatos" });
-  await search.fill("Recipe_BoltBlackmetal");
-  await expect(page.getByRole("heading", { name: "Black Metal Bolt" })).toBeVisible();
+  await search.fill("Recipe_FeastAshlands");
+  await expect(page.getByRole("heading", { name: "Ashlands Gourmet Bowl" })).toBeVisible();
 
   await page.getByRole("tab", { name: "Catálogo" }).click();
   await expect(page.getByRole("heading", { name: "¿Qué querés preparar?" })).toBeVisible();

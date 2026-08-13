@@ -141,6 +141,11 @@ export function normalizeEnglishName(value: string) {
   return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
 
+const externalMaterialAliases: Record<string, string> = {
+  [normalizeEnglishName("Finewood")]: "fine_wood",
+  [normalizeEnglishName("Corewood")]: "core_wood",
+};
+
 function normalizedCosts(costs: MaterialCost[]) {
   return Object.fromEntries(costs.map((cost) => [cost.materialId, cost.amount]).sort(([a], [b]) => a.localeCompare(b)));
 }
@@ -176,6 +181,7 @@ export function buildSemanticDiff(snapshot: ExternalCatalogSnapshot, generatedAt
   }
   const localNames = new Set(items.map((item) => normalizeEnglishName(item.name.en)));
   const materialIds = new Map(materials.map((material) => [normalizeEnglishName(material.name.en), material.id]));
+  for (const [externalName, materialId] of Object.entries(externalMaterialAliases)) materialIds.set(externalName, materialId);
   const modified: SemanticDiff["modified"] = [];
   const localOnly: SemanticDiff["localOnly"] = [];
   const ambiguous: SemanticDiff["ambiguous"] = [];

@@ -1,0 +1,14 @@
+{
+  "id": "stations_processing",
+  "name": { "es": "Estaciones y proceso", "en": "Stations and processing" },
+  "itemIds": [
+    "workbench_piece", "forge_piece", "cauldron_piece", "mead_ketill_piece", "fermenter",
+    "charcoal_kiln", "smelter", "stonecutter", "artisan_table_piece", "blast_furnace",
+    "windmill", "spinning_wheel", "stone_oven", "sap_extractor", "eitr_refinery",
+    "black_forge", "galdr_table", "chopping_block", "tanning_rack", "adze", "tool_shelf",
+    "forge_anvils", "forge_cooler", "forge_bellows", "smiths_anvil", "grinding_wheel",
+    "forge_tool_rack", "spice_rack", "butchers_table", "pots_and_pans", "mortar_and_pestle",
+    "rolling_pins_cutting_boards", "black_forge_cooler", "black_forge_vise", "metal_cutter",
+    "gem_cutter", "artisan_press"
+  ]
+}
