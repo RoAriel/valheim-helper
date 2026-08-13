@@ -15,6 +15,8 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 - `recipes.json`: fabricación inicial y mejoras de cada objeto.
 - `functional-crafting-audit.json`: contrato de cobertura funcional por bioma para la versión de juego indicada.
 - `consumable-coverage.json`: inventario de familias de hidromieles y pociones que debe cubrir la auditoría de consumibles.
+- `provenance.json`: fuentes, evidencia y deuda de trazabilidad del catálogo por bloques verificables.
+- `update-candidates.json`: inventario editorial de entradas externas clasificadas; no forma parte del catálogo publicado ni se usa para fabricar objetos.
 
 ## Reglas de identificación y nombres
 
@@ -51,5 +53,23 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 Al ampliar el catálogo, se debe actualizar también `functional-crafting-audit.json` después de contrastar el inventario con la fuente de referencia. La prueba impide publicar objetos sin clasificar, recetas ausentes o una cobertura distinta de la auditada.
 
 Los datos que no puedan verificarse no se inventan ni se publican: se dejan fuera del catálogo hasta contar con una fuente confirmable.
+
+## Diagnóstico de versiones
+
+El chequeo de solo lectura reutilizado por la interfaz también está disponible en terminal:
+
+```bash
+pnpm data:check
+pnpm data:check --json
+pnpm data:check --strict
+```
+
+El modo `--strict` devuelve código `1` cuando recomienda una revisión, código `2` si ninguna fuente permite concluir y `0` cuando no detecta versiones posteriores. El comando no modifica archivos.
+
+Cuando el diagnóstico recomiende revisar, `pnpm data:snapshot` genera fuera de `data/` un inventario temporal normalizado de recetas y construcciones de Jötunn. `pnpm data:diff` lo compara con el catálogo y `pnpm data:classify` agrupa las entradas externas pendientes con evidencia y confianza. Ninguno de estos comandos aplica diferencias automáticamente.
+
+Después de revisar el informe, `pnpm data:candidates --write` actualiza explícitamente `update-candidates.json` para que la pestaña **Revisión de datos** pueda mostrar el inventario también desde Docker. `--write` es obligatorio para evitar sobrescrituras accidentales.
+
+`pnpm data:review` permite aprobar, rechazar u omitir cada pendiente en terminal. Las decisiones son editoriales, se conservan al regenerar el archivo y nunca modifican automáticamente el catálogo productivo.
 
 El procedimiento completo, la matriz de verificación y los criterios para publicar una nueva versión se mantienen en [`../docs/actualizacion-de-datos.md`](../docs/actualizacion-de-datos.md).

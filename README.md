@@ -28,6 +28,7 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 - Estación y nivel requeridos.
 - Origen, nombre bilingüe, bioma, requisito y fuentes alternativas de los materiales.
 - Diseño adaptable a computadora y teléfono.
+- Diagnóstico de actualizaciones bajo demanda, con comparación de la app, el catálogo y la versión estable de Valheim sin modificar los datos instalados.
 
 ## Recursos visuales
 
@@ -114,6 +115,9 @@ VS Code debe mostrar un entorno similar a `WSL: Ubuntu`. La extensión de Codex 
 - `docs/release-v1.md`: alcance, validación y decisiones de mantenimiento de la V1.
 - `docs/stack-tecnologico.md`: definición, justificación y límites del stack tecnológico.
 - `docs/despliegue-docker.md`: instalación y operación en Linux, Windows y ARM64.
+- `docs/roadmap-actualizacion.md`: bloques acordados para detectar, revisar y aplicar futuras novedades del juego.
+
+El flujo de mantenimiento puede generar un snapshot externo temporal con `pnpm data:snapshot` y revisarlo con `pnpm data:diff`; ambos son de solo lectura respecto del catálogo productivo.
 
 ## Criterios del modelo
 

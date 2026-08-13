@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "0.1.20",
+  "gameVersion": "0.221.12",
+  "policy": "La procedencia se incorpora gradualmente. Un registro legacy_unattributed reconoce una deuda documental y no equivale a una verificación por entidad.",
+  "sources": [
+    {
+      "id": "valheim_patch_0_221_12",
+      "type": "official",
+      "name": "Valheim: Patch 0.221.12",
+      "url": "https://www.valheimgame.com/news/patch-0-221-12/"
+    },
+    {
+      "id": "jotunn_recipe_list_0_221_12",
+      "type": "technical_dump",
+      "name": "Jötunn recipe list for Valheim 0.221.12",
+      "url": "https://valheim-modding.github.io/Jotunn/data/objects/recipe-list.html"
+    }
+  ],
+  "records": [
+    {
+      "id": "game_version_0_221_12",
+      "scope": "manifest",
+      "status": "verified",
+      "verifiedAt": "2026-08-07",
+      "sourceIds": ["valheim_patch_0_221_12"],
+      "evidence": "La versión de referencia del catálogo coincide con la publicación oficial del parche."
+    },
+    {
+      "id": "functional_recipes_0_1_20",
+      "scope": "functional-crafting-audit",
+      "status": "partially_verified",
+      "verifiedAt": "2026-08-07",
+      "sourceIds": ["jotunn_recipe_list_0_221_12"],
+      "evidence": "La cobertura funcional y las recetas fueron contrastadas por bloques con el volcado de Jötunn; la V1 no conservó una referencia individual para cada receta."
+    },
+    {
+      "id": "legacy_entity_details_0_1_20",
+      "scope": "entity-details",
+      "status": "legacy_unattributed",
+      "verifiedAt": "2026-08-07",
+      "sourceIds": [],
+      "evidence": "Nombres traducidos, fuentes de materiales y algunos efectos se revisaron durante el desarrollo, pero no se conservó una URL verificable por entidad. Requieren trazabilidad gradual."
+    }
+  ]
+}

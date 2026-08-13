@@ -16,8 +16,18 @@ import {
   subcategories,
 } from "@/data/catalog";
 import { filterCatalogItems, resolveSelectedItem, type CatalogCategory, type FoodFocus } from "@/data/catalog-filters";
+import type { UpdateDiagnosis } from "@/data/update-check";
+import { updateCandidates, type UpdateCandidate } from "@/data/update-candidates";
 
 const categories: CatalogCategory[] = ["Todos", "Armas", "Herramientas", "Construcción", "Comida", "Defensa"];
+const candidateClassifications = ["all", "functional_candidate", "probable_alias", "manual_review", "existing_material", "decorative_or_cosmetic", "technical_or_non_catalog"] as const;
+const candidateClassificationLabels: Record<(typeof candidateClassifications)[number], string> = {
+  all: "Todos", functional_candidate: "Funcionales", probable_alias: "Posibles alias", manual_review: "Revisión manual",
+  existing_material: "Materiales existentes", decorative_or_cosmetic: "Decorativos", technical_or_non_catalog: "Técnicos",
+};
+const candidateFamilyLabels: Record<NonNullable<UpdateCandidate["functionalFamily"]>, string> = {
+  equipment: "Equipo", ammunition: "Munición", consumable: "Consumibles", tool: "Herramientas", infrastructure: "Infraestructura",
+};
 
 function themeForBiome(biomeId: string) {
   const biome = byId(biomes, biomeId)!;
@@ -38,12 +48,17 @@ function namesForMaterials(materialIds: string[]) {
 }
 
 export default function Workbench() {
+  const [activeView, setActiveView] = useState<"catalog" | "review">("catalog");
   const [biomeId, setBiomeId] = useState("all");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CatalogCategory>("Todos");
   const [subcategoryId, setSubcategoryId] = useState("all");
   const [foodFocus, setFoodFocus] = useState<FoodFocus>("all");
   const [selectedId, setSelectedId] = useState(items[0].id);
+  const [updateDiagnosis, setUpdateDiagnosis] = useState<UpdateDiagnosis | null>(null);
+  const [updateOpen, setUpdateOpen] = useState(false);
+  const [updateLoading, setUpdateLoading] = useState(false);
+  const [updateError, setUpdateError] = useState("");
   const detailRef = useRef<HTMLElement>(null);
 
   const filteredItems = useMemo(
@@ -74,18 +89,40 @@ export default function Workbench() {
     }
   }
 
+  async function checkUpdates() {
+    setUpdateOpen(true);
+    setUpdateLoading(true);
+    setUpdateError("");
+    try {
+      const response = await fetch("/api/update-status", { cache: "no-store" });
+      if (!response.ok) throw new Error(`El servidor respondió HTTP ${response.status}`);
+      setUpdateDiagnosis(await response.json() as UpdateDiagnosis);
+    } catch (error) {
+      setUpdateError(error instanceof Error ? error.message : "No se pudo completar el diagnóstico");
+    } finally {
+      setUpdateLoading(false);
+    }
+  }
+
   return (
     <main className="field-sample">
       <header className="field-topbar">
         <span className="field-brand">VALHEIM <b>HELPER</b></span>
-        <div>
-          <span>MESA DE TRABAJO</span>
-          <strong>Recetas, progreso y planificación</strong>
+        <div className="field-view-tabs" role="tablist" aria-label="Secciones de la aplicación">
+          <button role="tab" aria-selected={activeView === "catalog"} className={activeView === "catalog" ? "active" : ""} onClick={() => setActiveView("catalog")}>Catálogo</button>
+          <button role="tab" aria-selected={activeView === "review"} className={activeView === "review" ? "active" : ""} onClick={() => setActiveView("review")}>
+            Revisión de datos <span>{updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length}</span>
+          </button>
         </div>
-        <small>Valheim {manifest.gameVersion}</small>
+        <div className="field-update-control">
+          <small>Valheim {manifest.gameVersion}</small>
+          <button onClick={checkUpdates} disabled={updateLoading}>{updateLoading ? "Comprobando…" : "Buscar actualizaciones"}</button>
+        </div>
       </header>
 
-      <section className="field-layout">
+      {updateOpen && <UpdatePanel diagnosis={updateDiagnosis} loading={updateLoading} error={updateError} onRetry={checkUpdates} onClose={() => setUpdateOpen(false)} />}
+
+      {activeView === "review" ? <ReviewWorkspace /> : <section className="field-layout">
         <nav className="field-progression" aria-label="Progresión por bioma">
           <div className="field-progression-intro">
             <p className="eyebrow">PROGRESIÓN</p>
@@ -171,9 +208,102 @@ export default function Workbench() {
         </section>
 
         {selected ? <ItemDetail itemId={selected.id} detailRef={detailRef} /> : <aside ref={detailRef} className="field-detail field-detail-empty" aria-label="Sin objeto seleccionado"><p className="eyebrow">SIN RESULTADOS</p><h2>Ajustá la búsqueda</h2><p>Probá con otro término o limpiá los filtros para volver al catálogo completo.</p><button onClick={clearFilters}>Limpiar filtros</button></aside>}
-      </section>
+      </section>}
     </main>
   );
+}
+
+function ReviewWorkspace() {
+  const [query, setQuery] = useState("");
+  const [classification, setClassification] = useState<(typeof candidateClassifications)[number]>("all");
+  const [family, setFamily] = useState<"all" | NonNullable<UpdateCandidate["functionalFamily"]>>("all");
+  const [showResolved, setShowResolved] = useState(false);
+  const normalizedQuery = query.trim().toLowerCase();
+  const visible = useMemo(() => updateCandidates.candidates.filter((candidate) => {
+    if (!showResolved && candidate.reviewStatus !== "pending") return false;
+    if (classification !== "all" && candidate.classification !== classification) return false;
+    if (family !== "all" && candidate.functionalFamily !== family) return false;
+    if (normalizedQuery && ![candidate.nameEn, ...candidate.externalIds, candidate.suggestedLocal?.nameEn ?? ""].some((value) => value.toLowerCase().includes(normalizedQuery))) return false;
+    return true;
+  }), [classification, family, normalizedQuery, showResolved]);
+  const pending = updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending");
+  const functional = pending.filter((entry) => entry.classification === "functional_candidate").length;
+  const approved = updateCandidates.candidates.filter((entry) => entry.reviewStatus === "approved").length;
+  const rejected = updateCandidates.candidates.filter((entry) => entry.reviewStatus === "rejected").length;
+
+  return <section className="field-review" aria-label="Revisión de datos pendientes">
+    <header className="field-review-header">
+      <div><p className="eyebrow">INVENTARIO EDITORIAL</p><h1>Objetos pendientes</h1><p>Entradas detectadas en Jötunn que todavía no forman parte confirmada del catálogo.</p></div>
+      <div className="field-review-meta"><small>Valheim analizado</small><strong>{updateCandidates.source.gameVersion ?? updateCandidates.gameVersion}</strong><span>Generado {new Date(updateCandidates.generatedAt).toLocaleDateString("es")}</span></div>
+    </header>
+    <div className="field-review-notice"><strong>Vista de solo lectura</strong><span>“Candidato funcional” significa que merece contraste; no confirma que deba incorporarse.</span></div>
+    <div className="field-review-stats">
+      <div><small>Pendientes</small><strong>{pending.length}</strong></div>
+      <div><small>Candidatos funcionales</small><strong>{functional}</strong></div>
+      <div><small>Aprobados / rechazados</small><strong>{approved} / {rejected}</strong></div>
+      <div><small>Total analizado</small><strong>{updateCandidates.candidates.length}</strong></div>
+    </div>
+    <section className="field-review-controls">
+      <label className="field-search"><span aria-hidden="true">⌕</span><input aria-label="Buscar candidatos" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar nombre o identificador externo…" /></label>
+      <div className="field-filter-row" role="group" aria-label="Clasificación editorial">
+        {candidateClassifications.map((value) => <button key={value} className={classification === value ? "active" : ""} aria-pressed={classification === value} onClick={() => setClassification(value)}>{candidateClassificationLabels[value]}</button>)}
+      </div>
+      <div className="field-review-secondary">
+        <label>Familia <select value={family} onChange={(event) => setFamily(event.target.value as typeof family)}><option value="all">Todas</option>{Object.entries(candidateFamilyLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+        <label className="field-review-toggle"><input type="checkbox" checked={showResolved} onChange={(event) => setShowResolved(event.target.checked)} /> Mostrar aprobados, rechazados, conocidos y excluidos</label>
+        <span>{visible.length} resultados</span>
+      </div>
+    </section>
+    <div className="field-candidate-grid">
+      {visible.map((candidate) => <CandidateCard key={candidate.id} candidate={candidate} />)}
+      {!visible.length && <p className="field-empty">No hay entradas que coincidan con estos filtros.</p>}
+    </div>
+  </section>;
+}
+
+function CandidateCard({ candidate }: { candidate: UpdateCandidate }) {
+  return <article className={`field-candidate ${candidate.classification}`}>
+    <header><div><p>{candidateClassificationLabels[candidate.classification]}</p><h2>{candidate.nameEn}</h2></div><span className={`confidence ${candidate.confidence}`}>{candidate.confidence === "high" ? "Alta" : candidate.confidence === "medium" ? "Media" : "Baja"}</span></header>
+    <p>{candidate.reason}</p>
+    <div className="field-candidate-tags">
+      {candidate.functionalFamily && <span>{candidateFamilyLabels[candidate.functionalFamily]}</span>}
+      {candidate.sourceKinds.map((kind) => <span key={kind}>{kind === "recipe" ? "Receta" : "Pieza"}</span>)}
+      <span>{reviewStatusLabel(candidate.reviewStatus)}</span>
+    </div>
+    {candidate.suggestedLocal && <p className="field-candidate-match">Posible coincidencia local: <strong>{candidate.suggestedLocal.nameEn}</strong> <small>{Math.round(candidate.suggestedLocal.similarity * 100)}%</small></p>}
+    <details><summary>Identificadores externos ({candidate.externalIds.length})</summary><code>{candidate.externalIds.join(" · ")}</code></details>
+  </article>;
+}
+
+function reviewStatusLabel(status: UpdateCandidate["reviewStatus"]) {
+  return { pending: "Pendiente", approved: "Aprobado", rejected: "Rechazado", known: "Ya conocido", excluded: "Excluido" }[status];
+}
+
+function UpdatePanel({ diagnosis, loading, error, onRetry, onClose }: { diagnosis: UpdateDiagnosis | null; loading: boolean; error: string; onRetry: () => void; onClose: () => void }) {
+  const statusLabel = diagnosis?.status === "current" ? "Información al día" : diagnosis?.status === "review-recommended" ? "Revisión recomendada" : "Diagnóstico incompleto";
+  return <section className="field-update-panel" role="dialog" aria-modal="true" aria-labelledby="update-title">
+    <header>
+      <div><p className="eyebrow">ESTADO DE DATOS</p><h2 id="update-title">Actualizaciones</h2></div>
+      <button className="field-update-close" onClick={onClose} aria-label="Cerrar estado de actualizaciones">×</button>
+    </header>
+    {loading && <p className="field-update-loading">Consultando fuentes oficiales y técnicas…</p>}
+    {!loading && error && <div className="field-update-message error"><strong>No se pudo consultar</strong><p>{error}</p><button onClick={onRetry}>Reintentar</button></div>}
+    {!loading && diagnosis && <>
+      <div className={`field-update-verdict ${diagnosis.status}`}><strong>{statusLabel}</strong><p>{diagnosis.recommendation}</p></div>
+      <div className="field-update-versions">
+        <div><small>Aplicación instalada</small><strong>{diagnosis.current.appVersion}</strong>{diagnosis.latest.appVersion && <span>Publicada: {diagnosis.latest.appVersion}</span>}</div>
+        <div><small>Catálogo instalado</small><strong>{diagnosis.current.catalogVersion}</strong>{diagnosis.latest.catalogVersion && <span>Publicado: {diagnosis.latest.catalogVersion}</span>}</div>
+        <div><small>Valheim cubierto</small><strong>{diagnosis.current.gameVersion}</strong>{diagnosis.latest.stableGameVersion && <span>Estable detectada: {diagnosis.latest.stableGameVersion}</span>}</div>
+      </div>
+      <div className="field-update-sources">
+        {diagnosis.sources.map((source) => <a key={source.id} href={source.url} target="_blank" rel="noreferrer">
+          <span className={source.status}>{source.status === "available" ? "✓" : "!"}</span>
+          <span><strong>{source.label}</strong><small>{source.detail}</small></span>
+        </a>)}
+      </div>
+      <footer>Comprobado: {new Date(diagnosis.checkedAt).toLocaleString("es")}. Este diagnóstico no modifica los JSON ni el contenedor.</footer>
+    </>}
+  </section>;
 }
 
 function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTMLElement> }) {

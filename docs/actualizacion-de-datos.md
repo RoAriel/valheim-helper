@@ -2,6 +2,84 @@
 
 Este procedimiento permite actualizar Valheim Helper sin mezclar datos de versiones distintas del juego. El catálogo se publica sólo cuando las verificaciones de esta guía están completas.
 
+## Diagnóstico desde la aplicación
+
+El botón **Buscar actualizaciones** consulta bajo demanda y en modo de solo lectura:
+
+- las noticias oficiales de Valheim publicadas en Steam, para detectar la última versión estable anunciada;
+- el inventario automatizado de recetas de Jötunn, para conocer la versión de juego cubierta por su volcado;
+- `data/manifest.json` de la rama `main` en GitHub, para comparar las versiones publicadas de la aplicación y el catálogo.
+
+El diagnóstico se ejecuta en el servidor mediante `GET /api/update-status`. Cada fuente tiene un timeout independiente y puede fallar sin impedir que las restantes informen su estado. La interfaz no escribe JSON, no modifica el contenedor y no incorpora automáticamente datos externos.
+
+Un resultado **Revisión recomendada** significa que al menos una versión detectada es posterior a la instalada. No confirma por sí mismo que haya recetas funcionales nuevas: el mantenedor debe continuar con el procedimiento editorial de esta guía y contrastar cada diferencia antes de cambiar `data/`.
+
+El mismo diagnóstico puede ejecutarse sin abrir la aplicación:
+
+```bash
+pnpm data:check
+```
+
+Para integraciones automáticas se ofrecen `--json` y `--strict`. La hoja de ruta de los siguientes bloques se conserva en [`roadmap-actualizacion.md`](roadmap-actualizacion.md).
+
+## Snapshot y comparación semántica
+
+Desde un checkout de mantenimiento se puede descargar el inventario técnico de recetas y piezas generado por Jötunn:
+
+```bash
+pnpm data:snapshot
+```
+
+El comando normaliza nombres ingleses, identificadores externos, cantidades de salida, niveles y materiales en `.cache/valheim-helper/latest-jotunn-catalog.json`. Ese archivo es temporal, está excluido de Git y nunca reemplaza ni modifica los JSON productivos de `data/`. Si los dos inventarios externos declaran versiones diferentes de Valheim, el proceso se detiene.
+
+Para compararlo con el catálogo local:
+
+```bash
+pnpm data:diff
+pnpm data:diff --json
+```
+
+La comparación vincula objetos por nombre inglés normalizado y revisa únicamente los campos disponibles en ambas fuentes: cantidad producida, niveles y materiales. Informa por separado coincidencias sin cambios, modificaciones, entradas sólo externas, objetos sólo locales, nombres ambiguos y materiales externos sin mapear. Una entrada sólo externa es una candidata a clasificación manual, no una novedad funcional confirmada: los volcados incluyen decoración y contenido deliberadamente fuera de alcance.
+
+Para reducir esa lista sin confundirla con altas confirmadas:
+
+```bash
+pnpm data:classify
+```
+
+El informe `.cache/valheim-helper/classification-report.json` agrupa filas repetidas por nombre y separa materiales existentes, alias probables, candidatos funcionales, decoración explícita, entradas técnicas y casos manuales. Cada decisión incluye motivo, confianza e identificadores externos. La categoría `functional_candidate` significa “merece contrastarse”, no “debe incorporarse”; la clasificación no modifica el catálogo.
+
+Para publicar únicamente ese inventario editorial en la pestaña de revisión:
+
+```bash
+pnpm data:candidates --write
+```
+
+El comando transforma el informe en `data/update-candidates.json`. Este archivo viaja con la aplicación y Docker, pero permanece separado de `items.json`, `materials.json` y `recipes.json`: mostrar una entrada no la habilita como contenido del catálogo. La pestaña es de solo lectura; las decisiones de aprobación o rechazo siguen reservadas al flujo S/N posterior.
+
+## Revisión interactiva S/N
+
+Las entradas pendientes se revisan desde un checkout de mantenimiento:
+
+```bash
+pnpm data:review
+pnpm data:review --family ammunition
+pnpm data:review --classification probable_alias
+```
+
+Por cada candidato, `S` lo aprueba editorialmente, `N` lo rechaza, `O` lo omite y `Q` guarda y finaliza. Enter equivale a `N`, como respuesta segura predeterminada. Cada decisión se escribe de forma atómica en `update-candidates.json` y conserva fecha de revisión; una regeneración posterior mantiene aprobaciones y rechazos mientras el identificador estable siga existiendo.
+
+Aprobar no incorpora el objeto a `items.json` ni crea materiales o recetas. El inventario actual sólo representa posibles altas y alias: el CLI no ofrece eliminaciones. Si en el futuro se incorporan candidatos de eliminación, requerirán una confirmación textual reforzada antes de poder guardar esa decisión.
+
+Ambos comandos aceptan rutas alternativas para pruebas o conservación manual:
+
+```bash
+pnpm data:snapshot --output /tmp/valheim-snapshot.json
+pnpm data:diff --snapshot /tmp/valheim-snapshot.json
+```
+
+El CLI se ejecuta desde un checkout de mantenimiento con Node.js y pnpm. La instalación Docker de uso normal no necesita esas herramientas: el botón de la interfaz realiza el mismo diagnóstico a través del servidor incluido en la imagen.
+
 ## 1. Abrir un bloque de actualización
 
 1. Identificar la versión objetivo en las notas oficiales de Valheim y anotarla junto con la fecha de revisión.
