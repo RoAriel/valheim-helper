@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "0.1.20",
+  "catalogVersion": "0.1.21",
   "gameVersion": "0.221.12",
   "policy": "La procedencia se incorpora gradualmente. Un registro legacy_unattributed reconoce una deuda documental y no equivale a una verificación por entidad.",
   "sources": [
@@ -15,6 +15,18 @@
       "type": "technical_dump",
       "name": "Jötunn recipe list for Valheim 0.221.12",
       "url": "https://valheim-modding.github.io/Jotunn/data/objects/recipe-list.html"
+    },
+    {
+      "id": "jotunn_piece_list_0_221_12",
+      "type": "technical_dump",
+      "name": "Jötunn piece list for Valheim 0.221.12",
+      "url": "https://valheim-modding.github.io/Jotunn/data/pieces/piece-list.html"
+    },
+    {
+      "id": "valheim_wiki_station_upgrades",
+      "type": "community",
+      "name": "Valheim Wiki crafting station upgrades",
+      "url": "https://valheim.fandom.com/wiki/Crafting_Structures"
     }
   ],
   "records": [
@@ -41,6 +53,14 @@
       "verifiedAt": "2026-08-07",
       "sourceIds": [],
       "evidence": "Nombres traducidos, fuentes de materiales y algunos efectos se revisaron durante el desarrollo, pero no se conservó una URL verificable por entidad. Requieren trazabilidad gradual."
+    },
+    {
+      "id": "station_extensions_0_1_21",
+      "scope": "station-extensions",
+      "status": "verified",
+      "verifiedAt": "2026-08-13",
+      "sourceIds": ["jotunn_piece_list_0_221_12", "valheim_wiki_station_upgrades"],
+      "evidence": "Las extensiones, sus materiales y los niveles máximos de las cuatro estaciones fueron contrastados con el volcado técnico y las páginas específicas de la wiki."
     }
   ]
 }

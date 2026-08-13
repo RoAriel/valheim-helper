@@ -1,0 +1,20 @@
+[
+  { "stationId": "workbench", "stationItemId": "workbench_piece", "maxLevel": 5, "extensions": [
+    { "itemId": "chopping_block", "progressionOrder": 1 }, { "itemId": "tanning_rack", "progressionOrder": 2 },
+    { "itemId": "adze", "progressionOrder": 3 }, { "itemId": "tool_shelf", "progressionOrder": 4 }
+  ] },
+  { "stationId": "forge", "stationItemId": "forge_piece", "maxLevel": 7, "extensions": [
+    { "itemId": "forge_anvils", "progressionOrder": 1 }, { "itemId": "forge_cooler", "progressionOrder": 2 },
+    { "itemId": "forge_bellows", "progressionOrder": 3 }, { "itemId": "smiths_anvil", "progressionOrder": 4 },
+    { "itemId": "grinding_wheel", "progressionOrder": 5 }, { "itemId": "forge_tool_rack", "progressionOrder": 6 }
+  ] },
+  { "stationId": "cauldron", "stationItemId": "cauldron_piece", "maxLevel": 6, "extensions": [
+    { "itemId": "spice_rack", "progressionOrder": 1 }, { "itemId": "butchers_table", "progressionOrder": 2 },
+    { "itemId": "pots_and_pans", "progressionOrder": 3 }, { "itemId": "mortar_and_pestle", "progressionOrder": 4 },
+    { "itemId": "rolling_pins_cutting_boards", "progressionOrder": 5 }
+  ] },
+  { "stationId": "black_forge", "stationItemId": "black_forge", "maxLevel": 5, "extensions": [
+    { "itemId": "black_forge_cooler", "progressionOrder": 1 }, { "itemId": "black_forge_vise", "progressionOrder": 2 },
+    { "itemId": "metal_cutter", "progressionOrder": 3 }, { "itemId": "gem_cutter", "progressionOrder": 4 }
+  ] }
+]

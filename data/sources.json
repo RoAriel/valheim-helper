@@ -91,4 +91,5 @@
   ,{ "id": "cooking_fish", "name": { "es": "Estación de cocina", "en": "Cooking station" }, "biomeIds": ["ocean"], "requirement": "Cocinar pescado" }
   ,{ "id": "serpents", "name": { "es": "Serpientes marinas", "en": "Sea serpents" }, "biomeIds": ["ocean"] }
   ,{ "id": "cooking_serpent_meat", "name": { "es": "Estación de cocina", "en": "Cooking station" }, "biomeIds": ["ocean"], "requirement": "Cocinar carne de serpiente" }
+  ,{ "id": "stonecutter_processing", "name": { "es": "Cantero", "en": "Stonecutter" }, "biomeIds": ["swamp"], "requirement": "Procesar piedra en un cantero" }
 ]

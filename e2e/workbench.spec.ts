@@ -39,7 +39,7 @@ test("la búsqueda, filtros y estado vacío mantienen un detalle coherente", asy
 
   await page.getByRole("button", { name: "Limpiar filtros" }).last().click();
   await expect(search).toHaveValue("");
-  await expect(page.getByText("250 objetos")).toBeVisible();
+  await expect(page.getByText("262 objetos")).toBeVisible();
 
   await page.getByRole("button", { name: "Comida", exact: true }).click();
   await expect(page.getByRole("group", { name: "Filtrar Comida" })).toBeVisible();
@@ -78,6 +78,28 @@ test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ pa
   await page.screenshot({ path: testInfo.outputPath(`${testInfo.project.name}-mejoras-procedencia.png`) });
 });
 
+test("muestra extensiones y requisitos de nivel de las estaciones", async ({ page }) => {
+  await page.goto("/");
+  const search = page.getByRole("textbox", { name: "Buscar por objeto o nombre en inglés" });
+  await search.fill("Banco de trabajo");
+  await page.locator(".field-item-list > button").first().click();
+  const extensions = page.getByRole("region", { name: "Extensiones de Banco de trabajo" });
+  await expect(extensions).toContainText("Nivel máximo 5");
+  await expect(extensions).toContainText("Estantería de herramientas");
+  await extensions.getByText("Estantería de herramientas").click();
+  const toolShelf = extensions.locator(".field-extension-detail").filter({ hasText: "Estantería de herramientas" });
+  await expect(toolShelf).toContainText("Madera fina");
+  await expect(toolShelf).toContainText("×10");
+  await expect(toolShelf).toContainText("Hierro");
+  await expect(toolShelf).toContainText("×4");
+  await expect(toolShelf).toContainText("Obsidiana");
+
+  await search.fill("Hacha de sílex");
+  await page.locator(".field-item-list > button").first().click();
+  await page.getByText("Mejoras disponibles").click();
+  await expect(page.getByText("Requiere Banco de trabajo nivel 4")).toBeVisible();
+});
+
 test("el chequeo informa novedades sin modificar el catálogo", async ({ page }) => {
   await page.route("**/api/update-status", async (route) => route.fulfill({
     contentType: "application/json",
@@ -111,7 +133,7 @@ test("la revisión de datos separa candidatos pendientes del catálogo", async (
   await page.getByRole("tab", { name: /Revisión de datos/ }).click();
   await expect(page.getByRole("heading", { name: "Objetos pendientes" })).toBeVisible();
   await expect(page.getByText("Vista de solo lectura")).toBeVisible();
-  await expect(page.getByText("355", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("348", { exact: true }).first()).toBeVisible();
 
   await page.getByRole("button", { name: "Funcionales", exact: true }).click();
   await page.getByLabel("Familia").selectOption("ammunition");

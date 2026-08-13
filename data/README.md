@@ -17,6 +17,7 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 - `consumable-coverage.json`: inventario de familias de hidromieles y pociones que debe cubrir la auditoría de consumibles.
 - `provenance.json`: fuentes, evidencia y deuda de trazabilidad del catálogo por bloques verificables.
 - `update-candidates.json`: inventario editorial de entradas externas clasificadas; no forma parte del catálogo publicado ni se usa para fabricar objetos.
+- `station-extensions.json`: relación entre estaciones, objetos físicos de estación, nivel máximo y extensiones funcionales.
 
 ## Reglas de identificación y nombres
 
@@ -33,6 +34,7 @@ Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON
 - Cada objeto tiene exactamente una receta y cada receta apunta a una estación existente.
 - Cada coste de receta referencia un material existente; las cantidades son enteros positivos.
 - Una receta de material tiene una salida positiva, referencia una estación existente y no puede formar ciclos con otras recetas de material.
+- Cada extensión de estación es un objeto fabricable único. Una extensión distinta aumenta un nivel; `progressionOrder` documenta la progresión habitual, no una obligación de colocación.
 
 ## Recetas y mejoras
 
