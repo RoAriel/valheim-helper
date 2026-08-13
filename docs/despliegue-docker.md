@@ -227,10 +227,19 @@ docker inspect \
 
 Debe responder `running / healthy`.
 
+Comprobar desde el contenedor publicado que el diagnóstico tiene acceso a sus fuentes:
+
+```bash
+curl --fail --silent --show-error \
+  http://127.0.0.1:3000/api/update-status
+```
+
+La propiedad `status` puede ser `current`, `review_recommended` o `inconclusive`. Este último estado es válido cuando el servidor no tiene acceso a Internet, siempre que `sources` detalle qué consulta falló. Durante un PR, GitHub puede informar la versión anterior del catálogo hasta que la rama sea fusionada; eso no representa una inconsistencia de la imagen local.
+
 Comprobar usuario y arquitectura:
 
 ```bash
-docker image inspect valheim-helper:1.0.1 \
+docker image inspect valheim-helper:1.1.0 \
   --format 'arquitectura={{.Architecture}} usuario={{.Config.User}}'
 ```
 
@@ -355,7 +364,7 @@ Para publicar una única etiqueta con variantes AMD64 y ARM64 se necesita un reg
 ```bash
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
-  --tag <registro>/valheim-helper:1.0.1 \
+  --tag <registro>/valheim-helper:1.1.0 \
   --push .
 ```
 

@@ -65,7 +65,7 @@ test("clasifica candidatos externos con razones y conserva los casos dudosos", (
   assert.equal(report.totals.uniqueExternalNames, 3);
   assert.equal(report.classifications.find((entry) => entry.itemNameEn === "Fixture War Axe")?.classification, "functional_candidate");
   assert.equal(report.classifications.find((entry) => entry.itemNameEn === "Bronze")?.classification, "existing_material");
-  assert.equal(report.classifications.find((entry) => entry.itemNameEn === "Fixture bench")?.classification, "manual_review");
+  assert.equal(report.classifications.find((entry) => entry.itemNameEn === "Fixture bench")?.classification, "decorative_or_cosmetic");
   assert.ok(report.classifications.every((entry) => entry.reason.length > 0));
   assert.equal(nameSimilarity("Leather Trousers", "Leather pants"), 1 / 3);
 });

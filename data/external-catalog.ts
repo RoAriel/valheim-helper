@@ -1,4 +1,4 @@
-import { items, manifest, materials, recipes, type MaterialCost, type Recipe } from "./catalog.ts";
+import { items, manifest, materials, recipes, type IngredientCost, type Recipe } from "./catalog.ts";
 
 export const JOTUNN_RECIPE_URL = "https://valheim-modding.github.io/Jotunn/data/objects/recipe-list.html";
 export const JOTUNN_PIECE_URL = "https://valheim-modding.github.io/Jotunn/data/pieces/piece-list.html";
@@ -157,11 +157,11 @@ function normalizedItemName(value: string) {
   return externalItemAliases[normalized] ?? normalized;
 }
 
-function normalizedCosts(costs: MaterialCost[]) {
-  return Object.fromEntries(costs.map((cost) => [cost.materialId, cost.amount]).sort(([a], [b]) => a.localeCompare(b)));
+function normalizedCosts(costs: IngredientCost[]) {
+  return Object.fromEntries(costs.map((cost) => ["materialId" in cost ? `material:${cost.materialId}` : `item:${cost.itemId}`, cost.amount]).sort(([a], [b]) => a.localeCompare(b)));
 }
 
-function compareRecipe(localRecipe: Recipe, external: ExternalCatalogEntry, materialIds: Map<string, string>) {
+function compareRecipe(localRecipe: Recipe, external: ExternalCatalogEntry, ingredientIds: Map<string, { kind: "material" | "item"; id: string }>) {
   const changes: SemanticChange[] = [];
   const localOutput = localRecipe.outputAmount ?? 1;
   if (localOutput !== external.outputAmount) changes.push({ field: "outputAmount", local: localOutput, external: external.outputAmount });
@@ -174,7 +174,10 @@ function compareRecipe(localRecipe: Recipe, external: ExternalCatalogEntry, mate
   for (const level of external.levels) {
     const localLevel = localLevels.find((entry) => entry.targetLevel === level.targetLevel);
     if (!localLevel) continue;
-    const externalCosts = level.materials.map((cost) => ({ materialId: materialIds.get(normalizeEnglishName(cost.nameEn))!, amount: cost.amount }));
+    const externalCosts = level.materials.map((cost): IngredientCost => {
+      const ingredient = ingredientIds.get(normalizeEnglishName(cost.nameEn))!;
+      return ingredient.kind === "material" ? { materialId: ingredient.id, amount: cost.amount } : { itemId: ingredient.id, amount: cost.amount };
+    });
     const localCosts = normalizedCosts(localLevel.materials);
     const mappedExternalCosts = normalizedCosts(externalCosts);
     if (JSON.stringify(localCosts) !== JSON.stringify(mappedExternalCosts)) {
@@ -191,8 +194,13 @@ export function buildSemanticDiff(snapshot: ExternalCatalogSnapshot, generatedAt
     externalByName.set(key, [...(externalByName.get(key) ?? []), entry]);
   }
   const localNames = new Set(items.map((item) => normalizedItemName(item.name.en)));
-  const materialIds = new Map(materials.map((material) => [normalizeEnglishName(material.name.en), material.id]));
-  for (const [externalName, materialId] of Object.entries(externalMaterialAliases)) materialIds.set(externalName, materialId);
+  const ingredientIds = new Map<string, { kind: "material" | "item"; id: string }>(materials.map((material) => [normalizeEnglishName(material.name.en), { kind: "material", id: material.id }]));
+  for (const [externalName, materialId] of Object.entries(externalMaterialAliases)) ingredientIds.set(externalName, { kind: "material", id: materialId });
+  for (const itemId of ["ash_fang", "nidhogg", "ripper", "berserkir_axes", "flametal_mace", "slayer", "splitnir"]) {
+    const item = items.find((entry) => entry.id === itemId)!;
+    ingredientIds.set(normalizedItemName(item.name.en), { kind: "item", id: item.id });
+  }
+  ingredientIds.set(normalizeEnglishName("Nidhgg"), { kind: "item", id: "nidhogg" });
   const modified: SemanticDiff["modified"] = [];
   const localOnly: SemanticDiff["localOnly"] = [];
   const ambiguous: SemanticDiff["ambiguous"] = [];
@@ -211,13 +219,15 @@ export function buildSemanticDiff(snapshot: ExternalCatalogSnapshot, generatedAt
     }
     matched += 1;
     const external = candidates[0];
-    const unknown = [...new Set(external.levels.flatMap((level) => level.materials.map((cost) => cost.nameEn)).filter((name) => !materialIds.has(normalizeEnglishName(name))))];
+    const unknown = [...new Set(external.levels.flatMap((level) => level.materials.map((cost) => cost.nameEn)).filter((name) => !ingredientIds.has(normalizedItemName(name))))];
     if (unknown.length) {
       unresolvedMaterials.push({ itemId: item.id, itemNameEn: item.name.en, materialNamesEn: unknown });
       continue;
     }
     const localRecipe = recipes.find((recipe) => recipe.itemId === item.id)!;
-    const changes = compareRecipe(localRecipe, external, materialIds);
+    // Jötunn expone dos recetas directas internas; la fuente jugable documenta hervidor, fermentación y lote de seis.
+    if (["minor_health_mead", "minor_stamina_mead"].includes(item.id)) { unchanged += 1; continue; }
+    const changes = compareRecipe(localRecipe, external, ingredientIds);
     if (changes.length) modified.push({ itemId: item.id, itemNameEn: item.name.en, externalId: external.externalId, changes });
     else unchanged += 1;
   }

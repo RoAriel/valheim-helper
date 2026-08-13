@@ -6332,7 +6332,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "wood",
+            "amount": 5
+          },
+          {
+            "materialId": "iron",
+            "amount": 4
+          },
+          {
+            "materialId": "root",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "wood",
+            "amount": 10
+          },
+          {
+            "materialId": "iron",
+            "amount": 8
+          },
+          {
+            "materialId": "root",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 5,
+        "materials": [
+          {
+            "materialId": "wood",
+            "amount": 15
+          },
+          {
+            "materialId": "iron",
+            "amount": 12
+          },
+          {
+            "materialId": "root",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "krom",
@@ -6355,7 +6410,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 15
+          },
+          {
+            "materialId": "bronze",
+            "amount": 10
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 30
+          },
+          {
+            "materialId": "bronze",
+            "amount": 20
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 45
+          },
+          {
+            "materialId": "bronze",
+            "amount": 30
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 15
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "mistwalker",
@@ -6382,7 +6492,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 10
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 5
+          },
+          {
+            "materialId": "wisp",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 20
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 10
+          },
+          {
+            "materialId": "wisp",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 30
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 15
+          },
+          {
+            "materialId": "wisp",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "jotun_bane",
@@ -6409,7 +6574,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 10
+          },
+          {
+            "materialId": "bilebag",
+            "amount": 1
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 20
+          },
+          {
+            "materialId": "bilebag",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "iron",
+            "amount": 30
+          },
+          {
+            "materialId": "bilebag",
+            "amount": 3
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "carapace_breastplate",
@@ -6436,7 +6656,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 10
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 1
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 20
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 30
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 3
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "carapace_greaves",
@@ -6463,7 +6738,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 10
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 1
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 20
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 30
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 3
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "carapace_helmet",
@@ -6490,7 +6820,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 8
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 1
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 16
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 24
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 3
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "feather_cape",
@@ -6513,7 +6898,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "feathers",
+            "amount": 2
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 5
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "feathers",
+            "amount": 4
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 10
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "feathers",
+            "amount": 6
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 15
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 9
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "salad",
@@ -6611,7 +7051,50 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 10
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 20
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 30
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 15
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "eitr_weave_trousers",
@@ -6634,7 +7117,50 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 10
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 20
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 30
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 15
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "eitr_weave_hood",
@@ -6657,7 +7183,50 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 8
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 16
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "linen_thread",
+            "amount": 24
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 15
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "staff_of_embers",
@@ -6680,7 +7249,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 10
+          },
+          {
+            "materialId": "surtling_core",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 20
+          },
+          {
+            "materialId": "surtling_core",
+            "amount": 4
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 16
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 30
+          },
+          {
+            "materialId": "surtling_core",
+            "amount": 6
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 24
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "staff_of_frost",
@@ -6703,7 +7327,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 10
+          },
+          {
+            "materialId": "freeze_gland",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 20
+          },
+          {
+            "materialId": "freeze_gland",
+            "amount": 4
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 16
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 30
+          },
+          {
+            "materialId": "freeze_gland",
+            "amount": 6
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 24
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "staff_of_protection",
@@ -6726,7 +7405,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 10
+          },
+          {
+            "materialId": "blood_clot",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 20
+          },
+          {
+            "materialId": "blood_clot",
+            "amount": 4
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 16
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 30
+          },
+          {
+            "materialId": "blood_clot",
+            "amount": 6
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 24
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "dead_raiser",
@@ -6749,7 +7483,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "bone_fragments",
+            "amount": 5
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 8
+          },
+          {
+            "materialId": "skeleton_trophy",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "bone_fragments",
+            "amount": 10
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 16
+          },
+          {
+            "materialId": "skeleton_trophy",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "bone_fragments",
+            "amount": 15
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 24
+          },
+          {
+            "materialId": "skeleton_trophy",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "himminafl",
@@ -6776,7 +7565,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "refined_eitr",
+            "amount": 15
+          },
+          {
+            "materialId": "silver",
+            "amount": 5
+          },
+          {
+            "materialId": "mandible",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "refined_eitr",
+            "amount": 30
+          },
+          {
+            "materialId": "silver",
+            "amount": 10
+          },
+          {
+            "materialId": "mandible",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "refined_eitr",
+            "amount": 45
+          },
+          {
+            "materialId": "silver",
+            "amount": 15
+          },
+          {
+            "materialId": "mandible",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "demolisher",
@@ -6799,7 +7643,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 2
+          },
+          {
+            "materialId": "iron",
+            "amount": 15
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 4
+          },
+          {
+            "materialId": "iron",
+            "amount": 30
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 6
+          },
+          {
+            "materialId": "iron",
+            "amount": 45
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "carapace_spear",
@@ -6822,7 +7721,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 5
+          },
+          {
+            "materialId": "carapace",
+            "amount": 4
+          },
+          {
+            "materialId": "mandible",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 10
+          },
+          {
+            "materialId": "carapace",
+            "amount": 8
+          },
+          {
+            "materialId": "mandible",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "yggdrasil_wood",
+            "amount": 15
+          },
+          {
+            "materialId": "carapace",
+            "amount": 12
+          },
+          {
+            "materialId": "mandible",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "carapace_shield",
@@ -6845,7 +7799,44 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 10
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 3
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 20
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 6
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "carapace_buckler",
@@ -6868,7 +7859,44 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 8
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 3
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "carapace",
+            "amount": 16
+          },
+          {
+            "materialId": "scale_hide",
+            "amount": 6
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "ballista",
@@ -6982,7 +8010,50 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 10
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 20
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 30
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "flametal_greaves",
@@ -7005,7 +8076,50 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 10
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 20
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 30
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "flametal_helmet",
@@ -7032,7 +8146,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 8
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 1
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 16
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 24
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 3
+          },
+          {
+            "materialId": "refined_eitr",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "ashen_cape",
@@ -7055,7 +8224,38 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "asksvin_hide",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "asksvin_hide",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "ash_fang",
@@ -7082,7 +8282,74 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 5
+          },
+          {
+            "materialId": "charred_bone",
+            "amount": 10
+          },
+          {
+            "materialId": "flametal",
+            "amount": 5
+          },
+          {
+            "materialId": "bonemaw_tooth",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 10
+          },
+          {
+            "materialId": "charred_bone",
+            "amount": 20
+          },
+          {
+            "materialId": "flametal",
+            "amount": 10
+          },
+          {
+            "materialId": "bonemaw_tooth",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 15
+          },
+          {
+            "materialId": "charred_bone",
+            "amount": 30
+          },
+          {
+            "materialId": "flametal",
+            "amount": 15
+          },
+          {
+            "materialId": "bonemaw_tooth",
+            "amount": 15
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "flametal_shield",
@@ -7105,7 +8372,44 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 10
+          },
+          {
+            "materialId": "flametal",
+            "amount": 4
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 20
+          },
+          {
+            "materialId": "flametal",
+            "amount": 8
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "flametal_tower_shield",
@@ -7128,7 +8432,44 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 10
+          },
+          {
+            "materialId": "flametal",
+            "amount": 4
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 20
+          },
+          {
+            "materialId": "flametal",
+            "amount": 8
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 4
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "drakkar",
@@ -7271,7 +8612,50 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 15
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 30
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 45
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "flametal_mace",
@@ -7298,7 +8682,74 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "charred_bone",
+            "amount": 5
+          },
+          {
+            "materialId": "flametal",
+            "amount": 8
+          },
+          {
+            "materialId": "sulfur",
+            "amount": 3
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "charred_bone",
+            "amount": 10
+          },
+          {
+            "materialId": "flametal",
+            "amount": 16
+          },
+          {
+            "materialId": "sulfur",
+            "amount": 6
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "charred_bone",
+            "amount": 15
+          },
+          {
+            "materialId": "flametal",
+            "amount": 24
+          },
+          {
+            "materialId": "sulfur",
+            "amount": 9
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 6
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "nidhogg",
@@ -7344,7 +8795,62 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 15
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 5
+          },
+          {
+            "materialId": "morgen_sinew",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 30
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 10
+          },
+          {
+            "materialId": "morgen_sinew",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 45
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 15
+          },
+          {
+            "materialId": "morgen_sinew",
+            "amount": 9
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "splitnir",
@@ -7371,7 +8877,74 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 5
+          },
+          {
+            "materialId": "flametal",
+            "amount": 6
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 1
+          },
+          {
+            "materialId": "bonemaw_tooth",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 10
+          },
+          {
+            "materialId": "flametal",
+            "amount": 12
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 2
+          },
+          {
+            "materialId": "bonemaw_tooth",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "ashwood",
+            "amount": 15
+          },
+          {
+            "materialId": "flametal",
+            "amount": 18
+          },
+          {
+            "materialId": "asksvin_hide",
+            "amount": 3
+          },
+          {
+            "materialId": "bonemaw_tooth",
+            "amount": 9
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "asksvin_saddle",
@@ -7421,22 +8994,14 @@
     "stationId": "black_forge",
     "craft": {
       "targetLevel": 1,
-      "stationLevel": 1,
+      "stationLevel": 4,
       "materials": [
         {
-          "materialId": "ashwood",
-          "amount": 10
-        },
-        {
-          "materialId": "charred_bone",
-          "amount": 16
+          "itemId": "ash_fang",
+          "amount": 1
         },
         {
           "materialId": "flametal",
-          "amount": 10
-        },
-        {
-          "materialId": "bonemaw_tooth",
           "amount": 5
         },
         {
@@ -7445,29 +9010,64 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 5,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 5
+          },
+          {
+            "materialId": "bloodstone",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 6,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 10
+          },
+          {
+            "materialId": "bloodstone",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 7,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 15
+          },
+          {
+            "materialId": "bloodstone",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "storm_fang",
     "stationId": "black_forge",
     "craft": {
       "targetLevel": 1,
-      "stationLevel": 1,
+      "stationLevel": 4,
       "materials": [
         {
-          "materialId": "ashwood",
-          "amount": 10
-        },
-        {
-          "materialId": "charred_bone",
-          "amount": 16
+          "itemId": "ash_fang",
+          "amount": 1
         },
         {
           "materialId": "flametal",
-          "amount": 10
-        },
-        {
-          "materialId": "bonemaw_tooth",
           "amount": 5
         },
         {
@@ -7476,29 +9076,64 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 5,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 5
+          },
+          {
+            "materialId": "iolite",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 6,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 10
+          },
+          {
+            "materialId": "iolite",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 7,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 15
+          },
+          {
+            "materialId": "iolite",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "root_fang",
     "stationId": "black_forge",
     "craft": {
       "targetLevel": 1,
-      "stationLevel": 1,
+      "stationLevel": 4,
       "materials": [
         {
-          "materialId": "ashwood",
-          "amount": 10
-        },
-        {
-          "materialId": "charred_bone",
-          "amount": 16
+          "itemId": "ash_fang",
+          "amount": 1
         },
         {
           "materialId": "flametal",
-          "amount": 10
-        },
-        {
-          "materialId": "bonemaw_tooth",
           "amount": 5
         },
         {
@@ -7507,7 +9142,50 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 5,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 5
+          },
+          {
+            "materialId": "jade",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 6,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 10
+          },
+          {
+            "materialId": "jade",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 7,
+        "materials": [
+          {
+            "materialId": "flametal",
+            "amount": 15
+          },
+          {
+            "materialId": "jade",
+            "amount": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "abyssal_razor",
@@ -7530,7 +9208,38 @@
         }
       ]
     },
-    "upgrades": []
+    "upgrades": [
+      {
+        "targetLevel": 2,
+        "stationLevel": 2,
+        "materials": [
+          {
+            "materialId": "chitin",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "targetLevel": 3,
+        "stationLevel": 3,
+        "materials": [
+          {
+            "materialId": "chitin",
+            "amount": 20
+          }
+        ]
+      },
+      {
+        "targetLevel": 4,
+        "stationLevel": 4,
+        "materials": [
+          {
+            "materialId": "chitin",
+            "amount": 30
+          }
+        ]
+      }
+    ]
   },
   {
     "itemId": "abyssal_harpoon",
@@ -9178,7 +10887,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "berserkir_axes",
+          "itemId": "berserkir_axes",
           "amount": 1
         },
         {
@@ -9244,7 +10953,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "flametal_mace",
+          "itemId": "flametal_mace",
           "amount": 1
         },
         {
@@ -9440,7 +11149,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "slayer",
+          "itemId": "slayer",
           "amount": 1
         },
         {
@@ -10639,7 +12348,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "flametal_mace",
+          "itemId": "flametal_mace",
           "amount": 1
         },
         {
@@ -10794,7 +12503,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "nidhgg",
+          "itemId": "nidhogg",
           "amount": 1
         },
         {
@@ -10860,7 +12569,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "nidhgg",
+          "itemId": "nidhogg",
           "amount": 1
         },
         {
@@ -10926,7 +12635,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "nidhgg",
+          "itemId": "nidhogg",
           "amount": 1
         },
         {
@@ -11085,7 +12794,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "berserkir_axes",
+          "itemId": "berserkir_axes",
           "amount": 1
         },
         {
@@ -11151,7 +12860,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "slayer",
+          "itemId": "slayer",
           "amount": 1
         },
         {
@@ -11393,7 +13102,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "ripper",
+          "itemId": "ripper",
           "amount": 1
         },
         {
@@ -11486,7 +13195,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "slayer",
+          "itemId": "slayer",
           "amount": 1
         },
         {
@@ -11750,7 +13459,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "splitnir",
+          "itemId": "splitnir",
           "amount": 1
         },
         {
@@ -11816,7 +13525,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "splitnir",
+          "itemId": "splitnir",
           "amount": 1
         },
         {
@@ -11882,7 +13591,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "splitnir",
+          "itemId": "splitnir",
           "amount": 1
         },
         {
@@ -12120,7 +13829,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "ripper",
+          "itemId": "ripper",
           "amount": 1
         },
         {
@@ -12186,7 +13895,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "flametal_mace",
+          "itemId": "flametal_mace",
           "amount": 1
         },
         {
@@ -12279,7 +13988,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "berserkir_axes",
+          "itemId": "berserkir_axes",
           "amount": 1
         },
         {
@@ -12956,7 +14665,7 @@
       "stationLevel": 4,
       "materials": [
         {
-          "materialId": "ripper",
+          "itemId": "ripper",
           "amount": 1
         },
         {

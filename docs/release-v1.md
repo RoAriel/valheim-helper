@@ -1,5 +1,7 @@
 # Valheim Helper V1
 
+> Este documento conserva la fotografía histórica del cierre V1. El estado activo se mantiene en `README.md` y actualmente corresponde a Aplicación `1.1.0`, Catálogo `0.1.25` y Valheim `0.221.12`.
+
 ## Identificación
 
 | Componente | Versión |

@@ -30,11 +30,12 @@ export type ExternalClassificationReport = {
   classifications: ClassifiedExternalName[];
 };
 
-const functionalRecipeId = /^Recipe_(Armor(?!Dress|Tunic)|Cape(?!Odin)|Arrow|Bolt|Axe|Battleaxe|Bow|Crossbow|Knife|Mace|Sword|Spear|Atgeir|Shield|Helmet|Bomb|Staff|Sledge|Pickaxe|Cultivator|Hoe|Hammer|Torch|Harpoon|Food|Cooked|Feast)/i;
-const functionalPieceId = /(workbench|forge|smelter|blastfurnace|kiln|portal|teleport|ship|karve|raft|cart|bed|chest|fire|hearth|cooking|fermenter|oven|windmill|spinningwheel|batteringram|catapult|shieldgenerator|sapcollector|beehive|stonecutter|artisan|cauldron|eitrrefinery)/i;
-const cosmeticPattern = /(dress|tunic\d|with (shawl|beads|cape)|headscarf|fur cap|celebratory cap|midsummer|yule|garland|banner|rug|carpet|curtain|throne|chair|stool|treasure chest|black marble table|long heavy table|round table|small table|darkwood table|odin|maypole|jack[- ]o|wreath|decor)/i;
+const functionalRecipeId = /^Recipe_(Armor(?!Dress|Tunic)|Cape(?!Odin)|Arrow|Bolt|TurretBolt|CatapultPayload|Axe|Battleaxe|Bow|Crossbow|Knife|Mace|Sword|THSword|Spear|Atgeir|Shield|Helmet|Bomb|Staff|Sledge|Fist|Trinket|Bell|Pickaxe|Cultivator|Hoe|Hammer|Torch|Harpoon|Scythe|Demister|DvergrKey|FishingBait|Food|Cooked|Feast|Fiery|Marinated|MushroomOmelette|PiquantPie|RoastedCrustPie|Sizzling|Sparkling|SpiceInduced|VikingCupcake|FishAndBread|HoneyGlazedChicken|Tankard)/i;
+const functionalPieceId = /(workbench|forge|smelter|blastfurnace|kiln|portal|teleport|ship|karve|raft|cart|bed|chest|fire|hearth|cooking|fermenter|oven|windmill|spinningwheel|batteringram|catapult|shieldgenerator|sapcollector|beehive|stonecutter|artisan|cauldron|eitrrefinery|door|gate|floor|wall|beam|pole|pillar|stair|ladder|stake|roof|road|ward|guard_stone|incinerator|trap|preptable|magetable_ext|arch|window|stack|pile|column|cornice|plinth|spire|blackmarble_[12]x|blackmarble_(out|base|tip)|wood_log_|Cooked|BarleyWine|FishAndBread|HoneyGlazedChicken|PiquantPie|RoastedCrustPie|VikingCupcake|Pukeberries|MeadTrollPheromones)/i;
+const cosmeticPattern = /(dress|tunic\d|with (shawl|beads|cape)|headscarf|fur cap|celebratory cap|midsummer|yule|garland|banner|rug|carpet|curtain|throne|chair|stool|bench|table$|armor stand|armour stand|item stand|adornment|skeleton|barber|hot tub|lantern|sconce|torch|brazier|candle|sign|sitting log|training dummy|t\.w\.i\.g\.|pot$|mistletoe|treasure|coin (pile|stack)|pile of skulls|black marble table|long heavy table|round table|small table|darkwood table|odin|maypole|jack[- ]o|wreath|decor|fireworks)/i;
 const technicalPattern = /^(cultivate|grass|remove|repair|stone pickaxe|\[item_.+\])$/i;
-const technicalId = /^(sapling_|.*_sapling|piece_remove|piece_repair|replant|cultivate)/i;
+const technicalId = /^(sapling_|.*_sapling|piece_remove|piece_repair|replant|cultivate|raise_|Placeable_)/i;
+const materialAliases = new Map([[normalizeEnglishName("Barley Wine Base: Fire Resistance"), "barley_wine_base"], [normalizeEnglishName("Raw Fish"), "fish"]]);
 
 function tokens(value: string) {
   return new Set(normalizeEnglishName(value).split(" ").filter((token) => token.length > 1));
@@ -66,7 +67,7 @@ function functionalFamily(entry: ExternalCatalogEntry): ClassifiedExternalName["
 }
 
 function classify(name: string, entries: ExternalCatalogEntry[], materialByName: Map<string, typeof materials[number]>): Omit<ClassifiedExternalName, "normalizedName" | "itemNameEn" | "externalIds" | "sourceKinds"> {
-  const material = materialByName.get(normalizeEnglishName(name));
+  const material = materialByName.get(normalizeEnglishName(name)) ?? materials.find((entry) => entry.id === materialAliases.get(normalizeEnglishName(name)));
   if (material) return {
     classification: "existing_material", confidence: "high", reason: "El nombre inglés coincide con un material local.",
     suggestedLocal: { entity: "material", id: material.id, nameEn: material.name.en, similarity: 1 },
