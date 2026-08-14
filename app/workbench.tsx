@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, type CSSProperties, type Ref } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type Ref } from "react";
 import {
   biomes,
   buildGoalPlan,
@@ -19,17 +19,52 @@ import {
 } from "@/data/catalog";
 import { filterCatalogItems, resolveSelectedItem, type CatalogCategory, type FoodFocus, type InfrastructureFocus } from "@/data/catalog-filters";
 import type { UpdateDiagnosis } from "@/data/update-check";
-import { updateCandidates, type UpdateCandidate } from "@/data/update-candidates";
+import { updateCandidates } from "@/data/update-candidates";
+import { ReviewWorkspace } from "./components/review-workspace";
+import { UpdateDialog } from "./components/update-dialog";
 
 const categories: CatalogCategory[] = ["Todos", "Armas", "Herramientas", "Construcción", "Comida", "Defensa"];
-const candidateClassifications = ["all", "functional_candidate", "probable_alias", "manual_review", "existing_material", "decorative_or_cosmetic", "technical_or_non_catalog"] as const;
-const candidateClassificationLabels: Record<(typeof candidateClassifications)[number], string> = {
-  all: "Todos", functional_candidate: "Funcionales", probable_alias: "Posibles alias", manual_review: "Revisión manual",
-  existing_material: "Materiales existentes", decorative_or_cosmetic: "Decorativos", technical_or_non_catalog: "Técnicos",
+type NavigationState = {
+  biomeId: string;
+  query: string;
+  category: CatalogCategory;
+  subcategoryId: string;
+  foodFocus: FoodFocus;
+  infrastructureFocus: InfrastructureFocus;
+  selectedId: string;
 };
-const candidateFamilyLabels: Record<NonNullable<UpdateCandidate["functionalFamily"]>, string> = {
-  equipment: "Equipo", ammunition: "Munición", consumable: "Consumibles", tool: "Herramientas", infrastructure: "Infraestructura",
-};
+
+function navigationFromUrl(): Partial<NavigationState> {
+  const parameters = new URLSearchParams(window.location.search);
+  const biomeId = parameters.get("biome");
+  const category = parameters.get("category");
+  const subcategoryId = parameters.get("subcategory");
+  const foodFocus = parameters.get("benefit");
+  const infrastructureFocus = parameters.get("function");
+  const selectedId = parameters.get("item");
+  return {
+    biomeId: biomeId === "all" || biomes.some((entry) => entry.id === biomeId) ? biomeId : undefined,
+    query: parameters.get("q") ?? undefined,
+    category: categories.includes(category as CatalogCategory) ? category as CatalogCategory : undefined,
+    subcategoryId: subcategoryId === "all" || subcategories.some((entry) => entry.id === subcategoryId) ? subcategoryId : undefined,
+    foodFocus: ["all", "health", "stamina", "eitr", "healing", "resistance", "mobility"].includes(foodFocus ?? "") ? foodFocus as FoodFocus : undefined,
+    infrastructureFocus: ["all", "stations_processing"].includes(infrastructureFocus ?? "") ? infrastructureFocus as InfrastructureFocus : undefined,
+    selectedId: items.some((entry) => entry.id === selectedId) ? selectedId : undefined,
+  };
+}
+
+function urlForNavigation(state: NavigationState) {
+  const parameters = new URLSearchParams();
+  if (state.biomeId !== "all") parameters.set("biome", state.biomeId);
+  if (state.query) parameters.set("q", state.query);
+  if (state.category !== "Todos") parameters.set("category", state.category);
+  if (state.subcategoryId !== "all") parameters.set("subcategory", state.subcategoryId);
+  if (state.foodFocus !== "all") parameters.set("benefit", state.foodFocus);
+  if (state.infrastructureFocus !== "all") parameters.set("function", state.infrastructureFocus);
+  if (state.selectedId !== items[0].id) parameters.set("item", state.selectedId);
+  const query = parameters.toString();
+  return `${window.location.pathname}${query ? `?${query}` : ""}`;
+}
 
 function themeForBiome(biomeId: string) {
   const biome = byId(biomes, biomeId)!;
@@ -63,6 +98,9 @@ export default function Workbench() {
   const [updateLoading, setUpdateLoading] = useState(false);
   const [updateError, setUpdateError] = useState("");
   const detailRef = useRef<HTMLElement>(null);
+  const catalogRef = useRef<HTMLElement>(null);
+  const updateButtonRef = useRef<HTMLButtonElement>(null);
+  const navigationReady = useRef(false);
 
   const filteredItems = useMemo(
     () => filterCatalogItems({ biomeId, query, category, subcategoryId, foodFocus, infrastructureFocus }),
@@ -71,7 +109,81 @@ export default function Workbench() {
   const availableSubcategories = category === "Todos" ? [] : subcategories.filter((subcategory) => subcategory.category === category);
   const selected = resolveSelectedItem(filteredItems, selectedId);
 
+  const navigationState = { biomeId, query, category, subcategoryId, foodFocus, infrastructureFocus, selectedId };
+
+  function restoreNavigation(state: Partial<NavigationState>) {
+    setBiomeId(state.biomeId ?? "all");
+    setQuery(state.query ?? "");
+    setCategory(state.category ?? "Todos");
+    setSubcategoryId(state.subcategoryId ?? "all");
+    setFoodFocus(state.foodFocus ?? "all");
+    setInfrastructureFocus(state.infrastructureFocus ?? "all");
+    setSelectedId(state.selectedId ?? items[0].id);
+  }
+
+  function updateNavigation(mode: "push" | "replace", overrides: Partial<NavigationState>) {
+    if (!navigationReady.current) return;
+    window.history[mode === "push" ? "pushState" : "replaceState"]({}, "", urlForNavigation({ ...navigationState, ...overrides }));
+  }
+
+  useEffect(() => {
+    navigationReady.current = true;
+    const initialRestore = window.setTimeout(() => restoreNavigation(navigationFromUrl()), 0);
+    const restoreFromHistory = () => restoreNavigation(navigationFromUrl());
+    window.addEventListener("popstate", restoreFromHistory);
+    return () => {
+      window.clearTimeout(initialRestore);
+      window.removeEventListener("popstate", restoreFromHistory);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!navigationReady.current || !selected || selected.id === selectedId) return;
+    const nextSelectedId = selected.id;
+    window.history.replaceState({}, "", urlForNavigation({ biomeId, query, category, subcategoryId, foodFocus, infrastructureFocus, selectedId: nextSelectedId }));
+    queueMicrotask(() => setSelectedId(nextSelectedId));
+  }, [biomeId, category, foodFocus, infrastructureFocus, query, selected, selectedId, subcategoryId]);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (event.target instanceof HTMLSelectElement) return;
+      if (query) {
+        event.preventDefault();
+        window.history.replaceState({}, "", urlForNavigation({ biomeId, query: "", category, subcategoryId, foodFocus, infrastructureFocus, selectedId }));
+        setQuery("");
+        return;
+      }
+      if (biomeId === "all" && category === "Todos" && subcategoryId === "all" && foodFocus === "all" && infrastructureFocus === "all") return;
+      event.preventDefault();
+      window.history.pushState({}, "", urlForNavigation({ biomeId: "all", query: "", category: "Todos", subcategoryId: "all", foodFocus: "all", infrastructureFocus: "all", selectedId }));
+      setBiomeId("all");
+      setCategory("Todos");
+      setSubcategoryId("all");
+      setFoodFocus("all");
+      setInfrastructureFocus("all");
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [biomeId, category, foodFocus, infrastructureFocus, query, selectedId, subcategoryId]);
+
+  const closeUpdates = useCallback(() => setUpdateOpen(false), []);
+
+  function selectView(nextView: "catalog" | "review") {
+    setActiveView(nextView);
+    requestAnimationFrame(() => document.getElementById(`${nextView}-tab`)?.focus());
+  }
+
+  function navigateTabs(event: ReactKeyboardEvent<HTMLDivElement>) {
+    if (!(["ArrowLeft", "ArrowRight", "Home", "End"] as string[]).includes(event.key)) return;
+    event.preventDefault();
+    if (event.key === "Home") return selectView("catalog");
+    if (event.key === "End") return selectView("review");
+    selectView(activeView === "catalog" ? "review" : "catalog");
+  }
+
   function clearFilters() {
+    updateNavigation("push", { biomeId: "all", query: "", category: "Todos", subcategoryId: "all", foodFocus: "all", infrastructureFocus: "all" });
     setBiomeId("all");
     setQuery("");
     setCategory("Todos");
@@ -81,6 +193,7 @@ export default function Workbench() {
   }
 
   function selectCategory(nextCategory: CatalogCategory) {
+    updateNavigation("push", { category: nextCategory, subcategoryId: "all", foodFocus: nextCategory === "Comida" ? foodFocus : "all", infrastructureFocus: nextCategory === "Construcción" ? infrastructureFocus : "all" });
     setCategory(nextCategory);
     setSubcategoryId("all");
     if (nextCategory !== "Comida") setFoodFocus("all");
@@ -88,10 +201,55 @@ export default function Workbench() {
   }
 
   function selectItem(itemId: string) {
+    updateNavigation("push", { selectedId: itemId });
     setSelectedId(itemId);
     if (window.matchMedia("(max-width: 780px)").matches) {
       requestAnimationFrame(() => detailRef.current?.scrollIntoView({ block: "start" }));
     }
+  }
+
+  function selectRelatedItem(itemId: string) {
+    const target = byId(items, itemId)!;
+    const next: NavigationState = { ...navigationState, query: "", selectedId: itemId };
+    if (next.biomeId !== "all" && next.biomeId !== target.stageBiomeId) next.biomeId = "all";
+    if (next.category !== "Todos" && next.category !== target.category) next.category = "Todos";
+    if (next.subcategoryId !== "all" && !byId(subcategories, next.subcategoryId)?.itemIds.includes(itemId)) next.subcategoryId = "all";
+    if (next.foodFocus !== "all" && !filterCatalogItems({ ...next, biomeId: "all", category: "Todos", subcategoryId: "all", infrastructureFocus: "all" }).some((entry) => entry.id === itemId)) next.foodFocus = "all";
+    if (next.infrastructureFocus !== "all" && !filterCatalogItems({ ...next, biomeId: "all", category: "Todos", subcategoryId: "all", foodFocus: "all" }).some((entry) => entry.id === itemId)) next.infrastructureFocus = "all";
+    window.history.pushState({}, "", urlForNavigation(next));
+    setBiomeId(next.biomeId);
+    setQuery(next.query);
+    setCategory(next.category);
+    setSubcategoryId(next.subcategoryId);
+    setFoodFocus(next.foodFocus);
+    setInfrastructureFocus(next.infrastructureFocus);
+    setSelectedId(itemId);
+    if (window.matchMedia("(max-width: 780px)").matches) requestAnimationFrame(() => detailRef.current?.scrollIntoView({ block: "start" }));
+  }
+
+  function selectBiome(nextBiomeId: string) {
+    updateNavigation("push", { biomeId: nextBiomeId });
+    setBiomeId(nextBiomeId);
+  }
+
+  function changeQuery(nextQuery: string) {
+    updateNavigation("replace", { query: nextQuery });
+    setQuery(nextQuery);
+  }
+
+  function selectSubcategory(nextSubcategoryId: string) {
+    updateNavigation("push", { subcategoryId: nextSubcategoryId });
+    setSubcategoryId(nextSubcategoryId);
+  }
+
+  function selectFoodFocus(nextFoodFocus: FoodFocus) {
+    updateNavigation("push", { foodFocus: nextFoodFocus });
+    setFoodFocus(nextFoodFocus);
+  }
+
+  function selectInfrastructureFocus(nextFocus: InfrastructureFocus) {
+    updateNavigation("push", { infrastructureFocus: nextFocus });
+    setInfrastructureFocus(nextFocus);
   }
 
   async function checkUpdates() {
@@ -111,30 +269,31 @@ export default function Workbench() {
 
   return (
     <main className="field-sample">
+      <p className="sr-only" aria-live="polite">{selected ? `Objeto seleccionado: ${selected.name.es}` : "No hay objetos en los resultados"}</p>
       <header className="field-topbar">
         <span className="field-brand">VALHEIM <b>HELPER</b></span>
-        <div className="field-view-tabs" role="tablist" aria-label="Secciones de la aplicación">
-          <button role="tab" aria-selected={activeView === "catalog"} className={activeView === "catalog" ? "active" : ""} onClick={() => setActiveView("catalog")}>Catálogo</button>
-          <button role="tab" aria-selected={activeView === "review"} className={activeView === "review" ? "active" : ""} onClick={() => setActiveView("review")}>
+        <div className="field-view-tabs" role="tablist" aria-label="Secciones de la aplicación" tabIndex={-1} onKeyDown={navigateTabs}>
+          <button id="catalog-tab" role="tab" aria-controls="catalog-panel" aria-selected={activeView === "catalog"} tabIndex={activeView === "catalog" ? 0 : -1} className={activeView === "catalog" ? "active" : ""} onClick={() => selectView("catalog")}>Catálogo</button>
+          <button id="review-tab" role="tab" aria-controls="review-panel" aria-selected={activeView === "review"} tabIndex={activeView === "review" ? 0 : -1} className={activeView === "review" ? "active" : ""} onClick={() => selectView("review")}>
             Revisión de datos <span>{updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending").length}</span>
           </button>
         </div>
         <div className="field-update-control">
           <small>Valheim {manifest.gameVersion}</small>
-          <button onClick={checkUpdates} disabled={updateLoading}>{updateLoading ? "Comprobando…" : "Buscar actualizaciones"}</button>
+          <button ref={updateButtonRef} onClick={checkUpdates} disabled={updateLoading}>{updateLoading ? "Comprobando…" : "Buscar actualizaciones"}</button>
         </div>
       </header>
 
-      {updateOpen && <UpdatePanel diagnosis={updateDiagnosis} loading={updateLoading} error={updateError} onRetry={checkUpdates} onClose={() => setUpdateOpen(false)} />}
+      {updateOpen && <UpdateDialog diagnosis={updateDiagnosis} loading={updateLoading} error={updateError} onRetry={checkUpdates} onClose={closeUpdates} returnFocusRef={updateButtonRef} />}
 
-      {activeView === "review" ? <ReviewWorkspace /> : <section className="field-layout">
+      {activeView === "review" ? <div id="review-panel" role="tabpanel" aria-labelledby="review-tab"><ReviewWorkspace /></div> : <section id="catalog-panel" role="tabpanel" aria-labelledby="catalog-tab" className="field-layout">
         <nav className="field-progression" aria-label="Progresión por bioma">
           <div className="field-progression-intro">
             <p className="eyebrow">PROGRESIÓN</p>
             <h1>Tu ruta vikinga</h1>
             <p>Elegí una etapa para acotar el catálogo.</p>
           </div>
-          <button className={biomeId === "all" ? "active" : ""} aria-pressed={biomeId === "all"} onClick={() => setBiomeId("all")}>
+          <button className={biomeId === "all" ? "active" : ""} aria-pressed={biomeId === "all"} onClick={() => selectBiome("all")}>
             <span>Todos</span><b>{items.length}</b>
           </button>
           <div className="field-biome-list">
@@ -149,7 +308,7 @@ export default function Workbench() {
               const { style } = themeForBiome(biome.id);
 
               return (
-                <button key={biome.id} style={style} className={biomeId === biome.id ? "active" : ""} aria-pressed={biomeId === biome.id} onClick={() => setBiomeId(biome.id)}>
+                <button key={biome.id} style={style} className={biomeId === biome.id ? "active" : ""} aria-pressed={biomeId === biome.id} onClick={() => selectBiome(biome.id)}>
                   <i>{biome.theme.symbol}</i>
                   <span>{biome.name.es}<small>{biome.name.en} · {stationNames.join(" / ")}</small></span>
                   <b>{count}</b>
@@ -159,13 +318,14 @@ export default function Workbench() {
           </div>
         </nav>
 
-        <section className="field-catalog" aria-label="Catálogo en modo planificación">
+        <section ref={catalogRef} className="field-catalog" aria-label="Catálogo en modo planificación">
           <header>
             <p className="eyebrow">MODO PLANIFICAR</p>
             <h2>¿Qué querés preparar?</h2>
             <label className="field-search">
               <span aria-hidden="true">⌕</span>
-              <input aria-label="Buscar por objeto o nombre en inglés" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar por objeto o nombre en inglés…" />
+              <input aria-label="Buscar por objeto o nombre en inglés" value={query} onChange={(event) => changeQuery(event.target.value)} placeholder="Buscar por objeto o nombre en inglés…" />
+              {query && <button type="button" className="field-search-clear" aria-label="Borrar búsqueda" onClick={() => changeQuery("")}>×</button>}
             </label>
             <div className="field-filter-row" role="group" aria-label="Filtrar por categoría">
               {categories.map((value) => (
@@ -175,16 +335,16 @@ export default function Workbench() {
             {availableSubcategories.length > 0 && (
               <div className="field-subfilter-row" role="group" aria-label={`Filtrar ${category}`}>
                 <span>{category}</span>
-                <button className={subcategoryId === "all" ? "active" : ""} aria-pressed={subcategoryId === "all"} onClick={() => setSubcategoryId("all")}>Todas</button>
+                <button className={subcategoryId === "all" ? "active" : ""} aria-pressed={subcategoryId === "all"} onClick={() => selectSubcategory("all")}>Todas</button>
                 {availableSubcategories.map((subcategory) => (
-                  <button key={subcategory.id} className={subcategoryId === subcategory.id ? "active" : ""} aria-pressed={subcategoryId === subcategory.id} onClick={() => setSubcategoryId(subcategory.id)}>{subcategory.name.es}</button>
+                  <button key={subcategory.id} className={subcategoryId === subcategory.id ? "active" : ""} aria-pressed={subcategoryId === subcategory.id} onClick={() => selectSubcategory(subcategory.id)}>{subcategory.name.es}</button>
                 ))}
               </div>
             )}
             {category === "Comida" && (
               <label className="field-food-filter">
                 <span>BENEFICIO</span>
-                <select value={foodFocus} onChange={(event) => setFoodFocus(event.target.value as FoodFocus)}>
+                <select value={foodFocus} onChange={(event) => selectFoodFocus(event.target.value as FoodFocus)}>
                   <option value="all">Todos los beneficios</option><option value="health">Prioriza salud</option><option value="healing">Curación</option><option value="resistance">Resistencia</option><option value="stamina">Prioriza aguante</option><option value="eitr">Aporta eitr</option><option value="mobility">Movilidad</option>
                 </select>
               </label>
@@ -192,14 +352,22 @@ export default function Workbench() {
             {category === "Construcción" && (
               <div className="field-subfilter-row" role="group" aria-label="Filtrar construcciones funcionales">
                 <span>FUNCIÓN</span>
-                <button className={infrastructureFocus === "all" ? "active" : ""} aria-pressed={infrastructureFocus === "all"} onClick={() => setInfrastructureFocus("all")}>Todas</button>
-                <button className={infrastructureFocus === "stations_processing" ? "active" : ""} aria-pressed={infrastructureFocus === "stations_processing"} onClick={() => setInfrastructureFocus("stations_processing")}>Estaciones y proceso</button>
+                <button className={infrastructureFocus === "all" ? "active" : ""} aria-pressed={infrastructureFocus === "all"} onClick={() => selectInfrastructureFocus("all")}>Todas</button>
+                <button className={infrastructureFocus === "stations_processing" ? "active" : ""} aria-pressed={infrastructureFocus === "stations_processing"} onClick={() => selectInfrastructureFocus("stations_processing")}>Estaciones y proceso</button>
               </div>
             )}
             <div className="field-summary">
-              <span>{filteredItems.length} objetos</span>
-              <span>Lista compacta · estación · bioma</span>
+              <span aria-live="polite">{filteredItems.length} objetos</span>
+              <span className="field-summary-description">Lista compacta · estación · bioma</span>
               <button className="field-clear" onClick={clearFilters}>Limpiar filtros</button>
+              <span className="field-clear-shortcut" aria-hidden="true">Esc</span>
+            </div>
+            <div className="field-active-filters" aria-label="Filtros activos">
+              {biomeId !== "all" && <button onClick={() => selectBiome("all")}>{byId(biomes, biomeId)?.name.es}<span>×</span></button>}
+              {category !== "Todos" && <button onClick={() => selectCategory("Todos")}>{category}<span>×</span></button>}
+              {subcategoryId !== "all" && <button onClick={() => selectSubcategory("all")}>{byId(subcategories, subcategoryId)?.name.es}<span>×</span></button>}
+              {foodFocus !== "all" && <button onClick={() => selectFoodFocus("all")}>Beneficio: {foodFocusLabel(foodFocus)}<span>×</span></button>}
+              {infrastructureFocus !== "all" && <button onClick={() => selectInfrastructureFocus("all")}>Estaciones y proceso<span>×</span></button>}
             </div>
           </header>
           <div className="field-item-list">
@@ -209,7 +377,7 @@ export default function Workbench() {
               return (
                 <button key={item.id} style={style} className={selected?.id === item.id ? "selected" : ""} aria-pressed={selected?.id === item.id} onClick={() => selectItem(item.id)}>
                   <span className="field-item-icon">{item.icon}</span>
-                  <span className="field-item-name"><strong>{item.name.es}</strong><small>{item.name.en}</small></span>
+                  <span className="field-item-name"><strong>{item.name.es}</strong><small>{item.name.en}</small>{item.category === "Comida" && <span className="field-item-food-stats">{foodSummary(item.id)}</span>}</span>
                   <span className="field-row-meta"><small>ESTACIÓN</small>{byId(stations, itemRecipe.stationId)?.name.es}</span>
                   <span className="field-row-biome">{biome.theme.symbol} {biome.name.es}</span><b>›</b>
                 </button>
@@ -219,106 +387,13 @@ export default function Workbench() {
           </div>
         </section>
 
-        {selected ? <ItemDetail itemId={selected.id} detailRef={detailRef} /> : <aside ref={detailRef} className="field-detail field-detail-empty" aria-label="Sin objeto seleccionado"><p className="eyebrow">SIN RESULTADOS</p><h2>Ajustá la búsqueda</h2><p>Probá con otro término o limpiá los filtros para volver al catálogo completo.</p><button onClick={clearFilters}>Limpiar filtros</button></aside>}
+        {selected ? <ItemDetail itemId={selected.id} detailRef={detailRef} onBackToResults={() => catalogRef.current?.scrollIntoView({ block: "start" })} onSelectItem={selectRelatedItem} /> : <aside ref={detailRef} className="field-detail field-detail-empty" aria-label="Sin objeto seleccionado"><p className="eyebrow">SIN RESULTADOS</p><h2>Ajustá la búsqueda</h2><p>Probá con otro término o limpiá los filtros para volver al catálogo completo.</p><button onClick={clearFilters}>Limpiar filtros</button></aside>}
       </section>}
     </main>
   );
 }
 
-function ReviewWorkspace() {
-  const [query, setQuery] = useState("");
-  const [classification, setClassification] = useState<(typeof candidateClassifications)[number]>("all");
-  const [family, setFamily] = useState<"all" | NonNullable<UpdateCandidate["functionalFamily"]>>("all");
-  const [showResolved, setShowResolved] = useState(false);
-  const normalizedQuery = query.trim().toLowerCase();
-  const visible = useMemo(() => updateCandidates.candidates.filter((candidate) => {
-    if (!showResolved && candidate.reviewStatus !== "pending") return false;
-    if (classification !== "all" && candidate.classification !== classification) return false;
-    if (family !== "all" && candidate.functionalFamily !== family) return false;
-    if (normalizedQuery && ![candidate.nameEn, ...candidate.externalIds, candidate.suggestedLocal?.nameEn ?? ""].some((value) => value.toLowerCase().includes(normalizedQuery))) return false;
-    return true;
-  }), [classification, family, normalizedQuery, showResolved]);
-  const pending = updateCandidates.candidates.filter((entry) => entry.reviewStatus === "pending");
-  const functional = pending.filter((entry) => entry.classification === "functional_candidate").length;
-  const approved = updateCandidates.candidates.filter((entry) => entry.reviewStatus === "approved").length;
-  const rejected = updateCandidates.candidates.filter((entry) => entry.reviewStatus === "rejected").length;
-
-  return <section className="field-review" aria-label="Revisión de datos pendientes">
-    <header className="field-review-header">
-      <div><p className="eyebrow">INVENTARIO EDITORIAL</p><h1>Objetos pendientes</h1><p>Entradas detectadas en Jötunn que todavía no forman parte confirmada del catálogo.</p></div>
-      <div className="field-review-meta"><small>Valheim analizado</small><strong>{updateCandidates.source.gameVersion ?? updateCandidates.gameVersion}</strong><span>Generado {new Date(updateCandidates.generatedAt).toLocaleDateString("es")}</span></div>
-    </header>
-    <div className="field-review-notice"><strong>Vista de solo lectura</strong><span>“Candidato funcional” significa que merece contraste; no confirma que deba incorporarse.</span></div>
-    <div className="field-review-stats">
-      <div><small>Pendientes</small><strong>{pending.length}</strong></div>
-      <div><small>Candidatos funcionales</small><strong>{functional}</strong></div>
-      <div><small>Aprobados / rechazados</small><strong>{approved} / {rejected}</strong></div>
-      <div><small>Total analizado</small><strong>{updateCandidates.candidates.length}</strong></div>
-    </div>
-    <section className="field-review-controls">
-      <label className="field-search"><span aria-hidden="true">⌕</span><input aria-label="Buscar candidatos" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar nombre o identificador externo…" /></label>
-      <div className="field-filter-row" role="group" aria-label="Clasificación editorial">
-        {candidateClassifications.map((value) => <button key={value} className={classification === value ? "active" : ""} aria-pressed={classification === value} onClick={() => setClassification(value)}>{candidateClassificationLabels[value]}</button>)}
-      </div>
-      <div className="field-review-secondary">
-        <label>Familia <select value={family} onChange={(event) => setFamily(event.target.value as typeof family)}><option value="all">Todas</option>{Object.entries(candidateFamilyLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
-        <label className="field-review-toggle"><input type="checkbox" checked={showResolved} onChange={(event) => setShowResolved(event.target.checked)} /> Mostrar aprobados, rechazados, conocidos y excluidos</label>
-        <span>{visible.length} resultados</span>
-      </div>
-    </section>
-    <div className="field-candidate-grid">
-      {visible.map((candidate) => <CandidateCard key={candidate.id} candidate={candidate} />)}
-      {!visible.length && <p className="field-empty">No hay entradas que coincidan con estos filtros.</p>}
-    </div>
-  </section>;
-}
-
-function CandidateCard({ candidate }: { candidate: UpdateCandidate }) {
-  return <article className={`field-candidate ${candidate.classification}`}>
-    <header><div><p>{candidateClassificationLabels[candidate.classification]}</p><h2>{candidate.nameEn}</h2></div><span className={`confidence ${candidate.confidence}`}>{candidate.confidence === "high" ? "Alta" : candidate.confidence === "medium" ? "Media" : "Baja"}</span></header>
-    <p>{candidate.reason}</p>
-    <div className="field-candidate-tags">
-      {candidate.functionalFamily && <span>{candidateFamilyLabels[candidate.functionalFamily]}</span>}
-      {candidate.sourceKinds.map((kind) => <span key={kind}>{kind === "recipe" ? "Receta" : "Pieza"}</span>)}
-      <span>{reviewStatusLabel(candidate.reviewStatus)}</span>
-    </div>
-    {candidate.suggestedLocal && <p className="field-candidate-match">Posible coincidencia local: <strong>{candidate.suggestedLocal.nameEn}</strong> <small>{Math.round(candidate.suggestedLocal.similarity * 100)}%</small></p>}
-    <details><summary>Identificadores externos ({candidate.externalIds.length})</summary><code>{candidate.externalIds.join(" · ")}</code></details>
-  </article>;
-}
-
-function reviewStatusLabel(status: UpdateCandidate["reviewStatus"]) {
-  return { pending: "Pendiente", approved: "Aprobado", rejected: "Rechazado", known: "Ya conocido", excluded: "Excluido" }[status];
-}
-
-function UpdatePanel({ diagnosis, loading, error, onRetry, onClose }: { diagnosis: UpdateDiagnosis | null; loading: boolean; error: string; onRetry: () => void; onClose: () => void }) {
-  const statusLabel = diagnosis?.status === "current" ? "Información al día" : diagnosis?.status === "review-recommended" ? "Revisión recomendada" : "Diagnóstico incompleto";
-  return <section className="field-update-panel" role="dialog" aria-modal="true" aria-labelledby="update-title">
-    <header>
-      <div><p className="eyebrow">ESTADO DE DATOS</p><h2 id="update-title">Actualizaciones</h2></div>
-      <button className="field-update-close" onClick={onClose} aria-label="Cerrar estado de actualizaciones">×</button>
-    </header>
-    {loading && <p className="field-update-loading">Consultando fuentes oficiales y técnicas…</p>}
-    {!loading && error && <div className="field-update-message error"><strong>No se pudo consultar</strong><p>{error}</p><button onClick={onRetry}>Reintentar</button></div>}
-    {!loading && diagnosis && <>
-      <div className={`field-update-verdict ${diagnosis.status}`}><strong>{statusLabel}</strong><p>{diagnosis.recommendation}</p></div>
-      <div className="field-update-versions">
-        <div><small>Aplicación instalada</small><strong>{diagnosis.current.appVersion}</strong>{diagnosis.latest.appVersion && <span>Publicada: {diagnosis.latest.appVersion}</span>}</div>
-        <div><small>Catálogo instalado</small><strong>{diagnosis.current.catalogVersion}</strong>{diagnosis.latest.catalogVersion && <span>Publicado: {diagnosis.latest.catalogVersion}</span>}</div>
-        <div><small>Valheim cubierto</small><strong>{diagnosis.current.gameVersion}</strong>{diagnosis.latest.stableGameVersion && <span>Estable detectada: {diagnosis.latest.stableGameVersion}</span>}</div>
-      </div>
-      <div className="field-update-sources">
-        {diagnosis.sources.map((source) => <a key={source.id} href={source.url} target="_blank" rel="noreferrer">
-          <span className={source.status}>{source.status === "available" ? "✓" : "!"}</span>
-          <span><strong>{source.label}</strong><small>{source.detail}</small></span>
-        </a>)}
-      </div>
-      <footer>Comprobado: {new Date(diagnosis.checkedAt).toLocaleString("es")}. Este diagnóstico no modifica los JSON ni el contenedor.</footer>
-    </>}
-  </section>;
-}
-
-function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTMLElement> }) {
+function ItemDetail({ itemId, detailRef, onBackToResults, onSelectItem }: { itemId: string; detailRef: Ref<HTMLElement>; onBackToResults: () => void; onSelectItem: (itemId: string) => void }) {
   const selected = byId(items, itemId)!;
   const { biome: selectedBiome, style: theme } = themeForBiome(selected.stageBiomeId);
   const recipe = recipes.find((entry) => entry.itemId === selected.id)!;
@@ -330,6 +405,7 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
 
   return (
     <aside ref={detailRef} className="field-detail" style={theme} aria-label={`Detalle de ${selected.name.es}`}>
+      <button className="field-back-results" onClick={onBackToResults}>← Volver a resultados</button>
       <header>
         <span className="field-detail-icon">{selected.icon}</span>
         <div><p className="eyebrow">{selected.category} · {selectedBiome.theme.symbol} {selectedBiome.name.es}</p><h2>{selected.name.es}</h2><small>{selected.name.en}</small><p>{selected.description}</p></div>
@@ -347,8 +423,13 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
       <section className="field-block"><div className="field-block-title"><h3>Fabricación</h3><span>{byId(stations, recipe.stationId)?.name.es}</span></div>
         <StationLevelRequirement stationId={recipe.stationId} stationLevel={recipe.craft.stationLevel} />
         {(recipe.outputAmount ?? 1) > 1 && <p className="field-output">Produce <strong>×{recipe.outputAmount}</strong></p>}
-        {recipe.craft.materials.map((cost) => <Ingredient key={ingredientKey(cost)} cost={cost} />)}
+        {recipe.craft.materials.map((cost) => <Ingredient key={ingredientKey(cost)} cost={cost} onSelectItem={onSelectItem} />)}
       </section>
+      <details className="field-block field-plan field-disclosure" open><summary>Plan de objetivo <span>Materias primas</span></summary>
+        <div className="field-tags">{goalPlan.stationIds.map((stationId) => <span key={stationId}>⚒ {byId(stations, stationId)?.name.es}</span>)}</div>
+        <div className="field-tags">{collectionBiomes.map((biome) => <span key={biome.id}>⌖ {biome.name.es}</span>)}</div>
+        {goalPlan.materials.map((cost) => <Cost key={cost.materialId} materialId={cost.materialId} amount={cost.amount} />)}
+      </details>
       {extensionGroup && <section className="field-block field-station-extensions" aria-label={`Extensiones de ${selected.name.es}`}>
         <div className="field-block-title"><h3>Mejoras de estación</h3><span>Nivel máximo {extensionGroup.maxLevel}</span></div>
         <p>Cada extensión distinta cercana aumenta un nivel. El orden muestra la progresión habitual.</p>
@@ -359,7 +440,8 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
             <summary><b>Nivel {index + 2}</b><span>{extensionItem.icon}</span><span><strong>{extensionItem.name.es}</strong><small>{extensionItem.name.en}</small></span></summary>
             <div className="field-extension-materials">
               <p>Construcción · {byId(stations, extensionRecipe.stationId)?.name.es}</p>
-              {extensionRecipe.craft.materials.map((cost) => <Ingredient key={ingredientKey(cost)} cost={cost} />)}
+              {extensionRecipe.craft.materials.map((cost) => <Ingredient key={ingredientKey(cost)} cost={cost} onSelectItem={onSelectItem} />)}
+              <button className="field-related-link" onClick={() => onSelectItem(extension.itemId)}>Ver ficha de {extensionItem.name.es} →</button>
             </div>
           </details>;
         })}
@@ -367,20 +449,15 @@ function ItemDetail({ itemId, detailRef }: { itemId: string; detailRef: Ref<HTML
       {recipe.upgrades.length > 0 && <details className="field-block field-disclosure"><summary>Mejoras disponibles <span>{recipe.upgrades.length} niveles</span></summary>
         <section className="field-upgrade-total" aria-label={`Costo total desde nivel 1 hasta nivel ${upgradeCosts.at(-1)?.targetLevel}`}>
           <div><p>Costo total acumulado</p><strong>Nivel 1 → Nivel {upgradeCosts.at(-1)?.targetLevel}</strong></div>
-          {upgradeCosts.at(-1)?.cumulative.map((cost) => <Ingredient key={`maximum-${ingredientKey(cost)}`} cost={cost} />)}
+          {upgradeCosts.at(-1)?.cumulative.map((cost) => <Ingredient key={`maximum-${ingredientKey(cost)}`} cost={cost} onSelectItem={onSelectItem} />)}
         </section>
         {upgradeCosts.map((upgrade) => <section className="field-upgrade" key={upgrade.targetLevel}>
           <h4>Mejora a nivel {upgrade.targetLevel}</h4>
           <StationLevelRequirement stationId={recipe.stationId} stationLevel={recipe.upgrades.find((entry) => entry.targetLevel === upgrade.targetLevel)?.stationLevel ?? 1} />
           <p>Costo de este nivel</p>
-          {upgrade.step.map((cost) => <Ingredient key={`step-${ingredientKey(cost)}`} cost={cost} />)}
+          {upgrade.step.map((cost) => <Ingredient key={`step-${ingredientKey(cost)}`} cost={cost} onSelectItem={onSelectItem} />)}
         </section>)}
       </details>}
-      <details className="field-block field-plan field-disclosure"><summary>Plan de objetivo <span>Materias primas</span></summary>
-        <div className="field-tags">{goalPlan.stationIds.map((stationId) => <span key={stationId}>⚒ {byId(stations, stationId)?.name.es}</span>)}</div>
-        <div className="field-tags">{collectionBiomes.map((biome) => <span key={biome.id}>⌖ {biome.name.es}</span>)}</div>
-        {goalPlan.materials.map((cost) => <Cost key={cost.materialId} materialId={cost.materialId} amount={cost.amount} />)}
-      </details>
     </aside>
   );
 }
@@ -416,13 +493,13 @@ function ingredientKey(cost: IngredientCost) {
   return "materialId" in cost ? `material-${cost.materialId}` : `item-${cost.itemId}`;
 }
 
-function Ingredient({ cost }: { cost: IngredientCost }) {
+function Ingredient({ cost, onSelectItem }: { cost: IngredientCost; onSelectItem: (itemId: string) => void }) {
   if ("materialId" in cost) return <Cost materialId={cost.materialId} amount={cost.amount} />;
   const item = byId(items, cost.itemId)!;
   const recipe = recipes.find((entry) => entry.itemId === cost.itemId)!;
   return <details className="field-cost-detail">
     <summary className="field-cost"><span>{item.icon}</span><span><strong>{item.name.es}</strong><small>{item.name.en} · objeto base</small></span><b>×{cost.amount}</b></summary>
-    <div className="field-source-list"><div><strong>Fabricación previa</strong><small>{byId(stations, recipe.stationId)?.name.es}</small><span>Se expande automáticamente en el Plan de objetivo.</span></div></div>
+    <div className="field-source-list"><div><strong>Fabricación previa</strong><small>{byId(stations, recipe.stationId)?.name.es}</small><span>Se expande automáticamente en el Plan de objetivo.</span><button className="field-related-link" onClick={() => onSelectItem(item.id)}>Ver ficha de {item.name.es} →</button></div></div>
   </details>;
 }
 
@@ -436,4 +513,19 @@ function formatDuration(seconds?: number) {
   const minutes = Math.floor(seconds / 60);
   const remainder = seconds % 60;
   return remainder ? `${minutes} min ${remainder} s` : `${minutes} min`;
+}
+
+function foodFocusLabel(focus: FoodFocus) {
+  return { all: "Todos", health: "Salud", healing: "Curación", resistance: "Resistencia", stamina: "Aguante", eitr: "Eitr", mobility: "Movilidad" }[focus];
+}
+
+function foodSummary(itemId: string) {
+  const effect = foodEffects.find((entry) => entry.itemId === itemId);
+  if (!effect) return "Propiedades no registradas";
+  return [
+    effect.health ? `Salud ${effect.health}` : "",
+    effect.stamina ? `Aguante ${effect.stamina}` : "",
+    effect.eitr ? `Eitr ${effect.eitr}` : "",
+    formatDuration(effect.durationSeconds),
+  ].filter(Boolean).join(" · ");
 }

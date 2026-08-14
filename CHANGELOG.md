@@ -1,5 +1,19 @@
 # Cambios
 
+## Próxima versión
+
+- La navegación del catálogo conserva bioma, búsqueda, categoría, subcategoría, beneficio, función y objeto seleccionado en la URL; recargar y usar Atrás/Adelante ya no pierde el contexto.
+- Los filtros activos se muestran como etiquetas removibles y el contador anuncia los cambios de resultados.
+- La búsqueda incorpora un botón `×` para borrar el texto sin limpiar el resto de los filtros.
+- En computadora, `Esc` cierra primero el diagnóstico, luego borra la búsqueda y finalmente limpia los filtros activos.
+- En teléfono, el detalle ofrece una acción visible para volver al punto de resultados.
+- La ficha enlaza objetos base y extensiones con sus propias fichas, relajando automáticamente los filtros incompatibles.
+- El Plan de objetivo aparece abierto y ubicado inmediatamente después de la fabricación.
+- Las tarjetas de Comida muestran salud, aguante, eitr y duración para comparar opciones sin abrir cada ficha.
+- El diálogo de actualizaciones gestiona foco, Escape, fondo modal y retorno al control de apertura.
+- Las pestañas admiten flechas, Inicio y Fin, y los cambios de resultados o selección se anuncian a tecnologías de asistencia.
+- La revisión editorial y el diálogo se extrajeron de `workbench.tsx` como componentes independientes.
+
 ## Datos 0.1.25 — 2026-08-13
 
 - Se reconciliaron las 34 diferencias informadas por el comparador: 32 equipos recibieron sus mejoras faltantes y las dos hidromieles menores conservaron el circuito jugable verificado de hervidor, fermentador y lote de seis.

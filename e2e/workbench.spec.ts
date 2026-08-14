@@ -31,6 +31,8 @@ test("la búsqueda, filtros y estado vacío mantienen un detalle coherente", asy
   await expect(page.locator(".field-detail h2")).toContainText("Nidhogg");
   if (testInfo.project.name === "mobile-390") {
     await expect(page.locator(".field-detail")).toBeInViewport();
+    await page.getByRole("button", { name: "Volver a resultados" }).click();
+    await expect(page.locator(".field-catalog")).toBeInViewport();
   }
 
   await search.fill("objeto inexistente");
@@ -52,6 +54,52 @@ test("la búsqueda, filtros y estado vacío mantienen un detalle coherente", asy
   await expect(page.locator(".field-item-list")).not.toContainText("Cama de dragón");
 });
 
+test("conserva la navegación en la URL y permite quitar filtros individualmente", async ({ page }) => {
+  await page.goto("/?biome=mountains&category=Armas&subcategory=clubs&item=frostner");
+  await expect(page.locator(".field-detail h2")).toContainText("Frostner");
+  await expect(page.locator(".field-biome-list button").filter({ hasText: "Montañas" })).toHaveAttribute("aria-pressed", "true");
+  const activeFilters = page.getByLabel("Filtros activos");
+  await expect(activeFilters).toContainText("Montañas");
+  await expect(activeFilters).toContainText("Armas");
+  await expect(activeFilters).toContainText("Mazas y martillos");
+
+  await page.reload();
+  await expect(page.locator(".field-detail h2")).toContainText("Frostner");
+  await activeFilters.getByRole("button", { name: /Mazas y martillos/ }).click();
+  await expect(page).not.toHaveURL(/subcategory=/);
+
+  await page.getByRole("button", { name: "Comida", exact: true }).click();
+  await expect(page).toHaveURL(/category=Comida/);
+  await page.goBack();
+  await expect(page.getByRole("button", { name: "Armas", exact: true })).toHaveAttribute("aria-pressed", "true");
+});
+
+test("la búsqueda se puede borrar desde el propio campo", async ({ page }) => {
+  await page.goto("/");
+  const search = page.getByRole("textbox", { name: "Buscar por objeto o nombre en inglés" });
+  await search.fill("Frostner");
+  await expect(page).toHaveURL(/q=Frostner/);
+  await page.getByRole("button", { name: "Borrar búsqueda" }).click();
+  await expect(search).toHaveValue("");
+  await expect(page).not.toHaveURL(/q=/);
+  await expect(page.getByRole("button", { name: "Borrar búsqueda" })).toBeHidden();
+});
+
+test("Escape limpia primero la búsqueda y luego los filtros", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Armas", exact: true }).click();
+  const search = page.getByRole("textbox", { name: "Buscar por objeto o nombre en inglés" });
+  await search.fill("Frostner");
+
+  await page.keyboard.press("Escape");
+  await expect(search).toHaveValue("");
+  await expect(page.getByRole("button", { name: "Armas", exact: true })).toHaveAttribute("aria-pressed", "true");
+
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("button", { name: "Todos", exact: true }).last()).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByLabel("Filtros activos")).toBeEmpty();
+});
+
 test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ page }, testInfo) => {
   await page.goto("/");
   const search = page.getByRole("textbox", { name: "Buscar por objeto o nombre en inglés" });
@@ -64,6 +112,7 @@ test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ pa
   await page.locator(".field-item-list > button").first().click();
   const properties = page.getByRole("region", { name: "Propiedades del consumible" });
   await expect(properties).toContainText("Salud");
+  await expect(properties).toContainText("Eitr");
   await expect(properties).toContainText("85");
   await expect(properties).toContainText("25 min");
   await page.screenshot({ path: testInfo.outputPath(`${testInfo.project.name}-propiedades.png`) });
@@ -92,7 +141,7 @@ test("muestra extensiones y requisitos de nivel de las estaciones", async ({ pag
   const extensions = page.getByRole("region", { name: "Extensiones de Banco de trabajo" });
   await expect(extensions).toContainText("Nivel máximo 5");
   await expect(extensions).toContainText("Estantería de herramientas");
-  await extensions.getByText("Estantería de herramientas").click();
+  await extensions.getByText("Estantería de herramientas", { exact: true }).click();
   const toolShelf = extensions.locator(".field-extension-detail").filter({ hasText: "Estantería de herramientas" });
   await expect(toolShelf).toContainText("Madera fina");
   await expect(toolShelf).toContainText("×10");
@@ -117,10 +166,38 @@ test("muestra y expande los objetos base de una variante", async ({ page }) => {
   await expect(baseItem).toContainText("×1");
 
   const plan = page.locator("details.field-plan");
-  await plan.locator(":scope > summary").click();
+  await expect(plan).toHaveAttribute("open", "");
   await expect(plan).toContainText("Madera de ceniza");
   await expect(plan).toContainText("Piedra de sangre");
   await expect(plan).not.toContainText("Colmillo de ceniza");
+
+  await baseItem.click();
+  await page.getByRole("button", { name: "Ver ficha de Colmillo de ceniza" }).click();
+  await expect(page.locator(".field-detail h2")).toContainText("Colmillo de ceniza");
+  await expect(search).toHaveValue("");
+  await expect(page).toHaveURL(/item=ash_fang/);
+});
+
+test("las extensiones enlazan con su propia ficha", async ({ page }) => {
+  await page.goto("/");
+  const search = page.getByRole("textbox", { name: "Buscar por objeto o nombre en inglés" });
+  await search.fill("Banco de trabajo");
+  await page.locator(".field-item-list > button").first().click();
+  const extension = page.locator(".field-extension-detail").filter({ hasText: "Estantería de herramientas" });
+  await extension.locator(":scope > summary").click();
+  await extension.getByRole("button", { name: "Ver ficha de Estantería de herramientas" }).click();
+  await expect(page.locator(".field-detail h2")).toContainText("Estantería de herramientas");
+  await expect(search).toHaveValue("");
+});
+
+test("las tarjetas de comida muestran propiedades comparables", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Comida", exact: true }).click();
+  const seekerAspic = page.locator(".field-item-list > button").filter({ hasText: "Áspic de seeker" });
+  await expect(seekerAspic).toContainText("Salud 12");
+  await expect(seekerAspic).toContainText("Aguante 13");
+  await expect(seekerAspic).toContainText("Eitr 85");
+  await expect(seekerAspic).toContainText("25 min");
 });
 
 test("el chequeo informa novedades sin modificar el catálogo", async ({ page }) => {
@@ -141,14 +218,31 @@ test("el chequeo informa novedades sin modificar el catálogo", async ({ page })
     }),
   }));
   await page.goto("/");
-  await page.getByRole("button", { name: "Buscar actualizaciones" }).click();
+  const updateButton = page.getByRole("button", { name: "Buscar actualizaciones" });
+  await updateButton.click();
   const panel = page.getByRole("dialog", { name: "Actualizaciones" });
   await expect(panel).toBeVisible();
+  await expect(page.getByRole("button", { name: "Cerrar estado de actualizaciones" })).toBeFocused();
   await expect(panel).toContainText("Revisión recomendada");
   await expect(panel).toContainText("Estable detectada: 0.222.1");
   await expect(panel).toContainText("no modifica los JSON ni el contenedor");
-  await page.getByRole("button", { name: "Cerrar estado de actualizaciones" }).click();
+  await page.keyboard.press("Escape");
   await expect(panel).toBeHidden();
+  await expect(updateButton).toBeFocused();
+});
+
+test("las pestañas responden a teclado y exponen sus paneles", async ({ page }) => {
+  await page.goto("/");
+  const catalogTab = page.getByRole("tab", { name: "Catálogo" });
+  const reviewTab = page.getByRole("tab", { name: /Revisión de datos/ });
+  await catalogTab.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(reviewTab).toBeFocused();
+  await expect(reviewTab).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("tabpanel", { name: /Revisión de datos/ })).toBeVisible();
+  await page.keyboard.press("Home");
+  await expect(catalogTab).toBeFocused();
+  await expect(page.getByRole("tabpanel", { name: "Catálogo" })).toBeVisible();
 });
 
 test("la revisión de datos separa candidatos pendientes del catálogo", async ({ page }) => {

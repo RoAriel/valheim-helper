@@ -26,6 +26,7 @@ body { margin: 0; background: var(--void); color: var(--text); font-family: Aria
 button, input, select { font: inherit; }
 button { cursor: pointer; transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
 button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 .eyebrow { margin: 0 0 9px; color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: 1.8px; }
 .field-sample { min-height: 100dvh; background: var(--void); }
@@ -51,8 +52,10 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-update-control button { border: 1px solid var(--soft-border); border-radius: 999px; background: color-mix(in srgb, var(--wine) 55%, var(--void)); color: var(--gold); padding: 7px 11px; font-size: 11px; font-weight: 700; }
 .field-update-control button:hover { border-color: var(--gold); }.field-update-control button:disabled { cursor: wait; opacity: .7; }
 
+.field-update-backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: start end; padding: 72px clamp(16px, 3vw, 48px) 16px; background: #070407a3; backdrop-filter: blur(2px); }
+.field-update-backdrop-close { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; cursor: default; }
 .field-update-panel {
-  position: fixed; z-index: 20; top: 72px; right: clamp(16px, 3vw, 48px); width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 88px); overflow-y: auto;
+  position: relative; z-index: 1; width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 88px); overflow-y: auto;
   padding: 20px; border: 1px solid var(--gold); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--wine) 22%, var(--void)); box-shadow: 0 22px 70px #000000aa; color: var(--text);
 }
 .field-update-panel > header { display: flex; align-items: start; justify-content: space-between; gap: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--soft-border); }
@@ -105,6 +108,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-search span { color: var(--gold); font-size: 22px; }
 .field-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 14px; }
 .field-search input::placeholder { color: var(--muted); }
+.field-search-clear { display: grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; border: 1px solid var(--soft-border); border-radius: 50%; background: var(--night); color: var(--muted); font-size: 19px; line-height: 1; }
+.field-search-clear:hover { border-color: var(--gold); color: var(--gold); }
 .field-filter-row, .field-subfilter-row { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0; }
 .field-filter-row button, .field-subfilter-row button {
   border: 1px solid var(--soft-border); border-radius: 999px; background: var(--night); color: var(--muted); padding: 6px 10px; font-size: 11px; font-weight: 700;
@@ -117,6 +122,12 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-food-filter select { border: 1px solid var(--soft-border); border-radius: 999px; background: var(--deep); color: var(--text); padding: 7px 28px 7px 11px; font-size: 12px; }
 .field-summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 12px; }
 .field-clear { margin-left: auto; border: 0; background: transparent; color: var(--gold); padding: 3px 0; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.field-clear-shortcut { padding: 2px 5px; border: 1px solid var(--soft-border); border-radius: 4px; background: var(--night); color: var(--muted); font: 10px/1.2 monospace; }
+.field-active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+.field-active-filters:empty { display: none; }
+.field-active-filters button { display: flex; align-items: center; gap: 7px; border: 1px solid var(--clay); border-radius: 999px; background: color-mix(in srgb, var(--wine) 55%, var(--void)); color: var(--text); padding: 5px 8px 5px 10px; font-size: 11px; }
+.field-active-filters button:hover { border-color: var(--gold); }
+.field-active-filters button span { color: var(--gold); font-size: 15px; line-height: .8; }
 
 .field-item-list { display: grid; gap: 8px; margin-top: 18px; }
 .field-item-list > button {
@@ -132,6 +143,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-item-name strong, .field-item-name small { display: block; }
 .field-item-name strong { font: 600 15px Georgia, serif; }
 .field-item-name small, .field-row-meta small { color: var(--muted); font-size: 11px; }
+.field-item-food-stats { display: block; margin-top: 5px; color: var(--gold); font-size: 10px; line-height: 1.35; }
 .field-row-meta { color: #d9d3cf; font-size: 12px; }
 .field-row-meta small { display: block; margin-bottom: 3px; color: var(--gold); letter-spacing: .5px; }
 .field-row-biome { color: var(--text); font-size: 12px; }
@@ -172,6 +184,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   background: linear-gradient(165deg, color-mix(in srgb, var(--biome-surface, var(--night)) 60%, var(--void)), color-mix(in srgb, var(--slate) 14%, var(--void)) 42%, var(--void) 78%);
   box-shadow: -14px 0 34px #00000020; scrollbar-color: var(--biome-accent, var(--slate)) var(--deep); scrollbar-width: thin;
 }
+.field-back-results { display: none; width: max-content; margin: 0 0 16px; border: 1px solid var(--soft-border); border-radius: 999px; background: var(--night); color: var(--gold); padding: 8px 11px; font-size: 12px; font-weight: 700; }
 .field-detail > header { display: grid; grid-template-columns: 62px 1fr; gap: 13px; padding-bottom: 22px; border-bottom: 1px solid var(--slate); }
 .field-detail-icon { width: 62px; height: 62px; border-radius: var(--radius-md); border-color: var(--biome-accent, var(--gold)); font-size: 34px; box-shadow: var(--panel-shadow); }
 .field-detail header .eyebrow { margin-bottom: 5px; }
@@ -206,6 +219,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .field-source-list { display: grid; gap: 6px; padding: 4px 0 9px 34px; }
 .field-source-list > div { display: grid; gap: 2px; padding: 8px 9px; border: 1px solid #3b4a5744; border-left: 2px solid var(--biome-accent, var(--slate)); border-radius: var(--radius-sm); background: #07040766; }
 .field-source-list strong { font-size: 12px; }.field-source-list small { color: var(--muted); font: italic 11px Georgia, serif; }.field-source-list span { color: var(--gold); font-size: 11px; }.field-source-list em { color: #d9d3cf; font-size: 11px; font-style: normal; }
+.field-related-link { width: max-content; max-width: 100%; margin-top: 6px; border: 0; background: transparent; color: var(--gold); padding: 2px 0; font-size: 11px; font-weight: 700; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
+.field-related-link:hover { color: var(--text); }
 .field-disclosure { padding: 13px 0 0; border-top: 1px solid var(--slate); }
 .field-disclosure > summary { display: flex; justify-content: space-between; cursor: pointer; color: var(--text); font: 600 17px Georgia, serif; list-style: none; }
 .field-disclosure > summary::-webkit-details-marker { display: none; }
@@ -234,13 +249,13 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   .field-candidate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 780px) {
-  .field-topbar { grid-template-columns: 1fr auto; }.field-view-tabs { grid-column: 1 / -1; grid-row: 2; width: 100%; justify-content: center; }.field-view-tabs button { flex: 1; justify-content: center; }.field-update-control small { display: none; }.field-update-control button { padding-inline: 9px; }.field-update-panel { top: 112px; right: 12px; width: calc(100vw - 24px); max-height: calc(100dvh - 124px); }.field-update-versions { grid-template-columns: 1fr; }
+  .field-topbar { grid-template-columns: 1fr auto; }.field-view-tabs { grid-column: 1 / -1; grid-row: 2; width: 100%; justify-content: center; }.field-view-tabs button { flex: 1; justify-content: center; }.field-update-control small { display: none; }.field-update-control button { padding-inline: 9px; }.field-update-backdrop { padding: 112px 12px 12px; }.field-update-panel { width: calc(100vw - 24px); max-height: calc(100dvh - 124px); }.field-update-versions { grid-template-columns: 1fr; }
   .field-layout { display: flex; flex-direction: column; }.field-progression { padding: 16px; border-right: 0; border-bottom: 1px solid var(--slate); }.field-progression-intro { display: none; }.field-progression > button { display: none; }.field-biome-list { display: flex; overflow-x: auto; gap: 7px; padding-bottom: 2px; }.field-biome-list button { width: auto; min-width: max-content; border: 1px solid var(--biome-accent, var(--slate)); }.field-biome-list button small, .field-biome-list button b { display: none; }
-  .field-catalog { padding: 24px 16px; }.field-detail { position: static; height: auto; min-height: 0; overflow: visible; border-left: 0; border-top: 2px solid var(--biome-accent, var(--slate)); padding: 24px 16px; }.field-detail-empty { min-height: 250px; }.field-item-list > button { grid-template-columns: 40px minmax(0, 1fr) 15px; }.field-row-meta, .field-row-biome { display: none; }
+  .field-catalog { padding: 24px 16px; }.field-detail { position: static; height: auto; min-height: 0; overflow: visible; border-left: 0; border-top: 2px solid var(--biome-accent, var(--slate)); padding: 24px 16px; }.field-back-results { display: block; }.field-detail-empty { min-height: 250px; }.field-item-list > button { grid-template-columns: 40px minmax(0, 1fr) 15px; }.field-row-meta, .field-row-biome { display: none; }
   .field-review { padding: 26px 16px 45px; }.field-review-header { align-items: stretch; flex-direction: column; }.field-review-meta { min-width: 0; }.field-review-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }.field-candidate-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-  .field-topbar { padding-inline: 14px; }.field-update-control button { max-width: 130px; font-size: 10px; }.field-catalog h2 { font-size: 28px; }.field-summary > span:last-of-type { display: none; }.field-food-filter { width: 100%; justify-content: space-between; }.field-food-filter select { max-width: 75%; }.field-detail > header { grid-template-columns: 52px 1fr; }.field-detail-icon { width: 52px; height: 52px; font-size: 28px; }
+  .field-topbar { padding-inline: 14px; }.field-update-control button { max-width: 130px; font-size: 10px; }.field-catalog h2 { font-size: 28px; }.field-summary-description { display: none; }.field-food-filter { width: 100%; justify-content: space-between; }.field-food-filter select { max-width: 75%; }.field-detail > header { grid-template-columns: 52px 1fr; }.field-detail-icon { width: 52px; height: 52px; font-size: 28px; }
   .field-review-notice { align-items: start; flex-direction: column; }.field-review-secondary { align-items: stretch; flex-direction: column; }.field-review-secondary > span { margin-left: 0; }.field-review-stats strong { font-size: 21px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } button { transition: none; } }

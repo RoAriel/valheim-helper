@@ -26,6 +26,8 @@ Valheim Helper es una aplicación local, de consulta rápida y en español. El c
 
 El contenido base es estático, pero la consulta no lo es: búsqueda, filtros, selección de objeto, niveles de mejora, propiedades de comida y planificador cambian sin recargar la página. React concentra ese estado de interfaz en un único componente y mantiene la lógica de presentación cerca de los controles que la usan.
 
+La navegación y coordinación del catálogo permanecen en `app/workbench.tsx`. Las superficies independientes se extraen en `app/components/`: la revisión editorial y el diálogo de actualizaciones mantienen estado, accesibilidad y pruebas propios sin duplicar el modelo de datos ni fragmentar artificialmente el flujo principal.
+
 ### JSON versionado y TypeScript
 
 Los datos del juego cambian por versión y necesitan auditoría. Los JSON separados permiten revisar un bloque sin mezclarlo con la interfaz; `data/catalog.ts` define sus relaciones, valida referencias y expone cálculos reutilizables, como costos base y planes de objetivo.
