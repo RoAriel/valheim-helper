@@ -2,6 +2,20 @@
 
 Esta guía describe la instalación y operación de Valheim Helper en un servidor doméstico. La misma definición genera contenedores Linux para AMD64 y ARM64; en Windows se ejecuta mediante WSL 2 o Docker Desktop.
 
+## Instalación rápida
+
+Con Docker Engine y Docker Compose V2 ya instalados:
+
+```bash
+git clone https://github.com/RoAriel/valheim-helper.git
+cd valheim-helper
+docker compose up -d --build
+docker compose ps
+curl --fail http://127.0.0.1:3000/
+```
+
+La aplicación queda disponible en `http://localhost:3000`. Las secciones siguientes explican los requisitos, la instalación de Docker y las opciones de operación para cada plataforma.
+
 ## 1. Alcance del despliegue
 
 La aplicación:
@@ -167,6 +181,14 @@ git clone https://github.com/RoAriel/valheim-helper.git
 cd valheim-helper
 ```
 
+El despliegue habitual sigue la rama `main`. Si se necesita mantener una entrega exacta aunque `main` avance, se puede fijar un tag o commit publicado antes de construir:
+
+```bash
+git switch --detach <tag-o-commit-estable>
+```
+
+Guardar ese identificador junto con la configuración del servidor permite reproducir posteriormente la misma versión.
+
 Si el repositorio ya existe:
 
 ```bash
@@ -185,6 +207,8 @@ docker compose up -d --build
 ```
 
 La primera construcción descarga la imagen base y las dependencias. Las siguientes reutilizan la caché mientras no cambien sus archivos de entrada.
+
+La imagen `valheim-helper:1.2.0` se construye localmente desde el repositorio. Actualmente el proyecto no descarga una imagen precompilada de Docker Hub ni de GitHub Container Registry.
 
 Consultar el estado:
 
@@ -331,6 +355,15 @@ docker compose up -d
 docker compose ps
 ```
 
+Confirmar después de la actualización las versiones realmente instaladas:
+
+```bash
+curl --fail --silent --show-error \
+  http://127.0.0.1:3000/api/update-status
+```
+
+En la respuesta, `current.appVersion`, `current.catalogVersion` y `current.gameVersion` deben coincidir con las versiones indicadas en `data/manifest.json`. Para esta entrega son `1.2.0`, `0.1.25` y `0.221.12`, respectivamente.
+
 Como no existen volúmenes ni base de datos, la actualización no requiere migraciones o copias de seguridad de datos de ejecución.
 
 ## 12. Volver a una versión anterior
@@ -430,4 +463,5 @@ La configuración fue validada en Debian 13 Trixie sobre WSL 2 con Docker Engine
 - estado `running / healthy`;
 - cero reinicios durante la validación;
 - proceso ejecutado como usuario `valheim`;
-- lint y 16 pruebas automatizadas superadas.
+- build, lint y 36 comprobaciones automatizadas superadas;
+- 39 pruebas E2E superadas en móvil, escritorio y 2K.
