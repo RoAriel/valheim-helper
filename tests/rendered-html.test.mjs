@@ -21,7 +21,7 @@ test("renderiza el catálogo ampliado de Valheim Helper", async () => {
   const html = await response.text();
   assert.match(html, /<html lang="es">/);
   assert.match(html, /<title>Valheim Helper — Recetas y materiales<\/title>/);
-  assert.match(html, /Revisión de datos/);
+  assert.match(html, /Mantenimiento/);
   assert.match(html, /180/);
   assert.match(html, /Valheim <!-- -->0\.221\.12/);
   assert.match(html, /Buscar por objeto o nombre en inglés/);

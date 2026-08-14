@@ -73,7 +73,7 @@ export function UpdateDialog({ diagnosis, loading, error, onRetry, onClose, retu
             <span><strong>{source.label}</strong><small>{source.detail}</small></span>
           </a>)}
         </div>
-        <footer>Comprobado: {new Date(diagnosis.checkedAt).toLocaleString("es")}. Este diagnóstico no modifica los JSON ni el contenedor.</footer>
+        <footer>Comprobado: {new Date(diagnosis.checkedAt).toLocaleString("es")}. Este diagnóstico no cambia los datos instalados.</footer>
       </>}
     </section>
   </div>;

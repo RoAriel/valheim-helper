@@ -9,7 +9,7 @@ test("el catálogo se adapta a los tamaños de referencia", async ({ page }, tes
 
   if (testInfo.project.name === "mobile-390") {
     await expect(page.locator(".field-biome-list")).toBeVisible();
-    await expect(page.getByRole("button", { name: "ᛃ Praderas", exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Praderas", exact: true })).toBeVisible();
     await expect(page.locator(".field-biome-list")).toHaveCSS("overflow-x", "auto");
   }
 
@@ -119,6 +119,9 @@ test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ pa
 
   await search.fill("Hacha de sílex");
   await page.locator(".field-item-list > button").first().click();
+  const goal = page.locator("details.field-plan");
+  await goal.getByRole("combobox", { name: "Nivel objetivo" }).selectOption("4");
+  await expect(goal).toContainText("×24");
   await page.getByText("Mejoras disponibles").click();
   const maximumCost = page.getByRole("region", { name: "Costo total desde nivel 1 hasta nivel 4" });
   await expect(maximumCost).toContainText("Costo total acumulado");
@@ -130,6 +133,15 @@ test("la ficha expone lotes, propiedades, acumulados y procedencia", async ({ pa
   await expect(wood).toContainText("Wood");
   await expect(wood).toContainText("Ramas y árboles");
   await expect(wood).toContainText("Praderas");
+
+  await search.fill("Maza de bronce");
+  await page.locator(".field-item-list > button").first().click();
+  const bronze = page.locator(".field-cost-detail").filter({ hasText: "Bronce" }).first();
+  await bronze.locator(":scope > summary").click();
+  const process = bronze.getByRole("region", { name: "Proceso de Bronce" });
+  await expect(process).toContainText("Forja · produce ×1 por lote");
+  await expect(process).toContainText("Cobre");
+  await expect(process).toContainText("Estaño");
   await page.screenshot({ path: testInfo.outputPath(`${testInfo.project.name}-mejoras-procedencia.png`) });
 });
 
@@ -218,14 +230,15 @@ test("el chequeo informa novedades sin modificar el catálogo", async ({ page })
     }),
   }));
   await page.goto("/");
-  const updateButton = page.getByRole("button", { name: "Buscar actualizaciones" });
+  await page.getByRole("tab", { name: /Mantenimiento/ }).click();
+  const updateButton = page.getByRole("button", { name: "Comprobar ahora" });
   await updateButton.click();
   const panel = page.getByRole("dialog", { name: "Actualizaciones" });
   await expect(panel).toBeVisible();
   await expect(page.getByRole("button", { name: "Cerrar estado de actualizaciones" })).toBeFocused();
   await expect(panel).toContainText("Revisión recomendada");
   await expect(panel).toContainText("Estable detectada: 0.222.1");
-  await expect(panel).toContainText("no modifica los JSON ni el contenedor");
+  await expect(panel).toContainText("no cambia los datos instalados");
   await page.keyboard.press("Escape");
   await expect(panel).toBeHidden();
   await expect(updateButton).toBeFocused();
@@ -234,12 +247,12 @@ test("el chequeo informa novedades sin modificar el catálogo", async ({ page })
 test("las pestañas responden a teclado y exponen sus paneles", async ({ page }) => {
   await page.goto("/");
   const catalogTab = page.getByRole("tab", { name: "Catálogo" });
-  const reviewTab = page.getByRole("tab", { name: /Revisión de datos/ });
+  const maintenanceTab = page.getByRole("tab", { name: /Mantenimiento/ });
   await catalogTab.focus();
   await page.keyboard.press("ArrowRight");
-  await expect(reviewTab).toBeFocused();
-  await expect(reviewTab).toHaveAttribute("aria-selected", "true");
-  await expect(page.getByRole("tabpanel", { name: /Revisión de datos/ })).toBeVisible();
+  await expect(maintenanceTab).toBeFocused();
+  await expect(maintenanceTab).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("tabpanel", { name: /Mantenimiento/ })).toBeVisible();
   await page.keyboard.press("Home");
   await expect(catalogTab).toBeFocused();
   await expect(page.getByRole("tabpanel", { name: "Catálogo" })).toBeVisible();
@@ -247,7 +260,8 @@ test("las pestañas responden a teclado y exponen sus paneles", async ({ page })
 
 test("la revisión de datos separa candidatos pendientes del catálogo", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("tab", { name: /Revisión de datos/ }).click();
+  await page.getByRole("tab", { name: /Mantenimiento/ }).click();
+  await page.getByRole("button", { name: "Abrir revisión de datos" }).click();
   await expect(page.getByRole("heading", { name: "Objetos pendientes" })).toBeVisible();
   await expect(page.getByText("Vista de solo lectura")).toBeVisible();
   await expect(page.getByText("180", { exact: true }).first()).toBeVisible();
@@ -262,6 +276,8 @@ test("la revisión de datos separa candidatos pendientes del catálogo", async (
   await search.fill("Recipe_Feaster");
   await expect(page.getByRole("heading", { name: "Serving Tray" })).toBeVisible();
 
+  await page.getByRole("button", { name: "Volver a Mantenimiento" }).click();
+  await expect(page.getByRole("heading", { name: "Mantenimiento", exact: true })).toBeVisible();
   await page.getByRole("tab", { name: "Catálogo" }).click();
   await expect(page.getByRole("heading", { name: "¿Qué querés preparar?" })).toBeVisible();
 });
