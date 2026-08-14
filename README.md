@@ -16,19 +16,26 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 ## Funcionalidades actuales
 
 - Búsqueda de objetos por nombre en español o inglés y por categoría.
+- Navegación persistente en la URL para recargar, volver atrás o compartir una consulta sin perder sus filtros y objeto seleccionado.
 - Filtros por categoría.
+- Resumen de filtros activos, eliminación individual y limpieza directa del campo de búsqueda.
+- Limpieza progresiva con `Esc` en computadora: búsqueda primero y filtros restantes después.
 - Identidad visual por bioma en tarjetas y panel de detalle.
 - Planificador de objetivo con materias primas, estaciones y biomas de recolección.
+- Navegación entre objetos base, variantes y extensiones directamente desde sus fichas.
 - Mesa de trabajo con progresión por bioma, catálogo compacto y subfiltros contextuales de armas y comida.
 - Receta de fabricación inicial.
 - Cantidad producida por lote para flechas, consumibles y demás recetas múltiples.
 - Propiedades completas de comida: salud, aguante, eitr, curación, duración y efectos.
+- Resumen de salud, aguante, eitr y duración en las tarjetas de comida.
 - Mejoras de armas y herramientas por nivel.
 - Costo individual de cada mejora y resumen total desde nivel 1 hasta el nivel máximo.
 - Estación y nivel requeridos.
 - Extensiones necesarias para elevar bancos de trabajo, forjas y calderos, con su progresión habitual.
 - Origen, nombre bilingüe, bioma, requisito y fuentes alternativas de los materiales.
 - Diseño adaptable a computadora y teléfono.
+- Navegación por teclado y anuncios accesibles en pestañas, resultados, selección y diagnóstico de actualizaciones.
+- Regreso directo desde la ficha móvil a los resultados del catálogo.
 - Diagnóstico de actualizaciones bajo demanda, con comparación de la app, el catálogo y la versión estable de Valheim sin modificar los datos instalados.
 
 ## Recursos visuales
