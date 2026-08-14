@@ -226,6 +226,15 @@ test("planifica materias primas, estaciones y biomas para un objetivo", () => {
   assert.ok(plan.biomeIds.includes("black_forest"));
 });
 
+test("planifica un objeto hasta el nivel objetivo elegido", () => {
+  const recipe = catalog.recipes.find((entry) => entry.itemId === "flint_axe");
+  const plan = buildGoalPlan("flint_axe", 4);
+  const cumulative = buildUpgradeCostSummaries(recipe).at(-1).cumulative;
+  assert.equal(plan.targetLevel, 4);
+  assert.deepEqual(plan.materials, expandMaterialCosts(cumulative));
+  assert.throws(() => buildGoalPlan("flint_axe", 5), /Nivel objetivo inválido/);
+});
+
 test("expande objetos base en variantes sin tratarlos como materiales", () => {
   const bloodFangRecipe = catalog.recipes.find((recipe) => recipe.itemId === "blood_fang");
   assert.deepEqual(bloodFangRecipe?.craft.materials[0], { itemId: "ash_fang", amount: 1 });

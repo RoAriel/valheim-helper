@@ -12,7 +12,7 @@ const familyLabels: Record<NonNullable<UpdateCandidate["functionalFamily"]>, str
   equipment: "Equipo", ammunition: "Munición", consumable: "Consumibles", tool: "Herramientas", infrastructure: "Infraestructura",
 };
 
-export function ReviewWorkspace() {
+export function ReviewWorkspace({ onBack }: { onBack?: () => void }) {
   const [query, setQuery] = useState("");
   const [classification, setClassification] = useState<(typeof classifications)[number]>("all");
   const [family, setFamily] = useState<"all" | NonNullable<UpdateCandidate["functionalFamily"]>>("all");
@@ -31,7 +31,7 @@ export function ReviewWorkspace() {
 
   return <section className="field-review" aria-label="Revisión de datos pendientes">
     <header className="field-review-header">
-      <div><p className="eyebrow">INVENTARIO EDITORIAL</p><h1>Objetos pendientes</h1><p>Entradas detectadas en Jötunn que todavía no forman parte confirmada del catálogo.</p></div>
+      <div>{onBack && <button className="field-maintenance-back" onClick={onBack}>← Volver a Mantenimiento</button>}<p className="eyebrow">INVENTARIO EDITORIAL</p><h1>Objetos pendientes</h1><p>Entradas detectadas en Jötunn que todavía no forman parte confirmada del catálogo.</p></div>
       <div className="field-review-meta"><small>Valheim analizado</small><strong>{updateCandidates.source.gameVersion ?? updateCandidates.gameVersion}</strong><span>Generado {new Date(updateCandidates.generatedAt).toLocaleDateString("es")}</span></div>
     </header>
     <div className="field-review-notice"><strong>Vista de solo lectura</strong><span>“Candidato funcional” significa que merece contraste; no confirma que deba incorporarse.</span></div>

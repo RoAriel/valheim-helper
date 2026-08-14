@@ -28,7 +28,7 @@ export type Station = { id: string; name: BilingualName };
 export type StationExtension = { itemId: string; progressionOrder: number };
 export type StationExtensionGroup = { stationId: string; stationItemId: string; maxLevel: number; extensions: StationExtension[] };
 export type FoodEffect = { itemId: string; health?: number; stamina?: number; eitr?: number; healing?: number; durationSeconds?: number; effects?: string[] };
-export type GoalPlan = { itemId: string; materials: MaterialCost[]; stationIds: string[]; biomeIds: string[] };
+export type GoalPlan = { itemId: string; targetLevel: number; materials: MaterialCost[]; stationIds: string[]; biomeIds: string[] };
 export type UpgradeCostSummary = { targetLevel: number; step: IngredientCost[]; cumulative: IngredientCost[] };
 
 export const manifest = manifestData;
@@ -292,9 +292,11 @@ export function stationRequirement(stationId: string, stationLevel: number) {
   return { group, extensionCount: Math.min(stationLevel - 1, group.extensions.length) };
 }
 
-export function buildGoalPlan(itemId: string): GoalPlan {
+export function buildGoalPlan(itemId: string, targetLevel = 1): GoalPlan {
   const recipe = recipes.find((entry) => entry.itemId === itemId);
   if (!recipe) throw new Error(`No existe receta para el objetivo: ${itemId}`);
+  const maximumLevel = recipe.upgrades.at(-1)?.targetLevel ?? 1;
+  if (!Number.isInteger(targetLevel) || targetLevel < 1 || targetLevel > maximumLevel) throw new Error(`Nivel objetivo inválido para ${itemId}: ${targetLevel}`);
 
   const stationIds = new Set<string>();
   const processedMaterialIds = new Set<string>();
@@ -326,14 +328,17 @@ export function buildGoalPlan(itemId: string): GoalPlan {
   }
   stationIds.add(recipe.stationId);
   resolvingItems.add(itemId);
-  expandIngredients(recipe.craft.materials);
+  expandIngredients([
+    ...recipe.craft.materials,
+    ...recipe.upgrades.filter((upgrade) => upgrade.targetLevel <= targetLevel).flatMap((upgrade) => upgrade.materials),
+  ]);
 
   const goalMaterials = expandMaterialCosts(mergeIngredientCosts(rawCosts) as MaterialCost[]);
   const biomeIds = biomes
     .filter((biome) => goalMaterials.some((cost) => byId(materials, cost.materialId)?.sourceIds.some((sourceId) => byId(sources, sourceId)?.biomeIds.includes(biome.id))))
     .map((biome) => biome.id);
 
-  return { itemId, materials: goalMaterials, stationIds: Array.from(stationIds), biomeIds };
+  return { itemId, targetLevel, materials: goalMaterials, stationIds: Array.from(stationIds), biomeIds };
 }
 
 const catalogErrors = validateCatalog();

@@ -24,9 +24,9 @@ Valheim Helper es una aplicación local, de consulta rápida y en español. El c
 
 ### React
 
-El contenido base es estático, pero la consulta no lo es: búsqueda, filtros, selección de objeto, niveles de mejora, propiedades de comida y planificador cambian sin recargar la página. React concentra ese estado de interfaz en un único componente y mantiene la lógica de presentación cerca de los controles que la usan.
+El contenido base es estático, pero la consulta no lo es: búsqueda, filtros, selección de objeto, niveles de mejora, propiedades de comida y planificador cambian sin recargar la página. React conserva ese estado en el coordinador del catálogo y permite aislar las superficies con comportamiento propio.
 
-La navegación y coordinación del catálogo permanecen en `app/workbench.tsx`. Las superficies independientes se extraen en `app/components/`: la revisión editorial y el diálogo de actualizaciones mantienen estado, accesibilidad y pruebas propios sin duplicar el modelo de datos ni fragmentar artificialmente el flujo principal.
+La coordinación de estado, URL y selección permanece en `app/workbench.tsx`. Las superficies independientes se extraen en `app/components/`: cabecera, progresión, filtros, resultados, ficha de objeto, mantenimiento, revisión editorial y diálogo de actualizaciones mantienen responsabilidades acotadas sin duplicar el modelo de datos. `CatalogFilters` recibe valores y callbacks, pero no administra la navegación. Catálogo y Mantenimiento son secciones hermanas; la revisión editorial es una vista interna de Mantenimiento.
 
 ### JSON versionado y TypeScript
 

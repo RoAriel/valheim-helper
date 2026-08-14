@@ -1,7 +1,13 @@
 # Cambios
 
-## Próxima versión
+## Aplicación 1.2.0 — 2026-08-14
 
+- La entrega se validó con build, 36 comprobaciones automatizadas, lint, 39 pruebas E2E y una imagen Docker `1.2.0` saludable.
+- Se reforzaron las áreas clicables, la alineación de desplegables y la adaptación de cadenas de materiales y del selector de nivel en pantallas estrechas.
+- Mantenimiento usa explicaciones menos técnicas y conserva el sistema visual original de emoji y runas mientras se evalúa una alternativa SVG.
+- La consulta cotidiana queda concentrada en **Catálogo**; el diagnóstico de versiones y la revisión editorial se agrupan bajo **Mantenimiento**.
+- El Plan de objetivo permite elegir fabricar el nivel 1 o reunir el acumulado hasta cualquiera de los niveles disponibles.
+- Los materiales procesados despliegan su estación, producción por lote y materias primas calculadas para la cantidad requerida.
 - La navegación del catálogo conserva bioma, búsqueda, categoría, subcategoría, beneficio, función y objeto seleccionado en la URL; recargar y usar Atrás/Adelante ya no pierde el contexto.
 - Los filtros activos se muestran como etiquetas removibles y el contador anuncia los cambios de resultados.
 - La búsqueda incorpora un botón `×` para borrar el texto sin limpiar el resto de los filtros.
@@ -12,7 +18,8 @@
 - Las tarjetas de Comida muestran salud, aguante, eitr y duración para comparar opciones sin abrir cada ficha.
 - El diálogo de actualizaciones gestiona foco, Escape, fondo modal y retorno al control de apertura.
 - Las pestañas admiten flechas, Inicio y Fin, y los cambios de resultados o selección se anuncian a tecnologías de asistencia.
-- La revisión editorial y el diálogo se extrajeron de `workbench.tsx` como componentes independientes.
+- La cabecera, la progresión, la lista, la ficha, el mantenimiento, la revisión editorial y el diálogo se extrajeron de `workbench.tsx` como componentes independientes.
+- Los controles de búsqueda, filtros contextuales, resumen y etiquetas activas se extrajeron a `CatalogFilters`; `workbench.tsx` queda como coordinador de estado y URL.
 
 ## Datos 0.1.25 — 2026-08-13
 

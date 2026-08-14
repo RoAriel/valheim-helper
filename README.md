@@ -4,7 +4,7 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 
 ## Estado del proyecto
 
-- Versión de la aplicación: `1.1.0`.
+- Versión de la aplicación: `1.2.0`.
 - Versión del catálogo de datos: `0.1.25`.
 - Versión de referencia de Valheim: `0.221.12`.
 - Interfaz en español.
@@ -21,7 +21,7 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 - Resumen de filtros activos, eliminación individual y limpieza directa del campo de búsqueda.
 - Limpieza progresiva con `Esc` en computadora: búsqueda primero y filtros restantes después.
 - Identidad visual por bioma en tarjetas y panel de detalle.
-- Planificador de objetivo con materias primas, estaciones y biomas de recolección.
+- Planificador de objetivo con nivel seleccionable, materias primas acumuladas, estaciones y biomas de recolección.
 - Navegación entre objetos base, variantes y extensiones directamente desde sus fichas.
 - Mesa de trabajo con progresión por bioma, catálogo compacto y subfiltros contextuales de armas y comida.
 - Receta de fabricación inicial.
@@ -33,10 +33,12 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 - Estación y nivel requeridos.
 - Extensiones necesarias para elevar bancos de trabajo, forjas y calderos, con su progresión habitual.
 - Origen, nombre bilingüe, bioma, requisito y fuentes alternativas de los materiales.
+- Detalle desplegable de materiales procesados con estación, tamaño de lote e ingredientes calculados.
 - Diseño adaptable a computadora y teléfono.
 - Navegación por teclado y anuncios accesibles en pestañas, resultados, selección y diagnóstico de actualizaciones.
 - Regreso directo desde la ficha móvil a los resultados del catálogo.
 - Diagnóstico de actualizaciones bajo demanda, con comparación de la app, el catálogo y la versión estable de Valheim sin modificar los datos instalados.
+- Sección **Mantenimiento** separada del catálogo para diagnóstico y revisión editorial ocasional.
 
 ## Recursos visuales
 
@@ -81,6 +83,8 @@ Las capturas de cada ejecución quedan en `test-results/` y no se versionan. La 
 
 La matriz completa de controles y el alcance congelado de la versión se encuentran en [`docs/release-v1.md`](docs/release-v1.md).
 
+El cierre activo de Aplicación `1.2.0` se encuentra en [`docs/release-v1.2.0.md`](docs/release-v1.2.0.md).
+
 ## Ejecutar con Docker
 
 La aplicación incluye una imagen portable para Linux AMD64, Linux ARM64 y Windows mediante WSL 2 o Docker Desktop:
@@ -104,7 +108,13 @@ VS Code debe mostrar un entorno similar a `WSL: Ubuntu`. La extensión de Codex 
 
 ## Estructura principal
 
-- `app/workbench.tsx`: interfaz principal, filtros y detalle de planificación.
+- `app/workbench.tsx`: coordinación de navegación, filtros y selección del catálogo.
+- `app/components/item-detail.tsx`: ficha, mejoras, plan de objetivo y procesos de materiales.
+- `app/components/catalog-navigation.tsx`: cabecera, progresión por bioma y lista de resultados.
+- `app/components/catalog-filters.tsx`: búsqueda, filtros contextuales, resumen y filtros activos.
+- `app/components/maintenance-workspace.tsx`: entrada a diagnóstico y revisión editorial.
+- `app/components/review-workspace.tsx`: inventario editorial de candidatos externos.
+- `app/components/update-dialog.tsx`: diagnóstico accesible de versiones.
 - `data/catalog-filters.ts`: lógica pura de filtrado y resolución de selección.
 - `app/globals.css`: diseño visual y adaptación para móvil.
 - `app/layout.tsx`: metadatos e idioma de la aplicación.
@@ -121,6 +131,8 @@ VS Code debe mostrar un entorno similar a `WSL: Ubuntu`. La extensión de Codex 
 - `data/README.md`: contrato del catálogo y proceso para incorporar datos.
 - `docs/actualizacion-de-datos.md`: procedimiento de actualización por versión de Valheim.
 - `docs/release-v1.md`: alcance, validación y decisiones de mantenimiento de la V1.
+- `docs/release-v1.2.0.md`: alcance y validación operativa de la versión activa.
+- `docs/TODO-pruebas.md`: verificaciones manuales aprobadas y pruebas pendientes en monitores reales.
 - `docs/stack-tecnologico.md`: definición, justificación y límites del stack tecnológico.
 - `docs/despliegue-docker.md`: instalación y operación en Linux, Windows y ARM64.
 - `docs/roadmap-actualizacion.md`: bloques acordados para detectar, revisar y aplicar futuras novedades del juego.
