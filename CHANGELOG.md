@@ -1,5 +1,10 @@
 # Cambios
 
+## Infraestructura — 2026-08-15
+
+- Se añadió una configuración reproducible para publicar la aplicación `1.2.0` en Cloudflare Workers sin depender del router doméstico.
+- El despliegue incorpora una validación en seco, observabilidad y documentación de autenticación, publicación, actualización y rollback.
+
 ## Aplicación 1.2.0 — 2026-08-14
 
 - La entrega se validó con build, 36 comprobaciones automatizadas, lint, 39 pruebas E2E y una imagen Docker `1.2.0` saludable.
