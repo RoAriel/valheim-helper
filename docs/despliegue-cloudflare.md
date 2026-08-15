@@ -18,6 +18,12 @@ La instalación activa se publica en:
 https://valheim-helper.roariel.workers.dev
 ```
 
+### Estado operativo
+
+El despliegue de Aplicación `1.2.0` y Catálogo `0.1.25` fue validado el 15 de agosto de 2026: la portada respondió HTTP `200` y `/api/update-status` informó estado `current` para Valheim `0.221.12`. La observabilidad está activa y las URL de vista previa están deshabilitadas.
+
+![Flujo de actualización y despliegue](images/flujo-actualizacion-despliegue.svg)
+
 ## 2. Requisitos
 
 - Node.js `22.13` o posterior.
@@ -96,6 +102,8 @@ pnpm deploy:cloudflare
 
 Cada despliegue reemplaza el código y los JSON incluidos. No existen migraciones ni datos de ejecución que respaldar.
 
+GitHub es la fuente de verdad. Editar o regenerar JSON en un servidor no actualiza otros servidores ni el repositorio: primero se revisa el cambio, se valida, se integra en `main` y luego se vuelve a desplegar. Actualmente no hay publicación automática al fusionar un PR.
+
 ## 8. Logs y diagnóstico
 
 Consultar registros en tiempo real:
@@ -129,4 +137,4 @@ El rollback remoto no modifica Git. Después de resolver el problema se debe vol
 - No se añaden bases de datos ni almacenamiento remoto.
 - La URL `workers.dev` será pública; no se incorpora autenticación de usuarios.
 
-Estas decisiones mantienen el despliegue inicial pequeño, reversible y equivalente a la aplicación local.
+Estas decisiones mantienen el despliegue inicial pequeño, reversible y funcionalmente equivalente a las ejecuciones con pnpm o Docker.

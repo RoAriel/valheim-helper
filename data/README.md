@@ -2,6 +2,8 @@
 
 Este directorio es la fuente de verdad del catálogo de Valheim Helper. Los JSON se mantienen separados para evitar duplicar nombres, fuentes o materiales.
 
+La visión general del proyecto y el mapa de documentos se encuentran en [`../docs/README.md`](../docs/README.md). Este archivo se limita al contrato y mantenimiento de `data/`.
+
 ## Archivos
 
 - `manifest.json`: versión de la aplicación y del catálogo, versión de Valheim cubierta, fecha de actualización y estado del conjunto.

@@ -2,7 +2,9 @@
 
 ## Objetivo técnico
 
-Valheim Helper es una aplicación local, de consulta rápida y en español. El catálogo se mantiene como datos versionados en JSON; la interfaz permite filtrarlo y calcular dependencias sin requerir una cuenta de usuario, API ni base de datos en tiempo de ejecución.
+Valheim Helper es una aplicación de consulta rápida y en español, disponible públicamente en Cloudflare Workers y ejecutable también de forma local. El catálogo se mantiene como datos versionados en JSON; la interfaz permite filtrarlo y calcular dependencias sin requerir cuenta de usuario ni base de datos.
+
+![Arquitectura general de Valheim Helper](images/arquitectura-general.svg)
 
 ## Stack actual
 
@@ -12,7 +14,8 @@ Valheim Helper es una aplicación local, de consulta rápida y en español. El c
 | Interfaz | React 19 | Estado de filtros, selección, mejoras y planificador. |
 | Rutas y renderizado | Vinext | Estructura compatible con App Router (`app/`) y renderizado de la página. |
 | Compilación | Vite 8 | Desarrollo y build rápido. |
-| Ejecución local | Wrangler / Cloudflare Workers | Entorno de desarrollo y servidor de producción local de la plantilla. |
+| Desarrollo local | Vinext + Vite | Servidor de desarrollo y compilación de la aplicación. |
+| Despliegue público | Cloudflare Workers + Wrangler | Runtime público HTTPS y herramienta de validación, publicación, logs y rollback. |
 | Estilos | CSS propio + Tailwind CSS 4 | El diseño se escribe en `app/globals.css`; Tailwind forma parte del pipeline, sin utilidades dispersas en JSX. |
 | Datos | JSON + `data/catalog.ts` | Entidades, recetas, efectos y reglas de integridad separados de la interfaz. |
 | Pruebas de datos | `node:test` | Validación de referencias, auditorías funcionales, filtros puros y HTML renderizado. |
@@ -34,7 +37,7 @@ Los datos del juego cambian por versión y necesitan auditoría. Los JSON separa
 
 ### Vite + Vinext + Wrangler
 
-Vite proporciona compilación rápida. Vinext preserva una estructura conocida de App Router y permite ejecutar el mismo proyecto sobre Workers mediante Wrangler. Es útil si en el futuro se decide alojar la herramienta, aunque hoy el uso principal sea local.
+Vite proporciona compilación rápida. Vinext preserva una estructura conocida de App Router y genera tanto la salida para Cloudflare Workers como el paquete `standalone` utilizado por Docker. Wrangler valida, publica y opera el Worker disponible en `valheim-helper.roariel.workers.dev`.
 
 ### CSS propio
 
@@ -48,11 +51,15 @@ La interfaz usa una identidad visual específica —paleta, temas por bioma, scr
 
 El build de Vinext genera una salida `standalone` que se copia a una imagen final basada en Node.js 22 sobre Debian slim. La etapa final no incluye pnpm, Wrangler, el código fuente ni la instalación completa usada para desarrollar y compilar. La misma definición funciona en Linux AMD64, Linux ARM64 y Windows mediante WSL 2 o Docker Desktop.
 
+### Cloudflare Workers
+
+Workers es el runtime público principal. Sirve la interfaz, los recursos estáticos y la ruta `/api/update-status` sin abrir puertos domésticos. Los JSON quedan empaquetados con cada publicación: no se utilizan D1, KV, R2, volúmenes ni secretos de aplicación. Docker se conserva como alternativa local y como validación de portabilidad.
+
 ## Límites actuales deliberados
 
 - No hay persistencia de usuario, autenticación ni backend de aplicación.
 - No se incluyen ORM, esquema D1 ni ejemplos de base de datos mientras el producto no requiera persistencia.
-- No se usan APIs externas en ejecución: las fuentes se usan durante la curación de datos, no desde la interfaz.
+- La consulta cotidiana del catálogo no depende de servicios externos. Sólo el diagnóstico solicitado por el usuario consulta Steam, Jötunn y GitHub; un fallo de esas fuentes produce un resultado inconcluso y no afecta los datos instalados.
 - La aplicación no depende de imágenes remotas para funcionar.
 
 ## Alternativas evaluadas
@@ -65,7 +72,7 @@ No se adopta ahora porque la pantalla principal ya es una herramienta interactiv
 
 ### Vite + React sin Vinext
 
-Sería más simple para una herramienta exclusivamente local. Vinext se mantiene mientras aporte compatibilidad de estructura y una posible salida a Workers. Si esa integración deja de ser útil o su estado beta representa un coste, ésta es la simplificación preferida.
+Sería más simple para una herramienta exclusivamente local. Vinext se mantiene porque actualmente genera la salida de Workers y el paquete `standalone` usado por Docker. Si esa integración deja de ser útil o su estado beta representa un coste, ésta es la simplificación preferida.
 
 ## Criterios para cambios futuros
 

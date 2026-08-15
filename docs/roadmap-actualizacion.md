@@ -18,3 +18,7 @@ Esta lista conserva el orden acordado para convertir el diagnóstico de versione
 - Bloque 7: primera aplicación controlada completada en Datos `0.1.24`; Datos `0.1.25` añade dependencias entre objetos y deja 328/328 coincidencias comparables sin diferencias. La escritura atómica genérica continúa pendiente antes de automatizar nuevas altas.
 - Bloque 8: panel de solo lectura implementado; la clasificación determinista reduce los casos manuales de 225 a cero y deja únicamente candidatos con familia o alias concreto.
 - Bloque 9: pendiente. No se programarán commits ni cambios automáticos; la futura tarea sólo diagnosticará y notificará.
+
+## Pausa acordada
+
+Después del cierre de Aplicación `1.2.0` y del despliegue en Cloudflare, el catálogo queda en mantenimiento estable hasta Valheim `1.0`. La aplicación puede seguir ejecutando diagnósticos de solo lectura, pero los bloques de incorporación se reactivarán únicamente cuando exista una nueva versión del juego o una corrección verificable. Ningún resultado externo se añade directamente a los JSON.

@@ -18,11 +18,17 @@ Revisión realizada el 14 de agosto de 2026.
 
 La suite E2E ya comprueba automáticamente los viewports de 390×844, 1440×900 y 2560×1440. Esta tarea pendiente busca complementar esas pruebas con monitores, escalado del sistema y navegadores reales.
 
+## Pendiente: despliegue público
+
+- [ ] Repetir la revisión funcional desde `valheim-helper.roariel.workers.dev` en un teléfono real.
+- [ ] Confirmar que el diagnóstico de actualizaciones tolera redes lentas o una fuente externa temporalmente caída.
+- [ ] Revisar periódicamente logs y métricas del Worker después de cambios de Vinext, Vite o Wrangler.
+
 ## Pendiente: iconos SVG
 
 - [ ] Buscar conjuntos de iconos SVG con una estética coherente con Valheim Helper.
 - [ ] Verificar que exista cobertura suficiente para objetos, materiales, comidas, estaciones y construcciones.
-- [ ] Confirmar licencia, atribución y posibilidad de redistribuir los archivos dentro de una aplicación local.
+- [ ] Confirmar licencia, atribución y posibilidad de redistribuir los archivos desde el repositorio y el despliegue público.
 - [ ] Comparar al menos dos alternativas mediante una muestra visual antes de adoptarlas.
 - [ ] Evitar dependencias de CDN o recursos remotos durante el uso de la aplicación.
 - [ ] Mantener un fallback legible para cualquier entidad que no tenga icono.

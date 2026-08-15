@@ -4,6 +4,7 @@
 
 - Se añadió una configuración reproducible para publicar la aplicación `1.2.0` en Cloudflare Workers sin depender del router doméstico.
 - El despliegue incorpora una validación en seco, observabilidad y documentación de autenticación, publicación, actualización y rollback.
+- Se completó el mapa documental del proyecto y se añadieron diagramas SVG mantenibles de arquitectura, estructura del repositorio y flujo de actualización/despliegue.
 
 ## Aplicación 1.2.0 — 2026-08-14
 
