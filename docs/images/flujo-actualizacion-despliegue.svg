@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Flujo de actualización y despliegue de Valheim Helper</title>
+  <desc id="desc">Una nueva versión de Valheim inicia un diagnóstico y revisión editorial. Los JSON se actualizan sólo con aprobación humana, pasan por pruebas y un pull request antes de desplegarse manualmente en Cloudflare o Docker.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070407"/><stop offset="1" stop-color="#021A32"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#042E47"/><stop offset="1" stop-color="#021A32"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#e6af64"/></marker>
+    <style>.title{font:700 36px system-ui,sans-serif;fill:#f7e7cd}.sub{font:400 18px system-ui,sans-serif;fill:#d9c7ae}.card{fill:url(#card);stroke:#3b4a57;stroke-width:2}.decision{fill:#31110f;stroke:#c03d19;stroke-width:3}.head{font:700 19px system-ui,sans-serif;fill:#e6af64}.text{font:400 15px system-ui,sans-serif;fill:#f7e7cd}.small{font:400 13px system-ui,sans-serif;fill:#d9c7ae}.arrow{fill:none;stroke:#e6af64;stroke-width:3;marker-end:url(#arrow)}.muted{stroke:#7a5148;stroke-dasharray:8 8}</style>
+  </defs>
+  <rect width="1440" height="900" rx="26" fill="url(#bg)"/>
+  <text x="70" y="67" class="title">Actualización y despliegue</text>
+  <text x="70" y="100" class="sub">El diagnóstico informa; sólo una revisión humana puede cambiar la fuente de verdad</text>
+
+  <rect x="70" y="155" width="250" height="115" rx="18" class="card"/>
+  <text x="95" y="196" class="head">1 · Novedad externa</text>
+  <text x="95" y="227" class="text">Valheim publica una versión</text>
+  <text x="95" y="250" class="small">o aparece una corrección verificable</text>
+
+  <rect x="405" y="155" width="270" height="115" rx="18" class="card"/>
+  <text x="430" y="196" class="head">2 · Diagnóstico</text>
+  <text x="430" y="227" class="text">Check · snapshot · diff</text>
+  <text x="430" y="250" class="small">No modifica data/</text>
+
+  <rect x="760" y="155" width="270" height="115" rx="18" class="decision"/>
+  <text x="785" y="196" class="head">3 · Revisión humana</text>
+  <text x="785" y="227" class="text">Clasificar · verificar · S/N</text>
+  <text x="785" y="250" class="small">Fuentes y alcance funcional</text>
+
+  <rect x="1115" y="155" width="255" height="115" rx="18" class="card"/>
+  <text x="1140" y="196" class="head">4 · JSON propuestos</text>
+  <text x="1140" y="227" class="text">Cambios explícitos en data/</text>
+  <text x="1140" y="250" class="small">Versiones y auditorías incluidas</text>
+
+  <path d="M320 212 H395 M675 212 H750 M1030 212 H1105" class="arrow"/>
+
+  <rect x="1115" y="385" width="255" height="115" rx="18" class="card"/>
+  <text x="1140" y="426" class="head">5 · Validación</text>
+  <text x="1140" y="457" class="text">Test · lint · E2E · Docker</text>
+  <text x="1140" y="480" class="small">Contratos y comportamiento</text>
+
+  <rect x="760" y="385" width="270" height="115" rx="18" class="decision"/>
+  <text x="785" y="426" class="head">6 · Pull request</text>
+  <text x="785" y="457" class="text">Revisión y merge a main</text>
+  <text x="785" y="480" class="small">GitHub conserva la historia</text>
+
+  <rect x="405" y="385" width="270" height="115" rx="18" class="card"/>
+  <text x="430" y="426" class="head">7 · Publicación manual</text>
+  <text x="430" y="457" class="text">Build desde main aprobado</text>
+  <text x="430" y="480" class="small">No se despliega al hacer merge</text>
+
+  <path d="M1242 270 V375 M1115 442 H1040 M760 442 H685" class="arrow"/>
+
+  <rect x="70" y="650" width="470" height="145" rx="20" class="card"/>
+  <text x="100" y="693" class="head">Cloudflare Workers · público</text>
+  <text x="100" y="728" class="text">HTTPS administrado · sin abrir puertos</text>
+  <text x="100" y="757" class="small">Código y JSON empaquetados en cada despliegue</text>
+
+  <rect x="625" y="650" width="470" height="145" rx="20" class="card"/>
+  <text x="655" y="693" class="head">Docker · local o doméstico</text>
+  <text x="655" y="728" class="text">Contenedor portable AMD64/ARM64</text>
+  <text x="655" y="757" class="small">La imagen contiene la misma versión del catálogo</text>
+
+  <rect x="1165" y="650" width="205" height="145" rx="20" class="decision"/>
+  <text x="1192" y="693" class="head">Verificar</text>
+  <text x="1192" y="728" class="text">HTTP 200</text>
+  <text x="1192" y="755" class="small">Diagnóstico current</text>
+
+  <path d="M540 500 V600 H305 V640 M540 500 V600 H860 V640" class="arrow"/>
+  <path d="M540 722 H575 V610 H1267 V640" class="arrow"/>
+  <path d="M1095 722 H1155" class="arrow"/>
+  <path d="M1267 650 V570 H1250 V510" class="arrow muted"/>
+  <text x="1160" y="558" class="small">si falla, corregir en Git</text>
+
+  <text x="70" y="855" class="sub">Regla central: ningún servidor actualiza por sí solo a los demás; GitHub + data/*.json son la fuente de verdad.</text>
+</svg>

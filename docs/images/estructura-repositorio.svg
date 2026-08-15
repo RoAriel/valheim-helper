@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920" role="img" aria-labelledby="title desc">
+  <title id="title">Estructura del repositorio Valheim Helper</title>
+  <desc id="desc">Mapa de las carpetas principales y sus responsabilidades: interfaz, catálogo, scripts editoriales, pruebas, documentación y archivos de despliegue.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070407"/><stop offset="1" stop-color="#021A32"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#042E47"/><stop offset="1" stop-color="#021A32"/></linearGradient>
+    <style>.title{font:700 36px system-ui,sans-serif;fill:#f7e7cd}.sub{font:400 18px system-ui,sans-serif;fill:#d9c7ae}.root{fill:#31110f;stroke:#c03d19;stroke-width:3}.card{fill:url(#card);stroke:#3b4a57;stroke-width:2}.folder{font:700 22px ui-monospace,monospace;fill:#e6af64}.text{font:400 15px system-ui,sans-serif;fill:#f7e7cd}.small{font:400 13px ui-monospace,monospace;fill:#d9c7ae}.line{stroke:#7a5148;stroke-width:3;fill:none}</style>
+  </defs>
+  <rect width="1440" height="920" rx="26" fill="url(#bg)"/>
+  <text x="70" y="67" class="title">Estructura del repositorio</text>
+  <text x="70" y="100" class="sub">Las responsabilidades están separadas para actualizar datos sin mezclar el modelo con la interfaz</text>
+
+  <rect x="520" y="135" width="400" height="95" rx="18" class="root"/>
+  <text x="550" y="175" class="folder">valheim-helper/</text>
+  <text x="550" y="204" class="text">Código, catálogo, evidencia y despliegue</text>
+  <path d="M720 230 V270 M190 270 H1250 M190 270 V300 M540 270 V300 M900 270 V300 M1250 270 V300" class="line"/>
+
+  <rect x="60" y="300" width="300" height="220" rx="20" class="card"/>
+  <text x="88" y="341" class="folder">app/</text>
+  <text x="88" y="374" class="text">Interfaz y ruta de servidor</text>
+  <text x="88" y="410" class="small">workbench.tsx</text>
+  <text x="88" y="437" class="small">components/*.tsx</text>
+  <text x="88" y="464" class="small">api/update-status</text>
+  <text x="88" y="491" class="small">globals.css</text>
+
+  <rect x="390" y="300" width="300" height="220" rx="20" class="card"/>
+  <text x="418" y="341" class="folder">data/</text>
+  <text x="418" y="374" class="text">Fuente de verdad del catálogo</text>
+  <text x="418" y="410" class="small">catalog.ts · filtros</text>
+  <text x="418" y="437" class="small">items · recipes · materials</text>
+  <text x="418" y="464" class="small">sources · stations · biomes</text>
+  <text x="418" y="491" class="small">manifest · auditorías</text>
+
+  <rect x="750" y="300" width="300" height="220" rx="20" class="card"/>
+  <text x="778" y="341" class="folder">scripts/</text>
+  <text x="778" y="374" class="text">Flujo editorial por CLI</text>
+  <text x="778" y="410" class="small">check · snapshot · diff</text>
+  <text x="778" y="437" class="small">classify · candidates</text>
+  <text x="778" y="464" class="small">review · incorporate</text>
+  <text x="778" y="491" class="small">sin escritura implícita</text>
+
+  <rect x="1080" y="300" width="300" height="220" rx="20" class="card"/>
+  <text x="1108" y="341" class="folder">tests/ · e2e/</text>
+  <text x="1108" y="374" class="text">Contratos y experiencia real</text>
+  <text x="1108" y="410" class="small">node:test</text>
+  <text x="1108" y="437" class="small">HTML renderizado</text>
+  <text x="1108" y="464" class="small">Playwright + Chromium</text>
+  <text x="1108" y="491" class="small">móvil · escritorio · 2K</text>
+
+  <path d="M190 520 V580 M540 520 V580 M900 520 V580 M1250 520 V580" class="line"/>
+
+  <rect x="60" y="580" width="630" height="205" rx="20" class="card"/>
+  <text x="88" y="621" class="folder">docs/</text>
+  <text x="88" y="654" class="text">Guías vigentes, decisiones, cierres y diagramas</text>
+  <text x="88" y="690" class="small">README · stack · actualización</text>
+  <text x="88" y="717" class="small">Cloudflare · Docker · releases</text>
+  <text x="88" y="744" class="small">TODO manual · evidencia histórica · images/</text>
+
+  <rect x="750" y="580" width="630" height="205" rx="20" class="card"/>
+  <text x="778" y="621" class="folder">despliegue y calidad</text>
+  <text x="778" y="654" class="text">Configuración reproducible desde el repositorio</text>
+  <text x="778" y="690" class="small">wrangler.jsonc · worker/</text>
+  <text x="778" y="717" class="small">Dockerfile · compose.yaml</text>
+  <text x="778" y="744" class="small">package.json · pnpm-lock.yaml · Playwright · ESLint</text>
+
+  <rect x="250" y="825" width="940" height="55" rx="14" fill="#31110f" stroke="#7a5148"/>
+  <text x="720" y="860" text-anchor="middle" class="text">Git + pruebas conectan todas las capas y conservan cada cambio auditable</text>
+</svg>

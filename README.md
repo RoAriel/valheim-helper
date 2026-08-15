@@ -1,6 +1,6 @@
 # Valheim Helper
 
-Aplicación local para consultar qué se necesita para fabricar y mejorar objetos de Valheim, cuánto hace falta y dónde conseguir cada material.
+Aplicación de consulta para saber qué se necesita para fabricar y mejorar objetos de Valheim, cuánto hace falta y dónde conseguir cada material. Puede ejecutarse localmente o utilizarse desde su despliegue público en Cloudflare Workers.
 
 ## Estado del proyecto
 
@@ -10,7 +10,8 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 - Interfaz en español.
 - Nombres de entidades en español e inglés.
 - Catálogo funcional de los biomas jugables actuales, con equipo, estaciones, comida, transporte y construcciones no decorativas.
-- Ejecución local dentro de WSL.
+- Despliegue público: <https://valheim-helper.roariel.workers.dev>.
+- Ejecución local con pnpm o Docker como alternativas de desarrollo y operación doméstica.
 - pnpm como único gestor de paquetes.
 
 ## Funcionalidades actuales
@@ -43,6 +44,12 @@ Aplicación local para consultar qué se necesita para fabricar y mejorar objeto
 ## Recursos visuales
 
 - Los iconos individuales de los objetos usan el sistema visual propio de la aplicación. No se incorporan imágenes de wikis u otras fuentes sin una licencia explícita para su reutilización.
+
+## Arquitectura en una imagen
+
+![Arquitectura general de Valheim Helper](docs/images/arquitectura-general.svg)
+
+La estructura del repositorio y el circuito completo de actualización y despliegue se explican visualmente en el [índice de documentación](docs/README.md).
 
 ## Entorno local
 
@@ -106,6 +113,8 @@ pnpm deploy:cloudflare
 
 El primer comando valida el paquete sin publicarlo. La configuración, autenticación, verificación y operación se documentan en [`docs/despliegue-cloudflare.md`](docs/despliegue-cloudflare.md).
 
+La instancia vigente se encuentra en <https://valheim-helper.roariel.workers.dev>. La publicación continúa siendo manual: un cambio fusionado en GitHub no llega al Worker hasta ejecutar el comando de despliegue desde un checkout actualizado.
+
 ## Trabajar con VS Code
 
 Abrir el proyecto directamente desde WSL:
@@ -118,6 +127,8 @@ code .
 VS Code debe mostrar un entorno similar a `WSL: Ubuntu`. La extensión de Codex también debe estar instalada o habilitada dentro de WSL para trabajar directamente sobre estos archivos.
 
 ## Estructura principal
+
+El punto de entrada para toda la documentación es [`docs/README.md`](docs/README.md). Allí se distingue qué documentos describen el estado actual, cuáles son guías operativas y cuáles conservan evidencia histórica.
 
 - `app/workbench.tsx`: coordinación de navegación, filtros y selección del catálogo.
 - `app/components/item-detail.tsx`: ficha, mejoras, plan de objetivo y procesos de materiales.
@@ -148,6 +159,7 @@ VS Code debe mostrar un entorno similar a `WSL: Ubuntu`. La extensión de Codex 
 - `docs/despliegue-docker.md`: instalación y operación en Linux, Windows y ARM64.
 - `docs/despliegue-cloudflare.md`: publicación y operación en Cloudflare Workers.
 - `docs/roadmap-actualizacion.md`: bloques acordados para detectar, revisar y aplicar futuras novedades del juego.
+- `docs/images/`: diagramas SVG editables de arquitectura, repositorio y flujo de mantenimiento.
 
 El flujo de mantenimiento puede generar un snapshot externo temporal con `pnpm data:snapshot` y revisarlo con `pnpm data:diff`; ambos son de solo lectura respecto del catálogo productivo.
 
@@ -174,3 +186,5 @@ El flujo de mantenimiento puede generar un snapshot externo temporal con `pnpm d
 ## Próximo objetivo
 
 El catálogo cubre los biomas jugables actuales dentro del alcance funcional: Praderas, Bosque Negro, Pantanos, Montañas, Llanuras, Tierras de Niebla, Tierras Cenicientas y Océano.
+
+La versión queda en mantenimiento estable hasta la publicación de Valheim `1.0`. Mientras tanto sólo corresponden correcciones concretas, seguridad, compatibilidad del despliegue y documentación. Cuando cambie el juego se reactivará el [flujo de actualización](docs/actualizacion-de-datos.md), siempre con revisión humana antes de modificar los JSON productivos.

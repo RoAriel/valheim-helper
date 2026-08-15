@@ -2,6 +2,8 @@
 
 Esta guía describe la instalación y operación de Valheim Helper en un servidor doméstico. La misma definición genera contenedores Linux para AMD64 y ARM64; en Windows se ejecuta mediante WSL 2 o Docker Desktop.
 
+Para utilizar la aplicación sin administrar un servidor ni abrir puertos, también existe un [despliegue público en Cloudflare Workers](despliegue-cloudflare.md). Docker se mantiene como alternativa local, instalación doméstica y comprobación de portabilidad.
+
 ## Instalación rápida
 
 Con Docker Engine y Docker Compose V2 ya instalados:

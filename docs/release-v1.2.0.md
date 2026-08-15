@@ -51,6 +51,10 @@ La imagen resultante se etiqueta `valheim-helper:1.2.0`. Al no existir persisten
 - Diagnóstico: estado `current`, Catálogo `0.1.25` y Valheim `0.221.12` coincidentes.
 - Imagen local validada en AMD64, usuario interno `valheim` y tamaño aproximado de 106 MB.
 
-Durante esta validación GitHub todavía informó Aplicación `1.1.0`, resultado esperado hasta publicar y fusionar la entrega `1.2.0`. El comparador no lo interpreta como una actualización pendiente porque la versión local es posterior.
+Durante la validación previa al cierre, GitHub todavía informó Aplicación `1.1.0`; era el resultado esperado antes de fusionar la entrega. Esa observación es histórica: `main` y el despliegue vigente ya contienen Aplicación `1.2.0`.
+
+## Despliegue posterior al cierre
+
+El 15 de agosto de 2026 se publicó esta misma versión en Cloudflare Workers. La instancia <https://valheim-helper.roariel.workers.dev> respondió HTTP `200` y su diagnóstico informó estado `current`. No se añadieron datos persistentes ni se cambió el contrato del catálogo; Docker continúa disponible como alternativa local.
 
 Las pruebas manuales diferidas —monitores reales e investigación de iconos SVG— permanecen registradas en [`TODO-pruebas.md`](TODO-pruebas.md) y no bloquean esta versión.

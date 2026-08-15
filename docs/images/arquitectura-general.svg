@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitectura general de Valheim Helper</title>
+  <desc id="desc">La interfaz React consulta el catálogo JSON mediante la capa de dominio. Un endpoint separado realiza diagnósticos bajo demanda contra Steam, Jötunn y GitHub. La aplicación se publica en Cloudflare Workers o se ejecuta localmente con Docker.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070407"/><stop offset="1" stop-color="#021A32"/></linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#042E47"/><stop offset="1" stop-color="#021A32"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#E6AF64"/></marker>
+    <style>
+      .title{font:700 36px system-ui,sans-serif;fill:#f7e7cd}.subtitle{font:400 18px system-ui,sans-serif;fill:#d9c7ae}.box{fill:url(#panel);stroke:#3b4a57;stroke-width:2}.accent{stroke:#c03d19}.head{font:700 21px system-ui,sans-serif;fill:#e6af64}.text{font:400 16px system-ui,sans-serif;fill:#f7e7cd}.small{font:400 14px system-ui,sans-serif;fill:#d9c7ae}.flow{fill:none;stroke:#e6af64;stroke-width:3;marker-end:url(#arrow)}.dash{stroke-dasharray:8 8}
+    </style>
+  </defs>
+  <rect width="1440" height="900" rx="26" fill="url(#bg)"/>
+  <text x="70" y="70" class="title">Arquitectura general</text>
+  <text x="70" y="103" class="subtitle">Una aplicación, dos formas de ejecución y un catálogo versionado como fuente de verdad</text>
+
+  <rect x="70" y="150" width="240" height="125" rx="18" class="box accent"/>
+  <text x="95" y="188" class="head">Usuario</text>
+  <text x="95" y="220" class="text">Navegador web</text>
+  <text x="95" y="247" class="small">Catálogo · Mantenimiento</text>
+
+  <rect x="390" y="135" width="650" height="190" rx="22" class="box"/>
+  <text x="420" y="175" class="head">Interfaz · React 19 + Vinext</text>
+  <text x="420" y="211" class="text">workbench.tsx</text>
+  <text x="420" y="237" class="small">Coordina estado, URL, selección y navegación</text>
+  <line x1="420" y1="255" x2="1010" y2="255" stroke="#3b4a57"/>
+  <text x="420" y="286" class="small">Filtros · Lista · Ficha · Mantenimiento · Revisión · Diálogo</text>
+
+  <rect x="390" y="400" width="400" height="165" rx="22" class="box"/>
+  <text x="420" y="441" class="head">Dominio · data/catalog.ts</text>
+  <text x="420" y="478" class="text">Tipos y relaciones</text>
+  <text x="420" y="505" class="small">Filtros · costos · planes · validación</text>
+  <text x="420" y="532" class="small">Sin base de datos en ejecución</text>
+
+  <rect x="70" y="655" width="720" height="150" rx="22" class="box accent"/>
+  <text x="100" y="696" class="head">Catálogo versionado · data/*.json</text>
+  <text x="100" y="733" class="text">Objetos · materiales · recetas · fuentes</text>
+  <text x="100" y="761" class="small">Biomas · estaciones · efectos · auditorías · manifiesto</text>
+  <text x="100" y="785" class="small">Se modifica sólo mediante revisión, pruebas y Git</text>
+
+  <rect x="880" y="400" width="490" height="165" rx="22" class="box"/>
+  <text x="910" y="441" class="head">Diagnóstico · /api/update-status</text>
+  <text x="910" y="478" class="text">Consulta externa sólo bajo demanda</text>
+  <text x="910" y="505" class="small">Steam oficial · Jötunn · GitHub</text>
+  <text x="910" y="532" class="small">Nunca escribe en el catálogo instalado</text>
+
+  <rect x="880" y="655" width="230" height="150" rx="22" class="box accent"/>
+  <text x="910" y="696" class="head">Cloudflare</text>
+  <text x="910" y="730" class="text">Runtime público</text>
+  <text x="910" y="759" class="small">HTTPS · Workers</text>
+  <text x="910" y="783" class="small">Sin puertos domésticos</text>
+
+  <rect x="1140" y="655" width="230" height="150" rx="22" class="box"/>
+  <text x="1170" y="696" class="head">Docker</text>
+  <text x="1170" y="730" class="text">Runtime local</text>
+  <text x="1170" y="759" class="small">AMD64 · ARM64</text>
+  <text x="1170" y="783" class="small">Linux · Windows/WSL 2</text>
+
+  <path d="M310 212 H382" class="flow"/>
+  <path d="M590 325 V390" class="flow"/>
+  <path d="M590 565 V645" class="flow"/>
+  <path d="M1040 230 H1125 V390" class="flow dash"/>
+  <path d="M1040 565 V625 H995 V645" class="flow"/>
+  <path d="M1040 565 V625 H1255 V645" class="flow"/>
+  <text x="1060" y="218" class="small">Check de actualización</text>
+  <text x="700" y="385" class="small">lectura</text>
+</svg>
