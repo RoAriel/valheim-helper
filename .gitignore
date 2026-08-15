@@ -42,3 +42,4 @@ yarn-error.log*
 /outputs/
 /work/
 /.cache/valheim-helper/
+/worker-startup.cpuprofile
