@@ -1,3 +1,5 @@
+![alt text](./cancel.png)
+
 # Valheim Helper
 
 Aplicación de consulta para saber qué se necesita para fabricar y mejorar objetos de Valheim, cuánto hace falta y dónde conseguir cada material. Puede ejecutarse localmente o utilizarse desde su despliegue público en Cloudflare Workers.
